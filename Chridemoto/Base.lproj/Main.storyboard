@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Ride Hunter Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="RideHunterController" customModule="Chridemoto" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vFj-S3-bjN"/>
+                        <viewControllerLayoutGuide type="bottom" id="B7I-La-nSr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welloaginBac" translatesAutoresizingMaskIntoConstraints="NO" id="Rvv-yR-KI6">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RAK-jz-U3z">
+                                <rect key="frame" x="0.0" y="236" width="393" height="616"/>
+                                <subviews>
+                                    <button opaque="NO" tag="123" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNx-C7-pC5">
+                                        <rect key="frame" x="26" y="550" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="1DE-QI-DlY"/>
+                                            <constraint firstAttribute="height" constant="24" id="FKP-cx-rT4"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="ungouba"/>
+                                        <state key="selected" backgroundImage="motocell"/>
+                                        <connections>
+                                            <action selector="coolantLevel:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Kl-wu-TfM"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By continuing you agree to our " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tO1-Tw-Btn">
+                                        <rect key="frame" x="57.999999999999986" y="550" width="176.66666666666663" height="14.333333333333371"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="0.55899234693877553" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Terms of Service&gt;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxz-Rp-ILm">
+                                        <rect key="frame" x="237.66666666666663" y="548.66666666666663" width="126" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Privacy Policy&gt;." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sB0-4b-7uK">
+                                        <rect key="frame" x="57" y="572" width="111" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phrases" translatesAutoresizingMaskIntoConstraints="NO" id="3xa-Ff-Kgk">
+                                        <rect key="frame" x="30.666666666666657" y="249" width="332" height="52"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="mtl-QO-fwz"/>
+                                            <constraint firstAttribute="width" constant="332" id="tDP-4Y-yJO"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KWs-GE-U06">
+                                        <rect key="frame" x="22" y="55" width="349" height="52"/>
+                                        <color key="backgroundColor" red="0.10588235294117647" green="0.16470588235294117" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="7uM-vj-47v"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZZQ-t4-HFh">
+                                        <rect key="frame" x="22" y="149" width="349" height="52"/>
+                                        <color key="backgroundColor" red="0.1058823529" green="0.1647058824" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="3VE-n8-eER"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warm" translatesAutoresizingMaskIntoConstraints="NO" id="dY1-fd-459">
+                                        <rect key="frame" x="42" y="163" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="JZk-bH-mK8"/>
+                                            <constraint firstAttribute="width" constant="24" id="eKq-hJ-WyK"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cold" translatesAutoresizingMaskIntoConstraints="NO" id="5YN-Mj-nqI">
+                                        <rect key="frame" x="42" y="69" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="dpA-NP-mDc"/>
+                                            <constraint firstAttribute="width" constant="24" id="wQg-Ff-hgo"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="if account not exsist,we will create one fo you" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvE-MZ-dOE">
+                                        <rect key="frame" x="68" y="316" width="257" height="15"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="0.55899234689999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.14117647058823529" green="0.22352941176470587" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="bvE-MZ-dOE" firstAttribute="centerX" secondItem="3xa-Ff-Kgk" secondAttribute="centerX" id="3Gz-45-Ydh"/>
+                                    <constraint firstItem="bvE-MZ-dOE" firstAttribute="top" secondItem="3xa-Ff-Kgk" secondAttribute="bottom" constant="15" id="BbI-4g-3h6"/>
+                                    <constraint firstItem="dY1-fd-459" firstAttribute="centerY" secondItem="ZZQ-t4-HFh" secondAttribute="centerY" id="Dze-il-4aZ"/>
+                                    <constraint firstItem="dY1-fd-459" firstAttribute="centerX" secondItem="5YN-Mj-nqI" secondAttribute="centerX" id="FW6-JA-aAu"/>
+                                    <constraint firstAttribute="trailing" secondItem="KWs-GE-U06" secondAttribute="trailing" constant="22" id="Ka2-au-Aie"/>
+                                    <constraint firstItem="ZZQ-t4-HFh" firstAttribute="top" secondItem="KWs-GE-U06" secondAttribute="bottom" constant="42" id="LXF-7R-Fpe"/>
+                                    <constraint firstItem="5YN-Mj-nqI" firstAttribute="centerY" secondItem="KWs-GE-U06" secondAttribute="centerY" id="Ned-8K-xbf"/>
+                                    <constraint firstItem="Mxz-Rp-ILm" firstAttribute="leading" secondItem="tO1-Tw-Btn" secondAttribute="trailing" constant="3" id="P34-JO-q0t"/>
+                                    <constraint firstItem="sB0-4b-7uK" firstAttribute="top" secondItem="tO1-Tw-Btn" secondAttribute="bottom" constant="7.6699999999999999" id="RYD-C6-Zr8"/>
+                                    <constraint firstItem="KWs-GE-U06" firstAttribute="top" secondItem="RAK-jz-U3z" secondAttribute="top" constant="55" id="UVX-WT-OEn"/>
+                                    <constraint firstAttribute="bottom" secondItem="BNx-C7-pC5" secondAttribute="bottom" constant="42" id="Zf4-JY-OIw"/>
+                                    <constraint firstItem="tO1-Tw-Btn" firstAttribute="top" secondItem="BNx-C7-pC5" secondAttribute="top" id="dUA-1e-vUm"/>
+                                    <constraint firstItem="sB0-4b-7uK" firstAttribute="leading" secondItem="BNx-C7-pC5" secondAttribute="trailing" constant="7" id="dy6-UY-bpA"/>
+                                    <constraint firstItem="BNx-C7-pC5" firstAttribute="leading" secondItem="RAK-jz-U3z" secondAttribute="leading" constant="26" id="fYM-z5-Mba"/>
+                                    <constraint firstItem="3xa-Ff-Kgk" firstAttribute="centerX" secondItem="ZZQ-t4-HFh" secondAttribute="centerX" id="jtZ-eu-4wP"/>
+                                    <constraint firstItem="3xa-Ff-Kgk" firstAttribute="top" secondItem="ZZQ-t4-HFh" secondAttribute="bottom" constant="48" id="keS-ag-H6L"/>
+                                    <constraint firstItem="tO1-Tw-Btn" firstAttribute="leading" secondItem="BNx-C7-pC5" secondAttribute="trailing" constant="8" symbolic="YES" id="nXc-Tv-b8x"/>
+                                    <constraint firstItem="Mxz-Rp-ILm" firstAttribute="centerY" secondItem="tO1-Tw-Btn" secondAttribute="centerY" id="r0x-d3-BsC"/>
+                                    <constraint firstItem="ZZQ-t4-HFh" firstAttribute="trailing" secondItem="KWs-GE-U06" secondAttribute="trailing" id="tQW-7m-uAf"/>
+                                    <constraint firstItem="KWs-GE-U06" firstAttribute="leading" secondItem="5YN-Mj-nqI" secondAttribute="leading" constant="-20" id="v8C-Rx-BZd"/>
+                                    <constraint firstItem="KWs-GE-U06" firstAttribute="leading" secondItem="RAK-jz-U3z" secondAttribute="leading" constant="22" id="x5o-Kj-dNw"/>
+                                    <constraint firstItem="ZZQ-t4-HFh" firstAttribute="leading" secondItem="KWs-GE-U06" secondAttribute="leading" id="zhQ-pV-JQN"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="monekyCHIP" translatesAutoresizingMaskIntoConstraints="NO" id="q21-6z-ou1">
+                                <rect key="frame" x="161.66666666666666" y="95" width="70" height="111"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="111" id="qTo-ic-ARN"/>
+                                    <constraint firstAttribute="width" constant="70" id="sIS-b2-m3K"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="RAK-jz-U3z" secondAttribute="trailing" id="5Ww-jx-GvW"/>
+                            <constraint firstAttribute="trailing" secondItem="Rvv-yR-KI6" secondAttribute="trailing" id="G1Y-Au-rOB"/>
+                            <constraint firstItem="Rvv-yR-KI6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Htm-Rh-tpb"/>
+                            <constraint firstItem="q21-6z-ou1" firstAttribute="top" secondItem="vFj-S3-bjN" secondAttribute="bottom" constant="36" id="MGZ-o6-RoC"/>
+                            <constraint firstItem="q21-6z-ou1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ofp-Mk-jJV"/>
+                            <constraint firstItem="RAK-jz-U3z" firstAttribute="top" secondItem="q21-6z-ou1" secondAttribute="bottom" constant="30" id="S3p-KK-FAJ"/>
+                            <constraint firstItem="Rvv-yR-KI6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SUV-J0-Ax0"/>
+                            <constraint firstAttribute="bottom" secondItem="RAK-jz-U3z" secondAttribute="bottom" id="YdB-RY-fut"/>
+                            <constraint firstItem="RAK-jz-U3z" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ngL-F8-k6z"/>
+                            <constraint firstAttribute="bottom" secondItem="Rvv-yR-KI6" secondAttribute="bottom" id="z7E-b1-jEG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="blindcurve" destination="KWs-GE-U06" id="ZOs-YR-LbB"/>
+                        <outlet property="greaseMonkey" destination="3xa-Ff-Kgk" id="cb7-8q-ID6"/>
+                        <outlet property="needLoginMainView" destination="RAK-jz-U3z" id="zIz-Np-DNk"/>
+                        <outlet property="tirePsi" destination="Mxz-Rp-ILm" id="BWd-bs-Y4u"/>
+                        <outlet property="twistycurve" destination="ZZQ-t4-HFh" id="a88-fT-0Ce"/>
+                        <outlet property="warriorPsi" destination="sB0-4b-7uK" id="3bH-p8-Smf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139.69465648854961" y="-2.1126760563380285"/>
+        </scene>
+        <!--Moto Rideterm Controller-->
+        <scene sceneID="126-cJ-dhY">
+            <objects>
+                <viewController storyboardIdentifier="MotoRidetermController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YL6-Mb-vfo" customClass="MotoRidetermController" customModule="Chridemoto" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zdt-X7-DRQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="RVG-MC-CUK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XUY-LK-lRY">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welloaginBac" translatesAutoresizingMaskIntoConstraints="NO" id="bHQ-Ho-gVz">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ych-0v-YVZ">
+                                <rect key="frame" x="349" y="63" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="Q2B-Tq-H3N"/>
+                                    <constraint firstAttribute="height" constant="32" id="vqm-au-sgZ"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="close_Flay"/>
+                                <connections>
+                                    <action selector="RunAway:" destination="YL6-Mb-vfo" eventType="touchUpInside" id="3Io-hZ-f5K"/>
+                                    <action selector="RunAway:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZnS-G2-Itq"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="monekyCHIP" translatesAutoresizingMaskIntoConstraints="NO" id="f4w-kg-caE">
+                                <rect key="frame" x="161.66666666666666" y="74" width="70" height="111"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="DU6-C6-qv0"/>
+                                    <constraint firstAttribute="height" constant="111" id="Xpp-o2-8zm"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lwK-wl-0rc">
+                                <rect key="frame" x="16" y="227" width="361" height="591"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <mutableString key="text">Chopi User Agreement
+Effective Date: May 23, 2025
+Contact Email: chopi@gmail.com
+
+
+Welcome to Chopi! This User Agreement (“Agreement”) is a legally binding contract between you (“User” or “You”) and the Chopi team (“We”, “Us”, or “Chopi”) regarding your use of the Chopi mobile application and related services. Please read this Agreement carefully before using our app.
+
+
+1. Service Overview
+Chopi is a global platform designed for motorcycle enthusiasts to connect, express, and explore their passion for riding. Through Chopi, users can:
+
+
+Chat with AI Moto Chat for expert riding tips, motorcycle maintenance advice, and gear recommendations.
+
+
+Upload and share photos or short videos of their motorcycle life and riding experiences.
+
+
+Connect with other riders around the world, build friendships, and discover communities.
+
+
+Explore personalized content and tools to enhance your journey.
+
+
+2. Account Registration &amp; Usage
+You must be at least 13 years old to use Chopi. If you are under 18, you may only use the service with permission from a parent or legal guardian.
+
+
+You agree to provide accurate, up-to-date, and complete registration information and to safeguard your account credentials.
+
+
+You are solely responsible for all activities that occur under your account.
+
+
+3. User Content &amp; Conduct
+When using Chopi, you agree not to post, upload, share, or distribute any content that:
+
+
+Violates any applicable law or regulation;
+
+
+Contains hate speech, harassment, sexually explicit material, violent or abusive content, threats, terrorism, scams, or deceptive practices;
+
+
+Infringes upon others' intellectual property or privacy rights;
+
+
+Is spam, promotional, or commercial in nature without our prior written consent;
+
+
+Includes malware, viruses, or any code that disrupts the normal operation of the platform;
+
+
+Misrepresents your identity or impersonates others.
+
+
+We reserve the right to review, remove, or moderate any content or accounts that violate these rules and may take further action including suspension or permanent ban of your account if necessary.
+
+
+4. Intellectual Property &amp; License
+You retain ownership of the content you post, but you grant Chopi a worldwide, non-exclusive, royalty-free, sublicensable license to use, host, reproduce, modify, and display such content as part of our service.
+
+
+All intellectual property related to Chopi (including app design, features, trademarks, and content we provide) is owned by us and protected under applicable intellectual property laws.
+
+
+5. AI Features Disclaimer
+The AI Moto Chat feature provides automated responses and suggestions. These are for informational and entertainment purposes only.
+
+
+You understand and agree that the AI may not always be accurate, up-to-date, or suitable for your individual circumstances, and you use it at your own risk.
+
+
+6. Privacy
+We respect your privacy and handle your data according to our Privacy Policy, which explains what information we collect and how we use it. By using Chopi, you agree to the terms of our Privacy Policy.
+
+
+7. Modifications &amp; Termination
+We may update, suspend, or discontinue the app or any part of the service at any time with or without notice.
+
+
+You may stop using the app at any time. You may also request account deletion via the app or by contacting us at chopi@gmail.com.
+
+
+8. Legal Compliance &amp; Dispute Resolution
+This Agreement is governed by the applicable laws of the jurisdiction in which Chopi operates. In the event of a dispute, both parties will attempt to resolve the issue through negotiation. If no resolution is reached, the dispute may be submitted to a competent court of law.
+
+
+9. Contact Us
+If you have any questions, concerns, or complaints about this Agreement or our services, please reach out to us:
+
+
+📧 Email: chopi@gmail.com
+
+
+By using Chopi, you confirm that you have read, understood, and agreed to this User Agreement.
+
+
+Chopi Team
+Ride. Connect. Live the Spirit.
+</mutableString>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ych-0v-YVZ" secondAttribute="trailing" constant="12" id="3hM-1V-nOE"/>
+                            <constraint firstItem="lwK-wl-0rc" firstAttribute="leading" secondItem="XUY-LK-lRY" secondAttribute="leading" constant="16" id="7yE-lc-k0D"/>
+                            <constraint firstAttribute="trailing" secondItem="bHQ-Ho-gVz" secondAttribute="trailing" id="FsY-U6-xvI"/>
+                            <constraint firstItem="lwK-wl-0rc" firstAttribute="top" secondItem="f4w-kg-caE" secondAttribute="bottom" constant="42" id="HXH-CD-IhB"/>
+                            <constraint firstItem="f4w-kg-caE" firstAttribute="top" secondItem="zdt-X7-DRQ" secondAttribute="bottom" constant="15" id="Tee-Bs-foA"/>
+                            <constraint firstAttribute="trailing" secondItem="lwK-wl-0rc" secondAttribute="trailing" constant="16" id="cE4-wd-5cx"/>
+                            <constraint firstItem="ych-0v-YVZ" firstAttribute="top" secondItem="zdt-X7-DRQ" secondAttribute="bottom" constant="4" id="cgq-gh-kZr"/>
+                            <constraint firstAttribute="bottom" secondItem="bHQ-Ho-gVz" secondAttribute="bottom" id="pnC-FJ-QDP"/>
+                            <constraint firstItem="f4w-kg-caE" firstAttribute="centerX" secondItem="lwK-wl-0rc" secondAttribute="centerX" id="qyc-bp-CrF"/>
+                            <constraint firstItem="RVG-MC-CUK" firstAttribute="top" secondItem="lwK-wl-0rc" secondAttribute="bottom" id="tWa-Za-BcL"/>
+                            <constraint firstItem="bHQ-Ho-gVz" firstAttribute="top" secondItem="XUY-LK-lRY" secondAttribute="top" id="yQk-LE-QtG"/>
+                            <constraint firstItem="bHQ-Ho-gVz" firstAttribute="leading" secondItem="XUY-LK-lRY" secondAttribute="leading" id="z5j-3R-qiy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="usertemtInfoVireMoto" destination="lwK-wl-0rc" id="zek-DN-czW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VKC-R9-7jD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="183.96946564885496" y="719.71830985915494"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="close_Flay" width="24" height="24"/>
+        <image name="cold" width="24" height="24"/>
+        <image name="monekyCHIP" width="70" height="111"/>
+        <image name="motocell" width="22" height="22"/>
+        <image name="phrases" width="332" height="52"/>
+        <image name="ungouba" width="22" height="22"/>
+        <image name="warm" width="24" height="24"/>
+        <image name="welloaginBac" width="375" height="812"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

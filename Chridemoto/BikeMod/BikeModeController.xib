@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BikeModeController" customModule="Chridemoto" customModuleProvider="target">
+            <connections>
+                <outlet property="dreamRideView" destination="pxO-Tx-Trw" id="cRD-GM-Z8f"/>
+                <outlet property="two_wheeled" destination="TOn-L1-afV" id="ZOV-U7-EI9"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welloaginBac" translatesAutoresizingMaskIntoConstraints="NO" id="G9z-84-tS9">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9w-9y-O1W">
+                    <rect key="frame" x="344" y="59" width="37" height="37"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="37" id="hWs-Gx-QKh"/>
+                        <constraint firstAttribute="height" constant="37" id="i0a-If-o3P"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="motoNoti"/>
+                    <connections>
+                        <action selector="saddleSore:" destination="-1" eventType="touchUpInside" id="Odv-T0-Q8b"/>
+                    </connections>
+                </button>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="pxO-Tx-Trw">
+                    <rect key="frame" x="12" y="236" width="369" height="616"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oxT-xp-OOS">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="motoTips" translatesAutoresizingMaskIntoConstraints="NO" id="TOn-L1-afV">
+                    <rect key="frame" x="16" y="109" width="365" height="115"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="115" id="PTS-NX-jUK"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chopi" translatesAutoresizingMaskIntoConstraints="NO" id="hX4-fU-U0v">
+                    <rect key="frame" x="16" y="59" width="80" height="38"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="38" id="Ygl-Pb-AMw"/>
+                        <constraint firstAttribute="width" constant="80" id="iZU-ov-XHX"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="pxO-Tx-Trw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="12" id="537-lz-vEl"/>
+                <constraint firstItem="TOn-L1-afV" firstAttribute="leading" secondItem="hX4-fU-U0v" secondAttribute="leading" id="CXf-Lt-WAf"/>
+                <constraint firstItem="TOn-L1-afV" firstAttribute="top" secondItem="hX4-fU-U0v" secondAttribute="bottom" constant="12" id="CoP-nb-Ckd"/>
+                <constraint firstItem="hX4-fU-U0v" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="D4h-W1-JHh"/>
+                <constraint firstItem="G9z-84-tS9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ebt-eL-L42"/>
+                <constraint firstAttribute="bottom" secondItem="G9z-84-tS9" secondAttribute="bottom" id="IA0-Fz-l8S"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="L9w-9y-O1W" secondAttribute="trailing" constant="12" id="KlQ-Km-uzc"/>
+                <constraint firstAttribute="bottom" secondItem="pxO-Tx-Trw" secondAttribute="bottom" id="OTR-gF-HkR"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="pxO-Tx-Trw" secondAttribute="trailing" constant="12" id="XLh-gX-Ig2"/>
+                <constraint firstItem="G9z-84-tS9" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="hKY-8D-Gen"/>
+                <constraint firstItem="G9z-84-tS9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hNB-vF-Y36"/>
+                <constraint firstItem="L9w-9y-O1W" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ia3-mb-5Fg"/>
+                <constraint firstItem="pxO-Tx-Trw" firstAttribute="top" secondItem="TOn-L1-afV" secondAttribute="bottom" constant="12" id="qIs-Bs-Git"/>
+                <constraint firstItem="TOn-L1-afV" firstAttribute="trailing" secondItem="L9w-9y-O1W" secondAttribute="trailing" id="qZl-xH-x5Q"/>
+                <constraint firstItem="hX4-fU-U0v" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="uHM-dW-fFD"/>
+            </constraints>
+            <point key="canvasLocation" x="57.251908396946561" y="20.422535211267608"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Chopi" width="75.333335876464844" height="32.333332061767578"/>
+        <image name="motoNoti" width="36" height="37"/>
+        <image name="motoTips" width="355" height="115"/>
+        <image name="welloaginBac" width="375" height="812"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
