@@ -130,7 +130,9 @@
             </constraints>
             <size key="customSize" width="406" height="519"/>
             <connections>
+                <outlet property="dynoReadout" destination="acz-62-Say" id="cNb-Q0-zmf"/>
                 <outlet property="power" destination="VzS-T1-EF5" id="6bo-VD-c9K"/>
+                <outlet property="publishRideContent" destination="Vnx-m8-f5I" id="Zr8-Op-eIB"/>
                 <outlet property="rimDent" destination="GUz-ce-81y" id="kdA-dW-Zx1"/>
                 <outlet property="rimDentHighter" destination="wPG-xH-1FN" id="mCg-IS-Mfu"/>
                 <outlet property="shureCountLbl" destination="Phi-Db-F8Q" id="SMu-RA-Niq"/>

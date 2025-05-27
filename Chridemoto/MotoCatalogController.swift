@@ -77,10 +77,10 @@ class MotoCatalogController: UIViewController, WKUIDelegate {
         
     }
     private func loadRiderDashboard() {
-            loadingIndicator.startAnimating()
+            
             
             if let url = URL(string:swapStories ) {
-                var request = URLRequest(url: url)
+                let request = URLRequest(url: url)
                
                 fuelGaugeWebView.load(request)
                 
@@ -96,8 +96,11 @@ class MotoCatalogController: UIViewController, WKUIDelegate {
         
     }
     private  var swapStories:String
-    init(swapStories: String) {
-        
+    
+    private  var showStyle:Bool? = false
+    
+    init(swapStories: String,ispresntShow:Bool? = false) {
+        self.showStyle = ispresntShow
         self.swapStories = swapStories
         super.init(nibName: nil, bundle: nil)
     }
@@ -107,6 +110,7 @@ class MotoCatalogController: UIViewController, WKUIDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadingIndicator.startAnimating()
         configureChromeInterface()
         loadRiderDashboard()
     }
@@ -117,7 +121,8 @@ class MotoCatalogController: UIViewController, WKUIDelegate {
 
 extension MotoCatalogController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        UIView.animate(withDuration: 0.5, delay: 2, options: .curveEaseInOut) {
+        
+        UIView.animate(withDuration: 2, delay: 0, options: .curveEaseInOut) {
             webView.alpha = 1
             self.loadingIndicator.stopAnimating()
         }
@@ -134,7 +139,7 @@ extension MotoCatalogController: WKNavigationDelegate {
 
 extension MotoCatalogController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        self.loadingIndicator.startAnimating()
+        
         self.view.isUserInteractionEnabled = false
         switch message.name {
         case "helmetFitting":
@@ -142,7 +147,7 @@ extension MotoCatalogController: WKScriptMessageHandler {
                 return
             }
             
-            
+            self.loadingIndicator.startAnimating()
             SwiftyStoreKit.purchaseProduct(trigger, atomically: true) { psResult in
                 self.loadingIndicator.stopAnimating()
                 
@@ -179,6 +184,10 @@ extension MotoCatalogController: WKScriptMessageHandler {
                 
             }
         case "throttleControl":
+            if showStyle == true {
+                self.dismiss(animated: true)
+                return
+            }
             self.navigationController?.popViewController(animated: true)
         case "brakeModulation":
             UserDefaults.standard.set(nil, forKey: "softPanniers")

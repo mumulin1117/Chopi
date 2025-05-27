@@ -7,6 +7,7 @@
 
 import UIKit
 import MBProgressHUD
+import SDWebImage
 
 class RideConnectController: DodgeController {
     
@@ -65,7 +66,7 @@ class RideConnectController: DodgeController {
                 return
             }
             
-          
+            self.refreshMotoBikeUIshow(dik: motoData)
            
             
         } misfireHandler: { hum in
@@ -76,23 +77,51 @@ class RideConnectController: DodgeController {
         
     }
     
-    
-    @IBAction func hazardSan(_ sender: UIButton) {//wallent
+    private func refreshMotoBikeUIshow(dik:Dictionary<String,Any>)  {
+        if let rideUserimage = dik["cruiseControlUse"] as? String,let motoshareUrl =  URL.init(string: rideUserimage){
+            
+            rimDentHighter.sd_setImage(with: motoshareUrl,
+                                 placeholderImage: nil,
+                                options: .continueInBackground,
+                                context: [.imageTransformer: urlImageSize,.storeCacheType : SDImageCacheType.memory.rawValue])
+            rimDent.sd_setImage(with: motoshareUrl,
+                                placeholderImage: nil,
+                               options: .continueInBackground,
+                               context: [.imageTransformer: urlImageSize,.storeCacheType : SDImageCacheType.memory.rawValue])
+            
+            
+            
+        }
+        
+        tranceImageView.text = dik["touringWindscreen"] as? String
+        vibration.setTitle("\(dik["ridePlanning"] as? Int ?? 0) Following", for: .normal)
+        
+        power.setTitle("\(dik["sidestandSensor"] as? Int ?? 0) Fans", for: .normal)
     }
     
     
-    @IBAction func coolantLevel(_ sender: UIButton) {//site
-    }
+    @IBAction func hazardSan(_ sender: UIButton) {
+        navigationToCpntrller(root:self.generateRideRoute( detaiARide: .fuelWallet))
     
-    @IBAction func muscleMemory(_ sender: UIButton) {//edit
-    }
-    
-    
-    @IBAction func greaseMonkey(_ sender: UIButton) {//follow
     }
     
     
-    @IBAction func hypnosis(_ sender: UIButton) {//fans
+    @IBAction func coolantLevel(_ sender: UIButton) {
+        navigationToCpntrller(root:self.generateRideRoute( detaiARide: .garageSettings))
+    }
+    
+    @IBAction func muscleMemory(_ sender: UIButton) {
+        navigationToCpntrller(root:self.generateRideRoute( detaiARide: .bikeConfiguration))
+    }
+    
+    
+    @IBAction func greaseMonkey(_ sender: UIButton) {
+        navigationToCpntrller(root:self.generateRideRoute( detaiARide: .followingRiders))
+    }
+    
+    
+    @IBAction func hypnosis(_ sender: UIButton) {
+        navigationToCpntrller(root:self.generateRideRoute( detaiARide: .fanClub))
     }
     
 }

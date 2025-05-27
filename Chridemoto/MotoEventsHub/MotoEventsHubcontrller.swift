@@ -57,7 +57,9 @@ class MotoEventsHubcontrller: DodgeController {
 
     
    @objc func toppingPOstNowing()  {
-        
+      
+       navigationToCpntrller(root:self.generateRideRoute( detaiARide: .uploadRideFootage))
+      
     }
 
     override func workshopSanctuary() {
@@ -103,7 +105,7 @@ extension MotoEventsHubcontrller: FSPagerViewDataSource {
     }
     
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
-        let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "MotoEventsCell", at: index)
+        let motoCell = pagerView.dequeueReusableCell(withReuseIdentifier: "MotoEventsCell", at: index) as! MotoEventsCell
         let data = MotoEventsCellData[index]
 //        cell.backgroundColor = .blue
         // 摩托车卡片样式
@@ -114,18 +116,30 @@ extension MotoEventsHubcontrller: FSPagerViewDataSource {
 //                                        context: [.imageTransformer: urlImageSize,.storeCacheType : SDImageCacheType.memory.rawValue])
 //            
 //        }
-       
+        motoCell.ShowOffYourRide(ride: data)
+        
      
         // 3D旋转效果
-        cell.contentView.layer.transform = CATransform3DMakeRotation(.pi/18, 0, 1, 0)
-        return cell
+        motoCell.power.addTarget(self, action: #selector(anotiUserContent), for: .touchUpInside)
+        motoCell.dynoReadout.tag = index
+        motoCell.dynoReadout.addTarget(self, action: #selector(dynoReadoutTransformer(bake:)), for: .touchUpInside)
+        motoCell.contentView.layer.transform = CATransform3DMakeRotation(.pi/18, 0, 1, 0)
+        return motoCell
+    }
+    
+    @objc func dynoReadoutTransformer(bake:UIButton)  {///user in
+        
+        guard let rideUID = MotoEventsCellData[bake.tag]["nightRiding"] as? Int else{return}
+        navigationToCpntrller(root:self.generateRideRoute(additionalParams: "\(rideUID)", detaiARide: .riderProfile))
+       
     }
 }
 
 // MARK: - 轮播图交互
 extension MotoEventsHubcontrller: FSPagerViewDelegate {
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
-        
+        guard let rideID = MotoEventsCellData[index]["slowSpeedControl"] as? Int else{return}
+        navigationToCpntrller(root:self.generateRideRoute(additionalParams: "\(rideID)", detaiARide: .dynoReadout))
        
     }
     

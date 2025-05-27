@@ -38,7 +38,8 @@ class MotoAssistantController: DodgeController {
     }
 
     @objc func gearShiftRhythm()  {//ai
-         
+        
+        navigationToCpntrller(root:self.generateRideRoute(detaiARide: .AiMOtoChat))
     
     }
 
@@ -156,7 +157,7 @@ class MotoAssistantController: DodgeController {
             activeButton.tag = i
             activeButton.addTarget(self, action: #selector(getRiderImageTransformer(bake:)), for: .touchUpInside)
             activeButton.layer.borderWidth = 1.5
-            if let butnow = item["fluidlines"] as? String,let motoshareUrl =  URL.init(string: butnow){
+            if let butnow = item["gearSelection"] as? String,let motoshareUrl =  URL.init(string: butnow){
                 SDWebImageManager.shared.loadImage(
                            with: motoshareUrl,
                            options: .continueInBackground,
@@ -180,7 +181,9 @@ class MotoAssistantController: DodgeController {
     
     @objc func getRiderImageTransformer(bake:UIButton)  {///user in
         
-        
+        guard let rideUID = MotoActiveUserData[bake.tag]["chainLubrication"] as? Int else{return}
+        navigationToCpntrller(root:self.generateRideRoute(additionalParams: "\(rideUID)", detaiARide: .riderProfile))
+       
     }
 }
 
@@ -195,7 +198,7 @@ extension MotoAssistantController: FSPagerViewDataSource {
         let data = MotoModeBokeCellData[index]
        
         // 摩托车卡片样式
-        if let butnow = (data[""] as? Array<String>)?.first,let motoshareUrl =  URL.init(string: butnow){
+        if let butnow = (data["rainGearSetup"] as? Array<String>)?.first,let motoshareUrl =  URL.init(string: butnow){
             cell.imageView?.sd_setImage(with: motoshareUrl,
                                          placeholderImage: nil,
                                         options: .continueInBackground,
@@ -209,10 +212,10 @@ extension MotoAssistantController: FSPagerViewDataSource {
         
         // 添加品牌标签
         let label = UILabel(frame: CGRect(x:12, y: cell.frame.height-40, width: cell.frame.width - 24, height: 40))
-        label.text = data[""] as? String
+        label.text = "  " + (data["emergencyBraking"] as? String ?? "") + "  "
         label.font = UIFont(name: "Helvetica-Bold", size: 16)
         label.textColor = .white
-        label.textAlignment = .left
+        label.textAlignment = .center
         label.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         cell.contentView.addSubview(label)
         
@@ -226,7 +229,8 @@ extension MotoAssistantController: FSPagerViewDataSource {
 extension MotoAssistantController: FSPagerViewDelegate {
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
         
-       
+        guard let rideID = MotoModeBokeCellData[index]["slowSpeedControl"] as? Int else{return}
+        navigationToCpntrller(root:self.generateRideRoute(additionalParams: "\(rideID)", detaiARide: .dynoReadout))
     }
     
     func pagerViewDidScroll(_ pagerView: FSPagerView) {

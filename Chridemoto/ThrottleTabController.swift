@@ -35,12 +35,14 @@ class ThrottleTabController: UITabBarController {
         generator.impactOccurred()
         
         // 创建发布控制器
-        let postVC = MotoCatalogController.init(swapStories: "")
-        let navVC = UINavigationController(rootViewController: postVC)
-      
+        
+        let postVC = MotoCatalogController.init(swapStories: self.generateRideRoute(detaiARide: .diagnosticTroubleCode),ispresntShow: true)
+        
+        
+        postVC.modalPresentationStyle = .fullScreen
         
         // 自定义呈现动画
-        self.present(navVC, animated: true)
+        self.present(postVC, animated: true)
 //        presentWithThrottleAnimation(navVC)
     }
     private func presentWithThrottleAnimation(_ controller: UIViewController) {
@@ -149,7 +151,7 @@ class CruiserNavigation: UINavigationController {
         self.navigationBar.isHidden = true
     }
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
-//        viewController.hidesBottomBarWhenPushed = true
+//
         super.pushViewController(viewController, animated: animated)
     }
 }
@@ -164,6 +166,13 @@ class DodgeController: UIViewController {
     func workshopSanctuary()  {
         
        
+    }
+    
+    
+  @objc  func anotiUserContent()  {
+      
+      
+        navigationToCpntrller(root:self.generateRideRoute(detaiARide: .mechanicReport))
     }
 }
 
@@ -180,8 +189,53 @@ extension UIViewController{
        
     }
     
-   
+    func generateRideRoute(additionalParams: String = "",detaiARide:IgnitionRouteMapper) -> String {
+        var params = additionalParams
+        
+        if !params.isEmpty {
+            params = params + "&"
+        }
+      
+        let authToken = UserDefaults.standard.object(forKey: "softPanniers") as? String ?? ""
+        
+        var carburetorJetting: String = ""
+        
+            switch detaiARide {
+            case .ecuTuningProfile:        carburetorJetting = "pages/AIexpert/index?"
+            case .partsWarehouse:         carburetorJetting = "pages/repository/index?"
+            case .oilBlendSpec:           carburetorJetting = "pages/AromatherapyDetails/index?dynamicId="
+            case .dynoReadout:            carburetorJetting = "pages/DynamicDetails/index?dynamicId="
+            case .exhaustVideoLog:        carburetorJetting = "pages/VideoDetails/index?dynamicId="
+            case .diagnosticTroubleCode:  carburetorJetting = "pages/issue/index?"
+            case .uploadRideFootage:      carburetorJetting = "pages/postVideos/index?"
+            case .riderProfile:           carburetorJetting = "pages/homepage/index?userId="
+            case .mechanicReport:         carburetorJetting = "pages/report/index?"
+            case .performanceMetrics:     carburetorJetting = "pages/information/index?"
+            case .bikeConfiguration:      carburetorJetting = "pages/EditData/index?"
+                
+            case .followingRiders:        carburetorJetting = "pages/attentionList/index?type=1?"
+            case .fanClub:                carburetorJetting = "pages/attentionList/index?type=2?"
+                
+            case .fuelWallet:             carburetorJetting = "pages/wallet/index?"
+            case .garageSettings:         carburetorJetting = "pages/SetUp/index?"
+            case .serviceContract:        carburetorJetting = "pages/Agreement/index?type=1?"
+            case .privacySeal:            carburetorJetting = "pages/Agreement/index?type=2"
+            case .pitCrewChat:            carburetorJetting = "pages/privateChat/index?userId="
+            case .neutralGear:            carburetorJetting = ""
+            case .AiMOtoChat:
+                carburetorJetting = "pages/CreateRole/index"
+        }
+        
+        return "http://www.forest567leaf.xyz/#" + carburetorJetting + params + "token=" + authToken + "&appID=55943121"
+    }
     
+    
+    func navigationToCpntrller(root:String)  {
+        let motalControll = MotoCatalogController.init(swapStories: root)
+        
+        motalControll.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(motalControll, animated: true)
+    }
     
      func igniteEngineTransmission(
         exhaustRoute: DetailPath,
