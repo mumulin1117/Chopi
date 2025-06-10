@@ -218,12 +218,13 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Chridemoto/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "Chopi needs access to your camera to capture epic ride moments, share live videos with fellow riders, and showcase your bike in the community. Let’s fuel your passion with dynamic visuals!";
+				INFOPLIST_KEY_CFBundleDisplayName = Chopi;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Chopi needs access to your camera to capture epic ride moments, share momment with fellow riders, and showcase your bike in the community. Let’s fuel your passion with dynamic visuals!";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Share your location to discover nearby riders, map new routes, and log your adventures. Chopi keeps you connected on the road!";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Enable microphone access to record engine revs, chat with riders in video calls, and share your road stories. Connect with the community through voice and sound!";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Enable microphone access to record engine revs, chat with riders in calls, and share your road stories. Connect with the community through voice and sound!";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Grant access to your photos to upload bike pics, edit and share ride memories, and inspire others with your journey. Your gallery helps build the Chopi spirit!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -233,7 +234,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ridemoto.chopi.Chridemoto;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ridemoto.chopi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -256,12 +257,13 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Chridemoto/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "Chopi needs access to your camera to capture epic ride moments, share live videos with fellow riders, and showcase your bike in the community. Let’s fuel your passion with dynamic visuals!";
+				INFOPLIST_KEY_CFBundleDisplayName = Chopi;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Chopi needs access to your camera to capture epic ride moments, share momment with fellow riders, and showcase your bike in the community. Let’s fuel your passion with dynamic visuals!";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Share your location to discover nearby riders, map new routes, and log your adventures. Chopi keeps you connected on the road!";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Enable microphone access to record engine revs, chat with riders in video calls, and share your road stories. Connect with the community through voice and sound!";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Enable microphone access to record engine revs, chat with riders in calls, and share your road stories. Connect with the community through voice and sound!";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Grant access to your photos to upload bike pics, edit and share ride memories, and inspire others with your journey. Your gallery helps build the Chopi spirit!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -271,7 +273,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ridemoto.chopi.Chridemoto;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ridemoto.chopi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

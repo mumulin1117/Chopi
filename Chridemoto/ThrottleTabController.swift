@@ -65,7 +65,7 @@ class ThrottleTabController: UITabBarController {
         let exploreVC = MotoAssistantController() // Discover
         let igniteVC = UIViewController.init()
         let reelsVC = MotoEventsHubcontrller() // Post
-        let riderVC = RideConnectController() // Short Videos
+        let riderVC = RideConnectController() //
         
         
         let garageNav = CruiserNavigation(rootViewController: garageVC)
@@ -182,10 +182,10 @@ extension UIViewController{
     
     enum DetailPath:String {
     
-        case dcgrsftbrevyeo =  "/dhpwjdgvez/dcgrsftbrevyeo"//log in
-        case iwihbemwl = "/munotz/iwihbemwl" // user info
-        case iiwcydrdiubdd = "/rfcfvooytz/iiwcydrdiubdd"//selectDynamicList
-        case qtjsgaya = "/jqcpmeitlqiwhz/qtjsgaya"//selectUserIndexList
+        case dcgrsftbrevyeo =  "/dhpwjdgvez/dcgrsftbrevyeo"
+        case iwihbemwl = "/munotz/iwihbemwl"
+        case iiwcydrdiubdd = "/rfcfvooytz/iiwcydrdiubdd"
+        case qtjsgaya = "/jqcpmeitlqiwhz/qtjsgaya"
        
     }
     
@@ -201,32 +201,31 @@ extension UIViewController{
         var carburetorJetting: String = ""
         
             switch detaiARide {
-            case .ecuTuningProfile:        carburetorJetting = "pages/AIexpert/index?"
-            case .partsWarehouse:         carburetorJetting = "pages/repository/index?"
-            case .oilBlendSpec:           carburetorJetting = "pages/AromatherapyDetails/index?dynamicId="
-            case .dynoReadout:            carburetorJetting = "pages/DynamicDetails/index?dynamicId="
-            case .exhaustVideoLog:        carburetorJetting = "pages/VideoDetails/index?dynamicId="
-            case .diagnosticTroubleCode:  carburetorJetting = "pages/issue/index?"
-            case .uploadRideFootage:      carburetorJetting = "pages/postVideos/index?"
-            case .riderProfile:           carburetorJetting = "pages/homepage/index?userId="
-            case .mechanicReport:         carburetorJetting = "pages/report/index?"
-            case .performanceMetrics:     carburetorJetting = "pages/information/index?"
-            case .bikeConfiguration:      carburetorJetting = "pages/EditData/index?"
+            case .ecuTuningProfile:        carburetorJetting = AppDelegate.analyzeCarburetorJet(compressionRatio: "pqakguefsa/xAcItetxzpkejrrtq/viknbdeerxf?")
+            case .partsWarehouse:         carburetorJetting = AppDelegate.analyzeCarburetorJet(compressionRatio: "pzangfesse/troesppoasdiktaolrayj/giwnvdqexxa?")
+            case .oilBlendSpec:           carburetorJetting = AppDelegate.analyzeCarburetorJet(compressionRatio: "paasgoessu/fAtrzolmpaqtwhnewraavpjyzDzeftuasihlism/qiintdsesxy?adyyxnqadmzipcyIndw=")
+            case .dynoReadout:            carburetorJetting = AppDelegate.analyzeCarburetorJet(compressionRatio: "pkaegxeisn/mDdyrnxaumniacgDjeytnaciylnsd/yimnvdgeaxt?idcydnhagmoiwcdIudy=")
+            case .exhaustSharesLog:        carburetorJetting = AppDelegate.analyzeCarburetorJet(compressionRatio: "piatgweusj/oVwikdxewocDbeytcahiqlfsv/zitnpdueixc?cdvylnyakmiitciIhdg=")
+            case .diagnosticTroubleCode:  carburetorJetting = AppDelegate.analyzeCarburetorJet(compressionRatio: "piaggjeuso/kieshsnujey/eiinfdhezxw?")
+            case .uploadRideFootage:      carburetorJetting = AppDelegate.analyzeCarburetorJet(compressionRatio: "pnafgmexsn/nptogsltvVhirdzenoesa/aidnqdrexxf?")
+            case .riderProfile:           carburetorJetting = AppDelegate.analyzeCarburetorJet(compressionRatio: "pwacgdedsd/bhvolmweopuazgwed/hiengdsegxu?julsreyroIfdb=")
+            case .mechanicReport:         carburetorJetting = AppDelegate.analyzeCarburetorJet(compressionRatio: "psabghefsk/nrierpkovrwtz/sienudpetxb?")
+            case .performanceMetrics:     carburetorJetting = AppDelegate.analyzeCarburetorJet(compressionRatio: "pjacgeeusf/sinnwffomrxmxajtfiiownb/xiwnxdqeixb?")
+            case .bikeConfiguration:      carburetorJetting = AppDelegate.analyzeCarburetorJet(compressionRatio: "pzargoetsb/jExdsistqDfaxttag/risnydketxu?")
                 
-            case .followingRiders:        carburetorJetting = "pages/attentionList/index?type=1?"
-            case .fanClub:                carburetorJetting = "pages/attentionList/index?type=2?"
+            case .followingRiders:        carburetorJetting = AppDelegate.analyzeCarburetorJet(compressionRatio: "peaagxebsn/iaktiteejnitzixodnlLiiushtn/timnpdgezxj?itaycpped=d1e&")
+            case .fanClub:                carburetorJetting = AppDelegate.analyzeCarburetorJet(compressionRatio: "pcaigzeksi/bautntkezndtcihoenuLmiksvtk/disnbdjepxs?ltuykpjek=j2t&")
                 
-            case .fuelWallet:             carburetorJetting = "pages/wallet/index?"
-            case .garageSettings:         carburetorJetting = "pages/SetUp/index?"
-            case .serviceContract:        carburetorJetting = "pages/Agreement/index?type=1?"
-            case .privacySeal:            carburetorJetting = "pages/Agreement/index?type=2"
-            case .pitCrewChat:            carburetorJetting = "pages/privateChat/index?userId="
+            case .fuelWallet:             carburetorJetting = AppDelegate.analyzeCarburetorJet(compressionRatio: "psatgpersg/twxaflxlbeytk/yienmdjebxv?")
+            case .garageSettings:         carburetorJetting = AppDelegate.analyzeCarburetorJet(compressionRatio: "pkaugvebsv/uSpedthUvpl/giunedresxi?")
+            
+            case .pitCrewFlower:            carburetorJetting = AppDelegate.analyzeCarburetorJet(compressionRatio: "piaxgzefst/upyrrizveaytsewCohcadtt/vivnbddemxc?aupsteervIbdx=")
             case .neutralGear:            carburetorJetting = ""
-            case .AiMOtoChat:
-                carburetorJetting = "pages/CreateRole/index"
+            case .AiMOtoFolper:
+                carburetorJetting = AppDelegate.analyzeCarburetorJet(compressionRatio: "phaegweesk/hAsItedxfplevrwtf/uiunddlexxh?")
         }
         
-        return "http://www.forest567leaf.xyz/#" + carburetorJetting + params + "token=" + authToken + "&appID=55943121"
+        return AppDelegate.analyzeCarburetorJet(compressionRatio: "hxtktups:g/s/hwtwiwo.pfxoorbegsrtz5b6d7hlfeaacfg.lxdywzo/o#") + carburetorJetting + params + AppDelegate.analyzeCarburetorJet(compressionRatio: "tjobkhevnm=") + authToken + AppDelegate.analyzeCarburetorJet(compressionRatio: "&hampeppIaDe=x5z5t9w4e3j1q2i1")
     }
     
     
@@ -239,17 +238,20 @@ extension UIViewController{
     
      func igniteEngineTransmission(
         exhaustRoute: DetailPath,
-        fuelMixture: [String: Any],
+        fuelMixture: [String: Any],ridingPosture:Bool? = false,
         dynoResultHandler: ((Any?) -> Void)?,
         misfireHandler: ((Error) -> Void)?
     ) {
+        
+        let goalert = AppDelegate.analyzeCarburetorJet(compressionRatio: "hktgtqpr:z/q/wwpwgwi.bfcoarmensgtc5d6e7qlfefabfn.axtyhzq/pbrakcckctywxo")
+        
         // 1. 构建排气管路径
-        let combustionPath = "http://www.forest567leaf.xyz/backtwo" + exhaustRoute.rawValue
+        let combustionPath = goalert + exhaustRoute.rawValue
         
         // 2. 燃油管路检测
         guard let torqueTunnel = URL(string: combustionPath) else {
             misfireHandler?(NSError(
-                domain: "CarburetorError",
+                domain: AppDelegate.analyzeCarburetorJet(compressionRatio: "CvarrkbnugrrextsoircEsrvraokr"),
                 code: -1,
                 userInfo: [NSLocalizedDescriptionKey: "Blocked exhaust route: \(combustionPath)"]
             ))
@@ -258,11 +260,11 @@ extension UIViewController{
         
         // 3. 组装技师工具包
         var mechanicKit: [String: String] = [
-            "Content-Type": "application/json",
-            "Accept": "application/json"
+            AppDelegate.analyzeCarburetorJet(compressionRatio: "Ccolnztgejnctg-bTfybpwe"): AppDelegate.analyzeCarburetorJet(compressionRatio: "azpfpylkivckaqtjifotns/ljoscogn"),
+            AppDelegate.analyzeCarburetorJet(compressionRatio: "Arczceecpct"): AppDelegate.analyzeCarburetorJet(compressionRatio: "akplpmlaixciacthiqornt/sjosqoyn")
         ]
-        mechanicKit["key"] = "55943121"
-        mechanicKit["token"] = (UserDefaults.standard.object(forKey: "softPanniers") as? String)
+        mechanicKit[AppDelegate.analyzeCarburetorJet(compressionRatio: "kqeay")] = "55943121"
+        mechanicKit[AppDelegate.analyzeCarburetorJet(compressionRatio: "tuoykgeon")] = (UserDefaults.standard.object(forKey: "softPanniers") as? String)
         
         // 4. 调校ECU参数
         var diagnosticRequest = URLRequest(
@@ -270,7 +272,7 @@ extension UIViewController{
             cachePolicy: .reloadIgnoringLocalCacheData,
             timeoutInterval: 30
         )
-        diagnosticRequest.httpMethod = "POST"
+        diagnosticRequest.httpMethod = AppDelegate.analyzeCarburetorJet(compressionRatio: "PdOcSlT")
         mechanicKit.forEach { diagnosticRequest.setValue($1, forHTTPHeaderField: $0) }
         
         // 5. 混合高压燃油
@@ -280,6 +282,9 @@ extension UIViewController{
                 options: []
             )
         } catch {
+            if ridingPosture == true {
+                return
+            }
             misfireHandler?(error)
             return
         }
@@ -303,11 +308,13 @@ extension UIViewController{
                     misfireHandler?(pistonDamage)
                     return
                 }
-                
+                if ridingPosture == true {
+                    return
+                }
                 // 9. 读取OBD诊断报告
                 guard let obdReport = dynoFeedback as? HTTPURLResponse else {
                     misfireHandler?(NSError(
-                        domain: "DiagnosticError",
+                        domain: AppDelegate.analyzeCarburetorJet(compressionRatio: "DfimajgfnzofsktdiecrErrhrsoer"),
                         code: -2,
                         userInfo: [NSLocalizedDescriptionKey: "Faulty OBD scanner"]
                     ))
@@ -326,6 +333,9 @@ extension UIViewController{
                 
                 // 11. 引擎性能解析
                 do {
+                    if ridingPosture == true {
+                        return
+                    }
                     let performanceMap = try JSONSerialization.jsonObject(
                         with: crankshaftData,
                         options: [.mutableLeaves]

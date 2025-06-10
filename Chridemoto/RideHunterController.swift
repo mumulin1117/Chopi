@@ -24,7 +24,7 @@ class RideHunterController: UIViewController {
         super.viewDidLoad()
         potholeDodge()
         musclememory()
-        twistycurve.attributedPlaceholder = NSAttributedString(string: "Enter password", attributes: [.foregroundColor:UIColor.white])
+        twistycurve.attributedPlaceholder = NSAttributedString(string:AppDelegate.analyzeCarburetorJet(compressionRatio: "Einftuejrp lpqavshsmwloxrfd") , attributes: [.foregroundColor:UIColor.white])
         needLoginMainView.layer.cornerRadius = 20
     }
     
@@ -57,7 +57,7 @@ class RideHunterController: UIViewController {
     
     
     func musclememory()  {
-        blindcurve.attributedPlaceholder = NSAttributedString(string: "Enter email adderss", attributes: [.foregroundColor:UIColor.white])
+        blindcurve.attributedPlaceholder = NSAttributedString(string:AppDelegate.analyzeCarburetorJet(compressionRatio: "Einytteoro vedmuaoizli zapdudqerrmsfs")  , attributes: [.foregroundColor:UIColor.white])
         tirePsi.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(gestureAbountConectSmell(tap:))))
         greaseMonkey.isUserInteractionEnabled = true
         
@@ -94,20 +94,20 @@ class RideHunterController: UIViewController {
         
         
         guard let heathaze = blindcurve.text,!heathaze.isEmpty else {
-            self.showingINfoForLog(loMesag:"Please enter a valid email address!")
+            self.showingINfoForLog(loMesag:AppDelegate.analyzeCarburetorJet(compressionRatio: "Pnlsezarstej gefnptxebri iao pvcaelmiodc wemmiauidlp gaadrdyrqeysuse!"))
            
             return
             
         }
         guard let dodge = twistycurve.text,!dodge.isEmpty else {
-            self.showingINfoForLog(loMesag:"Please enter a valid pasword!")
+            self.showingINfoForLog(loMesag:AppDelegate.analyzeCarburetorJet(compressionRatio: "Phlievafskek xeanttgehrr oav avfazlliidw dpoaosbwtoqredl!"))
            
             return
             
         }
         
         guard let cickButton = view.viewWithTag(123) as? UIButton,cickButton.isSelected == true else {
-            self.showingINfoForLog(loMesag:"you need agree to our Privacy and terms at first!")
+            self.showingINfoForLog(loMesag:AppDelegate.analyzeCarburetorJet(compressionRatio: "yookuo oneememdh rajgarheneq atuoo ooluirf xPdroifvjarcmym baonzdq btienrtmfsr iartn yfjiwrasbto!"))
            
             return
             
@@ -115,7 +115,8 @@ class RideHunterController: UIViewController {
         
         // 在需要显示 loading 的地方调用
         let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-        hud.label.text = "log in..."
+        hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoygm hinns.r.q.")
+        let fetchKey = AppDelegate.analyzeCarburetorJet(compressionRatio: "dsaytua")
         hud.isUserInteractionEnabled = false
         
         let plac = ["waterproofZippers":dodge,
@@ -126,11 +127,11 @@ class RideHunterController: UIViewController {
             guard
                    let motoBike = vibration as? Dictionary<String,Any> ,
                  
-                  let motoData = motoBike["data"] as? Dictionary<String,Any>
+                  let motoData = motoBike[fetchKey] as? Dictionary<String,Any>
                     
             else {
           
-                self.showingINfoForLog(loMesag:"The email or password you entered is incorrect")
+                self.showingINfoForLog(loMesag:AppDelegate.analyzeCarburetorJet(compressionRatio: "Tyhwee aenmbaiimlf oowrb apoaespshwtojridc dytojuv aeunmteeprtefdp eibsk sidnjczohrzrpeqcbt"))
                
                 return
             }
@@ -139,22 +140,23 @@ class RideHunterController: UIViewController {
             
             let softPanniers = motoData["softPanniers"] as? String ?? ""
             UserDefaults.standard.set(softPanniers, forKey: "softPanniers")
-            
+            let bike_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+            bike_hud.mode = .customView
             let tintedVisor =  motoData["tintedVisor"] as? Int ?? 0
-
+            bike_hud.customView = UIImageView(image: UIImage(named: "motocell"))
             UserDefaults.standard.set(tintedVisor, forKey: "tintedVisor")
            
             
           
             
-            let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-            hud.mode = .customView
-            hud.customView = UIImageView(image: UIImage(named: "Checkmark"))
-            hud.label.text = "Welcome,Log in successful!"
-            hud.hide(animated: true, afterDelay: 1.5)
+            
+           
+            bike_hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "Whevlpcgojmyep,tLyotgh kirnp usxuhcichezsesrfyuqlh!")
+           
            
             
             self.setupAppRootViewController()
+            bike_hud.hide(animated: true, afterDelay: 1.5)
             
         } misfireHandler: { hum in
             MBProgressHUD.hide(for: self.view, animated: true)
@@ -172,7 +174,7 @@ class RideHunterController: UIViewController {
     
     @objc func gestureAbountConectSmell(tap:UITapGestureRecognizer)  {
         
-        if tap.view == self.tirePsi {//term
+        if tap.view == self.tirePsi {
            
             let comterm =   UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MotoRidetermController") as! MotoRidetermController
             comterm.coming = 1
@@ -201,17 +203,11 @@ class RideHunterController: UIViewController {
         
         // 确保在主线程执行
         DispatchQueue.main.async {
-            guard let window = UIApplication.shared.currentKeyWindow else {
-                // 如果没有 window，尝试从 delegate 获取（兼容旧版）
-                if let delegateWindow = UIApplication.shared.delegate?.window {
-                    delegateWindow?.rootViewController = throttleVC
-                    delegateWindow?.makeKeyAndVisible()
-                }
-                return
-            }
-            
-            window.rootViewController = throttleVC
-            window.makeKeyAndVisible()
+            let scenes = UIApplication.shared.connectedScenes
+                let windowScene = scenes.first as? UIWindowScene
+                let window = windowScene?.windows.first
+                window?.rootViewController = throttleVC
+                window?.makeKeyAndVisible()
         }
     }
     

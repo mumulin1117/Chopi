@@ -11,8 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BikeModeController" customModule="Chridemoto" customModuleProvider="target">
             <connections>
-                <outlet property="dreamRideView" destination="pxO-Tx-Trw" id="cRD-GM-Z8f"/>
-                <outlet property="two_wheeled" destination="TOn-L1-afV" id="ZOV-U7-EI9"/>
+                <outlet property="dreamRideView" destination="pxO-Tx-Trw" id="fI6-kt-ThK"/>
+                <outlet property="two_wheeled" destination="TOn-L1-afV" id="tqv-R3-bFW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -33,7 +33,7 @@
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" image="motoNoti"/>
                     <connections>
-                        <action selector="saddleSore:" destination="-1" eventType="touchUpInside" id="Odv-T0-Q8b"/>
+                        <action selector="saddleSore:" destination="-1" eventType="touchUpInside" id="lEC-QL-4Gd"/>
                     </connections>
                 </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="pxO-Tx-Trw">

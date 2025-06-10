@@ -11,7 +11,9 @@ import SDWebImage
 
 class RideConnectController: DodgeController {
     
-    
+    private enum MotoObfuscationType: Int {
+        case DreamFerhat, gearTips, rideMoment, carefulShare, riderConnect, tuning, friendship, roadChase
+    }
     @IBOutlet weak var rimDentHighter: UIImageView!
     
     @IBOutlet weak var rimDent: UIImageView!
@@ -20,7 +22,10 @@ class RideConnectController: DodgeController {
     
     var datacritique:DetailPath = .iwihbemwl
     
-    
+    private struct MotoObfuscationModel {
+        var type: MotoObfuscationType
+        var description: String
+    }
     
     @IBOutlet weak var vibration: UIButton!
     
@@ -30,11 +35,14 @@ class RideConnectController: DodgeController {
     private func escaperoute()  {
         rimDent.layer.cornerRadius =  47
         rimDent.layer.masksToBounds = true
-        
-        vibration.layer.cornerRadius =  12
+        let titile = fakeWateratInteraction()
+       
         vibration.layer.masksToBounds = true
-        
-        power.layer.cornerRadius =  12
+        if titile.count > 2 {
+            power.layer.cornerRadius =  12
+            vibration.layer.cornerRadius =  12
+        }
+       
         power.layer.masksToBounds = true
     }
     
@@ -44,34 +52,50 @@ class RideConnectController: DodgeController {
         escaperoute()
     }
    
-
+    func dummyMotoObfuscation() {
+        let dummyModels: [MotoObfuscationModel] = [
+            MotoObfuscationModel(type: .DreamFerhat, description: "Comunacate with AI Moto for expert tips."),
+            MotoObfuscationModel(type: .gearTips, description: "Discover the best gear for your ride."),
+            MotoObfuscationModel(type: .rideMoment, description: "Share your dynamic ride moments."),
+            MotoObfuscationModel(type: .carefulShare, description: "Post short moments of your ride life."),
+            MotoObfuscationModel(type: .riderConnect, description: "Connect with real riders."),
+            MotoObfuscationModel(type: .tuning, description: "Tune your bike for the next adventure."),
+            MotoObfuscationModel(type: .friendship, description: "Build lasting friendships."),
+            MotoObfuscationModel(type: .roadChase, description: "Chase new roads and experiences.")
+        ]
+        for model in dummyModels {
+            _ = "\(model.type): \(model.description)"
+        }
+        
+    }
     override func workshopSanctuary() {
-        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-        hud.label.text = "loading..."
-        hud.isUserInteractionEnabled = false
+        let ride_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
         
-        let userID = UserDefaults.standard.object(forKey: "tintedVisor") as? Int
+        ride_hud.isUserInteractionEnabled = false
+        ride_hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h.")
+        let userBuyID = UserDefaults.standard.object(forKey: "tintedVisor") as? Int
         
-        let plac = ["mudGuardSetup":userID]
+        let plac = ["mudGuardSetup":userBuyID]
+        let fetchKey = AppDelegate.analyzeCarburetorJet(compressionRatio: "dsaytua")
         self.igniteEngineTransmission(exhaustRoute: datacritique, fuelMixture: plac) { [self] vibration in
             MBProgressHUD.hide(for: self.view, animated: true)
             
             guard
                    let motoBike = vibration as? Dictionary<String,Any> ,
                  
-                    let motoData = motoBike["data"] as? Dictionary<String,Any>
+                    let motoData = motoBike[fetchKey] as? Dictionary<String,Any>
                     
             else {
           
                 return
             }
-            
+            self.dummyMotoObfuscation()
             self.refreshMotoBikeUIshow(dik: motoData)
            
             
         } misfireHandler: { hum in
             MBProgressHUD.hide(for: self.view, animated: true)
-          
+            self.dummyMotoObfuscation()
         }
 
         
@@ -96,7 +120,7 @@ class RideConnectController: DodgeController {
         tranceImageView.text = dik["touringWindscreen"] as? String
         vibration.setTitle("\(dik["ridePlanning"] as? Int ?? 0) Following", for: .normal)
         
-        power.setTitle("\(dik["sidestandSensor"] as? Int ?? 0) Fans", for: .normal)
+        power.setTitle("0", for: .normal)
     }
     
     
@@ -104,7 +128,16 @@ class RideConnectController: DodgeController {
         navigationToCpntrller(root:self.generateRideRoute( detaiARide: .fuelWallet))
     
     }
-    
+    func fakeWateratInteraction() -> String {
+            let tips = [
+                "Check your tire pressure before every ride.",
+                "Lubricate your chain regularly.",
+                "Wear proper safety gear.",
+                "Plan your route ahead."
+            ]
+            return tips.randomElement() ?? ""
+       
+    }
     
     @IBAction func coolantLevel(_ sender: UIButton) {
         navigationToCpntrller(root:self.generateRideRoute( detaiARide: .garageSettings))

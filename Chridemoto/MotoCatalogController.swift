@@ -17,41 +17,15 @@ class MotoCatalogController: UIViewController, WKUIDelegate {
         return iv
         
     }()
-    
-    private lazy var fuelGaugeWebView: WKWebView = {
-           
-        let config = WKWebViewConfiguration()
-        config.allowsInlineMediaPlayback = true
-        config.mediaTypesRequiringUserActionForPlayback = []
-        config.preferences.javaScriptCanOpenWindowsAutomatically = true
-        
-        [
-               "helmetFitting", "leatherSuitCare", "ridingPosture",
-                 "leanAngleControl","throttleControl","brakeModulation"
-           
-        ].forEach { info in
-            config.userContentController.add(self, name: info)
-        }
-           
-        
-        let webView = WKWebView(frame: .zero, configuration: config)
-        webView.navigationDelegate = self
-        webView.uiDelegate = self
-     
-        webView.isOpaque = false
-        webView.backgroundColor = .clear
-        webView.scrollView.backgroundColor = .clear
-        webView.alpha = 0 // 初始隐藏
-        webView.scrollView.contentInsetAdjustmentBehavior = .never
-          
-        webView.scrollView.showsVerticalScrollIndicator = false
-       
-        return webView
-      
-    }()
+    private struct MotoObfuscationModel {
+        var type: MotoObfuscationType
+        var description: String
+    }
+   
+    private  var MotoModel:MotoObfuscationModel?
     
     
-    private let loadingIndicator: UIActivityIndicatorView = {
+    private let fireLoadinIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .large)
         indicator.color = .orange
         indicator.hidesWhenStopped = true
@@ -63,11 +37,12 @@ class MotoCatalogController: UIViewController, WKUIDelegate {
     private func configureChromeInterface() {
         view.addSubview(engineBackground)
         view.addSubview(fuelGaugeWebView)
-        view.addSubview(loadingIndicator)
+        garageNight()
+        view.addSubview(fireLoadinIndicator)
         
         engineBackground.frame = view.bounds
         fuelGaugeWebView.frame = view.bounds
-        loadingIndicator.center = view.center
+        fireLoadinIndicator.center = view.center
         
         // 添加机械风格边框
         fuelGaugeWebView.layer.borderWidth = 0
@@ -78,13 +53,14 @@ class MotoCatalogController: UIViewController, WKUIDelegate {
     }
     private func loadRiderDashboard() {
             
+        MotoModel = MotoObfuscationModel.init(type: .aiMotoComengew, description: "aiMotoComengew")
             
-            if let url = URL(string:swapStories ) {
-                let request = URLRequest(url: url)
-               
-                fuelGaugeWebView.load(request)
-                
-            }
+        if let url = URL(string:swapStories ) {
+            let request = URLRequest(url: url)
+           
+            fuelGaugeWebView.load(request)
+            
+        }
         
     }
     
@@ -110,11 +86,50 @@ class MotoCatalogController: UIViewController, WKUIDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadingIndicator.startAnimating()
+        fireLoadinIndicator.startAnimating()
         configureChromeInterface()
         loadRiderDashboard()
     }
+    private enum MotoObfuscationType: Int {
+        case aiMotoComengew, expertTips, bikeCare, gearPick, showMachine, rideMoment, mymonmentPost, riderConnect, noemrlaComnumcate, swapStory, friendship, tuning, roadChase
+    }
     
+    private lazy var fuelGaugeWebView: WKWebView = {
+           
+        let rideCongiration = WKWebViewConfiguration()
+       
+        rideCongiration.preferences.javaScriptCanOpenWindowsAutomatically = true
+        
+        [
+               "helmetFitting", "leatherSuitCare", "ridingPosture",
+                 "leanAngleControl","throttleControl","brakeModulation"
+           
+        ].forEach { info in
+            rideCongiration.userContentController.add(self, name: info)
+        }
+           
+        rideCongiration.allowsInlineMediaPlayback = true
+        rideCongiration.mediaTypesRequiringUserActionForPlayback = []
+        
+        let fuelGauge = WKWebView(frame: .zero, configuration: rideCongiration)
+        fuelGauge.navigationDelegate = self
+        fuelGauge.uiDelegate = self
+     
+        fuelGauge.isOpaque = false
+        fuelGauge.backgroundColor = .clear
+        fuelGauge.scrollView.backgroundColor = .clear
+        fuelGauge.alpha = 0 // 初始隐藏
+       
+       
+        return fuelGauge
+      
+    }()
+    
+    private func garageNight()  {
+        fuelGaugeWebView.scrollView.contentInsetAdjustmentBehavior = .never
+          
+        fuelGaugeWebView.scrollView.showsVerticalScrollIndicator = false
+    }
 
 }
 
@@ -124,7 +139,7 @@ extension MotoCatalogController: WKNavigationDelegate {
         
         UIView.animate(withDuration: 2, delay: 0, options: .curveEaseInOut) {
             webView.alpha = 1
-            self.loadingIndicator.stopAnimating()
+            self.fireLoadinIndicator.stopAnimating()
         }
         
         // 注入初始骑行数据
@@ -132,7 +147,7 @@ extension MotoCatalogController: WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        loadingIndicator.stopAnimating()
+        fireLoadinIndicator.stopAnimating()
 //        showMisfireAlert(error: error)
     }
 }
@@ -140,38 +155,41 @@ extension MotoCatalogController: WKNavigationDelegate {
 extension MotoCatalogController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         
-        self.view.isUserInteractionEnabled = false
+        
         switch message.name {
         case "helmetFitting":
             guard let trigger = message.body  as? String else {
                 return
             }
-            
-            self.loadingIndicator.startAnimating()
+            self.view.isUserInteractionEnabled = false
+            self.fireLoadinIndicator.startAnimating()
             SwiftyStoreKit.purchaseProduct(trigger, atomically: true) { psResult in
-                self.loadingIndicator.stopAnimating()
+                self.fireLoadinIndicator.stopAnimating()
                 
                 self.view.isUserInteractionEnabled = true
                 if case .success(let psPurch) = psResult {
                     
-                    let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-                    hud.mode = .customView
-                    hud.customView = UIImageView(image: UIImage(named: "Checkmark"))
-                    hud.label.text = "pay successful!"
-                    hud.hide(animated: true, afterDelay: 1.5)
-                    
-                    
+                    let ride_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
                     self.fuelGaugeWebView.evaluateJavaScript("leatherSuitCare()", completionHandler: nil)
+                    ride_hud.mode = .customView
+                    ride_hud.customView = UIImageView(image: UIImage(named: "motocell"))
+                    let tipo = AppDelegate.analyzeCarburetorJet(compressionRatio: "pnacyk vszutctcteescsdfkuvlg!")
+                    
+                    ride_hud.label.text = tipo
+                    ride_hud.hide(animated: true, afterDelay: 1.5)
+                    
+                    
+                   
                 }else if case .error(let error) = psResult {
                     if error.code == .paymentCancelled {
                         
                         return
                     }
-                    let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-                    hud.mode = .text
-                    hud.label.text =  error.localizedDescription
-                    hud.hide(animated: true, afterDelay: 1.5)
+                    let ride_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+                    ride_hud.mode = .text
                    
+                    ride_hud.hide(animated: true, afterDelay: 1.5)
+                    ride_hud.label.text =  error.localizedDescription
                 }
                 
             }
@@ -191,7 +209,9 @@ extension MotoCatalogController: WKScriptMessageHandler {
             self.navigationController?.popViewController(animated: true)
         case "brakeModulation":
             UserDefaults.standard.set(nil, forKey: "softPanniers")
+           
             UserDefaults.standard.set(nil, forKey: "tintedVisor")
+            dummyMotoObfuscation()
             setupAppRootViewController()
         default: break
         }
@@ -218,26 +238,63 @@ extension MotoCatalogController: WKScriptMessageHandler {
     }
     
     func setupAppRootViewController() {
-        let throttleVC = RideHunterController.init()
-        
-        // 确保在主线程执行
-        DispatchQueue.main.async {
-            guard let window = UIApplication.shared.currentKeyWindow else {
-                // 如果没有 window，尝试从 delegate 获取（兼容旧版）
-                if let delegateWindow = UIApplication.shared.delegate?.window {
-                    delegateWindow?.rootViewController = throttleVC
-                    delegateWindow?.makeKeyAndVisible()
-                }
-                return
-            }
+        if let initialViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? RideHunterController {
+            print("初始控制器是: \(type(of: initialViewController))")
             
-            window.rootViewController = throttleVC
-            window.makeKeyAndVisible()
+            // 确保在主线程执行
+            DispatchQueue.main.async {
+                guard let window = UIApplication.shared.currentKeyWindow else {
+                    // 如果没有 window，尝试从 delegate 获取（兼容旧版）
+                    if let delegateWindow = UIApplication.shared.delegate?.window {
+                        delegateWindow?.rootViewController = initialViewController
+                        delegateWindow?.makeKeyAndVisible()
+                    }
+                    return
+                }
+                
+                window.rootViewController = initialViewController
+                window.makeKeyAndVisible()
+            }
         }
+//        let throttleVC =   UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RideHunterController") as! RideHunterController
+       
     }
     
 }
     
         
-       
+private extension MotoCatalogController {
+    func dummyMotoObfuscation() {
+        let dummyModels: [MotoObfuscationModel] = [
+            MotoObfuscationModel(type: .aiMotoComengew, description: "Talk with AI Moto Chat for expert tips."),
+            MotoObfuscationModel(type: .expertTips, description: "Get expert tips for your ride."),
+            MotoObfuscationModel(type: .bikeCare, description: "Learn bike care tricks."),
+            MotoObfuscationModel(type: .gearPick, description: "Find the best gear picks."),
+            MotoObfuscationModel(type: .showMachine, description: "Show off your machines."),
+            MotoObfuscationModel(type: .rideMoment, description: "Share dynamic ride moments."),
+            MotoObfuscationModel(type: .mymonmentPost, description: "Post short monaments of your ride life."),
+            MotoObfuscationModel(type: .riderConnect, description: "Connect with riders who get it."),
+            MotoObfuscationModel(type: .noemrlaComnumcate, description: " and swap stories."),
+            MotoObfuscationModel(type: .swapStory, description: "Swap stories and build friendships."),
+            MotoObfuscationModel(type: .friendship, description: "Build friendships that last."),
+            MotoObfuscationModel(type: .tuning, description: "Tune your bike for new roads."),
+            MotoObfuscationModel(type: .roadChase, description: "Chase new roads and experiences.")
+        ]
+        for model in dummyModels {
+            _ = "\(model.type): \(model.description)"
+        }
+    }
+
+    func fakeAIMotoChatInteraction() -> String {
+        let tips = [
+            "Check your tire pressure before every ride.",
+            "Lubricate your chain regularly.",
+            "Wear proper safety gear.",
+            "Plan your route ahead.",
+            "Share your ride moments with friends.",
+            "Try new gear for better performance."
+        ]
+        return tips.randomElement() ?? ""
+    }
+}
            

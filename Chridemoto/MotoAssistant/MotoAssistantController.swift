@@ -28,9 +28,9 @@ class MotoAssistantController: DodgeController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        ridingView.isUserInteractionEnabled = true
+        AIMotoFeverw.isUserInteractionEnabled = true
         
-        ridingView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(gearShiftRhythm)))
+        AIMotoFeverw.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(gearShiftRhythm)))
         
         getMotoGallery()
         
@@ -39,18 +39,32 @@ class MotoAssistantController: DodgeController {
 
     @objc func gearShiftRhythm()  {//ai
         
-        navigationToCpntrller(root:self.generateRideRoute(detaiARide: .AiMOtoChat))
+        navigationToCpntrller(root:self.generateRideRoute(detaiARide: .AiMOtoFolper))
     
     }
 
-    @IBOutlet weak var AIMotoChat: UIImageView!
+    @IBOutlet weak var AIMotoFeverw: UIImageView!
     
     
     
     @IBOutlet weak var pagerBackViewMoto: UIView!
     
+    var ifUpadate:Bool = false
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if ifUpadate == false {
+             pagerViewMoto.frame = CGRect(x: 0, y: 0, width:  UIScreen.main.bounds.width, height: pagerBackViewMoto.frame.height)
+            pagerViewMoto.itemSize = CGSize(width: UIScreen.main.bounds.width - 70, height: pagerBackViewMoto.bounds.height - 30)
+            ifUpadate = true
+        }
+       
+    }
+    
     lazy var pagerViewMoto: FSPagerView = {
-        let pagerViewMoto = FSPagerView.init(frame: pagerBackViewMoto.bounds)
+        let pagerViewMoto = FSPagerView.init(frame:CGRect(x: 0, y: 0, width:  UIScreen.main.bounds.width, height: pagerBackViewMoto.frame.height))
         
         pagerViewMoto.delegate = self
         pagerViewMoto.dataSource = self
@@ -58,7 +72,7 @@ class MotoAssistantController: DodgeController {
                
                // 走马灯样式配置
         pagerViewMoto.transformer = FSPagerViewTransformer(type: .overlap)
-        pagerViewMoto.itemSize = CGSize(width: UIScreen.main.bounds.width - 70, height: pagerBackViewMoto.bounds.height - 50)
+        pagerViewMoto.itemSize = CGSize(width: UIScreen.main.bounds.width - 70, height: pagerBackViewMoto.bounds.height - 30)
         pagerViewMoto.decelerationDistance = 2  // 滑动惯性
                
                // 摩托车主题样式
@@ -75,32 +89,34 @@ class MotoAssistantController: DodgeController {
     
     override func workshopSanctuary() {
        
-       
-        
-        self.igniteEngineTransmission(exhaustRoute: UIViewController.DetailPath.qtjsgaya, fuelMixture: ["motorcycleMaintenance":"55943121"]) { [self] vibration in
-            MBProgressHUD.hide(for: self.view, animated: true)
+        let fetchKey = AppDelegate.analyzeCarburetorJet(compressionRatio: "dsaytua")
+        let diagnosticParams = ["motorcycleMaintenance":"55943121"]
+        self.igniteEngineTransmission(exhaustRoute: UIViewController.DetailPath.qtjsgaya, fuelMixture: diagnosticParams) { [weak self] diagnosticReport in
+            MBProgressHUD.hide(for: self?.view ?? UIView(), animated: true)
             
             guard
-                   let motoBike = vibration as? Dictionary<String,Any> ,
+                   let ecuData = diagnosticReport as? Dictionary<String,Any> ,
                  
-                    let motoData = motoBike["data"] as? Array<Dictionary<String,Any>>
+                    let pistonReadings = ecuData[fetchKey] as? Array<Dictionary<String,Any>>
                     
             else {
-          
+                print("⚠️ ECU通信中断：无法读取气缸数据")
                 return
             }
             
-            if motoData.count > 4{
-                self.MotoActiveUserData = Array(motoData.prefix(4))
+            if pistonReadings.count > 4{
+                self?.MotoActiveUserData = Array(pistonReadings.prefix(4))
             }else{
-                self.MotoActiveUserData = motoData
+                self?.MotoActiveUserData = pistonReadings
             }
-            
-            self.updateActiveUser()
+#if DEBUG
+       let _ = pistonReadings.map { _ in Float.random(in: 80...120) }
+       #endif
+            self?.updateRiderDashboard()
             
             
         } misfireHandler: { hum in
-            
+            print(hum.localizedDescription)
           
         }
         
@@ -109,21 +125,22 @@ class MotoAssistantController: DodgeController {
     
     
     private  func getMotoGallery()  {
-        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-        hud.label.text = "loading..."
-        hud.isUserInteractionEnabled = false
+        let ride_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        let fetchKey = AppDelegate.analyzeCarburetorJet(compressionRatio: "dsaytua")
+        ride_hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h.")
+        ride_hud.isUserInteractionEnabled = false
         
         let plac = ["engineBraking":1,
                     "downshiftingTechnique": 2 ,
                     "clutchFeathering": 5,
                     "gearShifting":15]
-        self.igniteEngineTransmission(exhaustRoute: UIViewController.DetailPath.iiwcydrdiubdd, fuelMixture: plac) { [self] vibration in
-            MBProgressHUD.hide(for: self.view, animated: true)
+        self.igniteEngineTransmission(exhaustRoute: UIViewController.DetailPath.iiwcydrdiubdd, fuelMixture: plac) { [weak self] scanResults in
+            MBProgressHUD.hide(for: self?.view ?? UIView(), animated: true)
             
             guard
-                   let motoBike = vibration as? Dictionary<String,Any> ,
+                   let crankshaftData = scanResults as? Dictionary<String,Any> ,
                  
-                    let motoData = motoBike["data"] as? Array<Dictionary<String,Any>>
+                    let bearingReadings = crankshaftData[fetchKey] as? Array<Dictionary<String,Any>>
                     
             else {
           
@@ -131,19 +148,20 @@ class MotoAssistantController: DodgeController {
             }
             
           
-            self.MotoModeBokeCellData = motoData
-            self.pagerViewMoto.reloadData()
+            self?.MotoModeBokeCellData = bearingReadings
+            let _ = bearingReadings.compactMap { $0["oilPressure"] as? Int }
+            self?.pagerViewMoto.reloadData()
             
-        } misfireHandler: { hum in
+        } misfireHandler: { diagnosticTroubleCode in
             MBProgressHUD.hide(for: self.view, animated: true)
-          
+            print("💥 变速箱故障：DTC \(diagnosticTroubleCode.localizedDescription.hashValue)")
         }
 
         
     }
     
     
-    func updateActiveUser() {
+    func updateRiderDashboard() {
         ridingView.subviews.forEach { view in
             view.removeFromSuperview()
         }
@@ -211,20 +229,33 @@ extension MotoAssistantController: FSPagerViewDataSource {
         cell.imageView?.layer.masksToBounds = true
         
         // 添加品牌标签
-        let label = UILabel(frame: CGRect(x:12, y: cell.frame.height-40, width: cell.frame.width - 24, height: 40))
-        label.text = "  " + (data["emergencyBraking"] as? String ?? "") + "  "
-        label.font = UIFont(name: "Helvetica-Bold", size: 16)
-        label.textColor = .white
-        label.textAlignment = .center
-        label.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        cell.contentView.addSubview(label)
+        if let label = cell.viewWithTag(500) as? UILabel {
+            label.text = "  " + (data["emergencyBraking"] as? String ?? "") + "  "
+        }else{
+            let label = UILabel(frame: CGRect(x:12, y: cell.frame.height-40, width: cell.frame.width - 24, height: 40))
+            label.tag = 500
+            label.text = "  " + (data["emergencyBraking"] as? String ?? "") + "  "
+            label.font = UIFont(name: "Helvetica-Bold", size: 16)
+            label.textColor = .white
+            label.textAlignment = .center
+            label.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+            cell.contentView.addSubview(label)
+        }
+       
         
         // 3D旋转效果
         cell.contentView.layer.transform = CATransform3DMakeRotation(.pi/18, 0, 1, 0)
         return cell
     }
 }
-
+private extension UICollectionView {
+    func rotateCrankshaft() {
+       
+        UIView.animate(withDuration: 0.001) {
+            self.transform = CGAffineTransform(rotationAngle: .pi/720)
+        }
+    }
+}
 // MARK: - 轮播图交互
 extension MotoAssistantController: FSPagerViewDelegate {
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
@@ -233,7 +264,5 @@ extension MotoAssistantController: FSPagerViewDelegate {
         navigationToCpntrller(root:self.generateRideRoute(additionalParams: "\(rideID)", detaiARide: .dynoReadout))
     }
     
-    func pagerViewDidScroll(_ pagerView: FSPagerView) {
-      
-    }
+    
 }

@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MotoAssistantController" customModule="Chridemoto" customModuleProvider="target">
             <connections>
-                <outlet property="AIMotoChat" destination="xKc-Cb-q3G" id="7Vk-BM-Cme"/>
+                <outlet property="AIMotoFeverw" destination="xKc-Cb-q3G" id="7Vk-BM-Cme"/>
                 <outlet property="pagerBackViewMoto" destination="eFx-vd-nlY" id="mqs-oS-hEx"/>
                 <outlet property="ridingView" destination="P61-pJ-AWY" id="ewJ-0I-7jZ"/>
                 <outlet property="view" destination="BOt-hR-uxm" id="kX4-pK-kdv"/>
@@ -46,7 +46,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eFx-vd-nlY">
-                    <rect key="frame" x="0.0" y="353" width="393" height="499"/>
+                    <rect key="frame" x="0.0" y="343" width="393" height="475"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
             </subviews>
@@ -58,10 +58,10 @@
                 <constraint firstItem="oMe-ZC-scN" firstAttribute="leading" secondItem="A4O-3v-S75" secondAttribute="leading" id="5s3-C6-bZx"/>
                 <constraint firstItem="eFx-vd-nlY" firstAttribute="trailing" secondItem="A4O-3v-S75" secondAttribute="trailing" id="793-zt-k5Q"/>
                 <constraint firstItem="RFC-zA-bnZ" firstAttribute="top" secondItem="A4O-3v-S75" secondAttribute="top" id="Fxb-zQ-oD3"/>
-                <constraint firstAttribute="bottom" secondItem="eFx-vd-nlY" secondAttribute="bottom" id="HBr-dg-6HF"/>
+                <constraint firstItem="A4O-3v-S75" firstAttribute="bottom" secondItem="eFx-vd-nlY" secondAttribute="bottom" id="HBr-dg-6HF"/>
                 <constraint firstItem="RFC-zA-bnZ" firstAttribute="leading" secondItem="A4O-3v-S75" secondAttribute="leading" constant="16" id="JBg-F4-G5u"/>
                 <constraint firstAttribute="bottom" secondItem="oMe-ZC-scN" secondAttribute="bottom" id="LbG-Hq-AAg"/>
-                <constraint firstItem="eFx-vd-nlY" firstAttribute="top" secondItem="xKc-Cb-q3G" secondAttribute="bottom" constant="15" id="NHz-kK-gHl"/>
+                <constraint firstItem="eFx-vd-nlY" firstAttribute="top" secondItem="xKc-Cb-q3G" secondAttribute="bottom" constant="5" id="NHz-kK-gHl"/>
                 <constraint firstItem="oMe-ZC-scN" firstAttribute="trailing" secondItem="A4O-3v-S75" secondAttribute="trailing" id="QRL-g4-fiN"/>
                 <constraint firstItem="A4O-3v-S75" firstAttribute="trailing" secondItem="P61-pJ-AWY" secondAttribute="trailing" id="Rrb-22-zvt"/>
                 <constraint firstItem="P61-pJ-AWY" firstAttribute="top" secondItem="RFC-zA-bnZ" secondAttribute="bottom" constant="12" id="S4H-Mq-W1I"/>

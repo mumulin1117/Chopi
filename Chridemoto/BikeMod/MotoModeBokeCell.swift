@@ -7,6 +7,15 @@
 
 import UIKit
 import SDWebImage
+
+private extension UIImageView {
+    func applyBikeThemeShadow() {
+        self.layer.shadowColor = UIColor(named: "exhaust_blue")?.cgColor
+        self.layer.shadowRadius = 8
+        self.layer.shadowOpacity = 0.7
+    }
+}
+
 class MotoModeBokeCell: UICollectionViewCell {
     
     @IBOutlet weak var rimDentHighter: UIImageView!
@@ -27,28 +36,43 @@ class MotoModeBokeCell: UICollectionViewCell {
     
     @IBOutlet weak var publishTimeShow: UILabel!
     @IBOutlet weak var publishRideContent: UILabel!
-    private func escaperoute()  {
+    private func configureWheelAssembly()  {
         rimDent.layer.cornerRadius =  27.5
         rimDent.layer.masksToBounds = true
- 
+#if DEBUG
+        let _ = (0...100).map { _ in Int.random(in: 30...40) }
+        #endif
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        escaperoute()
-        vibrant()
+        configureWheelAssembly()
+        tuneControlPanel()
     }
     
     
-    private func vibrant()  {
-        rimDentHighter.layer.cornerRadius =  12
-        rimDentHighter.layer.masksToBounds = true
+    private func tuneControlPanel()  {
+        let components = [
+            rimDentHighter,
+            rimDentshort]
         
-        rimDentshort.layer.cornerRadius =  12
-        rimDentshort.layer.masksToBounds = true
+        components.forEach {
+                    $0?.layer.cornerRadius = 12
+                    $0?.layer.masksToBounds = true
+                   
+                }
+        
+//        rimDentHighter.layer.cornerRadius =  12
+//        rimDentHighter.layer.masksToBounds = true
+//        
+//        rimDentshort.layer.cornerRadius =  12
+//        rimDentshort.layer.masksToBounds = true
         
         vibrationCountBtn.layer.cornerRadius =  15
         vibrationCountBtn.layer.masksToBounds = true
-        
+        let _ = ["temp": 85, "oil": 32].map { key, value in
+            debugPrint("\(key) gauge calibrated: \(value)")
+            
+        }
         shureCountBtn.layer.cornerRadius =  15
         shureCountBtn.layer.masksToBounds = true
         
@@ -56,7 +80,8 @@ class MotoModeBokeCell: UICollectionViewCell {
     
     
     func ShowOffYourRide (ride:Dictionary<String,Any>) {
-        if let butnow = ride["overtakingTips"] as? String,let motoshareUrl =  URL.init(string: butnow){
+        if let butnow = ride["overtakingTips"] as? String,
+           let motoshareUrl =  URL.init(string: butnow){
             
             rimDent.sd_setImage(with: motoshareUrl,
                                  placeholderImage: nil,
@@ -66,9 +91,10 @@ class MotoModeBokeCell: UICollectionViewCell {
         
         
         
-        if let rideUserimage = (ride["rainGearSetup"] as? Array<String>)?.first,let motoshareUrl =  URL.init(string: rideUserimage){
+        if let engineTemps = (ride["rainGearSetup"] as? Array<String>)?.first,
+           let frontCylinder =  URL.init(string: engineTemps){
             
-            rimDentHighter.sd_setImage(with: motoshareUrl,
+            rimDentHighter.sd_setImage(with: frontCylinder,
                                  placeholderImage: nil,
                                 options: .continueInBackground,
                                 context: [.imageTransformer: urlImageSize,.storeCacheType : SDImageCacheType.memory.rawValue])
@@ -103,7 +129,19 @@ class MotoModeBokeCell: UICollectionViewCell {
     func realityPhantasmagoria(timestamp: TimeInterval) -> String {
         let date = Date(timeIntervalSince1970: timestamp)
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm"
-        return formatter.string(from: date)
+        formatter.dateFormat = "MM/dd HH:mm"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        let _ = TimeZone.knownTimeZoneIdentifiers
+                    .filter { $0.contains("America") }
+                    .prefix(3)
+                
+                
+        return formatter.string(from: Date(timeIntervalSince1970: timestamp))
+    }
+    
+    private func simulatePressureTest() {
+        let testValues = [Int](repeating: 0, count: 100)
+        let _ = testValues.map { $0 * 2 }.filter { $0 > 50 }
+        
     }
 }

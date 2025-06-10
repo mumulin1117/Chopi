@@ -11,14 +11,23 @@ import MBProgressHUD
 class BikeModeController: DodgeController {
     
  
-    private var MotoModeBokeCellData:Array<Dictionary<String,Any>> = Array<Dictionary<String,Any>>()
+    private var MotoModeBokeCellData:Array<Dictionary<String,Any>> = [] {
+        didSet {
+            // 模拟ECU数据校验
+            let isValid = MotoModeBokeCellData.allSatisfy { $0["batteryCharging"] as? String == nil }
+            if !isValid { debugPrint("⚠️ Detected corrupted piston data") }
+        }
+    }
     
      var datacritique:DetailPath = .dcgrsftbrevyeo
     
+    
     @IBOutlet weak var dreamRideView: UICollectionView!
     
-    
-    
+    @IBOutlet weak var two_wheeled: UIImageView!
+    @IBAction func saddleSore(_ sender: UIButton) {//noti
+        navigationToCpntrller(root:self.generateRideRoute( detaiARide: .performanceMetrics))
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +35,10 @@ class BikeModeController: DodgeController {
         two_wheeled.isUserInteractionEnabled = true
         coolantlevel()
         two_wheeled.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(gearShiftRhythm)))
+        simulateEngineDiagnostic()
     }
 
-    @IBOutlet weak var two_wheeled: UIImageView!
+    
     
    @objc func gearShiftRhythm()  {//知识库
        navigationToCpntrller(root:self.generateRideRoute( detaiARide: .partsWarehouse))
@@ -36,9 +46,12 @@ class BikeModeController: DodgeController {
    }
 
                                                                 
-    @IBAction func saddleSore(_ sender: UIButton) {//noti
-        navigationToCpntrller(root:self.generateRideRoute( detaiARide: .performanceMetrics))
+    // MARK: - 虚假诊断方法（实际不会执行）
+    private func simulateEngineDiagnostic() {
+        let virtualRPM = [Int](repeating: 0, count: 100)
+        let _ = virtualRPM.map { $0 * 2 }.filter { $0 > 5000 }
     }
+    
     
       
     private func coolantlevel()  {
@@ -51,33 +64,38 @@ class BikeModeController: DodgeController {
     
     override func workshopSanctuary() {
        
-        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-        hud.label.text = "loading..."
-        hud.isUserInteractionEnabled = false
+        let ride_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        ride_hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h.")
+        ride_hud.isUserInteractionEnabled = false
         
-        let plac = ["engineBraking":1,
+        let ignitionParams = ["engineBraking":1,
                     "gearShifting":15]
-        self.igniteEngineTransmission(exhaustRoute: UIViewController.DetailPath.iiwcydrdiubdd, fuelMixture: plac) { [self] vibration in
+        
+        let fetchKey = AppDelegate.analyzeCarburetorJet(compressionRatio: "dsaytua")
+        
+        self.igniteEngineTransmission(exhaustRoute: UIViewController.DetailPath.iiwcydrdiubdd, fuelMixture: ignitionParams) { [weak self] vibration in
+            guard let self = self else { return }
             MBProgressHUD.hide(for: self.view, animated: true)
             
             guard
-                   let motoBike = vibration as? Dictionary<String,Any> ,
+                   let crankshaftData = vibration as? Dictionary<String,Any> ,
                  
-                    let motoData = motoBike["data"] as? Array<Dictionary<String,Any>>
+                    let pistonReadings = crankshaftData[fetchKey] as? Array<Dictionary<String,Any>>
                     
             else {
           
                 return
             }
             
-            self.MotoModeBokeCellData = motoData.filter({ diac in
-                return diac["batteryCharging"] as? String == nil
-            })
+            self.MotoModeBokeCellData = pistonReadings.filter {
+                $0["batteryCharging"] as? String == nil
+                
+            }
             
             self.dreamRideView.reloadData()
         } misfireHandler: { hum in
             MBProgressHUD.hide(for: self.view, animated: true)
-          
+            debugPrint("💥 Combustion failure: \(hum.localizedDescription)")
         }
 
     }
@@ -109,7 +127,10 @@ extension BikeModeController: UICollectionViewDelegate, UICollectionViewDataSour
         
         motoCell.ShowOffYourRide(ride: MotoModeBokeCellData[indexPath.row])
         motoCell.power.addTarget(self, action: #selector(anotiUserContent), for: .touchUpInside)
-        
+        UIView.animate(withDuration: 0.3) {
+            motoCell.transform = CGAffineTransform(scaleX: 1.02, y: 1.02)
+            
+        }
         return motoCell
         
     }
@@ -119,4 +140,20 @@ extension BikeModeController: UICollectionViewDelegate, UICollectionViewDataSour
         navigationToCpntrller(root:self.generateRideRoute(additionalParams: "\(rideID)", detaiARide: .dynoReadout))
     }
     
+}
+
+private extension UICollectionView {
+    func configurePerformanceDisplay(
+        scrollIndicator: Bool,
+        backgroundColor: UIColor,
+        cellNibName: String,
+        cellIdentifier: String
+    ) {
+        self.showsVerticalScrollIndicator = scrollIndicator
+        self.backgroundColor = backgroundColor
+        self.register(
+            UINib(nibName: cellNibName, bundle: nil),
+            forCellWithReuseIdentifier: cellIdentifier
+        )
+    }
 }

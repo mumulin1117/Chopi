@@ -37,7 +37,7 @@ Account Information: such as your email address, username, and profile photo.
 Device Information: including device model, operating system, unique device identifiers, and app usage data.
 
 
-User Content: including videos, photos, and posts you upload, as well as metadata associated with this content.
+User Content: including  photos, and posts you upload, as well as metadata associated with this content.
 
 
 Usage Data: such as features used, time spent in the app, and interactions with other users or AI features.

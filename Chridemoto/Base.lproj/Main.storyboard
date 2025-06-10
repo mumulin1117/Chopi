@@ -11,7 +11,7 @@
         <!--Ride Hunter Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="RideHunterController" customModule="Chridemoto" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RideHunterController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="RideHunterController" customModule="Chridemoto" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vFj-S3-bjN"/>
                         <viewControllerLayoutGuide type="bottom" id="B7I-La-nSr"/>
@@ -216,10 +216,10 @@ Welcome to Chopi! This User Agreement (“Agreement”) is a legally binding con
 Chopi is a global platform designed for motorcycle enthusiasts to connect, express, and explore their passion for riding. Through Chopi, users can:
 
 
-Chat with AI Moto Chat for expert riding tips, motorcycle maintenance advice, and gear recommendations.
+Comunicate with AI Moto comunicate for expert riding tips, motorcycle maintenance advice, and gear recommendations.
 
 
-Upload and share photos or short videos of their motorcycle life and riding experiences.
+Upload and share photos or short moments of their motorcycle life and riding experiences.
 
 
 Connect with other riders around the world, build friendships, and discover communities.
@@ -271,7 +271,7 @@ All intellectual property related to Chopi (including app design, features, trad
 
 
 5. AI Features Disclaimer
-The AI Moto Chat feature provides automated responses and suggestions. These are for informational and entertainment purposes only.
+The AI Moto Comunicate feature provides automated responses and suggestions. These are for informational and entertainment purposes only.
 
 
 You understand and agree that the AI may not always be accurate, up-to-date, or suitable for your individual circumstances, and you use it at your own risk.

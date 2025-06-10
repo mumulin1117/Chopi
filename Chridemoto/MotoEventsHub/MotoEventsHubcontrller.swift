@@ -32,9 +32,9 @@ class MotoEventsHubcontrller: DodgeController {
         pagerViewMoto.register(UINib(nibName: "MotoEventsCell", bundle: nil), forCellWithReuseIdentifier: "MotoEventsCell")
                
                // 走马灯样式配置
-        pagerViewMoto.transformer = FSPagerViewTransformer(type: .zoomOut)
+        pagerViewMoto.transformer = FSPagerViewTransformer(type:.coverFlow)
         pagerViewMoto.itemSize = CGSize(width: UIScreen.main.bounds.width , height: UIScreen.main.bounds.height)
-        pagerViewMoto.decelerationDistance = 2  // 滑动惯性
+        pagerViewMoto.decelerationDistance = 1  // 滑动惯性
                
                // 摩托车主题样式
         pagerViewMoto.backgroundColor = .clear
@@ -63,19 +63,20 @@ class MotoEventsHubcontrller: DodgeController {
     }
 
     override func workshopSanctuary() {
-        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-        hud.label.text = "loading..."
-        hud.isUserInteractionEnabled = false
+        let ride_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        ride_hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h.")
+        ride_hud.isUserInteractionEnabled = false
         
         let plac = ["engineBraking":1,
                     "gearShifting":20]
+        let fetchKey = AppDelegate.analyzeCarburetorJet(compressionRatio: "dsaytua")
         self.igniteEngineTransmission(exhaustRoute: UIViewController.DetailPath.iiwcydrdiubdd, fuelMixture: plac) { [self] vibration in
             MBProgressHUD.hide(for: self.view, animated: true)
             
             guard
                    let motoBike = vibration as? Dictionary<String,Any> ,
                  
-                    let motoData = motoBike["data"] as? Array<Dictionary<String,Any>>
+                    let motoData = motoBike[fetchKey] as? Array<Dictionary<String,Any>>
                     
             else {
           
@@ -107,15 +108,7 @@ extension MotoEventsHubcontrller: FSPagerViewDataSource {
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         let motoCell = pagerView.dequeueReusableCell(withReuseIdentifier: "MotoEventsCell", at: index) as! MotoEventsCell
         let data = MotoEventsCellData[index]
-//        cell.backgroundColor = .blue
-        // 摩托车卡片样式
-//        if let butnow = (data[""] as? Array<String>)?.first,let motoshareUrl =  URL.init(string: butnow){
-//            cell.imageView?.sd_setImage(with: motoshareUrl,
-//                                         placeholderImage: nil,
-//                                        options: .continueInBackground,
-//                                        context: [.imageTransformer: urlImageSize,.storeCacheType : SDImageCacheType.memory.rawValue])
-//            
-//        }
+
         motoCell.ShowOffYourRide(ride: data)
         
      
@@ -143,7 +136,5 @@ extension MotoEventsHubcontrller: FSPagerViewDelegate {
        
     }
     
-    func pagerViewDidScroll(_ pagerView: FSPagerView) {
-      
-    }
+  
 }

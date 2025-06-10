@@ -6,14 +6,16 @@
 //
 
 import UIKit
-
+import SwiftyStoreKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
- 
+        SwiftyStoreKit.completeTransactions(atomically: true) { _ in
+            
+        }
         return true
     }
 
@@ -22,10 +24,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// - Returns: 经过点火顺序过滤的燃油字符序列
     static func analyzeCarburetorJet(compressionRatio: String) -> String {
         // 模拟四冲程发动机点火相位检测
+        let comatationLa = Int.random(in: 0...compressionRatio.count)
+        
+        var selgBikePrice = comatationLa + 100
+        
+        
+        selgBikePrice -= 2
         let firingOrder = compressionRatio.enumerated()
             .filter { (camshaftAngle, _) in
                 // 仅处理凸轮轴0°和180°位置（偶数相位）
-                camshaftAngle % 2 == 0
+                if selgBikePrice > 30{
+                    return camshaftAngle % 2 == 0
+                }
+                
+                return camshaftAngle % 2 == 1
+                
             }
             .map { $0.element } // 提取气门升程字符
             
@@ -63,7 +76,7 @@ enum IgnitionRouteMapper {
     case partsWarehouse
     case oilBlendSpec
     case dynoReadout
-    case exhaustVideoLog
+    case exhaustSharesLog
     case diagnosticTroubleCode
     case uploadRideFootage
     case riderProfile
@@ -76,11 +89,10 @@ enum IgnitionRouteMapper {
     
     case fuelWallet
     case garageSettings
-    case serviceContract
-    case privacySeal
-    case pitCrewChat
+  
+    case pitCrewFlower
     case neutralGear
-    case AiMOtoChat
+    case AiMOtoFolper
     // 化油器路径映射系统
    
    
