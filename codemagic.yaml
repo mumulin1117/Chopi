@@ -14,7 +14,7 @@ workflows:
         XCODE_WORKSPACE: Chridemoto.xcworkspace # <-- Put the name of your Xcode workspace here
         XCODE_SCHEME: "Chridemoto" # <-- Put the name of your Xcode scheme here
 
-      xcode: latest
+      xcode: 16.1
       cocoapods: default
     scripts:
 #      - name: Install CocoaPods dependencies
