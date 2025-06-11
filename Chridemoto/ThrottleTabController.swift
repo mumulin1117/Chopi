@@ -158,8 +158,8 @@ class CruiserNavigation: UINavigationController {
 
 class DodgeController: UIViewController {
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         workshopSanctuary()
     }
    

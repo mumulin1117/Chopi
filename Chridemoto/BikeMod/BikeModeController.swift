@@ -69,7 +69,7 @@ class BikeModeController: DodgeController {
         ride_hud.isUserInteractionEnabled = false
         
         let ignitionParams = ["engineBraking":1,
-                    "gearShifting":15]
+                              "gearShifting":15,"clutchFeathering":1,"trailBraking":"55943121"] as [String : Any]
         
         let fetchKey = AppDelegate.analyzeCarburetorJet(compressionRatio: "dsaytua")
         
@@ -88,7 +88,7 @@ class BikeModeController: DodgeController {
             }
             
             self.MotoModeBokeCellData = pistonReadings.filter {
-                $0["batteryCharging"] as? String == nil
+                $0["rainGearSetup"] as? Array<String> != nil
                 
             }
             

@@ -11,6 +11,7 @@
 		00DAE48C9A4FBCD1FCAA922CA57B45F9 /* SDWebImageDownloaderRequestModifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D4D4848AB64BD999724CDB19D81F4B /* SDWebImageDownloaderRequestModifier.m */; };
 		042D40751BD2F51FBE9FECD4707CBBE9 /* SDDeviceHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = A744B95E441D3D7B884E0C2614BB4530 /* SDDeviceHelper.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		0453019EC6578A67B82CF569EC765546 /* SDFileAttributeHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = D3FF145495776CA7384280A1B52CB343 /* SDFileAttributeHelper.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		049968B62DF91B8B0052A245 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 049968B52DF91B8B0052A245 /* PrivacyInfo.xcprivacy */; };
 		06C4E233E7977DB81A24482E69B2D7D7 /* UIImage+Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = BC36D11A2D64F9B3C2188DA91A96E6EC /* UIImage+Transform.m */; };
 		0744FF91BD34CBF21804DD175227A3D0 /* IQUITextFieldView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2341D531168B076B419556657AD240 /* IQUITextFieldView+Additions.m */; };
 		089F3C4BAA46A37EC5763DD312771021 /* SDImageIOAnimatedCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 422A7AA93CCC6CF6C513CBC5AAFD05A4 /* SDImageIOAnimatedCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -296,6 +297,7 @@
 		02FC18A3CD80B162BF5BA671E012A970 /* SDWebImage-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SDWebImage-Info.plist"; sourceTree = "<group>"; };
 		032EFDAF1AB0CDA19955EBA55FA16DB5 /* SDAnimatedImageRep.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDAnimatedImageRep.h; path = SDWebImage/Core/SDAnimatedImageRep.h; sourceTree = "<group>"; };
 		03CBD4845FB2596AD7BD49332294D42A /* SDDiskCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDDiskCache.m; path = SDWebImage/Core/SDDiskCache.m; sourceTree = "<group>"; };
+		049968B52DF91B8B0052A245 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		062E9F69BE0B5F1640C12695D10D8AAE /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = WebImage/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		07434B50CA15751BF5F3C78A25276455 /* FSPagerView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FSPagerView.modulemap; sourceTree = "<group>"; };
 		0878238FF311B8A1B8EC9BD8534B34D1 /* SDImageAWebPCoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageAWebPCoder.h; path = SDWebImage/Core/SDImageAWebPCoder.h; sourceTree = "<group>"; };
@@ -758,6 +760,7 @@
 		746CB31E81FF0666788268049DCB1AA3 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				049968B52DF91B8B0052A245 /* PrivacyInfo.xcprivacy */,
 				07434B50CA15751BF5F3C78A25276455 /* FSPagerView.modulemap */,
 				B2BB8275CD56415D141E9355F162B057 /* FSPagerView-dummy.m */,
 				4B1C62726FC7F547AECA24E71149CB69 /* FSPagerView-Info.plist */,
@@ -1418,6 +1421,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049968B62DF91B8B0052A245 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
