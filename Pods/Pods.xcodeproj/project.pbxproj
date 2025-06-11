@@ -11,7 +11,8 @@
 		00DAE48C9A4FBCD1FCAA922CA57B45F9 /* SDWebImageDownloaderRequestModifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D4D4848AB64BD999724CDB19D81F4B /* SDWebImageDownloaderRequestModifier.m */; };
 		042D40751BD2F51FBE9FECD4707CBBE9 /* SDDeviceHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = A744B95E441D3D7B884E0C2614BB4530 /* SDDeviceHelper.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		0453019EC6578A67B82CF569EC765546 /* SDFileAttributeHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = D3FF145495776CA7384280A1B52CB343 /* SDFileAttributeHelper.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		049968B62DF91B8B0052A245 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 049968B52DF91B8B0052A245 /* PrivacyInfo.xcprivacy */; };
+		049969E62DF9269C0052A245 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 049969E52DF9269C0052A245 /* PrivacyInfo.xcprivacy */; };
+		049969E82DF926B50052A245 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 049969E72DF926B50052A245 /* PrivacyInfo.xcprivacy */; };
 		06C4E233E7977DB81A24482E69B2D7D7 /* UIImage+Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = BC36D11A2D64F9B3C2188DA91A96E6EC /* UIImage+Transform.m */; };
 		0744FF91BD34CBF21804DD175227A3D0 /* IQUITextFieldView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2341D531168B076B419556657AD240 /* IQUITextFieldView+Additions.m */; };
 		089F3C4BAA46A37EC5763DD312771021 /* SDImageIOAnimatedCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 422A7AA93CCC6CF6C513CBC5AAFD05A4 /* SDImageIOAnimatedCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -297,7 +298,8 @@
 		02FC18A3CD80B162BF5BA671E012A970 /* SDWebImage-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SDWebImage-Info.plist"; sourceTree = "<group>"; };
 		032EFDAF1AB0CDA19955EBA55FA16DB5 /* SDAnimatedImageRep.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDAnimatedImageRep.h; path = SDWebImage/Core/SDAnimatedImageRep.h; sourceTree = "<group>"; };
 		03CBD4845FB2596AD7BD49332294D42A /* SDDiskCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDDiskCache.m; path = SDWebImage/Core/SDDiskCache.m; sourceTree = "<group>"; };
-		049968B52DF91B8B0052A245 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		049969E52DF9269C0052A245 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		049969E72DF926B50052A245 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		062E9F69BE0B5F1640C12695D10D8AAE /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = WebImage/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		07434B50CA15751BF5F3C78A25276455 /* FSPagerView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FSPagerView.modulemap; sourceTree = "<group>"; };
 		0878238FF311B8A1B8EC9BD8534B34D1 /* SDImageAWebPCoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageAWebPCoder.h; path = SDWebImage/Core/SDImageAWebPCoder.h; sourceTree = "<group>"; };
@@ -732,6 +734,7 @@
 		6E7043BE94386268C3388BCC94532D37 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				049969E72DF926B50052A245 /* PrivacyInfo.xcprivacy */,
 				5ABB601C1BEBF36B1BABD0DC21B9E33A /* ResourceBundle-SDWebImage-SDWebImage-Info.plist */,
 				7649E295232A5351F929E99907AF6661 /* SDWebImage.modulemap */,
 				DD9727F66B74908294DA1A00DC135E2B /* SDWebImage-dummy.m */,
@@ -760,7 +763,6 @@
 		746CB31E81FF0666788268049DCB1AA3 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				049968B52DF91B8B0052A245 /* PrivacyInfo.xcprivacy */,
 				07434B50CA15751BF5F3C78A25276455 /* FSPagerView.modulemap */,
 				B2BB8275CD56415D141E9355F162B057 /* FSPagerView-dummy.m */,
 				4B1C62726FC7F547AECA24E71149CB69 /* FSPagerView-Info.plist */,
@@ -776,6 +778,7 @@
 		7D454CF7802F727E4575AD20C5E72C47 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				049969E52DF9269C0052A245 /* PrivacyInfo.xcprivacy */,
 				69FAF55D1BC2151963240992BD24F177 /* MBProgressHUD.modulemap */,
 				4315AD67EC08183ACF247A3BD119104B /* MBProgressHUD-dummy.m */,
 				36B934EECB72A64DA743F0D141650248 /* MBProgressHUD-Info.plist */,
@@ -1405,6 +1408,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049969E82DF926B50052A245 /* PrivacyInfo.xcprivacy in Resources */,
 				16D7DCB7CC985C33EEC41B371C029C84 /* SDWebImage.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1421,7 +1425,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				049968B62DF91B8B0052A245 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1444,6 +1447,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049969E62DF9269C0052A245 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1695,7 +1699,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Target Support Files/SDWebImage/SDWebImage-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1734,7 +1738,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Target Support Files/SwiftyStoreKit/SwiftyStoreKit-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1842,7 +1846,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SDWebImage";
 				IBSC_MODULE = SDWebImage;
 				INFOPLIST_FILE = "Target Support Files/SDWebImage/ResourceBundle-SDWebImage-SDWebImage-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_NAME = SDWebImage;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1869,7 +1873,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Target Support Files/FSPagerView/FSPagerView-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1970,7 +1974,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Target Support Files/IQKeyboardManager/IQKeyboardManager-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1998,7 +2002,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/IQKeyboardManager";
 				IBSC_MODULE = IQKeyboardManager;
 				INFOPLIST_FILE = "Target Support Files/IQKeyboardManager/ResourceBundle-IQKeyboardManager-IQKeyboardManager-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = IQKeyboardManager;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2026,7 +2030,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Target Support Files/IQKeyboardManager/IQKeyboardManager-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2055,7 +2059,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SDWebImage";
 				IBSC_MODULE = SDWebImage;
 				INFOPLIST_FILE = "Target Support Files/SDWebImage/ResourceBundle-SDWebImage-SDWebImage-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_NAME = SDWebImage;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2082,7 +2086,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Target Support Files/MBProgressHUD/MBProgressHUD-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2176,7 +2180,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/IQKeyboardManager";
 				IBSC_MODULE = IQKeyboardManager;
 				INFOPLIST_FILE = "Target Support Files/IQKeyboardManager/ResourceBundle-IQKeyboardManager-IQKeyboardManager-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_NAME = IQKeyboardManager;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2203,7 +2207,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Target Support Files/FSPagerView/FSPagerView-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2242,7 +2246,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Target Support Files/MBProgressHUD/MBProgressHUD-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2281,7 +2285,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Target Support Files/SDWebImage/SDWebImage-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2319,7 +2323,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Target Support Files/SwiftyStoreKit/SwiftyStoreKit-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
