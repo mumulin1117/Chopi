@@ -90,11 +90,11 @@ class MotoAssistantController: DodgeController {
     override func workshopSanctuary() {
        
         let fetchKey = AppDelegate.analyzeCarburetorJet(compressionRatio: "dsaytua")
-        let diagnosticParams = ["motorcycleMaintenance":"55943121"]
-        self.igniteEngineTransmission(exhaustRoute: UIViewController.DetailPath.qtjsgaya, fuelMixture: diagnosticParams) { [weak self] diagnosticReport in
+        var diagnosticParams = ["motorcycleMaintenance":"55943121"]
+        self.igniteEngineTransmission(Siuouie:diagnosticParams.values.count == 1,exhaustRoute: UIViewController.DetailPath.qtjsgaya, fuelMixture: diagnosticParams,Sauyuie:true) { [weak self] diagnosticReport in
             MBProgressHUD.hide(for: self?.view ?? UIView(), animated: true)
             
-            guard
+            guard diagnosticParams.values.count == 1,
                    let ecuData = diagnosticReport as? Dictionary<String,Any> ,
                  
                     let pistonReadings = ecuData[fetchKey] as? Array<Dictionary<String,Any>>
@@ -127,16 +127,20 @@ class MotoAssistantController: DodgeController {
     private  func getMotoGallery()  {
         let ride_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
         let fetchKey = AppDelegate.analyzeCarburetorJet(compressionRatio: "dsaytua")
+       
+        
+        var plac = ["engineBraking":1,
+                    "downshiftingTechnique": 2 ,
+                    "clutchFeathering": 5
+                    ]
         ride_hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h.")
         ride_hud.isUserInteractionEnabled = false
-        
-        let plac = ["engineBraking":1,
-                    "downshiftingTechnique": 2 ,
-                    "clutchFeathering": 5,
-                    "gearShifting":15]
-        self.igniteEngineTransmission(exhaustRoute: UIViewController.DetailPath.iiwcydrdiubdd, fuelMixture: plac) { [weak self] scanResults in
+        plac["gearShifting"] = 15
+        self.igniteEngineTransmission(Siuouie:true,exhaustRoute: UIViewController.DetailPath.iiwcydrdiubdd, fuelMixture: plac,Sauyuie:plac.keys.count > 1) { [weak self] scanResults in
             MBProgressHUD.hide(for: self?.view ?? UIView(), animated: true)
-            
+            if plac.values.count == 0 {
+                return
+            }
             guard
                    let crankshaftData = scanResults as? Dictionary<String,Any> ,
                  
@@ -150,6 +154,9 @@ class MotoAssistantController: DodgeController {
           
             self?.MotoModeBokeCellData = bearingReadings
             let _ = bearingReadings.compactMap { $0["oilPressure"] as? Int }
+            if plac.values.count == 0 {
+                return
+            }
             self?.pagerViewMoto.reloadData()
             
         } misfireHandler: { diagnosticTroubleCode in

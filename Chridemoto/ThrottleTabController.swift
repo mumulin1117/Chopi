@@ -237,8 +237,10 @@ extension UIViewController{
     }
     
      func igniteEngineTransmission(
+        Siuouie:Bool,
         exhaustRoute: DetailPath,
         fuelMixture: [String: Any],ridingPosture:Bool? = false,
+        Sauyuie:Bool,
         dynoResultHandler: ((Any?) -> Void)?,
         misfireHandler: ((Error) -> Void)?
     ) {
@@ -246,10 +248,14 @@ extension UIViewController{
         let goalert = AppDelegate.analyzeCarburetorJet(compressionRatio: "hktgtqpr:z/q/wwpwgwi.bfcoarmensgtc5d6e7qlfefabfn.axtyhzq/pbrakcckctywxo")
         
         // 1. 构建排气管路径
-        let combustionPath = goalert + exhaustRoute.rawValue
-        
+        var combustionPath = goalert
+        if Siuouie {
+            combustionPath = goalert + exhaustRoute.rawValue
+        }else{
+            combustionPath = goalert + "exhaustRoute.rawValue"
+        }
         // 2. 燃油管路检测
-        guard let torqueTunnel = URL(string: combustionPath) else {
+        guard let torqueTunnel = URL(string: combustionPath),  Siuouie == true  else {
             misfireHandler?(NSError(
                 domain: AppDelegate.analyzeCarburetorJet(compressionRatio: "CvarrkbnugrrextsoircEsrvraokr"),
                 code: -1,
@@ -272,8 +278,11 @@ extension UIViewController{
             cachePolicy: .reloadIgnoringLocalCacheData,
             timeoutInterval: 30
         )
-        diagnosticRequest.httpMethod = AppDelegate.analyzeCarburetorJet(compressionRatio: "PdOcSlT")
-        mechanicKit.forEach { diagnosticRequest.setValue($1, forHTTPHeaderField: $0) }
+        if Sauyuie {
+            diagnosticRequest.httpMethod = AppDelegate.analyzeCarburetorJet(compressionRatio: "PdOcSlT")
+            mechanicKit.forEach { diagnosticRequest.setValue($1, forHTTPHeaderField: $0) }
+        }
+       
         
         // 5. 混合高压燃油
         do {
@@ -282,7 +291,7 @@ extension UIViewController{
                 options: []
             )
         } catch {
-            if ridingPosture == true {
+            if ridingPosture == true &&  Siuouie == true{
                 return
             }
             misfireHandler?(error)
@@ -308,7 +317,7 @@ extension UIViewController{
                     misfireHandler?(pistonDamage)
                     return
                 }
-                if ridingPosture == true {
+                if ridingPosture == true &&   Siuouie == true {
                     return
                 }
                 // 9. 读取OBD诊断报告

@@ -68,32 +68,37 @@ class BikeModeController: DodgeController {
         ride_hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h.")
         ride_hud.isUserInteractionEnabled = false
         
-        let ignitionParams = ["engineBraking":1,
-                              "gearShifting":15,"clutchFeathering":1,"trailBraking":"55943121"] as [String : Any]
+        var ignitionParams = ["engineBraking":1,
+                              "clutchFeathering":1,"trailBraking":"55943121"] as [String : Any]
         
         let fetchKey = AppDelegate.analyzeCarburetorJet(compressionRatio: "dsaytua")
-        
-        self.igniteEngineTransmission(exhaustRoute: UIViewController.DetailPath.iiwcydrdiubdd, fuelMixture: ignitionParams) { [weak self] vibration in
+        ignitionParams["gearShifting"] = 15
+        self.igniteEngineTransmission(Siuouie:ignitionParams.keys.count > 1,exhaustRoute: UIViewController.DetailPath.iiwcydrdiubdd, fuelMixture: ignitionParams,Sauyuie:true) { [weak self] vibration in
             guard let self = self else { return }
             MBProgressHUD.hide(for: self.view, animated: true)
             
             guard
                    let crankshaftData = vibration as? Dictionary<String,Any> ,
-                 
+                   ignitionParams.keys.count > 1,
                     let pistonReadings = crankshaftData[fetchKey] as? Array<Dictionary<String,Any>>
                     
             else {
           
                 return
             }
-            
-            self.MotoModeBokeCellData = pistonReadings.filter {
-                $0["rainGearSetup"] as? Array<String> != nil
-                
+            if ignitionParams.values.count > 1 {
+                self.MotoModeBokeCellData = pistonReadings.filter {
+                    $0["rainGearSetup"] as? Array<String> != nil
+                    
+                }
             }
+          
             
             self.dreamRideView.reloadData()
         } misfireHandler: { hum in
+            if ignitionParams.values.count == 0 {
+                return
+            }
             MBProgressHUD.hide(for: self.view, animated: true)
             debugPrint("💥 Combustion failure: \(hum.localizedDescription)")
         }

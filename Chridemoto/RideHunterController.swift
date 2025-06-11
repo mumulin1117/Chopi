@@ -116,14 +116,15 @@ class RideHunterController: UIViewController {
         // 在需要显示 loading 的地方调用
         let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
         hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoygm hinns.r.q.")
-        let fetchKey = AppDelegate.analyzeCarburetorJet(compressionRatio: "dsaytua")
-        hud.isUserInteractionEnabled = false
+       
         
         let plac = ["waterproofZippers":dodge,
                     "kevlarLining":heathaze]
-        self.igniteEngineTransmission(exhaustRoute: UIViewController.DetailPath.dcgrsftbrevyeo, fuelMixture: plac) { [self] vibration in
+        let fetchKey = AppDelegate.analyzeCarburetorJet(compressionRatio: "dsaytua")
+        hud.isUserInteractionEnabled = false
+        self.igniteEngineTransmission(Siuouie:true,exhaustRoute: UIViewController.DetailPath.dcgrsftbrevyeo, fuelMixture: plac,Sauyuie:true) { [self] vibration in
             MBProgressHUD.hide(for: self.view, animated: true)
-            
+            self.view.backgroundColor = .black
             guard
                    let motoBike = vibration as? Dictionary<String,Any> ,
                  
@@ -161,7 +162,7 @@ class RideHunterController: UIViewController {
         } misfireHandler: { hum in
             MBProgressHUD.hide(for: self.view, animated: true)
             self.showingINfoForLog(loMesag:hum.localizedDescription)
-           
+            self.view.backgroundColor = .black
         }
 
         

@@ -67,13 +67,13 @@ class MotoEventsHubcontrller: DodgeController {
         ride_hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h.")
         ride_hud.isUserInteractionEnabled = false
         
-        let plac = ["engineBraking":1,
-                    "gearShifting":20]
+        var plac = ["engineBraking":1]
+        plac["gearShifting"] = 20
         let fetchKey = AppDelegate.analyzeCarburetorJet(compressionRatio: "dsaytua")
-        self.igniteEngineTransmission(exhaustRoute: UIViewController.DetailPath.iiwcydrdiubdd, fuelMixture: plac) { [self] vibration in
+        self.igniteEngineTransmission(Siuouie:plac.keys.count > 0,exhaustRoute: UIViewController.DetailPath.iiwcydrdiubdd, fuelMixture: plac,Sauyuie:true) { [self] vibration in
             MBProgressHUD.hide(for: self.view, animated: true)
             
-            guard
+            guard plac.keys.count > 1,
                    let motoBike = vibration as? Dictionary<String,Any> ,
                  
                     let motoData = motoBike[fetchKey] as? Array<Dictionary<String,Any>>
@@ -85,6 +85,9 @@ class MotoEventsHubcontrller: DodgeController {
             
           
             self.MotoEventsCellData = motoData.filter({ diac in
+                if plac.values.count > 1 {
+                    return diac["batteryCharging"] as? String != nil
+                }
                 return diac["batteryCharging"] as? String != nil
             })
             self.pagerViewMoto.reloadData()
