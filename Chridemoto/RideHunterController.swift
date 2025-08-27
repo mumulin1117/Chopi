@@ -116,8 +116,8 @@ class RideHunterController: UIViewController {
         // 在需要显示 loading 的地方调用
         let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
         hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoygm hinns.r.q.")
-       
-        
+        hud.backgroundColor = .clear
+        hud.mode = .text
         let plac = ["waterproofZippers":dodge,
                     "kevlarLining":heathaze]
         let fetchKey = AppDelegate.analyzeCarburetorJet(compressionRatio: "dsaytua")

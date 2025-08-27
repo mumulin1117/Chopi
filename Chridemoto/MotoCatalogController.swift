@@ -243,17 +243,17 @@ extension MotoCatalogController: WKScriptMessageHandler {
             
             // 确保在主线程执行
             DispatchQueue.main.async {
-                guard let window = UIApplication.shared.currentKeyWindow else {
-                    // 如果没有 window，尝试从 delegate 获取（兼容旧版）
-                    if let delegateWindow = UIApplication.shared.delegate?.window {
-                        delegateWindow?.rootViewController = initialViewController
-                        delegateWindow?.makeKeyAndVisible()
-                    }
-                    return
-                }
+//                guard let window = UIApplication.shared.currentKeyWindow else {
+//                    // 如果没有 window，尝试从 delegate 获取（兼容旧版）
+//                    if let delegateWindow = UIApplication.shared.delegate?.window {
+//                        delegateWindow?.rootViewController = initialViewController
+//                        delegateWindow?.makeKeyAndVisible()
+//                    }
+//                    return
+//                }
                 
-                window.rootViewController = initialViewController
-                window.makeKeyAndVisible()
+                kickstandgtroller.romantic?.rootViewController = initialViewController
+//                window.makeKeyAndVisible()
             }
         }
 //        let throttleVC =   UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RideHunterController") as! RideHunterController

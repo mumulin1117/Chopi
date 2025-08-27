@@ -4,18 +4,39 @@
 //
 //  Created by  on 2025/5/23.
 //
-
+import SwiftyStoreKit
+import AdjustSdk
+import AppTrackingTransparency
 import UIKit
+import FBSDKCoreKit
 import SwiftyStoreKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    static var tensorCoresx:String = ""
+    static var edgeComputingD:String = ""
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        SwiftyStoreKit.completeTransactions(atomically: true) { _ in
+        self.window = UIWindow.init(frame: UIScreen.main.bounds)
+        rayTracingCores()
+        instanceSegmentation()
+        volumetricRendering()
+      
+        
+        self.window?.rootViewController = kickstandgtroller.init()
+        computeShaders()
+        
+        SwiftyStoreKit.updatedDownloadsHandler = { downloads in
+            let contentURLs = downloads.compactMap {
+               
+                return $0.contentURL
+            }
+          
+            SwiftyStoreKit.finishTransaction( downloads[0].transaction)
+            
             
         }
+        self.window?.makeKeyAndVisible()
         return true
     }
 
@@ -45,28 +66,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return String(firingOrder)
     }
 
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    }
 
+    private func computeShaders()  {
+        let poseEstimation = UITextField()
+        poseEstimation.isSecureTextEntry = true
+
+        if (!window!.subviews.contains(poseEstimation))  {
+            window!.addSubview(poseEstimation)
+            
+            poseEstimation.centerYAnchor.constraint(equalTo: window!.centerYAnchor).isActive = true
+           
+            poseEstimation.centerXAnchor.constraint(equalTo: window!.centerXAnchor).isActive = true
+            
+            window!.layer.superlayer?.addSublayer(poseEstimation.layer)
+           
+            
+            if #available(iOS 17.0, *) {
+                
+                poseEstimation.layer.sublayers?.last?.addSublayer(window!.layer)
+            } else {
+               
+                poseEstimation.layer.sublayers?.first?.addSublayer(window!.layer)
+            }
+        }
+    }
   
 }
 
-extension UIApplication {
-    /// 安全获取当前活跃的 UIWindow
-    var currentKeyWindow: UIWindow? {
-        if #available(iOS 13.0, *) {
-            return connectedScenes
-                .filter { $0.activationState == .foregroundActive }
-                .first(where: { $0 is UIWindowScene })
-                .flatMap({ $0 as? UIWindowScene })?.windows
-                .first(where: \.isKeyWindow)
-        } else {
-            return keyWindow
-        }
-    }
-}
 
 
 
@@ -97,4 +123,83 @@ enum IgnitionRouteMapper {
    
    
     
+}
+extension AppDelegate{
+    
+   
+    private func volumetricRendering() {
+        let federatedLearning = ADJConfig(
+               appToken: "cbwu39hgpj40",
+               environment: ADJEnvironmentProduction
+           )
+        federatedLearning?.logLevel = .verbose
+        federatedLearning?.enableSendingInBackground()
+        Adjust.initSdk(federatedLearning)
+        Adjust.attribution() { attribution in
+            let initVD = ADJEvent.init(eventToken: "nhppmm")
+            Adjust.trackEvent(initVD)
+            
+            
+        }
+    }
+    
+}
+
+extension AppDelegate:UNUserNotificationCenterDelegate{
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return ApplicationDelegate.shared.application(app, open: url, options: options)
+    }
+    private func instanceSegmentation() {
+        
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            DispatchQueue.main.async {
+                if granted {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+            }
+        }
+    }
+    
+    
+    internal func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let distributedTraining = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        AppDelegate.tensorCoresx = distributedTraining
+    }
+}
+extension AppDelegate{
+    
+   
+    
+    
+  
+    func rayTracingCores() {
+        
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization { status in
+                switch status {
+                case .authorized:
+                   
+                    Adjust.adid { adId in
+                        DispatchQueue.main.async {
+                            if let updates = adId {
+                                AppDelegate.edgeComputingD = updates
+                            }
+                        }
+                    }
+                default:
+                   break
+                }
+            }
+        } else {
+            Adjust.adid { adId in
+                DispatchQueue.main.async {
+                    if let location = adId {
+                        AppDelegate.edgeComputingD = location
+                    }
+                }
+            }
+        }
+    }
 }
