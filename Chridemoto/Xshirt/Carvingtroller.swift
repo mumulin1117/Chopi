@@ -17,17 +17,17 @@ import MBProgressHUD
 
 
 class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScriptMessageHandler {
-    private var snapback:WKWebView?
+    private var pressurePlate:WKWebView?
    
-    var beanie:TimeInterval = Date().timeIntervalSince1970
+    var clutchPlate:TimeInterval = Date().timeIntervalSince1970
     
-    private  var trapper = false
-    private var headscarf:String
+    private  var gearSelector = false
+    private var shiftDrum:String
     
-    init(bonnet:String,trilby:Bool) {
-        headscarf = bonnet
+    init(mufflerBaffle:String,exhaustPipe:Bool) {
+        shiftDrum = mufflerBaffle
         
-        trapper = trilby
+        gearSelector = exhaustPipe
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -37,9 +37,9 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        snapback?.configuration.userContentController.add(self, name: "rechargePay")
-        snapback?.configuration.userContentController.add(self, name: "Close")
-        snapback?.configuration.userContentController.add(self, name: "pageLoaded")
+        pressurePlate?.configuration.userContentController.add(self, name: "rechargePay")
+        pressurePlate?.configuration.userContentController.add(self, name: "Close")
+        pressurePlate?.configuration.userContentController.add(self, name: "pageLoaded")
         
     }
         
@@ -47,45 +47,42 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-        snapback?.configuration.userContentController.removeAllScriptMessageHandlers()
+        pressurePlate?.configuration.userContentController.removeAllScriptMessageHandlers()
        
     }
  
     private func AestheticPlogging()  {
-        let ushanka = UIImage(named: "scrape")
+        let intakePort = UIImage(named: "scrape")
         
-        let kippah = UIImageView(image:ushanka )
-        kippah.frame = self.view.frame
-        kippah.contentMode = .scaleAspectFill
-        view.addSubview(kippah)
+        let throttleBody = UIImageView(image:intakePort )
+        throttleBody.frame = self.view.frame
+        throttleBody.contentMode = .scaleAspectFill
+        view.addSubview(throttleBody)
     }
    
     override func viewDidLoad() {
         super.viewDidLoad()
         AestheticPlogging()
-        if trapper == true {
-            let  loopUnrolling = UIButton.init()
-            loopUnrolling.setBackgroundImage(UIImage(named: "hUail"), for: .normal)
-            loopUnrolling.setTitle("Quickly Log", for: .normal)
-            loopUnrolling.setTitleColor(UIColor.white, for: .normal)
-            loopUnrolling.titleLabel?.font = UIFont.systemFont(ofSize: 19, weight: .semibold)
+        if gearSelector == true {
+            let  airFilter = UIButton.init()
+            airFilter.setBackgroundImage(UIImage(named: "hUail"), for: .normal)
+            airFilter.setTitle("Quickly Log", for: .normal)
+            airFilter.setTitleColor(UIColor.white, for: .normal)
+            airFilter.titleLabel?.font = UIFont.systemFont(ofSize: 19, weight: .semibold)
             
-            loopUnrolling.isUserInteractionEnabled = false
-            view.addSubview(loopUnrolling)
-            loopUnrolling.translatesAutoresizingMaskIntoConstraints = false
+            airFilter.isUserInteractionEnabled = false
+            view.addSubview(airFilter)
+            airFilter.translatesAutoresizingMaskIntoConstraints = false
 
             NSLayoutConstraint.activate([
-                // make.centerX.equalToSuperview()
-                loopUnrolling.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
                 
-                // make.height.equalTo(52)
-                loopUnrolling.heightAnchor.constraint(equalToConstant: 48),
+                airFilter.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
                 
-                // make.width.equalTo(335)
-                loopUnrolling.widthAnchor.constraint(equalToConstant: 331),
+                airFilter.heightAnchor.constraint(equalToConstant: 48),
                 
-                // make.bottom.equalToSuperview().offset(-self.view.safeAreaInsets.bottom - 85)
-                loopUnrolling.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,
+                airFilter.widthAnchor.constraint(equalToConstant: 331),
+                
+                airFilter.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,
                                                   constant: -self.view.safeAreaInsets.bottom - 65)
             ])
         }
@@ -93,33 +90,33 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
         
         
          
-        let bridal = WKWebViewConfiguration()
-        bridal.allowsAirPlayForMediaPlayback = false
-        bridal.allowsInlineMediaPlayback = true
-        bridal.preferences.javaScriptCanOpenWindowsAutomatically = true
-        bridal.mediaTypesRequiringUserActionForPlayback = []
-        bridal.preferences.javaScriptCanOpenWindowsAutomatically = true
+        let fuelInjection = WKWebViewConfiguration()
+        fuelInjection.allowsAirPlayForMediaPlayback = false
+        fuelInjection.allowsInlineMediaPlayback = true
+        fuelInjection.preferences.javaScriptCanOpenWindowsAutomatically = true
+        fuelInjection.mediaTypesRequiringUserActionForPlayback = []
+        fuelInjection.preferences.javaScriptCanOpenWindowsAutomatically = true
  
       
-        snapback = WKWebView.init(frame: UIScreen.main.bounds, configuration: bridal)
-        snapback?.isHidden = true
-        snapback?.translatesAutoresizingMaskIntoConstraints = false
-        snapback?.scrollView.alwaysBounceVertical = false
+        pressurePlate = WKWebView.init(frame: UIScreen.main.bounds, configuration: fuelInjection)
+        pressurePlate?.isHidden = true
+        pressurePlate?.translatesAutoresizingMaskIntoConstraints = false
+        pressurePlate?.scrollView.alwaysBounceVertical = false
         
-        snapback?.scrollView.contentInsetAdjustmentBehavior = .never
-        snapback?.navigationDelegate = self
+        pressurePlate?.scrollView.contentInsetAdjustmentBehavior = .never
+        pressurePlate?.navigationDelegate = self
         
-        snapback?.uiDelegate = self
-        snapback?.allowsBackForwardNavigationGestures = true
+        pressurePlate?.uiDelegate = self
+        pressurePlate?.allowsBackForwardNavigationGestures = true
    
-        if let wreath = URL.init(string: headscarf) {
-            snapback?.load(NSURLRequest.init(url:wreath) as URLRequest)
-            beanie = Date().timeIntervalSince1970
+        if let oilCooler = URL.init(string: shiftDrum) {
+            pressurePlate?.load(NSURLRequest.init(url:oilCooler) as URLRequest)
+            clutchPlate = Date().timeIntervalSince1970
         }
-        self.view.addSubview(snapback!)
-        let ride_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-        ride_hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h.")
-        ride_hud.isUserInteractionEnabled = false
+        self.view.addSubview(pressurePlate!)
+        let radiatorGrille = MBProgressHUD.showAdded(to: self.view, animated: true)
+        radiatorGrille.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h.")
+        radiatorGrille.isUserInteractionEnabled = false
        
     }
     
@@ -158,31 +155,31 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        snapback?.isHidden = false
+        pressurePlate?.isHidden = false
         
         
         MBProgressHUD.hide(for: self.view, animated: true)
-        if trapper == true {
+        if gearSelector == true {
             
-            trapper = false
+            gearSelector = false
             
             
-            let bike_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-            bike_hud.mode = .customView
+            let engineGuard = MBProgressHUD.showAdded(to: self.view, animated: true)
+            engineGuard.mode = .customView
            
-            bike_hud.customView = UIImageView(image: UIImage(named: "motocell"))
+            engineGuard.customView = UIImageView(image: UIImage(named: "motocell"))
            
            
-            bike_hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "Lzozgciwnk esjuackclewsnsxfruxl")
-            bike_hud.hide(animated: true, afterDelay: 1.5)
+            engineGuard.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "Lzozgciwnk esjuackclewsnsxfruxl")
+            engineGuard.hide(animated: true, afterDelay: 1.5)
         }
 
-        let headband = "/opi/v1/garaget"
-         let veil: [String: Any] = [
-            "garageo":"\(Int(Date().timeIntervalSince1970*1000 - self.beanie*1000))"
+        let frameSlider = "/opi/v1/garaget"
+         let tankPad: [String: Any] = [
+            "garageo":"\(Int(Date().timeIntervalSince1970*1000 - self.clutchPlate*1000))"
          ]
         
-        Weucketgtro.newsboy.upcycled( headband, artisan: veil)
+        Weucketgtro.rideTracking.gyroscope( frameSlider, imuUnit: tankPad)
        
     }
     
@@ -193,20 +190,20 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
       
  
         if message.name == "rechargePay",
-           let sequin = message.body as? Dictionary<String,Any> {
-           let cap = sequin["batchNo"] as? String ?? ""
-           let embroidered = sequin["orderCode"] as? String ?? ""
+           let handlebarRise = message.body as? Dictionary<String,Any> {
+           let windshield = handlebarRise["batchNo"] as? String ?? ""
+           let helmetVisor = handlebarRise["orderCode"] as? String ?? ""
          
 
             view.isUserInteractionEnabled = false
-            let ride_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-            ride_hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h.")
-            ride_hud.isUserInteractionEnabled = false
+            let kneeSlider = MBProgressHUD.showAdded(to: self.view, animated: true)
+            kneeSlider.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h.")
+            kneeSlider.isUserInteractionEnabled = false
             
-            SwiftyStoreKit.purchaseProduct(cap, atomically: true) { psResult in
+            SwiftyStoreKit.purchaseProduct(windshield, atomically: true) { kickstand in
                 MBProgressHUD.hide(for: self.view, animated: true)
                 self.view.isUserInteractionEnabled = true
-                if case .success(let psPurch) = psResult {
+                if case .success(let psPurch) = kickstand {
                     let psdownloads = psPurch.transaction.downloads
                     
                     
@@ -219,45 +216,45 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
                    
                    
                 
-                    guard let feather = SwiftyStoreKit.localReceiptData,
-                          let leather = psPurch.transaction.transactionIdentifier,
-                          leather.count > 5
+                    guard let footPeg = SwiftyStoreKit.localReceiptData,
+                          let driveChain = psPurch.transaction.transactionIdentifier,
+                          driveChain.count > 5
                     else {
                         
-                        self.showingINfoForLog(loMesag:"No have receipt or ID is error")
+                        self.forkTube(bearingRace:"No have receipt or ID is error")
                       
                         return
                       }
                     
-                    guard let crochet = try? JSONSerialization.data(withJSONObject: ["orderCode":embroidered], options: [.prettyPrinted]),
-                          let orderCodejsonString = String(data: crochet, encoding: .utf8) else{
+                    guard let brakePad = try? JSONSerialization.data(withJSONObject: ["orderCode":helmetVisor], options: [.prettyPrinted]),
+                          let rotorDisc = String(data: brakePad, encoding: .utf8) else{
                         
-                        self.showingINfoForLog(loMesag:"orderCode jsonString error")
+                        self.forkTube(bearingRace:"orderCode jsonString error")
                         return
                     }
 
-                    Weucketgtro.newsboy.upcycled("/opi/v1/lifesaverp", artisan: [
-                        "lifesaverp":feather.base64EncodedString(),//payload
-                        "lifesavert":leather,//transactionId
-                        "lifesaverc":orderCodejsonString//callbackResult
-                    ],ispaGood: true) { result in
+                    Weucketgtro.rideTracking.gyroscope("/opi/v1/lifesaverp", imuUnit: [
+                        "lifesaverp":footPeg.base64EncodedString(),//payload
+                        "lifesavert":driveChain,//transactionId
+                        "lifesaverc":rotorDisc//callbackResult
+                    ],tipOverSensor: true) { result in
                        
                         self.view.isUserInteractionEnabled = true
                         
                         switch result{
                         case .success(_):
-                            let bike_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-                            bike_hud.mode = .customView
+                            let brakeCaliper = MBProgressHUD.showAdded(to: self.view, animated: true)
+                            brakeCaliper.mode = .customView
                            
-                            bike_hud.customView = UIImageView(image: UIImage(named: "motocell"))
+                            brakeCaliper.customView = UIImageView(image: UIImage(named: "motocell"))
                            
                            
-                            bike_hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "Pqucrpcphwaosrez tsbunckckeyszsdfjuxl")
-                            bike_hud.hide(animated: true, afterDelay: 1.5)
+                            brakeCaliper.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "Pqucrpcphwaosrez tsbunckckeyszsdfjuxl")
+                            brakeCaliper.hide(animated: true, afterDelay: 1.5)
                             
-                            self.designer(spotl:psPurch)
+                            self.ignitionTiming(camshaftProfile:psPurch)
                         case .failure(let error):
-                            self.showingINfoForLog(loMesag:"Purchase failed")
+                            self.forkTube(bearingRace:"Purchase failed")
                            
                         }
                     }
@@ -269,14 +266,14 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
                    
                     
                     
-                }else if case .error(let error) = psResult {
+                }else if case .error(let error) = kickstand {
                     
                     self.view.isUserInteractionEnabled = true
                     
                     if error.code != .paymentCancelled {
                         
                       
-                        self.showingINfoForLog(loMesag:"Purchase failed")
+                        self.forkTube(bearingRace:"Purchase failed")
                        
                         return
                     }
@@ -289,29 +286,29 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
 
             UserDefaults.standard.set(nil, forKey: "absurdityEngine")// 清除本地token
            
-            let handwoven = UINavigationController.init(rootViewController: Banditntroller.init())
-            handwoven.navigationBar.isHidden = true
+            let shockAbsorber = UINavigationController.init(rootViewController: Banditntroller.init())
+            shockAbsorber.navigationBar.isHidden = true
             
           
-            kickstandgtroller.romantic?.rootViewController = handwoven
+            kickstandgtroller.seatHeight?.rootViewController = shockAbsorber
         }
         
         if message.name == "pageLoaded" {
-            snapback?.isHidden = false
+            pressurePlate?.isHidden = false
             MBProgressHUD.hide(for: self.view, animated: true)
             
             
         }
     }
     
-    func showingINfoForLog(loMesag:String) {
-        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-        hud.mode = .text
-        hud.label.text = loMesag
-        hud.hide(animated: true, afterDelay: 1.5)
+    func forkTube(bearingRace:String) {
+        let gasketSeal = MBProgressHUD.showAdded(to: self.view, animated: true)
+        gasketSeal.mode = .text
+        gasketSeal.label.text = bearingRace
+        gasketSeal.hide(animated: true, afterDelay: 1.5)
     }
-    private func designer(spotl:PurchaseDetails) {
-        let pageant = [("hyxyeesvaieogpoz","99.99"),
+    private func ignitionTiming(camshaftProfile:PurchaseDetails) {
+        let valveClearance = [("hyxyeesvaieogpoz","99.99"),
                           ("vpsvlcqunkzdmgpp","49.99"),
                           ("kyppgnndsyamnduh","19.99"),
                           ("zpecfeuzqygvyfva","9.99"),
@@ -327,25 +324,24 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
         
         
         
-        if let material = pageant.filter({             outfit in
-                        outfit.0 == spotl.productId
+        if let material = valveClearance.filter({             outfit in
+                        outfit.0 == camshaftProfile.productId
         }).first,
-        let seasonal = Double(material.1) {
-            //FB
+        let tirePressure = Double(material.1) {
+          
             AppEvents.shared.logEvent(AppEvents.Name.purchased, parameters: [
-                .init("totalPrice"): seasonal,
+                .init("totalPrice"): tirePressure,
                 .init("currency"):"USD"
             ])
             
-            //adjust
-       
+           
             
-            if  let occasion = spotl.transaction.transactionIdentifier{
-                let fabric = ADJEvent(eventToken: "nhppmm")
-                fabric?.setProductId(spotl.productId)
-                fabric?.setTransactionId(occasion)
-                fabric?.setRevenue(seasonal, currency: "USD")
-                Adjust.trackEvent(fabric)
+            if  let rimSize = camshaftProfile.transaction.transactionIdentifier{
+                let axleNut = ADJEvent(eventToken: "nhppmm")
+                axleNut?.setProductId(camshaftProfile.productId)
+                axleNut?.setTransactionId(rimSize)
+                axleNut?.setRevenue(tirePressure, currency: "USD")
+                Adjust.trackEvent(axleNut)
             }
         }
        

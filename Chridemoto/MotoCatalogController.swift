@@ -252,7 +252,7 @@ extension MotoCatalogController: WKScriptMessageHandler {
 //                    return
 //                }
                 
-                kickstandgtroller.romantic?.rootViewController = initialViewController
+                kickstandgtroller.seatHeight?.rootViewController = initialViewController
 //                window.makeKeyAndVisible()
             }
         }

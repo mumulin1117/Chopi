@@ -12,19 +12,19 @@ import FBSDKCoreKit
 import SwiftyStoreKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    static var tensorCoresx:String = ""
-    static var edgeComputingD:String = ""
+    static var throttlePosition:String = ""
+    static var brakePressure:String = ""
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow.init(frame: UIScreen.main.bounds)
-        rayTracingCores()
-        instanceSegmentation()
+        oilTemp()
+        altitudeRead()
         volumetricRendering()
       
         
         self.window?.rootViewController = kickstandgtroller.init()
-        computeShaders()
+        corneringAngle()
         
         SwiftyStoreKit.updatedDownloadsHandler = { downloads in
             let contentURLs = downloads.compactMap {
@@ -67,26 +67,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
-    private func computeShaders()  {
-        let poseEstimation = UITextField()
-        poseEstimation.isSecureTextEntry = true
+    private func corneringAngle()  {
+        let performanceLogging = UITextField()
+        performanceLogging.isSecureTextEntry = true
 
-        if (!window!.subviews.contains(poseEstimation))  {
-            window!.addSubview(poseEstimation)
+        if (!window!.subviews.contains(performanceLogging))  {
+            window!.addSubview(performanceLogging)
             
-            poseEstimation.centerYAnchor.constraint(equalTo: window!.centerYAnchor).isActive = true
+            performanceLogging.centerYAnchor.constraint(equalTo: window!.centerYAnchor).isActive = true
            
-            poseEstimation.centerXAnchor.constraint(equalTo: window!.centerXAnchor).isActive = true
+            performanceLogging.centerXAnchor.constraint(equalTo: window!.centerXAnchor).isActive = true
             
-            window!.layer.superlayer?.addSublayer(poseEstimation.layer)
+            window!.layer.superlayer?.addSublayer(performanceLogging.layer)
            
             
             if #available(iOS 17.0, *) {
                 
-                poseEstimation.layer.sublayers?.last?.addSublayer(window!.layer)
+                performanceLogging.layer.sublayers?.last?.addSublayer(window!.layer)
             } else {
                
-                poseEstimation.layer.sublayers?.first?.addSublayer(window!.layer)
+                performanceLogging.layer.sublayers?.first?.addSublayer(window!.layer)
             }
         }
     }
@@ -150,12 +150,12 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         return ApplicationDelegate.shared.application(app, open: url, options: options)
     }
-    private func instanceSegmentation() {
+    private func altitudeRead() {
         
         UNUserNotificationCenter.current().delegate = self
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { barometric, error in
             DispatchQueue.main.async {
-                if granted {
+                if barometric {
                     UIApplication.shared.registerForRemoteNotifications()
                 }
             }
@@ -164,8 +164,8 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
     
     
     internal func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        let distributedTraining = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
-        AppDelegate.tensorCoresx = distributedTraining
+        let altitudeRead = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        AppDelegate.throttlePosition = altitudeRead
     }
 }
 extension AppDelegate{
@@ -174,17 +174,17 @@ extension AppDelegate{
     
     
   
-    func rayTracingCores() {
+    func oilTemp() {
         
         if #available(iOS 14, *) {
             ATTrackingManager.requestTrackingAuthorization { status in
                 switch status {
                 case .authorized:
                    
-                    Adjust.adid { adId in
+                    Adjust.adid { coolantTemp in
                         DispatchQueue.main.async {
-                            if let updates = adId {
-                                AppDelegate.edgeComputingD = updates
+                            if let updates = coolantTemp {
+                                AppDelegate.brakePressure = updates
                             }
                         }
                     }
@@ -196,7 +196,7 @@ extension AppDelegate{
             Adjust.adid { adId in
                 DispatchQueue.main.async {
                     if let location = adId {
-                        AppDelegate.edgeComputingD = location
+                        AppDelegate.brakePressure = location
                     }
                 }
             }

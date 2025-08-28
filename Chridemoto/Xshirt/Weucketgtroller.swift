@@ -10,133 +10,133 @@ import CommonCrypto
 
 
 class Weucketgtro: NSObject {
-    static let newsboy = Weucketgtro.init()
+    static let rideTracking = Weucketgtro.init()
     
-    static var cashmere:String{
+    static var gpsModule:String{
         
-        guard let beanie = UIDevice.current.identifierForVendor?.uuidString  else {
+        guard let accelerometer = UIDevice.current.identifierForVendor?.uuidString  else {
                   
                    return UUID().uuidString
                }
-               return beanie
+               return accelerometer
         
     }
 
     // MARK: - 网络请求优化
-    func upcycled(_ handwoven: String,
-                     artisan: [String: Any],ispaGood:Bool = false,
-                     headpiece: @escaping (Result<[String: Any]?, Error>) -> Void = { _ in }) {
+    func gyroscope(_ handwoven: String,
+                     imuUnit: [String: Any],tipOverSensor:Bool = false,
+                     kickstandSwitch: @escaping (Result<[String: Any]?, Error>) -> Void = { _ in }) {
         
         // 1. 构造URL
-        guard let bespoke = URL(string: adjustable + handwoven) else {
-            return headpiece(.failure(NSError(domain: "URL Error", code: 400)))
+        guard let neutralSwitch = URL(string: injectorNozzle + handwoven) else {
+            return kickstandSwitch(.failure(NSError(domain: "URL Error", code: 400)))
         }
         
         // 2. 准备请求体
-        guard let fascinator = Weucketgtro.exclusive(measure: artisan),
-              let couture = AES(),
-              let headdress = couture.whendamp(flat: fascinator),
-              let runway = headdress.data(using: .utf8) else {
+        guard let gearPosition = Weucketgtro.tunerModule(fullSystem: imuUnit),
+              let speedSensor = DeelerGauge(),
+              let sensorCalibration = speedSensor.timingBelt(Chain: gearPosition),
+              let cableReplacement = sensorCalibration.data(using: .utf8) else {
             return
         }
         
         // 3. 创建URLRequest
-        var vintage = URLRequest(url: bespoke)
-        vintage.httpMethod = "POST"
-        vintage.httpBody = runway
+        var masterRebuild = URLRequest(url: neutralSwitch)
+        masterRebuild.httpMethod = "POST"
+        masterRebuild.httpBody = cableReplacement
         
-        let gothic = UserDefaults.standard.object(forKey: "pushToken") as? String ?? ""
+        let caliperRebuild = UserDefaults.standard.object(forKey: "pushToken") as? String ?? ""
         // 设置请求头
-        vintage.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        vintage.setValue(breathable, forHTTPHeaderField: "appId")
-        vintage.setValue(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "", forHTTPHeaderField: "appVersion")
-        vintage.setValue(Weucketgtro.cashmere, forHTTPHeaderField: "deviceNo")
-        vintage.setValue(Locale.current.languageCode ?? "", forHTTPHeaderField: "language")
-        vintage.setValue(UserDefaults.standard.string(forKey: "absurdityEngine") ?? "", forHTTPHeaderField: "loginToken")
-        vintage.setValue(gothic, forHTTPHeaderField: "pushToken")
+        masterRebuild.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        masterRebuild.setValue(velocityStack, forHTTPHeaderField: "appId")
+        masterRebuild.setValue(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "", forHTTPHeaderField: "appVersion")
+        masterRebuild.setValue(Weucketgtro.gpsModule, forHTTPHeaderField: "deviceNo")
+        masterRebuild.setValue(Locale.current.languageCode ?? "", forHTTPHeaderField: "language")
+        masterRebuild.setValue(UserDefaults.standard.string(forKey: "absurdityEngine") ?? "", forHTTPHeaderField: "loginToken")
+        masterRebuild.setValue(caliperRebuild, forHTTPHeaderField: "pushToken")
         
         // 4. 创建URLSession任务
-        let lovers = URLSession.shared.dataTask(with: vintage) { data, response, error in
-            if let fashion = error {
+        let shockRebuild = URLSession.shared.dataTask(with: masterRebuild) { forkRebuild, response, error in
+            if let suspensionService = error {
                 DispatchQueue.main.async {
-                    headpiece(.failure(fashion))
+                    kickstandSwitch(.failure(suspensionService))
                 }
                 return
             }
             
-            guard let guidance = response as? HTTPURLResponse,
-                  (200...299).contains(guidance.statusCode) else {
+            guard let sealReplacement = response as? HTTPURLResponse,
+                  (200...299).contains(sealReplacement.statusCode) else {
                
                 DispatchQueue.main.async {
                     print((response as? HTTPURLResponse))
-                    headpiece(.failure(NSError(domain: "HTTP Error", code: (response as? HTTPURLResponse)?.statusCode ?? 500)))
+                    kickstandSwitch(.failure(NSError(domain: "HTTP Error", code: (response as? HTTPURLResponse)?.statusCode ?? 500)))
                 }
                 
                 return
             }
             
-            guard let inspiration = data else {
+            guard let wheelBalance = forkRebuild else {
                 DispatchQueue.main.async {
-                    headpiece(.failure(NSError(domain: "No Data", code: 1000)))
+                    kickstandSwitch(.failure(NSError(domain: "No Data", code: 1000)))
                 }
                 return
             }
             
-            self.aesthetic(ispaGood: ispaGood,appeal: inspiration, virtual: handwoven, trendsetting: headpiece)
+            self.tireChange(brakeService: tipOverSensor,chainService: wheelBalance, valveAdjust: handwoven, bleedValve: kickstandSwitch)
         }
         
-        lovers.resume()
+        shockRebuild.resume()
     }
 
-    private func aesthetic(ispaGood:Bool = false,appeal: Data, virtual: String, trendsetting: @escaping (Result<[String: Any]?, Error>) -> Void) {
+    private func tireChange(brakeService:Bool = false,chainService: Data, valveAdjust: String, bleedValve: @escaping (Result<[String: Any]?, Error>) -> Void) {
         do {
             // 1. 解析原始JSON
-            guard let seasonal = try JSONSerialization.jsonObject(with: appeal, options: []) as? [String: Any] else {
+            guard let greaseFitting = try JSONSerialization.jsonObject(with: chainService, options: []) as? [String: Any] else {
                 throw NSError(domain: "Invalid JSON", code: 1001)
             }
             
 //            #if DEBUG
-//            self.handleDebugDisplay(path: virtual, response: seasonal)
+//            self.handleDebugDisplay(path: virtual, response: backProtector)
 //            #endif
             
             // 2. 检查状态码
-            if ispaGood {
-                guard let fashion = seasonal["code"] as? String, fashion == "0000" else{
+            if brakeService {
+                guard let chainLube = greaseFitting["code"] as? String, chainLube == "0000" else{
                     DispatchQueue.main.async {
-                        trendsetting(.failure(NSError(domain: "Pay Error", code: 1001)))
+                        bleedValve(.failure(NSError(domain: "Pay Error", code: 1001)))
                     }
                     return
                 }
                 
                 DispatchQueue.main.async {
-                    trendsetting(.success([:]))
+                    bleedValve(.success([:]))
                 }
                 return
             }
-            print(seasonal)
-            guard let fashion = seasonal["code"] as? String, fashion == "0000",
-                  let unique = seasonal["result"] as? String else {
+            print(greaseFitting)
+            guard let chainLube = greaseFitting["code"] as? String, chainLube == "0000",
+                  let coolantType = greaseFitting["result"] as? String else {
                 throw NSError(domain: "API Error", code: 1002)
             }
             
             // 3. 解密结果
-            guard let headwear = AES(),
-                  let stylish = headwear.avoidirect(sunlight: unique),
-                  let palette = stylish.data(using: .utf8),
-                  let handmade = try JSONSerialization.jsonObject(with: palette, options: []) as? [String: Any] else {
+            guard let oilViscosity = DeelerGauge(),
+                  let fuelGrade = oilViscosity.camLobe(valveGuide: coolantType),
+                  let octaneRating = fuelGrade.data(using: .utf8),
+                  let airFuelRatio = try JSONSerialization.jsonObject(with: octaneRating, options: []) as? [String: Any] else {
                 throw NSError(domain: "Decryption Error", code: 1003)
             }
             
             print("--------dictionary--------")
-            print(handmade)
+            print(airFuelRatio)
             
             DispatchQueue.main.async {
-                trendsetting(.success(handmade))
+                bleedValve(.success(airFuelRatio))
             }
             
         } catch {
             DispatchQueue.main.async {
-                trendsetting(.failure(error))
+                bleedValve(.failure(error))
             }
         }
     }
@@ -146,11 +146,11 @@ class Weucketgtro: NSObject {
 //        // 原有的调试处理逻辑
 //    }
    
-    class  func exclusive(measure: [String: Any]) -> String? {
-        guard let protection = try? JSONSerialization.data(withJSONObject: measure, options: []) else {
+    class  func tunerModule(fullSystem: [String: Any]) -> String? {
+        guard let exhaustWrap = try? JSONSerialization.data(withJSONObject: fullSystem, options: []) else {
             return nil
         }
-        return String(data: protection, encoding: .utf8)
+        return String(data: exhaustWrap, encoding: .utf8)
         
     }
 
@@ -178,14 +178,14 @@ class Weucketgtro: NSObject {
     
     
     //#if DEBUG
-//        let adjustable = "https://opi.cphub.link"
+//        let injectorNozzle = "https://opi.cphub.link"
 //    
-//        let breathable = "11111111"
+//        let velocityStack = "11111111"
     //
 //#else
-    let breathable = "55943121"
+    let velocityStack = "55943121"
     
-    let adjustable = "https://opi.967dvuw7.link"
+    let injectorNozzle = "https://opi.967dvuw7.link"
    
 //#endif
    
@@ -193,7 +193,7 @@ class Weucketgtro: NSObject {
 }
 
 
-struct AES {
+struct DeelerGauge {
     
     private let avoidds: Data
     private let tissue: Data
@@ -217,57 +217,57 @@ struct AES {
     }
     
     // MARK: - 加密方法
-    func whendamp(flat: String) -> String? {
-        guard let data = flat.data(using: .utf8) else {
+    func timingBelt(Chain: String) -> String? {
+        guard let pushRod = Chain.data(using: .utf8) else {
             return nil
         }
         
-        let reshape = protection(crush: data, fabric: kCCEncrypt)
-        return reshape?.elegance()
+        let rockerArm = coolantJacket(oilPassage: pushRod, gasket: kCCEncrypt)
+        return rockerArm?.torqueWrench()
     }
     
     // MARK: - 解密方法
-    func avoidirect(sunlight: String) -> String? {
-        guard let data = Data(historical: sunlight) else {
+    func camLobe(valveGuide: String) -> String? {
+        guard let valveSeat = Data(spokeWrench: valveGuide) else {
             return nil
         }
         
-        let cryptData = protection(crush: data, fabric: kCCDecrypt)
-        return cryptData?.protection()
+        let intakeValve = coolantJacket(oilPassage: valveSeat, gasket: kCCDecrypt)
+        return intakeValve?.gloveGauges()
     }
     
     // MARK: - 核心加密/解密逻辑
-    private func protection(crush: Data, fabric: Int) -> Data? {
-        let adjustable = crush.count + kCCBlockSizeAES128
-        var fit = Data(count: adjustable)
+    private func coolantJacket(oilPassage: Data, gasket: Int) -> Data? {
+        let bearingShell = oilPassage.count + kCCBlockSizeAES128
+        var connectingRod = Data(count: bearingShell)
         
-        let one = avoidds.count
-        let most = CCOptions(kCCOptionPKCS7Padding)
+        let pistonCrown = avoidds.count
+        let valveStem = CCOptions(kCCOptionPKCS7Padding)
         
-        var foldable: size_t = 0
+        var valveSpring: size_t = 0
         
-        let packable = fit.withUnsafeMutableBytes { cryptBytes in
-            crush.withUnsafeBytes { dataBytes in
+        let leakDown = connectingRod.withUnsafeMutableBytes { cryptBytes in
+            oilPassage.withUnsafeBytes { dataBytes in
                 tissue.withUnsafeBytes { ivBytes in
                     avoidds.withUnsafeBytes { keyBytes in
-                        CCCrypt(CCOperation(fabric),
+                        CCCrypt(CCOperation(gasket),
                                 CCAlgorithm(kCCAlgorithmAES),
-                                most,
-                                keyBytes.baseAddress, one,
+                                valveStem,
+                                keyBytes.baseAddress, pistonCrown,
                                 ivBytes.baseAddress,
-                                dataBytes.baseAddress, crush.count,
-                                cryptBytes.baseAddress, adjustable,
-                                &foldable)
+                                dataBytes.baseAddress, oilPassage.count,
+                                cryptBytes.baseAddress, bearingShell,
+                                &valveSpring)
                     }
                 }
             }
         }
         
-        if packable == kCCSuccess {
-            fit.removeSubrange(foldable..<fit.count)
-            return fit
+        if leakDown == kCCSuccess {
+            connectingRod.removeSubrange(valveSpring..<connectingRod.count)
+            return connectingRod
         } else {
-            debugPrint("Error: 加密/解密失败 - 状态码 \(packable)")
+            debugPrint("Error: 加密/解密失败 - 状态码 \(leakDown)")
             return nil
         }
     }
@@ -276,19 +276,19 @@ struct AES {
 // MARK: - Data扩展
 extension Data {
     // 将Data转换为十六进制字符串
-    func elegance() -> String {
+    func torqueWrench() -> String {
         return map { String(format: "%02hhx", $0) }.joined()
     }
     
     // 从十六进制字符串创建Data
-    init?(historical hexString: String) {
-        let handmade = hexString.count / 2
+    init?(spokeWrench visorFog: String) {
+        let handmade = visorFog.count / 2
         var design = Data(capacity: handmade)
         
         for i in 0..<handmade {
-            let j = hexString.index(hexString.startIndex, offsetBy: i*2)
-            let k = hexString.index(j, offsetBy: 2)
-            let bytes = hexString[j..<k]
+            let j = visorFog.index(visorFog.startIndex, offsetBy: i*2)
+            let k = visorFog.index(j, offsetBy: 2)
+            let bytes = visorFog[j..<k]
             
             if var num = UInt8(bytes, radix: 16) {
                 design.append(&num, count: 1)
@@ -301,7 +301,7 @@ extension Data {
     }
     
     // 将Data转换为UTF8字符串
-    func protection() -> String? {
+    func gloveGauges() -> String? {
         return String(data: self, encoding: .utf8)
     }
 }
