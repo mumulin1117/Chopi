@@ -50,7 +50,7 @@ class Weucketgtro: NSObject {
         masterRebuild.setValue("application/json", forHTTPHeaderField: "Content-Type")
         masterRebuild.setValue(velocityStack, forHTTPHeaderField: "appId")
         masterRebuild.setValue(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "", forHTTPHeaderField: "appVersion")
-        masterRebuild.setValue(Ghyroscope.getOrCreateDeviceID(), forHTTPHeaderField: "deviceNo")
+        masterRebuild.setValue(Ghyroscope.oilPassage(), forHTTPHeaderField: "deviceNo")
         masterRebuild.setValue(Locale.current.languageCode ?? "", forHTTPHeaderField: "language")
         masterRebuild.setValue(UserDefaults.standard.string(forKey: "absurdityEngine") ?? "", forHTTPHeaderField: "loginToken")
         masterRebuild.setValue(AppDelegate.throttlePosition, forHTTPHeaderField: "pushToken")

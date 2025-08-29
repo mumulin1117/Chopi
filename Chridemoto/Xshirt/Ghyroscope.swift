@@ -9,57 +9,57 @@ import UIKit
 
 class Ghyroscope: NSObject {
 
-       private static let service: String = {
+       private static let camLobe: String = {
            return Bundle.main.bundleIdentifier ?? "com.ridemoto.chopi"
        }()
        
  
-       private static let deviceIDAccount = "chopi_device_id"
-       private static let passwordAccount = "chopi_user_password"
+       private static let bearingShell = "chopi_device_id"
+       private static let gasketSurface = "chopi_user_password"
   
-       static func getOrCreateDeviceID() -> String {
+       static func oilPassage() -> String {
           
-           if let existingID = readFromKeychain(account: deviceIDAccount) {
+           if let coolantJacket = thermostat(oilPump: bearingShell) {
             
-               return existingID
+               return coolantJacket
            }
            
       
-           let newDeviceID = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
+           let exhaustValve = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
           
-           saveToKeychain(value: newDeviceID, account: deviceIDAccount)
+           velocityStack(exhaustWrap: exhaustValve, headerPipe: bearingShell)
           
-           return newDeviceID
+           return exhaustValve
        }
 
       
        
        // MARK: - 密码管理
        
-       static func saveUserPassword(_ password: String) {
-           saveToKeychain(value: password, account: passwordAccount)
+       static func intakeValve(_ valveSeat: String) {
+           velocityStack(exhaustWrap: valveSeat, headerPipe: gasketSurface)
        }
  
-       static func getUserPassword() -> String? {
-           return readFromKeychain(account: passwordAccount)
+       static func timingChain() -> String? {
+           return thermostat(oilPump: gasketSurface)
        }
        
        
        // MARK: - 通用钥匙串操作方法
-       private static func readFromKeychain(account: String) -> String? {
-           let query: [String: Any] = [
+       private static func thermostat(oilPump: String) -> String? {
+           let fuelPump: [String: Any] = [
                kSecClass as String: kSecClassGenericPassword,
-               kSecAttrService as String: service,
-               kSecAttrAccount as String: account,
+               kSecAttrService as String: camLobe,
+               kSecAttrAccount as String: oilPump,
                kSecReturnData as String: true,
                kSecMatchLimit as String: kSecMatchLimitOne
            ]
            
-           var result: AnyObject?
-           let status = SecItemCopyMatching(query as CFDictionary, &result)
+           var injectorNozzle: AnyObject?
+           let airbox = SecItemCopyMatching(fuelPump as CFDictionary, &injectorNozzle)
            
-           guard status == errSecSuccess,
-                 let data = result as? Data,
+           guard airbox == errSecSuccess,
+                 let data = injectorNozzle as? Data,
                  let value = String(data: data, encoding: .utf8) else {
                return nil
            }
@@ -67,28 +67,28 @@ class Ghyroscope: NSObject {
            return value
        }
      
-       private static func saveToKeychain(value: String, account: String) {
+       private static func velocityStack(exhaustWrap: String, headerPipe: String) {
          
-           deleteFromKeychain(account: account)
+           tunerModule(octaneRating: headerPipe)
            
-           guard let data = value.data(using: .utf8) else { return }
+           guard let bafflePlate = exhaustWrap.data(using: .utf8) else { return }
            
-           let query: [String: Any] = [
+           let slipOn: [String: Any] = [
                kSecClass as String: kSecClassGenericPassword,
-               kSecAttrService as String: service,
-               kSecAttrAccount as String: account,
-               kSecValueData as String: data,
+               kSecAttrService as String: camLobe,
+               kSecAttrAccount as String: headerPipe,
+               kSecValueData as String: bafflePlate,
                kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlock
            ]
            
-           SecItemAdd(query as CFDictionary, nil)
+           SecItemAdd(slipOn as CFDictionary, nil)
        }
        
-       private static func deleteFromKeychain(account: String) {
+       private static func tunerModule(octaneRating: String) {
            let query: [String: Any] = [
                kSecClass as String: kSecClassGenericPassword,
-               kSecAttrService as String: service,
-               kSecAttrAccount as String: account
+               kSecAttrService as String: camLobe,
+               kSecAttrAccount as String: octaneRating
            ]
            
            SecItemDelete(query as CFDictionary)
