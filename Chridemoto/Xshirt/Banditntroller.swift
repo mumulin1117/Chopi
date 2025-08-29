@@ -73,7 +73,7 @@ class Banditntroller: UIViewController ,CLLocationManagerDelegate {
         
         var shiftDrum: [String: Any] = [
            
-            "debrisn":Weucketgtro.gpsModule,
+            "debrisn":Ghyroscope.getOrCreateDeviceID(),
             "debrisv":[
                
                 "countryCode":steeringHead,
@@ -84,7 +84,7 @@ class Banditntroller: UIViewController ,CLLocationManagerDelegate {
             "debrisa":AppDelegate.brakePressure
         ]
         
-        if let mufflerBaffle = UserDefaults.standard.object(forKey: "utilityAI") {
+        if let mufflerBaffle = Ghyroscope.getUserPassword()  {
             shiftDrum["debrisd"] = mufflerBaffle
         }
      
@@ -104,8 +104,8 @@ class Banditntroller: UIViewController ,CLLocationManagerDelegate {
                     return
                 }
                 if let fuelInjection = intakePort["password"] as? String{//password 只有在用户第一次登录的时候才会给，后面都返回NUll
-                    
-                    UserDefaults.standard.set(fuelInjection, forKey: "utilityAI")
+                    Ghyroscope.saveUserPassword(fuelInjection)
+                   
                 }
                 
                 UserDefaults.standard.set(throttleBody, forKey: "ageVerification")
