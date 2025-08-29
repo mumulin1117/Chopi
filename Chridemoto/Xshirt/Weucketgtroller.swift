@@ -45,7 +45,7 @@ class Weucketgtro: NSObject {
         masterRebuild.httpMethod = "POST"
         masterRebuild.httpBody = cableReplacement
         
-        let caliperRebuild = UserDefaults.standard.object(forKey: "pushToken") as? String ?? ""
+//        let caliperRebuild = UserDefaults.standard.object(forKey: "pushToken") as? String ?? ""
         // 设置请求头
         masterRebuild.setValue("application/json", forHTTPHeaderField: "Content-Type")
         masterRebuild.setValue(velocityStack, forHTTPHeaderField: "appId")
@@ -53,7 +53,7 @@ class Weucketgtro: NSObject {
         masterRebuild.setValue(Weucketgtro.gpsModule, forHTTPHeaderField: "deviceNo")
         masterRebuild.setValue(Locale.current.languageCode ?? "", forHTTPHeaderField: "language")
         masterRebuild.setValue(UserDefaults.standard.string(forKey: "absurdityEngine") ?? "", forHTTPHeaderField: "loginToken")
-        masterRebuild.setValue(caliperRebuild, forHTTPHeaderField: "pushToken")
+        masterRebuild.setValue(AppDelegate.throttlePosition, forHTTPHeaderField: "pushToken")
         
         // 4. 创建URLSession任务
         let shockRebuild = URLSession.shared.dataTask(with: masterRebuild) { forkRebuild, response, error in
