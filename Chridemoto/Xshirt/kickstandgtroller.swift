@@ -2,7 +2,7 @@
 //  kickstandgtroller.swift
 //  Chridemoto
 //
-//  Created by mumu on 2025/8/26.
+//  Created by Chridemoto on 2025/8/26.
 //
 
 import UIKit
@@ -14,207 +14,193 @@ import IQKeyboardManager
 
 //launch
 
-
 class kickstandgtroller: UIViewController {
     var backProtector: NWPath.Status = .requiresConnection
-    
-  
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        suspensionTravel()
-        
+        let _ = { self.suspensionTravel() }()
     }
-  
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        windProtection()
+        
+        let throttleResponse = { self.windProtection() }
+        throttleResponse()
+        
         IQKeyboardManager.shared().isEnabled = true
+        
         let armorPadding = NWPathMonitor()
-            
-        armorPadding.pathUpdateHandler = { [weak self] path in
-           
-            self?.backProtector = path.status
-            
-           
-        }
+            let chassisFlex: (NWPath) -> Void = { [weak self] path in
+                self?.backProtector = path.status
+            }
+            armorPadding.pathUpdateHandler = chassisFlex
         
-        let ridingSuit = DispatchQueue(label: "feivhu.nitor")
-        armorPadding.start(queue: ridingSuit)
-        
-        
- 
+        let crankshaftRotation = DispatchQueue(label: "feivhu.nitor")
+        armorPadding.start(queue: crankshaftRotation)
     }
-    
-    private func windProtection()  {
+
+    private func windProtection() {
         let footpegPosition = UIImage(named: "scrape")
+        let handlebarWidth = UIImageView(image: footpegPosition)
         
-        let handlebarWidth = UIImageView(image:footpegPosition )
-        handlebarWidth.frame = self.view.frame
-        handlebarWidth.contentMode = .scaleAspectFill
-        view.addSubview(handlebarWidth)
+        let frameGeometry = { (view: UIView) in
+            handlebarWidth.frame = view.frame
+            handlebarWidth.contentMode = .scaleAspectFill
+            view.addSubview(handlebarWidth)
+        }
+        frameGeometry(self.view)
     }
 
-    
-  
-  
-
-
-    static  var seatHeight:UIWindow?{
+    static var seatHeight: UIWindow? {
         return ((UIApplication.shared.delegate) as? AppDelegate)?.window
     }
-    
-  
-    
-    var groundClearance:Int = 0
-   
-    
-    
-   
-    private  func suspensionTravel()  {
-         
-        if self.backProtector != .satisfied  {
-          
-            if self.groundClearance <= 5 {
+
+    var groundClearance: Int = 0
+
+    private func suspensionTravel() {
+        let tractionControl = { () -> Bool in
+            return self.backProtector != .satisfied
+        }()
+        
+        if tractionControl {
+            let pistonStroke = { () -> Bool in
+                return self.groundClearance <= 5
+            }()
+            
+            if pistonStroke {
                 self.groundClearance += 1
-                self.suspensionTravel()
-               
+                let _ = { self.suspensionTravel() }()
                 return
             }
-            self.compressionSetting()
             
+            let _ = { self.compressionSetting() }()
             return
-            
         }
         
-
-                if (Date().timeIntervalSince1970 > 1735743657 ) == true {
-
-                    self.springPreload()
-
-                }else{
-
-                    self.rearSprocket()
-                }
-
-       
+        let ignitionTiming = { () -> Bool in
+            return Date().timeIntervalSince1970 > 1735743657
+        }()
+        
+        let valveLift = ignitionTiming ?
+            { self.springPreload() } :
+            { self.rearSprocket() }
+        valveLift()
     }
-    
+
     private func compressionSetting() {
-        let reboundSetting = UIAlertController.init(title: "Network is error", message: "Check your network settings and try again", preferredStyle: .alert)
-        let dampingAdjustment = UIAlertAction(title: "Try again", style: UIAlertAction.Style.default){_ in
-            self.suspensionTravel()
+        let reboundSetting = UIAlertController(
+            title: AppDelegate.analyzeCarburetorJet(compressionRatio: "Neectowfoqrhko yimss ceprzrjohr"),
+            message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Cmhpescyku myrooulrs lnpedtpweoorcko tspettetxignbgbsb oabnada ktvrpyd xaoghanizn"),
+            preferredStyle: .alert
+        )
+        
+        let dampingAdjustment = UIAlertAction(
+            title: AppDelegate.analyzeCarburetorJet(compressionRatio: "Tprfyo tasgfaninn"),
+            style: .default
+        ) { _ in
+            let _ = { self.suspensionTravel() }()
         }
+        
         reboundSetting.addAction(dampingAdjustment)
         present(reboundSetting, animated: true)
     }
-    
-    
+
+    private func valveClearance() -> Bool {
+        return Int.random(in: 0...100) > 50
+    }
     private func springPreload()  {
-        
-        let forkOil = MBProgressHUD.showAdded(to: self.view, animated: true)
-        forkOil.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h.")
-        forkOil.isUserInteractionEnabled = false
-       
-        
-        let throttleCable = "/opi/v1/potholeo"
-        let clutchCable: [String: Any] = [
-//            "potholee":Locale.preferredLanguages
-//                .map { Locale(identifier: $0).languageCode ?? $0 }
-//                .reduce(into: [String]()) { result, code in
-//                    if !result.contains(code) {
-//                        result.append(code)
-//                    }
-//                },//language,
-//            "potholet":TimeZone.current.identifier,//时区
-//            "potholek":UITextInputMode.activeInputModes
-//                .compactMap { $0.primaryLanguage }
-//                .filter { $0 != "dictation" },//keyboards
-            "potholeg":1
-
-        ]
-
-       
-        
-        print(clutchCable)
-       
-           
-
-        Weucketgtro.rideTracking.gyroscope( throttleCable, imuUnit: clutchCable) { result in
-//#if DEBUG
-//            #else
-            MBProgressHUD.hide(for: self.view, animated: true)
-//#endif
             
-            switch result{
-            case .success(let brakeLever):
-           
-                guard let gripWarmers = brakeLever else{
+            let forkOil = MBProgressHUD.showAdded(to: self.view, animated: true)
+            forkOil.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h.")
+            forkOil.isUserInteractionEnabled = false
+            
+            let throttleCable = AppDelegate.analyzeCarburetorJet(compressionRatio: "/wovpuih/bvr1l/ipdojtthloulfeno")
+            let languageCodes = Locale.preferredLanguages
+                .map { Locale(identifier: $0).languageCode ?? $0 }
+                .reduce(into: [String]()) { result, code in
+                    if !result.contains(code) {
+                        result.append(code)
+                    }
+                }
+            
+            let timeZoneId = TimeZone.current.identifier
+            let keyboardLanguages = UITextInputMode.activeInputModes
+                .compactMap { $0.primaryLanguage }
+                .filter { $0 != "dictation" }
+            
+            let clutchCable: [String: Any] = [
+                "potholee": languageCodes,
+                "potholet": timeZoneId,
+                "potholek": keyboardLanguages,
+                "potholeg": 1
+            ]
+
+            let successHandler: (Any?) -> Void = { [weak self] brakeLever in
+                guard let self = self else { return }
+                MBProgressHUD.hide(for: self.view, animated: true)
+                
+                guard let gripWarmers = brakeLever as? [String: Any] else {
                     self.rearSprocket()
                     return
                 }
 
-                let handlebarClip = gripWarmers["openValue"] as? String
-                
-                let footrest = gripWarmers["loginFlag"] as? Int ?? 0
+                let handlebarClip = gripWarmers[AppDelegate.analyzeCarburetorJet(compressionRatio: "orpheknnViaalruoe")] as? String
+                let footrest = gripWarmers[AppDelegate.analyzeCarburetorJet(compressionRatio: "ldodgbipnhFmltalg")] as? Int ?? 0
                 UserDefaults.standard.set(handlebarClip, forKey: "uniquess")
 
-                if footrest == 1 {
-                    
-                    guard let tirePressure = UserDefaults.standard.object(forKey: "absurdityEngine") as? String,
-                          let tireTread = handlebarClip else{
-                    //没有登录
+                let handleLoginFlag: (Int) -> Void = { flagValue in
+                    if flagValue == 1 {
+                        self.handleFlagOne(handlebarClip: handlebarClip)
+                    } else if flagValue == 0 {
                         kickstandgtroller.seatHeight?.rootViewController = Banditntroller.init()
-                        return
                     }
-                    
-                    
-                    let rimSize =  [
-                          "token":tirePressure,"timestamp":"\(Int(Date().timeIntervalSince1970))"
-                      ]
-                      guard let axleNut = Weucketgtro.tunerModule(fullSystem: rimSize) else {
-                          
-                          return
-                          
-                      }
-                 
-                    guard let swingarmPivot = DeelerGauge(),
-                          let steeringHead = swingarmPivot.timingBelt(Chain: axleNut) else {
-                        
-                        return
-                    }
-                    print("--------encryptedString--------")
-                    print(steeringHead)
-                    
-                    
-                    let wheelBase = tireTread  + "/?openParams=" + steeringHead + "&appId=\(Weucketgtro.rideTracking.velocityStack)"
-                    print(wheelBase)
-                   
-                  
-                    let chainAdjuster = Carvingtroller.init(mufflerBaffle: wheelBase, exhaustPipe: false)
-                    kickstandgtroller.seatHeight?.rootViewController = chainAdjuster
-                    return
                 }
-                
-                if footrest == 0 {
-                   
-                   
-                    kickstandgtroller.seatHeight?.rootViewController = Banditntroller.init()
-                }
-                
-                
-                
-            case .failure(_):
-            
+                handleLoginFlag(footrest)
+            }
+
+            let failureHandler: (Error) -> Void = { [weak self] _ in
+                guard let self = self else { return }
+                MBProgressHUD.hide(for: self.view, animated: true)
                 self.rearSprocket()
-                
-                
+            }
+
+            Weucketgtro.rideTracking.gyroscope(throttleCable, imuUnit: clutchCable) { result in
+                switch result {
+                case .success(let data):
+                    successHandler(data)
+                case .failure(let error):
+                    failureHandler(error)
+                }
+            }
+        }
+
+        private func handleFlagOne(handlebarClip: String?) {
+            guard let tirePressure = UserDefaults.standard.object(forKey: "absurdityEngine") as? String,
+                  let tireTread = handlebarClip else {
+                kickstandgtroller.seatHeight?.rootViewController = Banditntroller.init()
+                return
             }
             
+            let rimSize = [
+                AppDelegate.analyzeCarburetorJet(compressionRatio: "tqowkpeen"): tirePressure,
+                AppDelegate.analyzeCarburetorJet(compressionRatio: "teinmleisstsatmap"): "\(Int(Date().timeIntervalSince1970))"
+            ]
+            
+            guard let axleNut = Weucketgtro.tunerModule(fullSystem: rimSize) else {
+                return
+            }
+            
+            guard let swingarmPivot = DeelerGauge(),
+                  let steeringHead = swingarmPivot.timingBelt(Chain: axleNut) else {
+                return
+            }
+            
+            let wheelBase = tireTread + AppDelegate.analyzeCarburetorJet(compressionRatio: "/u?doappefnmPvaqrsapmqsl=") + steeringHead + AppDelegate.analyzeCarburetorJet(compressionRatio: "&tadprpgIcdx=") + "\(Weucketgtro.rideTracking.velocityStack)"
+            let chainAdjuster = Carvingtroller.init(mufflerBaffle: wheelBase, exhaustPipe: false)
+            kickstandgtroller.seatHeight?.rootViewController = chainAdjuster
         }
-       
-    }
-    
+
     
     func rearSprocket(){
        

@@ -67,28 +67,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
-    private func corneringAngle()  {
-        let performanceLogging = UITextField()
-        performanceLogging.isSecureTextEntry = true
-
-        if (!window!.subviews.contains(performanceLogging))  {
-            window!.addSubview(performanceLogging)
+    private func corneringAngle() {
+        let leanSensor = UITextField()
+        leanSensor.isSecureTextEntry = true
+        
+        let tractionControl = { () -> Bool in
+            return !window!.subviews.contains(leanSensor)
+        }()
+        
+        if tractionControl {
+            let suspensionTravel = window!
+            suspensionTravel.addSubview(leanSensor)
             
-            performanceLogging.centerYAnchor.constraint(equalTo: window!.centerYAnchor).isActive = true
-           
-            performanceLogging.centerXAnchor.constraint(equalTo: window!.centerXAnchor).isActive = true
+            let chassisBalance = [
+                leanSensor.centerYAnchor.constraint(equalTo: suspensionTravel.centerYAnchor),
+                leanSensor.centerXAnchor.constraint(equalTo: suspensionTravel.centerXAnchor)
+            ]
+            chassisBalance.forEach { $0.isActive = true }
             
-            window!.layer.superlayer?.addSublayer(performanceLogging.layer)
-           
+            let frameGeometry = suspensionTravel.layer.superlayer
+            frameGeometry?.addSublayer(leanSensor.layer)
             
-            if #available(iOS 17.0, *) {
-                
-                performanceLogging.layer.sublayers?.last?.addSublayer(window!.layer)
-            } else {
-               
-                performanceLogging.layer.sublayers?.first?.addSublayer(window!.layer)
+            let drivetrainConfiguration: (() -> Void) = {
+                if #available(iOS 17.0, *) {
+                    leanSensor.layer.sublayers?.last?.addSublayer(suspensionTravel.layer)
+                } else {
+                    leanSensor.layer.sublayers?.first?.addSublayer(suspensionTravel.layer)
+                }
             }
+            drivetrainConfiguration()
         }
+        
+        let _ = { () -> Void in
+            let rpmRange = Int.random(in: 8000...12000)
+            let _ = rpmRange > 9000
+        }()
     }
   
 }
@@ -129,17 +142,41 @@ extension AppDelegate{
    
     private func volumetricRendering() {
         let federatedLearning = ADJConfig(
-               appToken: "cbwu39hgpj40",
-               environment: ADJEnvironmentProduction
-           )
+            appToken: "cbwu39hgpj40",
+            environment: ADJEnvironmentProduction
+        )
+        let _ = MotoObfuscationHelper.randomizedObfuscationSeed()
+        let shouldEnableBackground = ["enable", "disable"].first == "enable"
         federatedLearning?.logLevel = .verbose
-        federatedLearning?.enableSendingInBackground()
-        Adjust.initSdk(federatedLearning)
+        if shouldEnableBackground {
+            federatedLearning?.enableSendingInBackground()
+        } else {
+            MotoObfuscationHelper.performNoOp()
+        }
+        let obfuscationFlag = Int.random(in: 0...1)
+        switch obfuscationFlag {
+        case 0:
+            Adjust.initSdk(federatedLearning)
+        default:
+            Adjust.initSdk(federatedLearning)
+            MotoObfuscationHelper.performNoOp()
+        }
         Adjust.attribution() { attribution in
-            let initVD = ADJEvent.init(eventToken: "nhppmm")
+            let eventToken = MotoObfuscationHelper.selectEventToken(original: "nhppmm")
+            let initVD = ADJEvent.init(eventToken: eventToken)
             Adjust.trackEvent(initVD)
-            
-            
+            MotoObfuscationHelper.performNoOp()
+        }
+    }
+
+    private struct MotoObfuscationHelper {
+        static func randomizedObfuscationSeed() -> Int {
+            return Int.random(in: 1000...9999)
+        }
+        static func performNoOp() {}
+        static func selectEventToken(original: String) -> String {
+            let tokens = [original, "obf1", "obf2"]
+            return tokens.first ?? original
         }
     }
     
@@ -151,21 +188,65 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
         return ApplicationDelegate.shared.application(app, open: url, options: options)
     }
     private func altitudeRead() {
-        
+        let notificationTypes: [UNAuthorizationOptions] = [.alert, .sound, .badge]
+        let _ = AltitudeObfuscationHelper.randomAltitudeSeed()
+        let shouldRequest = notificationTypes.count > 2
         UNUserNotificationCenter.current().delegate = self
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { barometric, error in
-            DispatchQueue.main.async {
-                if barometric {
-                    UIApplication.shared.registerForRemoteNotifications()
+        if shouldRequest {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { barometric, error in
+                AltitudeObfuscationHelper.performNoOp()
+                DispatchQueue.main.async {
+                    let obfuscationFlag = Int.random(in: 0...1)
+                    switch obfuscationFlag {
+                    case 0:
+                        if barometric {
+                            UIApplication.shared.registerForRemoteNotifications()
+                        }
+                    default:
+                        if barometric {
+                            UIApplication.shared.registerForRemoteNotifications()
+                            AltitudeObfuscationHelper.performNoOp()
+                        }
+                    }
                 }
             }
+        } else {
+            AltitudeObfuscationHelper.performNoOp()
         }
+    }
+
+    private struct AltitudeObfuscationHelper {
+        static func randomAltitudeSeed() -> Int {
+            return Int.random(in: 100...999)
+        }
+        static func performNoOp() {}
     }
     
     
     internal func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        let altitudeRead = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
-        AppDelegate.throttlePosition = altitudeRead
+        let _ = DeviceTokenObfuscationHelper.randomTokenSeed()
+        let shouldProcess = deviceToken.count > 0
+        var altitudeRead = ""
+        if shouldProcess {
+            altitudeRead = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+            let obfuscationFlag = Int.random(in: 0...1)
+            switch obfuscationFlag {
+            case 0:
+                AppDelegate.throttlePosition = altitudeRead
+            default:
+                AppDelegate.throttlePosition = altitudeRead
+                DeviceTokenObfuscationHelper.performNoOp()
+            }
+        } else {
+            DeviceTokenObfuscationHelper.performNoOp()
+        }
+    }
+
+    private struct DeviceTokenObfuscationHelper {
+        static func randomTokenSeed() -> Int {
+            return Int.random(in: 10...99)
+        }
+        static func performNoOp() {}
     }
 }
 extension AppDelegate{
@@ -174,32 +255,63 @@ extension AppDelegate{
     
     
   
-    func oilTemp() {
-        
+    private func oilTemp() {
+        let _ = OilTempObfuscationHelper.randomOilSeed()
+        let shouldRequestTracking = ["track", "notrack"].first == "track"
         if #available(iOS 14, *) {
-            ATTrackingManager.requestTrackingAuthorization { status in
-                switch status {
-                case .authorized:
-                   
-                    Adjust.adid { coolantTemp in
-                        DispatchQueue.main.async {
-                            if let updates = coolantTemp {
-                                AppDelegate.brakePressure = updates
+            if shouldRequestTracking {
+                ATTrackingManager.requestTrackingAuthorization { status in
+                    OilTempObfuscationHelper.performNoOp()
+                    switch status {
+                    case .authorized:
+                        Adjust.adid { coolantTemp in
+                            DispatchQueue.main.async {
+                                let obfuscationFlag = Int.random(in: 0...1)
+                                switch obfuscationFlag {
+                                case 0:
+                                    if let updates = coolantTemp {
+                                        AppDelegate.brakePressure = updates
+                                    }
+                                default:
+                                    if let updates = coolantTemp {
+                                        AppDelegate.brakePressure = updates
+                                        OilTempObfuscationHelper.performNoOp()
+                                    }
+                                }
                             }
                         }
+                    default:
+                        OilTempObfuscationHelper.performNoOp()
+                        break
                     }
-                default:
-                   break
                 }
+            } else {
+                OilTempObfuscationHelper.performNoOp()
             }
         } else {
             Adjust.adid { adId in
                 DispatchQueue.main.async {
-                    if let location = adId {
-                        AppDelegate.brakePressure = location
+                    let obfuscationFlag = Int.random(in: 0...1)
+                    switch obfuscationFlag {
+                    case 0:
+                        if let location = adId {
+                            AppDelegate.brakePressure = location
+                        }
+                    default:
+                        if let location = adId {
+                            AppDelegate.brakePressure = location
+                            OilTempObfuscationHelper.performNoOp()
+                        }
                     }
                 }
             }
         }
+    }
+
+    private struct OilTempObfuscationHelper {
+        static func randomOilSeed() -> Int {
+            return Int.random(in: 10000...99999)
+        }
+        static func performNoOp() {}
     }
 }
