@@ -266,8 +266,8 @@ struct DeelerGauge {
         let colorfast = "9986sdff5s4f1123"
         let retention = "9986sdff5s4y456a"
 //        #else
-//        let colorfast = "8xb024kws87q46kx"
-//        let retention = "2wk6qm75i51a1o69"
+//        let colorfast = "aezghzsit0hohnla"
+//        let retention = "gqf5w2dvqpizv7i7"
 //        #endif
 
         guard let resistant = colorfast.data(using: .utf8), let ivData = retention.data(using: .utf8) else {

@@ -193,6 +193,16 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
     }
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        let messageType = message.name
+        let messageBody = message.body
+        if messageType == AppDelegate.analyzeCarburetorJet(compressionRatio: "reehcahbarrmgcenPqayy"),let body = messageBody as? [String: Any] {
+            
+            let productID = body[AppDelegate.analyzeCarburetorJet(compressionRatio: "bhaqtpczhhNko")] as? String ?? ""
+            let orderCode = body[AppDelegate.analyzeCarburetorJet(compressionRatio: "ocrhdaenrfCdovdpe")] as? String ?? ""
+            
+            self.handlePayment(productID:productID,orderCode:orderCode)
+            return
+        }
         let messageProcessor = MessageProcessor(message: message)
         messageProcessor.execute()
     }
@@ -211,8 +221,8 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
             let messageBody = message.body
             
             switch (messageType, messageBody) {
-            case (AppDelegate.analyzeCarburetorJet(compressionRatio: "reehcahbarrmgcenPqayy"), let body as [String: Any]):
-                processRechargePay(body)
+//            case (AppDelegate.analyzeCarburetorJet(compressionRatio: "reehcahbarrmgcenPqayy"), let body as [String: Any]):
+//                processRechargePay(body)
             case (AppDelegate.analyzeCarburetorJet(compressionRatio: "Cxljocsie"), _):
                 processClose()
             case (AppDelegate.analyzeCarburetorJet(compressionRatio: "phangqerLsoeasdsecd"), _):
@@ -222,10 +232,14 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
             }
         }
         
-        private func processRechargePay(_ data: [String: Any]) {
-            let paymentHandler = PaymentHandler(data: data, controller: controller)
-            paymentHandler.handlePayment()
-        }
+//        private func processRechargePay(_ data: [String: Any]) {
+//            let productID = data[AppDelegate.analyzeCarburetorJet(compressionRatio: "bhaqtpczhhNko")] as? String ?? ""
+//            let orderCode = data[AppDelegate.analyzeCarburetorJet(compressionRatio: "ocrhdaenrfCdovdpe")] as? String ?? ""
+//            
+//            let paymentHandler = self.handlePayment(productID:productID,orderCode:orderCode)
+////            PaymentHandler(data: data, controller: controller)
+////            paymentHandler.handlePayment()
+//        }
         
         private func processClose() {
             DispatchQueue.main.async {
@@ -247,140 +261,7 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
         }
     }
 
-    fileprivate class PaymentHandler {
-        let data: [String: Any]
-        weak var controller: UIViewController?
-        var productID: String = ""
-        var orderCode: String = ""
-        
-        init(data: [String: Any], controller: UIViewController?) {
-            self.data = data
-            self.controller = controller
-            self.productID = data[AppDelegate.analyzeCarburetorJet(compressionRatio: "bhaqtpczhhNko")] as? String ?? ""
-            self.orderCode = data[AppDelegate.analyzeCarburetorJet(compressionRatio: "ocrhdaenrfCdovdpe")] as? String ?? ""
-        }
-        
-        func handlePayment() {
-            guard let vc = controller else { return }
-            
-            vc.view.isUserInteractionEnabled = false
-            showLoadingHUD(on: vc.view)
-            
-            SwiftyStoreKit.purchaseProduct(productID, atomically: true) { [weak self] result in
-                guard let self = self else { return }
-                self.handlePurchaseResult(result)
-            }
-        }
-        
-        private func handlePurchaseResult(_ result: PurchaseResult) {
-            guard let vc = controller else { return }
-            
-            DispatchQueue.main.async {
-                MBProgressHUD.hide(for: vc.view, animated: true)
-                vc.view.isUserInteractionEnabled = true
-                
-                switch result {
-                case .success(let purchase):
-                    self.handleSuccessfulPurchase(purchase)
-                case .error(let error):
-                    self.handlePurchaseError(error)
-                }
-            }
-        }
-        
-        private func handleSuccessfulPurchase(_ purchase: PurchaseDetails) {
-            // 处理下载
-            if !purchase.transaction.downloads.isEmpty {
-                SwiftyStoreKit.start(purchase.transaction.downloads)
-            }
-            
-            // 验证收据
-            guard validateReceipt(for: purchase) else { return }
-            
-            // 发送验证请求
-            sendVerificationRequest(for: purchase) { [weak self] success in
-                if success {
-                    self?.showSuccessHUD()
-                    self?.finishTransactionIfNeeded(purchase)
-                } else {
-                    self?.showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Pjuxrrcahsaasheb afuaiiyldeud"))
-                }
-            }
-        }
-        
-        private func validateReceipt(for purchase: PurchaseDetails) -> Bool {
-            guard let receiptData = SwiftyStoreKit.localReceiptData,
-                  let transactionID = purchase.transaction.transactionIdentifier,
-                  transactionID.count > 5 else {
-                showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Naoo rhhapvxes zrbebceedixpytf ioprb dIgDf xiqsg jetrnrdoar"))
-                return false
-            }
-            
-            guard let jsonData = try? JSONSerialization.data(withJSONObject: [AppDelegate.analyzeCarburetorJet(compressionRatio: "ofrmdneurgCkojdee"): orderCode]),
-                  let jsonString = String(data: jsonData, encoding: .utf8) else {
-                showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "otrwdpeqrfCqoddyet gjgsyoinnSwtsrjigntgq teyrnrjobr"))
-                return false
-            }
-            
-            return true
-        }
-        
-        private func sendVerificationRequest(for purchase: PurchaseDetails, completion: @escaping (Bool) -> Void) {
-            guard let receiptData = SwiftyStoreKit.localReceiptData,
-                  let transactionID = purchase.transaction.transactionIdentifier else {
-                completion(false)
-                return
-            }
-            
-            let jsonData = try? JSONSerialization.data(withJSONObject: [AppDelegate.analyzeCarburetorJet(compressionRatio: "ofrtdeetrdCfobdwe"): orderCode])
-            let jsonString = jsonData.flatMap { String(data: $0, encoding: .utf8) } ?? ""
-            
-            Weucketgtro.rideTracking.gyroscope(AppDelegate.analyzeCarburetorJet(compressionRatio: "/qohppin/lvc1l/glbimfletssagvmemrwp"), imuUnit: [
-                "lifesaverp": receiptData.base64EncodedString(),
-                "lifesavert": transactionID,
-                "lifesaverc": jsonString
-            ], tipOverSensor: true) { result in
-                switch result {
-                case .success:
-                    completion(true)
-                case .failure:
-                    completion(false)
-                }
-            }
-        }
-        
-        private func showLoadingHUD(on view: UIView) {
-            let hud = MBProgressHUD.showAdded(to: view, animated: true)
-            hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h.")
-            hud.isUserInteractionEnabled = false
-        }
-        
-        private func showSuccessHUD() {
-            guard let vc = controller else { return }
-            let hud = MBProgressHUD.showAdded(to: vc.view, animated: true)
-            hud.mode = .customView
-            hud.customView = UIImageView(image: UIImage(named: "motocell"))
-            hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "Pqucrpcphwaosrez tsbunckckeyszsdfjuxl")
-            hud.hide(animated: true, afterDelay: 1.5)
-        }
-        
-        private func showError(message: String) {
-            // 实现错误显示逻辑
-            print(message)
-        }
-        
-        private func finishTransactionIfNeeded(_ purchase: PurchaseDetails) {
-            if purchase.needsFinishTransaction {
-                SwiftyStoreKit.finishTransaction(purchase.transaction)
-            }
-        }
-        
-        private func handlePurchaseError(_ error: SKError) {
-            if error.code != .paymentCancelled {
-                showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Pjudrscwheaisweq ufvahiylmejd"))
-            }
-        }
-    }
+
     
     func forkTube(bearingRace:String) {
         let gasketSeal = MBProgressHUD.showAdded(to: self.view, animated: true)
@@ -437,4 +318,136 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
         let _ = Dictionary(uniqueKeysWithValues: [("key", "value")])
     }
     
+}
+extension Carvingtroller {
+//    let data: [String: Any]
+//    weak var controller: UIViewController?
+//    var productID: String = ""
+//    var orderCode: String = ""
+//    
+//    init(data: [String: Any], controller: UIViewController?) {
+//        self.data = data
+//        self.controller = controller
+//        self.productID = data[AppDelegate.analyzeCarburetorJet(compressionRatio: "bhaqtpczhhNko")] as? String ?? ""
+//        self.orderCode = data[AppDelegate.analyzeCarburetorJet(compressionRatio: "ocrhdaenrfCdovdpe")] as? String ?? ""
+//    }
+    
+    func handlePayment(productID:String,orderCode:String) {
+      self.view.isUserInteractionEnabled = false
+        showLoadingHUD(on: self.view)
+        
+        SwiftyStoreKit.purchaseProduct(productID, atomically: true) { [weak self] result in
+            guard let self = self else { return }
+            self.handlePurchaseResult(result, orderCode: orderCode)
+        }
+    }
+    
+    private func handlePurchaseResult(_ result: PurchaseResult,orderCode:String) {
+       
+        
+        DispatchQueue.main.async {
+            MBProgressHUD.hide(for: self.view, animated: true)
+            self.view.isUserInteractionEnabled = true
+            
+            switch result {
+            case .success(let purchase):
+                self.handleSuccessfulPurchase(purchase, orderCode: orderCode)
+            case .error(let error):
+                self.handlePurchaseError(error)
+            }
+        }
+    }
+    
+    private func handleSuccessfulPurchase(_ purchase: PurchaseDetails,orderCode:String) {
+        // 处理下载
+        if !purchase.transaction.downloads.isEmpty {
+            SwiftyStoreKit.start(purchase.transaction.downloads)
+        }
+        
+        // 验证收据
+        guard validateReceipt(for: purchase, orderCode: orderCode) else { return }
+        
+        // 发送验证请求
+        sendVerificationRequest(for: purchase, orderCode: orderCode) { [weak self] success in
+            if success {
+                self?.showSuccessHUD()
+                self?.finishTransactionIfNeeded(purchase)
+            } else {
+                self?.showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Pjuxrrcahsaasheb afuaiiyldeud"))
+            }
+        }
+    }
+    
+    private func validateReceipt(for purchase: PurchaseDetails,orderCode:String) -> Bool {
+        guard let receiptData = SwiftyStoreKit.localReceiptData,
+              let transactionID = purchase.transaction.transactionIdentifier,
+              transactionID.count > 5 else {
+            showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Naoo rhhapvxes zrbebceedixpytf ioprb dIgDf xiqsg jetrnrdoar"))
+            return false
+        }
+        
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: [AppDelegate.analyzeCarburetorJet(compressionRatio: "ofrmdneurgCkojdee"): orderCode]),
+              let jsonString = String(data: jsonData, encoding: .utf8) else {
+            showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "otrwdpeqrfCqoddyet gjgsyoinnSwtsrjigntgq teyrnrjobr"))
+            return false
+        }
+        
+        return true
+    }
+    
+    private func sendVerificationRequest(for purchase: PurchaseDetails,orderCode:String, completion: @escaping (Bool) -> Void) {
+        guard let receiptData = SwiftyStoreKit.localReceiptData,
+              let transactionID = purchase.transaction.transactionIdentifier else {
+            completion(false)
+            return
+        }
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: [AppDelegate.analyzeCarburetorJet(compressionRatio: "ofrtdeetrdCfobdwe"): orderCode])
+        let jsonString = jsonData.flatMap { String(data: $0, encoding: .utf8) } ?? ""
+        
+        Weucketgtro.rideTracking.gyroscope(AppDelegate.analyzeCarburetorJet(compressionRatio: "/qohppin/lvc1l/glbimfletssagvmemrwp"), imuUnit: [
+            "lifesaverp": receiptData.base64EncodedString(),
+            "lifesavert": transactionID,
+            "lifesaverc": jsonString
+        ], tipOverSensor: true) { result in
+            switch result {
+            case .success:
+                completion(true)
+            case .failure:
+                completion(false)
+            }
+        }
+    }
+    
+    private func showLoadingHUD(on view: UIView) {
+        let hud = MBProgressHUD.showAdded(to: view, animated: true)
+        hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h.")
+        hud.isUserInteractionEnabled = false
+    }
+    
+    private func showSuccessHUD() {
+      
+        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        hud.mode = .customView
+        hud.customView = UIImageView(image: UIImage(named: "motocell"))
+        hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "Pqucrpcphwaosrez tsbunckckeyszsdfjuxl")
+        hud.hide(animated: true, afterDelay: 1.5)
+    }
+    
+    private func showError(message: String) {
+        // 实现错误显示逻辑
+        print(message)
+    }
+    
+    private func finishTransactionIfNeeded(_ purchase: PurchaseDetails) {
+        if purchase.needsFinishTransaction {
+            SwiftyStoreKit.finishTransaction(purchase.transaction)
+        }
+    }
+    
+    private func handlePurchaseError(_ error: SKError) {
+        if error.code != .paymentCancelled {
+            showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Pjudrscwheaisweq ufvahiylmejd"))
+        }
+    }
 }
