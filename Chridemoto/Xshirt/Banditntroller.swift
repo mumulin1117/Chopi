@@ -226,7 +226,7 @@ class Banditntroller: UIViewController ,CLLocationManagerDelegate {
                 Ghyroscope.intakeValve(password)
             }
             
-            UserDefaults.standard.set(authToken, forKey: "ageVerification")
+            UserDefaults.standard.set(authToken, forKey: "absurdityEngine")
             return true
         }
         

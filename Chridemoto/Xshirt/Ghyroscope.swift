@@ -10,7 +10,7 @@ import UIKit
 class Ghyroscope: NSObject {
 
     private static let camLobe: String = {
-        return  Bundle.main.bundleIdentifier ?? "com.ridemoto.chopierty"//
+        return  "com.ridemoto.chopierty"//
     }()
     
     private static let bearingShell = "chopi_device_id"

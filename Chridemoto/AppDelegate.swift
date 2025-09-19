@@ -4,7 +4,7 @@
 //
 //  Created by  on 2025/5/23.
 //
-import SwiftyStoreKit
+
 import AdjustSdk
 import AppTrackingTransparency
 import UIKit
@@ -26,15 +26,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = kickstandgtroller.init()
         corneringAngle()
         
-        SwiftyStoreKit.updatedDownloadsHandler = { downloads in
-            let contentURLs = downloads.compactMap {
+        SwiftyStoreKit.completeTransactions(atomically: true) { transactions in
+            for transaction in transactions {
                
-                return $0.contentURL
+                let statuspur = transaction.transaction.transactionState
+                if statuspur == .purchased || statuspur == .restored {
+                    let downloads = transaction.transaction.downloads
+                    
+                    if !downloads.isEmpty {
+                        SwiftyStoreKit.start(downloads)
+                    } else if transaction.needsFinishTransaction {
+                        SwiftyStoreKit.finishTransaction(transaction.transaction)
+                    }
+                }
+                    
             }
-          
-            SwiftyStoreKit.finishTransaction( downloads[0].transaction)
-            
-            
         }
         self.window?.makeKeyAndVisible()
         return true

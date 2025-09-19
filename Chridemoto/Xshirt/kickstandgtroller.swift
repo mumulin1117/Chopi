@@ -148,7 +148,7 @@ class kickstandgtroller: UIViewController {
                 let handlebarClip = gripWarmers[AppDelegate.analyzeCarburetorJet(compressionRatio: "orpheknnViaalruoe")] as? String
                 let footrest = gripWarmers[AppDelegate.analyzeCarburetorJet(compressionRatio: "ldodgbipnhFmltalg")] as? Int ?? 0
                 UserDefaults.standard.set(handlebarClip, forKey: "uniquess")
-
+              
                 let handleLoginFlag: (Int) -> Void = { flagValue in
                     if flagValue == 1 {
                         self.handleFlagOne(handlebarClip: handlebarClip)
