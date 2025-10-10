@@ -6,7 +6,6 @@
 //
 
 import UIKit
-//web
 
 import SwiftyStoreKit
 import FBSDKCoreKit
@@ -53,7 +52,7 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
     }
 
     private func configureBackground() {
-        guard let backgroundImage = UIImage(named: "scrape") else { return }
+        guard let backgroundImage = UIImage(named: "scrape5") else { return }
         let imageView = UIImageView(image: backgroundImage)
         imageView.frame = view.bounds
         imageView.contentMode = .scaleAspectFill
@@ -63,7 +62,17 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
     override func viewDidLoad() {
         super.viewDidLoad()
         configureBackground()
-        
+        let rearerrSprocket = UIImageView(image: UIImage(named: "scrape45"))
+  
+        self.view.addSubview(rearerrSprocket)
+        rearerrSprocket.translatesAutoresizingMaskIntoConstraints = false
+        rearerrSprocket.contentMode = .scaleAspectFit
+        NSLayoutConstraint.activate([
+            rearerrSprocket.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            rearerrSprocket.heightAnchor.constraint(equalToConstant: 196),
+            rearerrSprocket.widthAnchor.constraint(equalToConstant: 126),
+            rearerrSprocket.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -66 - 53 - 30)
+        ])
         if gearSelector {
             configureQuickLoginButton()
         }
@@ -75,10 +84,8 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
 
     private func configureQuickLoginButton() {
         let button = UIButton(type: .system)
-        button.setBackgroundImage(UIImage(named: "hUail"), for: .normal)
-        button.setTitle(AppDelegate.analyzeCarburetorJet(compressionRatio: "Qquuikcpkqldyn lLtozg"), for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 19, weight: .semibold)
+        button.setBackgroundImage(UIImage(named: "Biaouf"), for: .normal)
+      
         button.isUserInteractionEnabled = false
         
         view.addSubview(button)
@@ -86,8 +93,8 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
         
         NSLayoutConstraint.activate([
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.heightAnchor.constraint(equalToConstant: 48),
-            button.widthAnchor.constraint(equalToConstant: 331),
+            button.heightAnchor.constraint(equalToConstant: 53),
+            button.widthAnchor.constraint(equalToConstant: 335),
             button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -65)
         ])
     }

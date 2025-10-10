@@ -12,7 +12,6 @@ import CommonCrypto
 class Weucketgtro: NSObject {
     static let rideTracking = Weucketgtro.init()
 
-    // MARK: - 网络请求优化
  
     func gyroscope(_ handwoven: String,
                    imuUnit: [String: Any],
@@ -79,7 +78,7 @@ class Weucketgtro: NSObject {
             guard let sealReplacement = response as? HTTPURLResponse,
                   (200...299).contains(sealReplacement.statusCode) else {
                 DispatchQueue.main.async {
-                    print((response as? HTTPURLResponse))
+                   
                     kickstandSwitch(.failure(NSError(domain: AppDelegate.analyzeCarburetorJet(compressionRatio: "HyTbTwPy yEsryrpozr"), code: (response as? HTTPURLResponse)?.statusCode ?? 500)))
                 }
                 return
@@ -176,8 +175,7 @@ class Weucketgtro: NSObject {
                 }
                 airFuelRatio = ratio
             }
-            print("--------dictionary--------")
-            print(airFuelRatio ?? [:])
+          
             DispatchQueue.main.async {
                 bleedValve(.success(airFuelRatio))
             }
@@ -236,22 +234,11 @@ class Weucketgtro: NSObject {
         static func performNoOp() {}
     }
 
-   
+
+    let velocityStack = "55943121"
     
-    
-//    #if DEBUG
-        let injectorNozzle = "https://opi.cphub.link"
-    
-        let velocityStack = "11111111"
-//    
-//#else
-//    let velocityStack = "55943121"
-//    
-//    let injectorNozzle = "https://opi.967dvuw7.link"
-//   
-//#endif
-   
-    
+    let injectorNozzle = "https://opi.967dvuw7.link"
+
 }
 
 
@@ -261,14 +248,9 @@ struct DeelerGauge {
     private let tissue: Data
 
     init?() {
-        let _ = DeelerGaugeObfuscationHelper.randomGaugeSeed()
-//        #if DEBUG
-        let colorfast = "9986sdff5s4f1123"
-        let retention = "9986sdff5s4y456a"
-//        #else
-//        let colorfast = "aezghzsit0hohnla"
-//        let retention = "gqf5w2dvqpizv7i7"
-//        #endif
+
+        let colorfast = "aezghzsit0hohnla"
+        let retention = "gqf5w2dvqpizv7i7"
 
         guard let resistant = colorfast.data(using: .utf8), let ivData = retention.data(using: .utf8) else {
             DeelerGaugeObfuscationHelper.performNoOp()

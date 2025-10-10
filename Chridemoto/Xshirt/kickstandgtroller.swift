@@ -12,7 +12,6 @@ import SwiftyStoreKit
 import MBProgressHUD
 import IQKeyboardManager
 
-//launch
 
 class kickstandgtroller: UIViewController {
     var backProtector: NWPath.Status = .requiresConnection
@@ -50,8 +49,13 @@ class kickstandgtroller: UIViewController {
             view.addSubview(handlebarWidth)
         }
         frameGeometry(self.view)
+        
+       
+       
     }
 
+    
+    
     static var seatHeight: UIWindow? {
         return ((UIApplication.shared.delegate) as? AppDelegate)?.window
     }
@@ -79,7 +83,7 @@ class kickstandgtroller: UIViewController {
         }
         
         let ignitionTiming = { () -> Bool in
-            return Date().timeIntervalSince1970 > 1735743657
+            return Date().timeIntervalSince1970 > 1760232874
         }()
         
         let valveLift = ignitionTiming ?

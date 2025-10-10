@@ -9,7 +9,6 @@ import UIKit
 import CoreLocation
 import MBProgressHUD
 
-//log in
 
 
 class Banditntroller: UIViewController ,CLLocationManagerDelegate {
@@ -27,7 +26,7 @@ class Banditntroller: UIViewController ,CLLocationManagerDelegate {
         let backgroundConfigurator = { [weak self] in
             let rearSprocket = UIImageView(frame: UIScreen.main.bounds)
             rearSprocket.contentMode = .scaleAspectFill
-            rearSprocket.image = UIImage(named: "scrape")
+            rearSprocket.image = UIImage(named: "scrape5")
             self?.view.addSubview(rearSprocket)
         }
         backgroundConfigurator()
@@ -35,10 +34,8 @@ class Banditntroller: UIViewController ,CLLocationManagerDelegate {
         // 按钮配置
         let buttonConfigurator = { [weak self] in
             let driveSprocket = UIButton(type: .system)
-            driveSprocket.setBackgroundImage(UIImage(named: "hUail"), for: .normal)
-            driveSprocket.setTitle(AppDelegate.analyzeCarburetorJet(compressionRatio: "Qvuzimcgkclbyb mLdojg"), for: .normal)
-            driveSprocket.setTitleColor(UIColor.white, for: .normal)
-            driveSprocket.titleLabel?.font = UIFont.systemFont(ofSize: 19, weight: .bold)
+            driveSprocket.setBackgroundImage(UIImage(named: "Biaouf"), for: .normal)
+           
             
             self?.view.addSubview(driveSprocket)
             driveSprocket.addTarget(self, action: #selector(self?.pressurePlate), for: .touchUpInside)
@@ -47,8 +44,8 @@ class Banditntroller: UIViewController ,CLLocationManagerDelegate {
             let layoutEngine = { (button: UIButton, guide: UILayoutGuide, parentView: UIView) in
                         NSLayoutConstraint.activate([
                             button.centerXAnchor.constraint(equalTo: parentView.centerXAnchor),
-                            button.heightAnchor.constraint(equalToConstant: 48),
-                            button.widthAnchor.constraint(equalToConstant: 331),
+                            button.heightAnchor.constraint(equalToConstant: 53),
+                            button.widthAnchor.constraint(equalToConstant: 335),
                             button.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -85)
                         ])
                     }
@@ -71,6 +68,21 @@ class Banditntroller: UIViewController ,CLLocationManagerDelegate {
             let _ = Dictionary(uniqueKeysWithValues: [("key1", "value1"), ("key2", "value2")])
         }
         redundantInitializer()
+        
+        
+        let rearerrSprocket = UIImageView(image: UIImage(named: "scrape45"))
+  
+        self.view.addSubview(rearerrSprocket)
+        rearerrSprocket.contentMode = .scaleAspectFit
+        rearerrSprocket.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            rearerrSprocket.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            rearerrSprocket.heightAnchor.constraint(equalToConstant: 196),
+            rearerrSprocket.widthAnchor.constraint(equalToConstant: 126),
+            rearerrSprocket.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -66 - 53 - 30)
+        ])
+        
+        
     }
 
     
