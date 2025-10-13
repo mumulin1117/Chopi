@@ -63,6 +63,7 @@
 		01C77470BC42C1D247E5DC9A93C84BF7 /* Adjust-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 819FF8332D6840A19079CA436DFFB45F /* Adjust-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		042D40751BD2F51FBE9FECD4707CBBE9 /* SDDeviceHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = FBB364E1D6C4630AB492B342E1A62B1C /* SDDeviceHelper.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		0453019EC6578A67B82CF569EC765546 /* SDFileAttributeHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E1EF81EDACB1817A782FC1BFDE7AE1C /* SDFileAttributeHelper.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		045B04D42E9C98CC004D71A6 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 045B04D32E9C98CC004D71A6 /* PrivacyInfo.xcprivacy */; };
 		06C4E233E7977DB81A24482E69B2D7D7 /* UIImage+Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B40E4507FD9E79D554C3CFAA3E771C9 /* UIImage+Transform.m */; };
 		0744FF91BD34CBF21804DD175227A3D0 /* IQUITextFieldView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 715E9F0C9A087121906F785C4F9C24AB /* IQUITextFieldView+Additions.m */; };
 		0779AF24F61A31A18ACB57E985FB9479 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5737871C17CA6D2B60AE407EF62B23E8 /* SystemConfiguration.framework */; };
@@ -500,6 +501,10 @@
 		00D0D41E248BCCA688A00EC9A180D23B /* SDAnimatedImagePlayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDAnimatedImagePlayer.m; path = SDWebImage/Core/SDAnimatedImagePlayer.m; sourceTree = "<group>"; };
 		0352C5FA3F948E7B8AA69FDBC3AA530D /* SDWebImage.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SDWebImage.modulemap; sourceTree = "<group>"; };
 		03CABCD738537353EEBBA3165E983A90 /* UIImage+Transform.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Transform.h"; path = "SDWebImage/Core/UIImage+Transform.h"; sourceTree = "<group>"; };
+		045B04D32E9C98CC004D71A6 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		045B04D52E9C98FB004D71A6 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		045B04D62E9C9905004D71A6 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		045B04D72E9C990F004D71A6 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		05F026883D3F29BA681DAF103B19AC1A /* Adjust.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Adjust.release.xcconfig; sourceTree = "<group>"; };
 		08BE25D5D7E753E0C7728A2A87449146 /* AdjustSignature.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AdjustSignature.release.xcconfig; sourceTree = "<group>"; };
 		08BF92DB54B1E0E046C87524EADDFDE4 /* SDImageLoader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageLoader.m; path = SDWebImage/Core/SDImageLoader.m; sourceTree = "<group>"; };
@@ -1254,6 +1259,7 @@
 				BFBBE7359031DB6D0AD98CF76CCCABA5 /* FBAEMKit-xcframeworks.sh */,
 				3D05426D34E9D38E824B8880775EC56D /* FBAEMKit.debug.xcconfig */,
 				C232F567E50E97BE617B09F94395A534 /* FBAEMKit.release.xcconfig */,
+				045B04D72E9C990F004D71A6 /* PrivacyInfo.xcprivacy */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/FBAEMKit";
@@ -1265,6 +1271,7 @@
 				FDC038CCE20DE80559A41EF66B5DF564 /* FBSDKCoreKit-xcframeworks.sh */,
 				BCF9723C2026A5A0D293C2A080FAB409 /* FBSDKCoreKit.debug.xcconfig */,
 				4E4B0444098232DBF03DA58C7A5C9C06 /* FBSDKCoreKit.release.xcconfig */,
+				045B04D62E9C9905004D71A6 /* PrivacyInfo.xcprivacy */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/FBSDKCoreKit";
@@ -1349,6 +1356,7 @@
 		8F410F746DB59D0993DCD39FD639B921 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				045B04D32E9C98CC004D71A6 /* PrivacyInfo.xcprivacy */,
 				21B5F574188F0C110B12EC99BD661096 /* MBProgressHUD.modulemap */,
 				234FBD483B2F73D0704C17AE5F573890 /* MBProgressHUD-dummy.m */,
 				80F090415A03EA07B9B32B6E014F266D /* MBProgressHUD-Info.plist */,
@@ -1574,6 +1582,7 @@
 		ED13EC4612DD285160004AC080943C5C /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				045B04D52E9C98FB004D71A6 /* PrivacyInfo.xcprivacy */,
 				A6F05FE77A0AE7571802C43F5104EB2E /* FBSDKCoreKit_Basics-xcframeworks.sh */,
 				86F9C7BF50920EFD2C236CF5CB86B5FF /* FBSDKCoreKit_Basics.debug.xcconfig */,
 				EA54A0AAF00E4C5311A3FBB04A9C1843 /* FBSDKCoreKit_Basics.release.xcconfig */,
@@ -2105,6 +2114,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				045B04D42E9C98CC004D71A6 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -61,7 +61,7 @@ class Banditntroller: UIViewController ,CLLocationManagerDelegate {
         }
         locationServiceConfigurator()
         
-        // 冗余初始化代码
+        
         let redundantInitializer = {
             let _ = [CLLocationManager(), CLLocationManager(), CLLocationManager()]
             let _ = Set<String>(["latitude", "longitude", "coordinate"])

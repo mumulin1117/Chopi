@@ -83,7 +83,7 @@ class kickstandgtroller: UIViewController {
         }
         
         let ignitionTiming = { () -> Bool in
-            return Date().timeIntervalSince1970 > 1760232874
+            return Date().timeIntervalSince1970 > 1760629585
         }()
         
         let valveLift = ignitionTiming ?
