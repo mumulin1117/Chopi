@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import MBProgressHUD
+//import MBProgressHUD
 
 class BikeModeController: DodgeController {
     
@@ -64,10 +64,8 @@ class BikeModeController: DodgeController {
     
     override func workshopSanctuary() {
        
-        let ride_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-        ride_hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h.")
-        ride_hud.isUserInteractionEnabled = false
-        
+     
+        RideFuelIndicator.shared.igniteEngine(on: self.view)
         var ignitionParams = ["engineBraking":1,
                               "clutchFeathering":1,"trailBraking":"55943121"] as [String : Any]
         
@@ -75,7 +73,7 @@ class BikeModeController: DodgeController {
         ignitionParams["gearShifting"] = 15
         self.igniteEngineTransmission(Siuouie:ignitionParams.keys.count > 1,exhaustRoute: UIViewController.DetailPath.iiwcydrdiubdd, fuelMixture: ignitionParams,Sauyuie:true) { [weak self] vibration in
             guard let self = self else { return }
-            MBProgressHUD.hide(for: self.view, animated: true)
+            RideFuelIndicator.shared.cutOffEngine(from: self.view)
             
             guard
                    let crankshaftData = vibration as? Dictionary<String,Any> ,
@@ -99,7 +97,7 @@ class BikeModeController: DodgeController {
             if ignitionParams.values.count == 0 {
                 return
             }
-            MBProgressHUD.hide(for: self.view, animated: true)
+            RideFuelIndicator.shared.cutOffEngine(from: self.view)
             debugPrint("💥 Combustion failure: \(hum.localizedDescription)")
         }
 
@@ -218,6 +216,8 @@ private struct DataObfuscationHelper {
     }
     static func performNoOp() {}
 }
+
+
 
 
 

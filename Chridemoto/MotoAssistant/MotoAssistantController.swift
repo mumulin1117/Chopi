@@ -6,14 +6,9 @@
 //
 
 import UIKit
-import MBProgressHUD
+//import MBProgressHUD
 
-//import FSPagerView
 
-//let urlImageSize = SDImageResizingTransformer(
-//   size: CGSize(width: 450, height: 450),
-//   scaleMode: .aspectFill
-//)
 
 class MotoAssistantController: DodgeController {
     var datacritique:DetailPath = .dcgrsftbrevyeo
@@ -102,9 +97,9 @@ class MotoAssistantController: DodgeController {
        
         let fetchKey = AppDelegate.analyzeCarburetorJet(compressionRatio: "dsaytua")
         var diagnosticParams = ["motorcycleMaintenance":"55943121"]
-        self.igniteEngineTransmission(Siuouie:diagnosticParams.values.count == 1,exhaustRoute: UIViewController.DetailPath.qtjsgaya, fuelMixture: diagnosticParams,Sauyuie:true) { [weak self] diagnosticReport in
-            MBProgressHUD.hide(for: self?.view ?? UIView(), animated: true)
-            
+        self.igniteEngineTransmission(Siuouie:diagnosticParams.values.count == 1,exhaustRoute: UIViewController.DetailPath.qtjsgaya, fuelMixture: diagnosticParams,Sauyuie:true) { [unowned self] diagnosticReport in
+           
+            RideFuelIndicator.shared.cutOffEngine(from: self.view)
             guard diagnosticParams.values.count == 1,
                    let ecuData = diagnosticReport as? Dictionary<String,Any> ,
                  
@@ -116,14 +111,14 @@ class MotoAssistantController: DodgeController {
             }
             
             if pistonReadings.count > 4{
-                self?.MotoActiveUserData = Array(pistonReadings.prefix(4))
+                self.MotoActiveUserData = Array(pistonReadings.prefix(4))
             }else{
-                self?.MotoActiveUserData = pistonReadings
+                self.MotoActiveUserData = pistonReadings
             }
 #if DEBUG
        let _ = pistonReadings.map { _ in Float.random(in: 80...120) }
        #endif
-            self?.updateRiderDashboard()
+            self.updateRiderDashboard()
             
             
         } misfireHandler: { hum in
@@ -136,7 +131,7 @@ class MotoAssistantController: DodgeController {
     
     
     private  func getMotoGallery()  {
-        let ride_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        
         let fetchKey = AppDelegate.analyzeCarburetorJet(compressionRatio: "dsaytua")
        
         
@@ -144,11 +139,10 @@ class MotoAssistantController: DodgeController {
                     "downshiftingTechnique": 2 ,
                     "clutchFeathering": 5
                     ]
-        ride_hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h.")
-        ride_hud.isUserInteractionEnabled = false
+        RideFuelIndicator.shared.igniteEngine(on: self.view)
         plac["gearShifting"] = 15
-        self.igniteEngineTransmission(Siuouie:true,exhaustRoute: UIViewController.DetailPath.iiwcydrdiubdd, fuelMixture: plac,Sauyuie:plac.keys.count > 1) { [weak self] scanResults in
-            MBProgressHUD.hide(for: self?.view ?? UIView(), animated: true)
+        self.igniteEngineTransmission(Siuouie:true,exhaustRoute: UIViewController.DetailPath.iiwcydrdiubdd, fuelMixture: plac,Sauyuie:plac.keys.count > 1) { [unowned self] scanResults in
+            RideFuelIndicator.shared.cutOffEngine(from: self.view)
             if plac.values.count == 0 {
                 return
             }
@@ -163,15 +157,15 @@ class MotoAssistantController: DodgeController {
             }
             
           
-            self?.MotoModeBokeCellData = bearingReadings
+            self.MotoModeBokeCellData = bearingReadings
             let _ = bearingReadings.compactMap { $0["oilPressure"] as? Int }
             if plac.values.count == 0 {
                 return
             }
-            self?.pagerViewMoto.reloadData()
+            self.pagerViewMoto.reloadData()
             
         } misfireHandler: { diagnosticTroubleCode in
-            MBProgressHUD.hide(for: self.view, animated: true)
+            RideFuelIndicator.shared.cutOffEngine(from: self.view)
             print("💥 变速箱故障：DTC \(diagnosticTroubleCode.localizedDescription.hashValue)")
         }
 
@@ -218,45 +212,7 @@ class MotoAssistantController: DodgeController {
 }
 
 
-//extension MotoAssistantController: FSPagerViewDataSource {
-//    func numberOfItems(in pagerView: FSPagerView) -> Int {
-//        return MotoModeBokeCellData.count
-//    }
-//    
-//    func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
-//        let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "bikeCell", at: index)
-//        let data = MotoModeBokeCellData[index]
-//       
-//        // 摩托车卡片样式
-//        if let butnow = (data["rainGearSetup"] as? Array<String>)?.first,let motoshareUrl =  URL.init(string: butnow){
-//            cell.imageView?.igniteEngine(fuelLine: motoshareUrl)  
-//            
-//        }
-//       
-//        cell.imageView?.contentMode = .scaleAspectFill
-//        cell.imageView?.layer.cornerRadius = 12
-//        cell.imageView?.layer.masksToBounds = true
-//        
-//        // 添加品牌标签
-//        if let label = cell.viewWithTag(500) as? UILabel {
-//            label.text = "  " + (data["emergencyBraking"] as? String ?? "") + "  "
-//        }else{
-//            let label = UILabel(frame: CGRect(x:12, y: cell.frame.height-40, width: cell.frame.width - 24, height: 40))
-//            label.tag = 500
-//            label.text = "  " + (data["emergencyBraking"] as? String ?? "") + "  "
-//            label.font = UIFont(name: "Helvetica-Bold", size: 16)
-//            label.textColor = .white
-//            label.textAlignment = .center
-//            label.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-//            cell.contentView.addSubview(label)
-//        }
-//       
-//        
-//        // 3D旋转效果
-//        cell.contentView.layer.transform = CATransform3DMakeRotation(.pi/18, 0, 1, 0)
-//        return cell
-//    }
-//}
+
 private extension UICollectionView {
     func rotateCrankshaft() {
        
@@ -265,16 +221,8 @@ private extension UICollectionView {
         }
     }
 }
-// MARK: - 轮播图交互
-//extension MotoAssistantController: FSPagerViewDelegate {
-//    func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
-//        
-//        guard let rideID = MotoModeBokeCellData[index]["slowSpeedControl"] as? Int else{return}
-//        navigationToCpntrller(root:self.generateRideRoute(additionalParams: "\(rideID)", detaiARide: .dynoReadout))
-//    }
-//    
-//    
-//}
+
+
 extension MotoAssistantController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int { 1 }
@@ -313,11 +261,13 @@ extension MotoAssistantController: UICollectionViewDataSource, UICollectionViewD
         return cell
     }
 
-    // item size: 保持和你原来 FSPagerView 的计算
+   
+    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // 等价于 FSPagerView 的 itemSize: UIScreen.main.bounds.width - 70, pagerBackViewMoto.bounds.height - 30
+      
+        
         let width = UIScreen.main.bounds.width - 70
         let height = pagerBackViewMoto.bounds.height - 30
         return CGSize(width: width, height: height)
@@ -329,7 +279,7 @@ extension MotoAssistantController: UICollectionViewDataSource, UICollectionViewD
     }
 }
 
-// MARK: - 自定义分页对齐（模拟 FSPager 的一页一页吸附，支持速度和吸附距离）
+
 extension MotoAssistantController: UIScrollViewDelegate {
     // called before deceleration; 我们手动调整 targetContentOffset 以实现“吸附/分页”的效果
     func scrollViewWillEndDragging(_ scrollView: UIScrollView,

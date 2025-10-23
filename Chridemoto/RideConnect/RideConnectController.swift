@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import MBProgressHUD
+//import MBProgressHUD
 
 
 class RideConnectController: DodgeController {
@@ -69,16 +69,13 @@ class RideConnectController: DodgeController {
         
     }
     override func workshopSanctuary() {
-        let ride_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-        
-        ride_hud.isUserInteractionEnabled = false
-        ride_hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h.")
+        RideFuelIndicator.shared.igniteEngine(on: self.view)
         let userBuyID = UserDefaults.standard.object(forKey: "tintedVisor") as? Int
         
         let plac = ["mudGuardSetup":userBuyID]
         let fetchKey = AppDelegate.analyzeCarburetorJet(compressionRatio: "dsaytua")
         self.igniteEngineTransmission(Siuouie:true,exhaustRoute: datacritique, fuelMixture: plac,Sauyuie:true) { [self] vibration in
-            MBProgressHUD.hide(for: self.view, animated: true)
+            RideFuelIndicator.shared.cutOffEngine(from: self.view)
             
             guard
                    let motoBike = vibration as? Dictionary<String,Any> ,
@@ -94,7 +91,7 @@ class RideConnectController: DodgeController {
            
             
         } misfireHandler: { hum in
-            MBProgressHUD.hide(for: self.view, animated: true)
+            RideFuelIndicator.shared.cutOffEngine(from: self.view)
             self.dummyMotoObfuscation()
         }
 

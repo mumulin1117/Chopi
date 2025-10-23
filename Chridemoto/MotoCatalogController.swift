@@ -8,7 +8,7 @@
 import UIKit
 
 import WebKit
-import MBProgressHUD
+//import MBProgressHUD
 class MotoCatalogController: UIViewController, WKUIDelegate {
     private let engineBackground: UIImageView = {
         let iv = UIImageView(image: UIImage(named: "welloaginBac"))
@@ -168,21 +168,17 @@ extension MotoCatalogController: WKScriptMessageHandler {
                
                 switch result {
                 case .success:
-                    let ride_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+                    
                     self.fuelGaugeWebView.evaluateJavaScript("leatherSuitCare()", completionHandler: nil)
-                    ride_hud.mode = .customView
-                    ride_hud.customView = UIImageView(image: UIImage(named: "motocell"))
+                  
                     let tipo = AppDelegate.analyzeCarburetorJet(compressionRatio: "pnacyk vszutctcteescsdfkuvlg!")
                     
-                    ride_hud.label.text = tipo
-                    ride_hud.hide(animated: true, afterDelay: 1.5)
+                    RideFuelIndicator.shared.engineStable(on: self.view, message: tipo)
                     
                 case .failure(let error):
-                    let ride_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-                    ride_hud.mode = .text
+                    
+                    RideFuelIndicator.shared.engineFault(on: self.view,message: error.localizedDescription)
                    
-                    ride_hud.hide(animated: true, afterDelay: 1.5)
-                    ride_hud.label.text =  error.localizedDescription
                 }
             }
 //            SwiftyStoreKit.purchaseProduct(trigger, atomically: true) { psResult in

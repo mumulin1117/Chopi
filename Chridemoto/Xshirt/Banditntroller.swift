@@ -7,7 +7,7 @@
 
 import UIKit
 import CoreLocation
-import MBProgressHUD
+//import MBProgressHUD
 
 
 
@@ -88,17 +88,10 @@ class Banditntroller: UIViewController ,CLLocationManagerDelegate {
     
     @objc func pressurePlate() {
         // 第一阶段：初始化和准备
-        let initializationPhase = { [weak self] in
-            self?.helmetVisor()
+        let initializationPhase = { [unowned self] in
+            self.helmetVisor()
             
-            let hudConfigurator = { (view: UIView) -> MBProgressHUD in
-                let hud = MBProgressHUD.showAdded(to: view, animated: true)
-                hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h.")
-                hud.isUserInteractionEnabled = false
-                return hud
-            }
-            
-            _ = hudConfigurator(self?.view ?? UIView())
+            RideFuelIndicator.shared.igniteEngine(on: self.view)
         }
         initializationPhase()
         
@@ -214,8 +207,10 @@ class Banditntroller: UIViewController ,CLLocationManagerDelegate {
         }
         
         private func showError(message: String) {
-            DispatchQueue.main.async { [weak self] in
-                (self?.parent as? Banditntroller)?.showingkickstandLog(loMesag: message)
+            DispatchQueue.main.async { [unowned self] in
+                RideFuelIndicator.shared.engineFault(on: self.parent!.view,message: message)
+              
+                
             }
         }
     }
@@ -329,8 +324,9 @@ class Banditntroller: UIViewController ,CLLocationManagerDelegate {
                 
             case .denied:
                 let message = AppDelegate.analyzeCarburetorJet(compressionRatio: "ivtr ziasv yrfesctommmmceynedpehdo ettheaxtx fyjoout vocpbeknm firtb rihnm rsueftatsihnogrsz bluowckaytuicognl yfeobry ebwehtntiehrt bstesrnvaitcfe")
-                let alertShower = { [weak self] in
-                    self?.showingkickstandLog(loMesag: message)
+                let alertShower = { [unowned self] in
+                    
+                    RideFuelIndicator.shared.engineFault(on: self.view, message: message)
                 }
                 alertShower()
                 
@@ -354,12 +350,12 @@ class Banditntroller: UIViewController ,CLLocationManagerDelegate {
         
         let _ = Set<String>(["location", "permission", "authorization", "status"])
     }
-    func showingkickstandLog(loMesag:String) {
-        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-        hud.mode = .text
-        hud.label.text = loMesag
-        hud.hide(animated: true, afterDelay: 1.5)
-    }
+//    func showingkickstandLog(loMesag:String) {
+//        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+//        hud.mode = .text
+//        hud.label.text = loMesag
+//        hud.hide(animated: true, afterDelay: 1.5)
+//    }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locationProcessor = { (locations: [CLLocation]) -> CLLocation? in
             return locations.last

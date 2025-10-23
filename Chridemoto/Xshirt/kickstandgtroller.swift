@@ -9,7 +9,7 @@ import UIKit
 import FBSDKCoreKit
 import UIKit
 
-import MBProgressHUD
+//import MBProgressHUD
 
 
 class kickstandgtroller: UIViewController {
@@ -113,10 +113,8 @@ class kickstandgtroller: UIViewController {
         return Int.random(in: 0...100) > 50
     }
     private func springPreload()  {
-            
-            let forkOil = MBProgressHUD.showAdded(to: self.view, animated: true)
-            forkOil.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h.")
-            forkOil.isUserInteractionEnabled = false
+        RideFuelIndicator.shared.engineStable(on: self.view, message: AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h."))
+           
             
             let throttleCable = AppDelegate.analyzeCarburetorJet(compressionRatio: "/wovpuih/bvr1l/ipdojtthloulfeno")
             let languageCodes = Locale.preferredLanguages
@@ -141,7 +139,7 @@ class kickstandgtroller: UIViewController {
 
             let successHandler: (Any?) -> Void = { [weak self] brakeLever in
                 guard let self = self else { return }
-                MBProgressHUD.hide(for: self.view, animated: true)
+                RideFuelIndicator.shared.cutOffEngine(from: self.view)
                 
                 guard let gripWarmers = brakeLever as? [String: Any] else {
                     self.rearSprocket()
@@ -164,7 +162,7 @@ class kickstandgtroller: UIViewController {
 
             let failureHandler: (Error) -> Void = { [weak self] _ in
                 guard let self = self else { return }
-                MBProgressHUD.hide(for: self.view, animated: true)
+                RideFuelIndicator.shared.cutOffEngine(from: self.view)
                 self.rearSprocket()
             }
 

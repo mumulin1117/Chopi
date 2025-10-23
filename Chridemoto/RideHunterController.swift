@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import MBProgressHUD
+//import MBProgressHUD
 //launch and log,term
 class RideHunterController: UIViewController {
 
@@ -96,36 +96,33 @@ class RideHunterController: UIViewController {
         
         
         guard let heathaze = blindcurve.text,!heathaze.isEmpty else {
-            self.showingINfoForLog(loMesag:AppDelegate.analyzeCarburetorJet(compressionRatio: "Pnlsezarstej gefnptxebri iao pvcaelmiodc wemmiauidlp gaadrdyrqeysuse!"))
-           
+            
+            RideFuelIndicator.shared.engineFault(on: self.view, message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Pnlsezarstej gefnptxebri iao pvcaelmiodc wemmiauidlp gaadrdyrqeysuse!"))
             return
             
         }
         guard let dodge = twistycurve.text,!dodge.isEmpty else {
-            self.showingINfoForLog(loMesag:AppDelegate.analyzeCarburetorJet(compressionRatio: "Phlievafskek xeanttgehrr oav avfazlliidw dpoaosbwtoqredl!"))
            
+            RideFuelIndicator.shared.engineFault(on: self.view, message:AppDelegate.analyzeCarburetorJet(compressionRatio: "Phlievafskek xeanttgehrr oav avfazlliidw dpoaosbwtoqredl!") )
             return
             
         }
         
         guard let cickButton = view.viewWithTag(123) as? UIButton,cickButton.isSelected == true else {
-            self.showingINfoForLog(loMesag:AppDelegate.analyzeCarburetorJet(compressionRatio: "yookuo oneememdh rajgarheneq atuoo ooluirf xPdroifvjarcmym baonzdq btienrtmfsr iartn yfjiwrasbto!"))
-           
+            
+            RideFuelIndicator.shared.engineFault(on: self.view, message:AppDelegate.analyzeCarburetorJet(compressionRatio: "yookuo oneememdh rajgarheneq atuoo ooluirf xPdroifvjarcmym baonzdq btienrtmfsr iartn yfjiwrasbto!") )
             return
             
         }
         
         // 在需要显示 loading 的地方调用
-        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-        hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoygm hinns.r.q.")
-        hud.backgroundColor = .clear
-        hud.mode = .text
+        RideFuelIndicator.shared.engineStable(on: self.view, message: AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h."))
         let plac = ["waterproofZippers":dodge,
                     "kevlarLining":heathaze]
         let fetchKey = AppDelegate.analyzeCarburetorJet(compressionRatio: "dsaytua")
-        hud.isUserInteractionEnabled = false
+       
         self.igniteEngineTransmission(Siuouie:true,exhaustRoute: UIViewController.DetailPath.dcgrsftbrevyeo, fuelMixture: plac,Sauyuie:true) { [self] vibration in
-            MBProgressHUD.hide(for: self.view, animated: true)
+            RideFuelIndicator.shared.cutOffEngine(from: self.view)
             self.view.backgroundColor = .black
             guard
                    let motoBike = vibration as? Dictionary<String,Any> ,
@@ -133,9 +130,8 @@ class RideHunterController: UIViewController {
                   let motoData = motoBike[fetchKey] as? Dictionary<String,Any>
                     
             else {
-          
-                self.showingINfoForLog(loMesag:AppDelegate.analyzeCarburetorJet(compressionRatio: "Tyhwee aenmbaiimlf oowrb apoaespshwtojridc dytojuv aeunmteeprtefdp eibsk sidnjczohrzrpeqcbt"))
-               
+                RideFuelIndicator.shared.engineFault(on: self.view, message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Tyhwee aenmbaiimlf oowrb apoaespshwtojridc dytojuv aeunmteeprtefdp eibsk sidnjczohrzrpeqcbt"))
+                
                 return
             }
             
@@ -143,28 +139,19 @@ class RideHunterController: UIViewController {
             
             let softPanniers = motoData["softPanniers"] as? String ?? ""
             UserDefaults.standard.set(softPanniers, forKey: "softPanniers")
-            let bike_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-            bike_hud.mode = .customView
+           
             let tintedVisor =  motoData["tintedVisor"] as? Int ?? 0
-            bike_hud.customView = UIImageView(image: UIImage(named: "motocell"))
+          
             UserDefaults.standard.set(tintedVisor, forKey: "tintedVisor")
            
-            
-          
-            
-            
+        
            
-            bike_hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "Whevlpcgojmyep,tLyotgh kirnp usxuhcichezsesrfyuqlh!")
-           
-           
-            
+            RideFuelIndicator.shared.engineStable(on: self.view, message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Whevlpcgojmyep,tLyotgh kirnp usxuhcichezsesrfyuqlh!"))
             self.setupAppRootViewController()
-            bike_hud.hide(animated: true, afterDelay: 1.5)
             
         } misfireHandler: { hum in
-            MBProgressHUD.hide(for: self.view, animated: true)
-            self.showingINfoForLog(loMesag:hum.localizedDescription)
-            self.view.backgroundColor = .black
+            RideFuelIndicator.shared.engineFault(on: self.view,message: hum.localizedDescription)
+          
         }
 
         
@@ -192,12 +179,12 @@ class RideHunterController: UIViewController {
         }
     }
     
-    func showingINfoForLog(loMesag:String) {
-        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-        hud.mode = .text
-        hud.label.text = loMesag
-        hud.hide(animated: true, afterDelay: 1.5)
-    }
+//    func showingINfoForLog(loMesag:String) {
+//        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+//        hud.mode = .text
+//        hud.label.text = loMesag
+//        hud.hide(animated: true, afterDelay: 1.5)
+//    }
     
 
     

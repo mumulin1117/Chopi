@@ -12,7 +12,7 @@ import FBSDKCoreKit
 import WebKit
 
 import AdjustSdk
-import MBProgressHUD
+//import MBProgressHUD
 import StoreKit
 
 
@@ -133,9 +133,8 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
     }
 
     private func showLoadingHUD() {
-        let hud = MBProgressHUD.showAdded(to: view, animated: true)
-        hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h.")
-        hud.isUserInteractionEnabled = false
+      
+        RideFuelIndicator.shared.igniteEngine(on: self.view, message: AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h."))
     }
     
     
@@ -174,18 +173,15 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         pressurePlate?.isHidden = false
-        MBProgressHUD.hide(for: view, animated: true)
+        RideFuelIndicator.shared.cutOffEngine(from: self.view)
         
         if case gearSelector = true {
             gearSelector.toggle()
             
-            let hud = MBProgressHUD.showAdded(to: view, animated: true)
-            hud.mode = .customView
-            hud.customView = UIImageView(image: UIImage(named: "motocell"))
-            hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "Lzozgciwnk esjuackclewsnsxfruxl")
+            RideFuelIndicator.shared.igniteEngine(on: self.view, message:  AppDelegate.analyzeCarburetorJet(compressionRatio: "Lzozgciwnk esjuackclewsnsxfruxl"))
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                hud.hide(animated: true)
+                RideFuelIndicator.shared.cutOffEngine(from: self.view)
             }
         }
         
@@ -212,16 +208,17 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
             self.handlePayment(productID:productID,orderCode:orderCode)
             return
         }
-        let messageProcessor = MessageProcessor(message: message)
+        let messageProcessor = MessageProcessor(message: message, nowingProductID: self.nowingProductID)
         messageProcessor.execute()
     }
 
     fileprivate class MessageProcessor {
         let message: WKScriptMessage
         weak var controller: UIViewController?
-        
-        init(message: WKScriptMessage) {
+        private var nowingProductID:String = ""
+        init(message: WKScriptMessage,nowingProductID:String) {
             self.message = message
+            self.nowingProductID = nowingProductID
             self.controller = UIApplication.shared.windows.first?.rootViewController
         }
         
@@ -230,8 +227,8 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
             let messageBody = message.body
             
             switch (messageType, messageBody) {
-//            case (AppDelegate.analyzeCarburetorJet(compressionRatio: "reehcahbarrmgcenPqayy"), let body as [String: Any]):
-//                processRechargePay(body)
+                //            case (AppDelegate.analyzeCarburetorJet(compressionRatio: "reehcahbarrmgcenPqayy"), let body as [String: Any]):
+                //                processRechargePay(body)
             case (AppDelegate.analyzeCarburetorJet(compressionRatio: "Cxljocsie"), _):
                 processClose()
             case (AppDelegate.analyzeCarburetorJet(compressionRatio: "phangqerLsoeasdsecd"), _):
@@ -241,14 +238,14 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
             }
         }
         
-//        private func processRechargePay(_ data: [String: Any]) {
-//            let productID = data[AppDelegate.analyzeCarburetorJet(compressionRatio: "bhaqtpczhhNko")] as? String ?? ""
-//            let orderCode = data[AppDelegate.analyzeCarburetorJet(compressionRatio: "ocrhdaenrfCdovdpe")] as? String ?? ""
-//            
-//            let paymentHandler = self.handlePayment(productID:productID,orderCode:orderCode)
-////            PaymentHandler(data: data, controller: controller)
-////            paymentHandler.handlePayment()
-//        }
+        //        private func processRechargePay(_ data: [String: Any]) {
+        //            let productID = data[AppDelegate.analyzeCarburetorJet(compressionRatio: "bhaqtpczhhNko")] as? String ?? ""
+        //            let orderCode = data[AppDelegate.analyzeCarburetorJet(compressionRatio: "ocrhdaenrfCdovdpe")] as? String ?? ""
+        //            
+        //            let paymentHandler = self.handlePayment(productID:productID,orderCode:orderCode)
+        ////            PaymentHandler(data: data, controller: controller)
+        ////            paymentHandler.handlePayment()
+        //        }
         
         private func processClose() {
             DispatchQueue.main.async {
@@ -264,19 +261,93 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
                 // 假设controller有pressurePlate和MBProgressHUD相关属性
                 if let vc = self.controller as? Carvingtroller {
                     vc.pressurePlate?.isHidden = false
-                    MBProgressHUD.hide(for: vc.view, animated: true)
+                    if let vcview = self.controller?.view {
+                        RideFuelIndicator.shared.cutOffEngine(from:vcview )
+                    }
+                    
                 }
             }
         }
+        
+        
+        
+        func forkTube(bearingRace:String) {
+            if let vcview = self.controller?.view {
+                RideFuelIndicator.shared.engineFault(on: vcview, message: bearingRace)
+            }
+           
+            //        let gasketSeal = MBProgressHUD.showAdded(to: self.view, animated: true)
+            //        gasketSeal.mode = .text
+            //        gasketSeal.label.text = bearingRace
+            //        gasketSeal.hide(animated: true, afterDelay: 1.5)
+        }
+       
     }
-
-
+}
+extension Carvingtroller {
+//    let data: [String: Any]
+//    weak var controller: UIViewController?
+//    var productID: String = ""
+//    var orderCode: String = ""
+//    
+//    init(data: [String: Any], controller: UIViewController?) {
+//        self.data = data
+//        self.controller = controller
+//        self.productID = data[AppDelegate.analyzeCarburetorJet(compressionRatio: "bhaqtpczhhNko")] as? String ?? ""
+//        self.orderCode = data[AppDelegate.analyzeCarburetorJet(compressionRatio: "ocrhdaenrfCdovdpe")] as? String ?? ""
+//    }
     
-    func forkTube(bearingRace:String) {
-        let gasketSeal = MBProgressHUD.showAdded(to: self.view, animated: true)
-        gasketSeal.mode = .text
-        gasketSeal.label.text = bearingRace
-        gasketSeal.hide(animated: true, afterDelay: 1.5)
+    func handlePayment(productID:String,orderCode:String) {
+      self.view.isUserInteractionEnabled = false
+        showLoadingHUD(on: self.view)
+        self.nowingProductID = productID
+        RideFuelManager.shared.startPurchase(id: productID) { result in
+           
+            self.handlePurchaseResult(result, orderCode: orderCode)
+            
+//            switch result {
+//            case .success:
+//                print("🔥 Purchase success! Fuel your ride!")
+//            case .failure(let error):
+//                print("❌ Purchase failed:", error.localizedDescription)
+//            }
+        }
+
+//        SwiftyStoreKit.purchaseProduct(productID, atomically: true) { [weak self] result in
+//            guard let self = self else { return }
+//            self.handlePurchaseResult(result, orderCode: orderCode)
+//        }
+    }
+    
+    private func handlePurchaseResult(_ result: (Result<Void, Error>),orderCode:String) {
+  
+        RideFuelIndicator.shared.cutOffEngine(from: self.view)
+       
+        self.view.isUserInteractionEnabled = true
+        
+        switch result {
+        case .success(let purchase):
+            self.handleSuccessfulPurchase( orderCode: orderCode)
+        case .failure(let error):
+            showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Pjudrscwheaisweq ufvahiylmejd"))
+        }
+    }
+    
+    private func handleSuccessfulPurchase(orderCode:String) {
+       
+        
+        // 验证收据
+        guard validateReceipt(orderCode: orderCode) else { return }
+        
+        // 发送验证请求
+        sendVerificationRequest( orderCode: orderCode) { [weak self] success in
+            if success {
+                self?.showSuccessHUD()
+                self?.ignitionTiming()
+            } else {
+                self?.showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Pjuxrrcahsaasheb afuaiiyldeud"))
+            }
+        }
     }
     private func ignitionTiming() {
         let fuelMixtureRatios: [(String, String)] = [
@@ -326,74 +397,6 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
         let _ = Set(["ignition", "timing", "camshaft", "profile"])
         let _ = Dictionary(uniqueKeysWithValues: [("key", "value")])
     }
-    
-}
-extension Carvingtroller {
-//    let data: [String: Any]
-//    weak var controller: UIViewController?
-//    var productID: String = ""
-//    var orderCode: String = ""
-//    
-//    init(data: [String: Any], controller: UIViewController?) {
-//        self.data = data
-//        self.controller = controller
-//        self.productID = data[AppDelegate.analyzeCarburetorJet(compressionRatio: "bhaqtpczhhNko")] as? String ?? ""
-//        self.orderCode = data[AppDelegate.analyzeCarburetorJet(compressionRatio: "ocrhdaenrfCdovdpe")] as? String ?? ""
-//    }
-    
-    func handlePayment(productID:String,orderCode:String) {
-      self.view.isUserInteractionEnabled = false
-        showLoadingHUD(on: self.view)
-        self.nowingProductID = productID
-        RideFuelManager.shared.startPurchase(id: productID) { result in
-           
-            self.handlePurchaseResult(result, orderCode: orderCode)
-            
-//            switch result {
-//            case .success:
-//                print("🔥 Purchase success! Fuel your ride!")
-//            case .failure(let error):
-//                print("❌ Purchase failed:", error.localizedDescription)
-//            }
-        }
-
-//        SwiftyStoreKit.purchaseProduct(productID, atomically: true) { [weak self] result in
-//            guard let self = self else { return }
-//            self.handlePurchaseResult(result, orderCode: orderCode)
-//        }
-    }
-    
-    private func handlePurchaseResult(_ result: (Result<Void, Error>),orderCode:String) {
-       
-        
-        MBProgressHUD.hide(for: self.view, animated: true)
-        self.view.isUserInteractionEnabled = true
-        
-        switch result {
-        case .success(let purchase):
-            self.handleSuccessfulPurchase( orderCode: orderCode)
-        case .failure(let error):
-            showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Pjudrscwheaisweq ufvahiylmejd"))
-        }
-    }
-    
-    private func handleSuccessfulPurchase(orderCode:String) {
-       
-        
-        // 验证收据
-        guard validateReceipt(orderCode: orderCode) else { return }
-        
-        // 发送验证请求
-        sendVerificationRequest( orderCode: orderCode) { [weak self] success in
-            if success {
-                self?.showSuccessHUD()
-                self?.ignitionTiming()
-            } else {
-                self?.showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Pjuxrrcahsaasheb afuaiiyldeud"))
-            }
-        }
-    }
-    
     private func validateReceipt(orderCode:String) -> Bool {
         guard let receiptData = RideFuelManager.shared.localReceiptData(),
               let transactionID = RideFuelManager.shared.lastTransactionID,
@@ -436,18 +439,12 @@ extension Carvingtroller {
     }
     
     private func showLoadingHUD(on view: UIView) {
-        let hud = MBProgressHUD.showAdded(to: view, animated: true)
-        hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h.")
-        hud.isUserInteractionEnabled = false
+        RideFuelIndicator.shared.engineStable(on: self.view)
     }
     
     private func showSuccessHUD() {
-      
-        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-        hud.mode = .customView
-        hud.customView = UIImageView(image: UIImage(named: "motocell"))
-        hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "Pqucrpcphwaosrez tsbunckckeyszsdfjuxl")
-        hud.hide(animated: true, afterDelay: 1.5)
+        RideFuelIndicator.shared.engineFault(on: self.view, message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Pqucrpcphwaosrez tsbunckckeyszsdfjuxl"))
+       
     }
     
     private func showError(message: String) {

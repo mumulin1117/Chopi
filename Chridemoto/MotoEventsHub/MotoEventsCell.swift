@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import FSPagerView
+
 
 
 class MotoEventsCell: UICollectionViewCell {

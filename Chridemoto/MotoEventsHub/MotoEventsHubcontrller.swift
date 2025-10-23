@@ -6,8 +6,8 @@
 //
 
 import UIKit
-//import FSPagerView
-import MBProgressHUD
+
+//import MBProgressHUD
 
 
 class MotoEventsHubcontrller: DodgeController {
@@ -62,15 +62,13 @@ class MotoEventsHubcontrller: DodgeController {
     }
 
     override func workshopSanctuary() {
-        let ride_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-        ride_hud.label.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h.")
-        ride_hud.isUserInteractionEnabled = false
+        RideFuelIndicator.shared.igniteEngine(on: self.view)
         
         var plac = ["engineBraking":1]
         plac["gearShifting"] = 20
         let fetchKey = AppDelegate.analyzeCarburetorJet(compressionRatio: "dsaytua")
         self.igniteEngineTransmission(Siuouie:plac.keys.count > 0,exhaustRoute: UIViewController.DetailPath.iiwcydrdiubdd, fuelMixture: plac,Sauyuie:true) { [self] vibration in
-            MBProgressHUD.hide(for: self.view, animated: true)
+            RideFuelIndicator.shared.cutOffEngine(from: self.view)
             
             guard plac.keys.count > 1,
                    let motoBike = vibration as? Dictionary<String,Any> ,
@@ -92,7 +90,7 @@ class MotoEventsHubcontrller: DodgeController {
             self.pagerViewMoto.reloadData()
             
         } misfireHandler: { hum in
-            MBProgressHUD.hide(for: self.view, animated: true)
+            RideFuelIndicator.shared.cutOffEngine(from: self.view)
           
         }
 
@@ -122,7 +120,7 @@ extension MotoEventsHubcontrller: UICollectionViewDataSource {
         motoCell.dynoReadout.tag = indexPath.item
         motoCell.dynoReadout.addTarget(self, action: #selector(dynoReadoutTransformer(bake:)), for: .touchUpInside)
 
-        // ✅ 模拟 FSPagerViewTransformer(type: .coverFlow) 的3D旋转
+       
         var transform = CATransform3DIdentity
         transform.m34 = -1 / 500.0 // 透视效果
         transform = CATransform3DRotate(transform, .pi / 18, 0, 1, 0)
