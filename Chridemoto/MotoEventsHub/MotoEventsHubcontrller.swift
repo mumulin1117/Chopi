@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import FSPagerView
+//import FSPagerView
 import MBProgressHUD
 
 
@@ -24,24 +24,23 @@ class MotoEventsHubcontrller: DodgeController {
         return iv
         
     }()
-    lazy var pagerViewMoto: FSPagerView = {
-        let pagerViewMoto = FSPagerView.init(frame: UIScreen.main.bounds)
-        
-        pagerViewMoto.delegate = self
-        pagerViewMoto.dataSource = self
-        pagerViewMoto.register(UINib(nibName: "MotoEventsCell", bundle: nil), forCellWithReuseIdentifier: "MotoEventsCell")
-               
-               // 走马灯样式配置
-        pagerViewMoto.transformer = FSPagerViewTransformer(type:.coverFlow)
-        pagerViewMoto.itemSize = CGSize(width: UIScreen.main.bounds.width , height: UIScreen.main.bounds.height)
-        pagerViewMoto.decelerationDistance = 1  // 滑动惯性
-               
-               // 摩托车主题样式
-        pagerViewMoto.backgroundColor = .clear
-        pagerViewMoto.layer.shadowColor = UIColor(named: "exhaust_blue")?.cgColor
-        pagerViewMoto.layer.shadowRadius = 8
-        return pagerViewMoto
-    }()
+    lazy var pagerViewMoto: UICollectionView = {
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+            layout.minimumLineSpacing = 0
+            layout.itemSize = UIScreen.main.bounds.size
+
+            let cv = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: layout)
+            cv.backgroundColor = .clear
+            cv.isPagingEnabled = true    // ✅ 保证整页翻动
+            cv.showsHorizontalScrollIndicator = false
+            cv.decelerationRate = .fast  // ✅ 模拟 FSPager 的惯性
+            cv.dataSource = self
+            cv.delegate = self
+
+            cv.register(UINib(nibName: "MotoEventsCell", bundle: nil), forCellWithReuseIdentifier: "MotoEventsCell")
+            return cv
+        }()
     
     
     override func viewDidLoad() {
@@ -103,41 +102,66 @@ class MotoEventsHubcontrller: DodgeController {
 }
 
 
-extension MotoEventsHubcontrller: FSPagerViewDataSource {
-    func numberOfItems(in pagerView: FSPagerView) -> Int {
+// MARK: - UICollectionView 数据源
+extension MotoEventsHubcontrller: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return MotoEventsCellData.count
     }
-    
-    func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
-        let motoCell = pagerView.dequeueReusableCell(withReuseIdentifier: "MotoEventsCell", at: index) as! MotoEventsCell
-        let data = MotoEventsCellData[index]
 
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let motoCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MotoEventsCell",
+                                                                for: indexPath) as? MotoEventsCell else {
+            return UICollectionViewCell()
+        }
+        let data = MotoEventsCellData[indexPath.item]
         motoCell.ShowOffYourRide(ride: data)
-        
-     
-        // 3D旋转效果
+
+        // 动作绑定保持不变
         motoCell.power.addTarget(self, action: #selector(anotiUserContent), for: .touchUpInside)
-        motoCell.dynoReadout.tag = index
+        motoCell.dynoReadout.tag = indexPath.item
         motoCell.dynoReadout.addTarget(self, action: #selector(dynoReadoutTransformer(bake:)), for: .touchUpInside)
-        motoCell.contentView.layer.transform = CATransform3DMakeRotation(.pi/18, 0, 1, 0)
-        return motoCell
-    }
-    
-    @objc func dynoReadoutTransformer(bake:UIButton)  {///user in
+
+        // ✅ 模拟 FSPagerViewTransformer(type: .coverFlow) 的3D旋转
+        var transform = CATransform3DIdentity
+        transform.m34 = -1 / 500.0 // 透视效果
+        transform = CATransform3DRotate(transform, .pi / 18, 0, 1, 0)
+        motoCell.contentView.layer.transform = transform
         
-        guard let rideUID = MotoEventsCellData[bake.tag]["nightRiding"] as? Int else{return}
-        navigationToCpntrller(root:self.generateRideRoute(additionalParams: "\(rideUID)", detaiARide: .riderProfile))
-       
+        return motoCell
     }
 }
 
-// MARK: - 轮播图交互
-extension MotoEventsHubcontrller: FSPagerViewDelegate {
-    func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
-        guard let rideID = MotoEventsCellData[index]["slowSpeedControl"] as? Int else{return}
-        navigationToCpntrller(root:self.generateRideRoute(additionalParams: "\(rideID)", detaiARide: .dynoReadout))
-       
+// MARK: - UICollectionView 交互与分页动画
+extension MotoEventsHubcontrller: UICollectionViewDelegate, UIScrollViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let rideID = MotoEventsCellData[indexPath.item]["slowSpeedControl"] as? Int else { return }
+        navigationToCpntrller(root: self.generateRideRoute(additionalParams: "\(rideID)", detaiARide: .dynoReadout))
     }
-    
-  
+
+    @objc func dynoReadoutTransformer(bake: UIButton) {
+        guard let rideUID = MotoEventsCellData[bake.tag]["nightRiding"] as? Int else { return }
+        navigationToCpntrller(root: self.generateRideRoute(additionalParams: "\(rideUID)", detaiARide: .riderProfile))
+    }
+
+    // ✅ 可选：为 CoverFlow 视觉添加动态旋转
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let collectionView = scrollView as? UICollectionView else { return }
+        let centerX = scrollView.contentOffset.x + scrollView.bounds.width / 2
+        for cell in collectionView.visibleCells {
+            let basePosition = cell.center.x
+            let distance = abs(centerX - basePosition)
+            let maxDistance = scrollView.bounds.width / 2
+            let ratio = min(distance / maxDistance, 1)
+
+            // 根据距离调整旋转和缩放（仿 CoverFlow）
+            var transform = CATransform3DIdentity
+            transform.m34 = -1 / 500.0
+            let angle = (1 - ratio) * CGFloat.pi / 10
+            transform = CATransform3DRotate(transform, angle * (basePosition < centerX ? 1 : -1), 0, 1, 0)
+            let scale = 1 - ratio * 0.2
+            transform = CATransform3DScale(transform, scale, scale, 1)
+            cell.layer.transform = transform
+        }
+    }
 }

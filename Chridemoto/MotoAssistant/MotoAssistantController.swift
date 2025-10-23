@@ -8,7 +8,7 @@
 import UIKit
 import MBProgressHUD
 
-import FSPagerView
+//import FSPagerView
 
 //let urlImageSize = SDImageResizingTransformer(
 //   size: CGSize(width: 450, height: 450),
@@ -54,32 +54,43 @@ class MotoAssistantController: DodgeController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+
+        // 使 items 部分重叠：lineSpacing 取负值（负值大小决定重叠程度）
+        layout.minimumLineSpacing = -40 // 根据 overlap 程度微调：原来 `-70` 宽度差为例微调为 -40
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 70, height: pagerBackViewMoto.bounds.height - 30)
         if ifUpadate == false {
              pagerViewMoto.frame = CGRect(x: 0, y: 0, width:  UIScreen.main.bounds.width, height: pagerBackViewMoto.frame.height)
-            pagerViewMoto.itemSize = CGSize(width: UIScreen.main.bounds.width - 70, height: pagerBackViewMoto.bounds.height - 30)
+            pagerViewMoto.collectionViewLayout = layout//. itemSize = CGSize(width: UIScreen.main.bounds.width - 70, height: pagerBackViewMoto.bounds.height - 30)
             ifUpadate = true
         }
        
     }
     
-    lazy var pagerViewMoto: FSPagerView = {
-        let pagerViewMoto = FSPagerView.init(frame:CGRect(x: 0, y: 0, width:  UIScreen.main.bounds.width, height: pagerBackViewMoto.frame.height))
-        
-        pagerViewMoto.delegate = self
-        pagerViewMoto.dataSource = self
-        pagerViewMoto.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "bikeCell")
-               
-               // 走马灯样式配置
-        pagerViewMoto.transformer = FSPagerViewTransformer(type: .overlap)
-        pagerViewMoto.itemSize = CGSize(width: UIScreen.main.bounds.width - 70, height: pagerBackViewMoto.bounds.height - 30)
-        pagerViewMoto.decelerationDistance = 2  // 滑动惯性
-               
-               // 摩托车主题样式
-        pagerViewMoto.backgroundColor = .clear
-        pagerViewMoto.layer.shadowColor = UIColor(named: "exhaust_blue")?.cgColor
-        pagerViewMoto.layer.shadowRadius = 8
-        return pagerViewMoto
+    lazy var pagerViewMoto: UICollectionView = {
+        // 使用 flow layout
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+
+        // 使 items 部分重叠：lineSpacing 取负值（负值大小决定重叠程度）
+        layout.minimumLineSpacing = -40 // 根据 overlap 程度微调：原来 `-70` 宽度差为例微调为 -40
+
+        let cv = UICollectionView(frame: CGRect(x: 0,
+                                                y: 0,
+                                                width: UIScreen.main.bounds.width,
+                                                height: pagerBackViewMoto.frame.height),
+                                  collectionViewLayout: layout)
+        cv.backgroundColor = .clear
+        cv.showsHorizontalScrollIndicator = false
+        cv.decelerationRate = .fast // 更短的滑动惯性
+        cv.translatesAutoresizingMaskIntoConstraints = false
+
+        cv.register(BikeCardCell.self, forCellWithReuseIdentifier: BikeCardCell.reuseIdentifier)
+        cv.dataSource = self
+        cv.delegate = self
+
+        return cv
     }()
    
     private func coolantlevel()  {
@@ -207,45 +218,45 @@ class MotoAssistantController: DodgeController {
 }
 
 
-extension MotoAssistantController: FSPagerViewDataSource {
-    func numberOfItems(in pagerView: FSPagerView) -> Int {
-        return MotoModeBokeCellData.count
-    }
-    
-    func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
-        let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "bikeCell", at: index)
-        let data = MotoModeBokeCellData[index]
-       
-        // 摩托车卡片样式
-        if let butnow = (data["rainGearSetup"] as? Array<String>)?.first,let motoshareUrl =  URL.init(string: butnow){
-            cell.imageView?.igniteEngine(fuelLine: motoshareUrl)  
-            
-        }
-       
-        cell.imageView?.contentMode = .scaleAspectFill
-        cell.imageView?.layer.cornerRadius = 12
-        cell.imageView?.layer.masksToBounds = true
-        
-        // 添加品牌标签
-        if let label = cell.viewWithTag(500) as? UILabel {
-            label.text = "  " + (data["emergencyBraking"] as? String ?? "") + "  "
-        }else{
-            let label = UILabel(frame: CGRect(x:12, y: cell.frame.height-40, width: cell.frame.width - 24, height: 40))
-            label.tag = 500
-            label.text = "  " + (data["emergencyBraking"] as? String ?? "") + "  "
-            label.font = UIFont(name: "Helvetica-Bold", size: 16)
-            label.textColor = .white
-            label.textAlignment = .center
-            label.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-            cell.contentView.addSubview(label)
-        }
-       
-        
-        // 3D旋转效果
-        cell.contentView.layer.transform = CATransform3DMakeRotation(.pi/18, 0, 1, 0)
-        return cell
-    }
-}
+//extension MotoAssistantController: FSPagerViewDataSource {
+//    func numberOfItems(in pagerView: FSPagerView) -> Int {
+//        return MotoModeBokeCellData.count
+//    }
+//    
+//    func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
+//        let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "bikeCell", at: index)
+//        let data = MotoModeBokeCellData[index]
+//       
+//        // 摩托车卡片样式
+//        if let butnow = (data["rainGearSetup"] as? Array<String>)?.first,let motoshareUrl =  URL.init(string: butnow){
+//            cell.imageView?.igniteEngine(fuelLine: motoshareUrl)  
+//            
+//        }
+//       
+//        cell.imageView?.contentMode = .scaleAspectFill
+//        cell.imageView?.layer.cornerRadius = 12
+//        cell.imageView?.layer.masksToBounds = true
+//        
+//        // 添加品牌标签
+//        if let label = cell.viewWithTag(500) as? UILabel {
+//            label.text = "  " + (data["emergencyBraking"] as? String ?? "") + "  "
+//        }else{
+//            let label = UILabel(frame: CGRect(x:12, y: cell.frame.height-40, width: cell.frame.width - 24, height: 40))
+//            label.tag = 500
+//            label.text = "  " + (data["emergencyBraking"] as? String ?? "") + "  "
+//            label.font = UIFont(name: "Helvetica-Bold", size: 16)
+//            label.textColor = .white
+//            label.textAlignment = .center
+//            label.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+//            cell.contentView.addSubview(label)
+//        }
+//       
+//        
+//        // 3D旋转效果
+//        cell.contentView.layer.transform = CATransform3DMakeRotation(.pi/18, 0, 1, 0)
+//        return cell
+//    }
+//}
 private extension UICollectionView {
     func rotateCrankshaft() {
        
@@ -255,12 +266,128 @@ private extension UICollectionView {
     }
 }
 // MARK: - 轮播图交互
-extension MotoAssistantController: FSPagerViewDelegate {
-    func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
-        
-        guard let rideID = MotoModeBokeCellData[index]["slowSpeedControl"] as? Int else{return}
-        navigationToCpntrller(root:self.generateRideRoute(additionalParams: "\(rideID)", detaiARide: .dynoReadout))
+//extension MotoAssistantController: FSPagerViewDelegate {
+//    func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
+//        
+//        guard let rideID = MotoModeBokeCellData[index]["slowSpeedControl"] as? Int else{return}
+//        navigationToCpntrller(root:self.generateRideRoute(additionalParams: "\(rideID)", detaiARide: .dynoReadout))
+//    }
+//    
+//    
+//}
+extension MotoAssistantController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int { 1 }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return MotoModeBokeCellData.count
     }
-    
-    
+
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BikeCardCell.reuseIdentifier,
+                                                            for: indexPath) as? BikeCardCell else {
+            return UICollectionViewCell()
+        }
+
+        let data = MotoModeBokeCellData[indexPath.item]
+
+        // 保持你原有的图片加载逻辑：保留 igniteEngine(fuelLine:)
+        if let butnow = (data["rainGearSetup"] as? [String])?.first,
+           let motoshareUrl = URL(string: butnow) {
+            // 假设你已有 UIImageView extension: igniteEngine(fuelLine:)
+            cell.imageView.igniteEngine(fuelLine: motoshareUrl)
+        } else {
+            cell.imageView.image = nil
+        }
+
+        // 品牌标签文本（保持和之前一致）
+        cell.brandLabel.text = "  " + (data["emergencyBraking"] as? String ?? "") + "  "
+
+        // 3D 轻微旋转效果（同你之前的 pi/18）
+        var transform = CATransform3DIdentity
+        transform.m34 = -1.0 / 1000.0   // 透视
+        transform = CATransform3DRotate(transform, CGFloat(Double.pi / 18.0), 0, 1, 0)
+        cell.contentView.layer.transform = transform
+
+        return cell
+    }
+
+    // item size: 保持和你原来 FSPagerView 的计算
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // 等价于 FSPagerView 的 itemSize: UIScreen.main.bounds.width - 70, pagerBackViewMoto.bounds.height - 30
+        let width = UIScreen.main.bounds.width - 70
+        let height = pagerBackViewMoto.bounds.height - 30
+        return CGSize(width: width, height: height)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let rideID = MotoModeBokeCellData[indexPath.item]["slowSpeedControl"] as? Int else { return }
+        navigationToCpntrller(root: self.generateRideRoute(additionalParams: "\(rideID)", detaiARide: .dynoReadout))
+    }
+}
+
+// MARK: - 自定义分页对齐（模拟 FSPager 的一页一页吸附，支持速度和吸附距离）
+extension MotoAssistantController: UIScrollViewDelegate {
+    // called before deceleration; 我们手动调整 targetContentOffset 以实现“吸附/分页”的效果
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView,
+                                   withVelocity velocity: CGPoint,
+                                   targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        guard scrollView === pagerViewMoto else { return }
+        guard let layout = pagerViewMoto.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+
+        let itemWidth = (layout.itemSize.width)
+        let spacing = layout.minimumLineSpacing
+        let pageWidth = itemWidth + spacing
+
+        // 当前偏移 + 左侧 inset (我们假设水平居中显示 item)
+        let rawOffset = targetContentOffset.pointee.x + pagerViewMoto.contentInset.left
+
+        // 计算即将对齐的索引（同时考虑滑动速度，以模拟 decelerationDistance）
+        var index = round(rawOffset / pageWidth)
+
+        // velocity.x 可以用来决定“跨页”行为：如果滑得很快则跨更多页（类似 decelerationDistance）
+        if abs(velocity.x) > 0.2 {
+            // 根据方向向前/后跨 1 页（速度越大可修改为跨越更多）
+            index = velocity.x > 0 ? floor(rawOffset / pageWidth) + 1 : ceil(rawOffset / pageWidth) - 1
+        }
+
+        // 限制 index 在合法范围内
+        let itemCount = collectionView(pagerViewMoto, numberOfItemsInSection: 0)
+        let maxIndex = max(0, CGFloat(itemCount - 1))
+        if index < 0 { index = 0 }
+        if index > maxIndex { index = maxIndex }
+
+        // 最终偏移：计算目标 x（去掉 contentInset 左侧偏移）
+        let newOffsetX = index * pageWidth - pagerViewMoto.contentInset.left
+
+        targetContentOffset.pointee.x = newOffsetX
+
+        // 平滑滚动到该位置（系统会使用 targetContentOffset），无需额外 animate
+    }
+
+    // 可选：当滚动结束时，突出显示中间的 cell 或触发额外动画
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // 计算居中索引（可用于 UI 更新）
+        guard scrollView === pagerViewMoto else { return }
+        highlightCenteredCell()
+    }
+
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        guard scrollView === pagerViewMoto else { return }
+        highlightCenteredCell()
+    }
+
+    private func highlightCenteredCell() {
+        // 计算居中 cell index（如果你需要追踪当前页）
+        let centerPoint = CGPoint(x: pagerViewMoto.bounds.midX + pagerViewMoto.contentOffset.x,
+                                  y: pagerViewMoto.bounds.midY)
+        if let ip = pagerViewMoto.indexPathForItem(at: centerPoint) {
+            // ip.item 为当前显示的索引
+            // 可在此做指示器更新或额外动画（可选）
+            // print("Centered index:", ip.item)
+        }
+    }
 }

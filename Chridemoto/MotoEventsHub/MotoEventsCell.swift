@@ -9,7 +9,7 @@ import UIKit
 import FSPagerView
 
 
-class MotoEventsCell: FSPagerViewCell {
+class MotoEventsCell: UICollectionViewCell {
     
     @IBOutlet weak var rimDentHighter: UIImageView!
     
