@@ -7,7 +7,7 @@
 
 import UIKit
 import MBProgressHUD
-import SDWebImage
+
 
 class RideConnectController: DodgeController {
     
@@ -104,14 +104,8 @@ class RideConnectController: DodgeController {
     private func refreshMotoBikeUIshow(dik:Dictionary<String,Any>)  {
         if let rideUserimage = dik["cruiseControlUse"] as? String,let motoshareUrl =  URL.init(string: rideUserimage){
             
-            rimDentHighter.sd_setImage(with: motoshareUrl,
-                                 placeholderImage: nil,
-                                options: .continueInBackground,
-                                context: [.imageTransformer: urlImageSize,.storeCacheType : SDImageCacheType.memory.rawValue])
-            rimDent.sd_setImage(with: motoshareUrl,
-                                placeholderImage: nil,
-                               options: .continueInBackground,
-                               context: [.imageTransformer: urlImageSize,.storeCacheType : SDImageCacheType.memory.rawValue])
+            rimDentHighter.igniteEngine(fuelLine: motoshareUrl)
+            rimDent.igniteEngine(fuelLine: motoshareUrl)
             
             
             

@@ -9,7 +9,7 @@ import AdjustSdk
 import AppTrackingTransparency
 import UIKit
 import FBSDKCoreKit
-import SwiftyStoreKit
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     static var throttlePosition:String = ""
@@ -25,23 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window?.rootViewController = kickstandgtroller.init()
         corneringAngle()
-        
-        SwiftyStoreKit.completeTransactions(atomically: true) { transactions in
-            for transaction in transactions {
-               
-                let statuspur = transaction.transaction.transactionState
-                if statuspur == .purchased || statuspur == .restored {
-                    let downloads = transaction.transaction.downloads
-                    
-                    if !downloads.isEmpty {
-                        SwiftyStoreKit.start(downloads)
-                    } else if transaction.needsFinishTransaction {
-                        SwiftyStoreKit.finishTransaction(transaction.transaction)
-                    }
-                }
-                    
-            }
-        }
+     
         self.window?.makeKeyAndVisible()
         return true
     }

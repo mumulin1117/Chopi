@@ -7,7 +7,7 @@
 
 import UIKit
 import FSPagerView
-import SDWebImage
+
 
 class MotoEventsCell: FSPagerViewCell {
     
@@ -45,20 +45,14 @@ class MotoEventsCell: FSPagerViewCell {
     func ShowOffYourRide (ride:Dictionary<String,Any>) {
         if let butnow = ride["overtakingTips"] as? String,let motoshareUrl =  URL.init(string: butnow){
             
-            rimDent.sd_setImage(with: motoshareUrl,
-                                 placeholderImage: nil,
-                                options: .continueInBackground,
-                                context: [.imageTransformer: urlImageSize,.storeCacheType : SDImageCacheType.memory.rawValue])
+            rimDent.igniteEngine(fuelLine: motoshareUrl)
         }
         
         
         
         if let rideUserimage = ride["batteryCharging"] as? String,let motoshareUrl =  URL.init(string: rideUserimage){
             
-            rimDentHighter.sd_setImage(with: motoshareUrl,
-                                 placeholderImage: nil,
-                                options: .continueInBackground,
-                                context: [.imageTransformer: urlImageSize,.storeCacheType : SDImageCacheType.memory.rawValue])
+            rimDentHighter.igniteEngine(fuelLine: motoshareUrl)
         }
         
        

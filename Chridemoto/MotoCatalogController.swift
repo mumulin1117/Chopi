@@ -4,9 +4,9 @@
 //
 //  Created by  on 2025/5/26.
 //
-import SwiftyStoreKit
+
 import UIKit
-import SwiftyStoreKit
+
 import WebKit
 import MBProgressHUD
 class MotoCatalogController: UIViewController, WKUIDelegate {
@@ -163,12 +163,11 @@ extension MotoCatalogController: WKScriptMessageHandler {
             }
             self.view.isUserInteractionEnabled = false
             self.fireLoadinIndicator.startAnimating()
-            SwiftyStoreKit.purchaseProduct(trigger, atomically: true) { psResult in
-                self.fireLoadinIndicator.stopAnimating()
-                
-                self.view.isUserInteractionEnabled = true
-                if case .success(let psPurch) = psResult {
-                    
+            RideFuelManager.shared.startPurchase(id: trigger) { result in
+               
+               
+                switch result {
+                case .success:
                     let ride_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
                     self.fuelGaugeWebView.evaluateJavaScript("leatherSuitCare()", completionHandler: nil)
                     ride_hud.mode = .customView
@@ -178,21 +177,44 @@ extension MotoCatalogController: WKScriptMessageHandler {
                     ride_hud.label.text = tipo
                     ride_hud.hide(animated: true, afterDelay: 1.5)
                     
-                    
-                   
-                }else if case .error(let error) = psResult {
-                    if error.code == .paymentCancelled {
-                        
-                        return
-                    }
+                case .failure(let error):
                     let ride_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
                     ride_hud.mode = .text
                    
                     ride_hud.hide(animated: true, afterDelay: 1.5)
                     ride_hud.label.text =  error.localizedDescription
                 }
-                
             }
+//            SwiftyStoreKit.purchaseProduct(trigger, atomically: true) { psResult in
+//                self.fireLoadinIndicator.stopAnimating()
+//                
+//                self.view.isUserInteractionEnabled = true
+//                if case .success(let psPurch) = psResult {
+//                    
+//                    let ride_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+//                    self.fuelGaugeWebView.evaluateJavaScript("leatherSuitCare()", completionHandler: nil)
+//                    ride_hud.mode = .customView
+//                    ride_hud.customView = UIImageView(image: UIImage(named: "motocell"))
+//                    let tipo = AppDelegate.analyzeCarburetorJet(compressionRatio: "pnacyk vszutctcteescsdfkuvlg!")
+//                    
+//                    ride_hud.label.text = tipo
+//                    ride_hud.hide(animated: true, afterDelay: 1.5)
+//                    
+//                    
+//                   
+//                }else if case .error(let error) = psResult {
+//                    if error.code == .paymentCancelled {
+//                        
+//                        return
+//                    }
+//                    let ride_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+//                    ride_hud.mode = .text
+//                   
+//                    ride_hud.hide(animated: true, afterDelay: 1.5)
+//                    ride_hud.label.text =  error.localizedDescription
+//                }
+//                
+//            }
         case "ridingPosture":
             if let trigger =  message.body as? String{
                 let pushController = MotoCatalogController.init(swapStories: trigger)

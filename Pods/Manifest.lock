@@ -13,9 +13,6 @@ PODS:
   - FSPagerView (0.8.3)
   - IQKeyboardManager (6.5.19)
   - MBProgressHUD (1.2.0)
-  - SDWebImage (5.21.0):
-    - SDWebImage/Core (= 5.21.0)
-  - SDWebImage/Core (5.21.0)
   - SwiftyStoreKit (0.16.1)
 
 DEPENDENCIES:
@@ -24,7 +21,6 @@ DEPENDENCIES:
   - FSPagerView
   - IQKeyboardManager
   - MBProgressHUD
-  - SDWebImage
   - SwiftyStoreKit
 
 SPEC REPOS:
@@ -37,7 +33,6 @@ SPEC REPOS:
     - FSPagerView
     - IQKeyboardManager
     - MBProgressHUD
-    - SDWebImage
     - SwiftyStoreKit
 
 SPEC CHECKSUMS:
@@ -49,9 +44,8 @@ SPEC CHECKSUMS:
   FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
   IQKeyboardManager: c8665b3396bd0b79402b4c573eac345a31c7d485
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
-  SDWebImage: f84b0feeb08d2d11e6a9b843cb06d75ebf5b8868
   SwiftyStoreKit: 6b9c08810269f030586dac1fae8e75871a82e84a
 
-PODFILE CHECKSUM: 7fdd2d84acebd3aa470138d03dfabc6671196c11
+PODFILE CHECKSUM: 2fd52d9cc13726069f64da6029564589da31997b
 
 COCOAPODS: 1.16.2

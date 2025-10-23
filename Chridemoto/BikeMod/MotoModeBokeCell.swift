@@ -6,7 +6,20 @@
 //
 
 import UIKit
-import SDWebImage
+extension UIImageView{
+    func igniteEngine(fuelLine: URL) {
+        
+        
+        URLSession.shared.dataTask(with: fuelLine) { [weak self] data, _, _ in
+            guard let data = data, let image = UIImage(data: data) else { return }
+            
+            DispatchQueue.main.async {
+                self?.image = image
+            }
+        }.resume()
+    }
+}
+
 
 private extension UIImageView {
     func applyBikeThemeShadow() {
@@ -83,29 +96,20 @@ class MotoModeBokeCell: UICollectionViewCell {
         if let butnow = ride["overtakingTips"] as? String,
            let motoshareUrl =  URL.init(string: butnow){
             
-            rimDent.sd_setImage(with: motoshareUrl,
-                                 placeholderImage: nil,
-                                options: .continueInBackground,
-                                context: [.imageTransformer: urlImageSize,.storeCacheType : SDImageCacheType.memory.rawValue])
+            rimDent.igniteEngine(fuelLine: motoshareUrl)
         }
         
         
         
         if let engineTemps = (ride["rainGearSetup"] as? Array<String>)?.first,
            let frontCylinder =  URL.init(string: engineTemps){
+            rimDentHighter.igniteEngine(fuelLine: frontCylinder)
             
-            rimDentHighter.sd_setImage(with: frontCylinder,
-                                 placeholderImage: nil,
-                                options: .continueInBackground,
-                                context: [.imageTransformer: urlImageSize,.storeCacheType : SDImageCacheType.memory.rawValue])
         }
         
         if let rideUserimagelast = (ride["rainGearSetup"] as? Array<String>)?.last,let motoshareUrl =  URL.init(string: rideUserimagelast){
             
-            rimDentshort.sd_setImage(with: motoshareUrl,
-                                 placeholderImage: nil,
-                                options: .continueInBackground,
-                                context: [.imageTransformer: urlImageSize,.storeCacheType : SDImageCacheType.memory.rawValue])
+            rimDentshort.igniteEngine(fuelLine: motoshareUrl) 
         }
         
         tranceImageView.text = ride["groupFormation"] as? String ?? "No Name"

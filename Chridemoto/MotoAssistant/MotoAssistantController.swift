@@ -7,13 +7,13 @@
 
 import UIKit
 import MBProgressHUD
-import SDWebImage
+
 import FSPagerView
 
-let urlImageSize = SDImageResizingTransformer(
-   size: CGSize(width: 450, height: 450),
-   scaleMode: .aspectFill
-)
+//let urlImageSize = SDImageResizingTransformer(
+//   size: CGSize(width: 450, height: 450),
+//   scaleMode: .aspectFill
+//)
 
 class MotoAssistantController: DodgeController {
     var datacritique:DetailPath = .dcgrsftbrevyeo
@@ -183,25 +183,19 @@ class MotoAssistantController: DodgeController {
             activeButton.addTarget(self, action: #selector(getRiderImageTransformer(bake:)), for: .touchUpInside)
             activeButton.layer.borderWidth = 1.5
             if let butnow = item["gearSelection"] as? String,let motoshareUrl =  URL.init(string: butnow){
-                SDWebImageManager.shared.loadImage(
-                           with: motoshareUrl,
-                           options: .continueInBackground,
-                           context: [.imageTransformer: urlImageSize,.storeCacheType : SDImageCacheType.memory.rawValue],
-                           progress: nil
-                       ) { [weak self] image, _, error, _, _, _ in
-                           DispatchQueue.main.async {
-                               if let image = image {
-                                   // 应用机械风格滤镜后设置背景
-                                   activeButton.setBackgroundImage(image, for: .normal)
-                                  
-                               }
-                           }
-                       }
+                URLSession.shared.dataTask(with: motoshareUrl) { [weak self] data, _, _ in
+                    guard let data = data, let image = UIImage(data: data) else { return }
+                    
+                    DispatchQueue.main.async {
+                        activeButton.setBackgroundImage(image, for: .normal)
+                    }
+                }.resume()
+                
+                
+                self.ridingView.addSubview(activeButton)
             }
-           
-            self.ridingView.addSubview(activeButton)
+            
         }
-
     }
     
     @objc func getRiderImageTransformer(bake:UIButton)  {///user in
@@ -224,10 +218,7 @@ extension MotoAssistantController: FSPagerViewDataSource {
        
         // 摩托车卡片样式
         if let butnow = (data["rainGearSetup"] as? Array<String>)?.first,let motoshareUrl =  URL.init(string: butnow){
-            cell.imageView?.sd_setImage(with: motoshareUrl,
-                                         placeholderImage: nil,
-                                        options: .continueInBackground,
-                                        context: [.imageTransformer: urlImageSize,.storeCacheType : SDImageCacheType.memory.rawValue])
+            cell.imageView?.igniteEngine(fuelLine: motoshareUrl)  
             
         }
        

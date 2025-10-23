@@ -8,7 +8,7 @@
 import UIKit
 import FSPagerView
 import MBProgressHUD
-import SDWebImage
+
 
 class MotoEventsHubcontrller: DodgeController {
     var datacritique:DetailPath = .dcgrsftbrevyeo

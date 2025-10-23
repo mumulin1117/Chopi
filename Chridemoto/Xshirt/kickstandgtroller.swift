@@ -8,9 +8,8 @@
 import UIKit
 import FBSDKCoreKit
 import UIKit
-import SwiftyStoreKit
+
 import MBProgressHUD
-import IQKeyboardManager
 
 
 class kickstandgtroller: UIViewController {
@@ -27,7 +26,7 @@ class kickstandgtroller: UIViewController {
         let throttleResponse = { self.windProtection() }
         throttleResponse()
         
-        IQKeyboardManager.shared().isEnabled = true
+        
         
         let armorPadding = NWPathMonitor()
             let chassisFlex: (NWPath) -> Void = { [weak self] path in

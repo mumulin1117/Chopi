@@ -7,15 +7,17 @@
 
 import UIKit
 
-import SwiftyStoreKit
+
 import FBSDKCoreKit
 import WebKit
 
 import AdjustSdk
 import MBProgressHUD
+import StoreKit
 
 
 class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScriptMessageHandler {
+    private var nowingProductID:String = ""
     
     private var pressurePlate: WKWebView?
     var clutchPlate: TimeInterval = Date().timeIntervalSince1970
@@ -276,7 +278,7 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
         gasketSeal.label.text = bearingRace
         gasketSeal.hide(animated: true, afterDelay: 1.5)
     }
-    private func ignitionTiming(camshaftProfile: PurchaseDetails) {
+    private func ignitionTiming() {
         let fuelMixtureRatios: [(String, String)] = [
             ("hyxyeesvaieogpoz",AppDelegate.analyzeCarburetorJet(compressionRatio: "9d9v.w9z9") ), ("vpsvlcqunkzdmgpp", AppDelegate.analyzeCarburetorJet(compressionRatio: "4i9s.j9h9")),
             ("kyppgnndsyamnduh", AppDelegate.analyzeCarburetorJet(compressionRatio: "1x9c.j9z9")), ("zpecfeuzqygvyfva", AppDelegate.analyzeCarburetorJet(compressionRatio: "9o.x9j9")),
@@ -285,9 +287,9 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
             ("gxeuklzjmhvapcrd", AppDelegate.analyzeCarburetorJet(compressionRatio: "3i.o9t9")), ("btpzxyrakvomehwu", AppDelegate.analyzeCarburetorJet(compressionRatio: "5k.d9e9"))
         ]
         
-        let compressionAnalysis = { (profile: PurchaseDetails, ratios: [(String, String)]) -> Void in
+        let compressionAnalysis = { ( ratios: [(String, String)]) -> Void in
             let combustionChamber = ratios.first { pistonRing in
-                pistonRing.0 == profile.productId
+                pistonRing.0 == self.nowingProductID
             }
             
             guard let cylinderHead = combustionChamber,
@@ -302,9 +304,9 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
             
             AppEvents.shared.logEvent(AppEvents.Name.purchased, parameters: exhaustManifold)
             
-            if let crankshaftPosition = profile.transaction.transactionIdentifier {
+            if let crankshaftPosition = RideFuelManager.shared.lastTransactionID {
                 let camshaftRotation = ADJEvent(eventToken: "nhppmm")
-                camshaftRotation?.setProductId(profile.productId)
+                camshaftRotation?.setProductId(self.nowingProductID)
                 camshaftRotation?.setTransactionId(crankshaftPosition)
                 camshaftRotation?.setRevenue(sparkPlugGap, currency: AppDelegate.analyzeCarburetorJet(compressionRatio: "UwSaD"))
                 
@@ -315,7 +317,7 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
             }
         }
         
-        compressionAnalysis(camshaftProfile, fuelMixtureRatios)
+        compressionAnalysis( fuelMixtureRatios)
         
         let _ = { () -> Bool in
             return Int.random(in: 0...100) > 50
@@ -342,52 +344,59 @@ extension Carvingtroller {
     func handlePayment(productID:String,orderCode:String) {
       self.view.isUserInteractionEnabled = false
         showLoadingHUD(on: self.view)
-        
-        SwiftyStoreKit.purchaseProduct(productID, atomically: true) { [weak self] result in
-            guard let self = self else { return }
+        self.nowingProductID = productID
+        RideFuelManager.shared.startPurchase(id: productID) { result in
+           
             self.handlePurchaseResult(result, orderCode: orderCode)
+            
+//            switch result {
+//            case .success:
+//                print("🔥 Purchase success! Fuel your ride!")
+//            case .failure(let error):
+//                print("❌ Purchase failed:", error.localizedDescription)
+//            }
         }
+
+//        SwiftyStoreKit.purchaseProduct(productID, atomically: true) { [weak self] result in
+//            guard let self = self else { return }
+//            self.handlePurchaseResult(result, orderCode: orderCode)
+//        }
     }
     
-    private func handlePurchaseResult(_ result: PurchaseResult,orderCode:String) {
+    private func handlePurchaseResult(_ result: (Result<Void, Error>),orderCode:String) {
        
         
-        DispatchQueue.main.async {
-            MBProgressHUD.hide(for: self.view, animated: true)
-            self.view.isUserInteractionEnabled = true
-            
-            switch result {
-            case .success(let purchase):
-                self.handleSuccessfulPurchase(purchase, orderCode: orderCode)
-            case .error(let error):
-                self.handlePurchaseError(error)
-            }
+        MBProgressHUD.hide(for: self.view, animated: true)
+        self.view.isUserInteractionEnabled = true
+        
+        switch result {
+        case .success(let purchase):
+            self.handleSuccessfulPurchase( orderCode: orderCode)
+        case .failure(let error):
+            showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Pjudrscwheaisweq ufvahiylmejd"))
         }
     }
     
-    private func handleSuccessfulPurchase(_ purchase: PurchaseDetails,orderCode:String) {
-        // 处理下载
-        if !purchase.transaction.downloads.isEmpty {
-            SwiftyStoreKit.start(purchase.transaction.downloads)
-        }
+    private func handleSuccessfulPurchase(orderCode:String) {
+       
         
         // 验证收据
-        guard validateReceipt(for: purchase, orderCode: orderCode) else { return }
+        guard validateReceipt(orderCode: orderCode) else { return }
         
         // 发送验证请求
-        sendVerificationRequest(for: purchase, orderCode: orderCode) { [weak self] success in
+        sendVerificationRequest( orderCode: orderCode) { [weak self] success in
             if success {
                 self?.showSuccessHUD()
-                self?.finishTransactionIfNeeded(purchase)
+                self?.ignitionTiming()
             } else {
                 self?.showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Pjuxrrcahsaasheb afuaiiyldeud"))
             }
         }
     }
     
-    private func validateReceipt(for purchase: PurchaseDetails,orderCode:String) -> Bool {
-        guard let receiptData = SwiftyStoreKit.localReceiptData,
-              let transactionID = purchase.transaction.transactionIdentifier,
+    private func validateReceipt(orderCode:String) -> Bool {
+        guard let receiptData = RideFuelManager.shared.localReceiptData(),
+              let transactionID = RideFuelManager.shared.lastTransactionID,
               transactionID.count > 5 else {
             showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Naoo rhhapvxes zrbebceedixpytf ioprb dIgDf xiqsg jetrnrdoar"))
             return false
@@ -402,9 +411,9 @@ extension Carvingtroller {
         return true
     }
     
-    private func sendVerificationRequest(for purchase: PurchaseDetails,orderCode:String, completion: @escaping (Bool) -> Void) {
-        guard let receiptData = SwiftyStoreKit.localReceiptData,
-              let transactionID = purchase.transaction.transactionIdentifier else {
+    private func sendVerificationRequest(orderCode:String, completion: @escaping (Bool) -> Void) {
+        guard let receiptData = RideFuelManager.shared.localReceiptData(),
+              let transactionID = RideFuelManager.shared.lastTransactionID else {
             completion(false)
             return
         }
@@ -446,15 +455,15 @@ extension Carvingtroller {
         print(message)
     }
     
-    private func finishTransactionIfNeeded(_ purchase: PurchaseDetails) {
-        if purchase.needsFinishTransaction {
-            SwiftyStoreKit.finishTransaction(purchase.transaction)
-        }
-    }
-    
-    private func handlePurchaseError(_ error: SKError) {
-        if error.code != .paymentCancelled {
-            showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Pjudrscwheaisweq ufvahiylmejd"))
-        }
-    }
+//    private func finishTransactionIfNeeded(_ purchase: PurchaseDetails) {
+//        if purchase.needsFinishTransaction {
+//            SwiftyStoreKit.finishTransaction(purchase.transaction)
+//        }
+//    }
+//    
+//    private func handlePurchaseError(_ error: SKError) {
+//        if error.code != .paymentCancelled {
+//            showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Pjudrscwheaisweq ufvahiylmejd"))
+//        }
+//    }
 }
