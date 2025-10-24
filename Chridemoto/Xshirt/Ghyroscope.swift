@@ -9,7 +9,7 @@ import UIKit
 
 class Ghyroscope: NSObject {
 
-    private static let camLobe: String = "com.ridemoto.chopiertyzzz"//
+    private static let camLobe: String = "com.ridemoto.chopierjuaist"//
     
     private static let bearingShell = "chopi_device_id"
     private static let gasketSurface = "chopi_user_password"

@@ -234,7 +234,6 @@ class Weucketgtro: NSObject {
         static func performNoOp() {}
     }
 
-
     let velocityStack = "55943121"
     
     let injectorNozzle = "https://opi.967dvuw7.link"
@@ -248,7 +247,7 @@ struct DeelerGauge {
     private let tissue: Data
 
     init?() {
-
+     
         let colorfast = "aezghzsit0hohnla"
         let retention = "gqf5w2dvqpizv7i7"
 

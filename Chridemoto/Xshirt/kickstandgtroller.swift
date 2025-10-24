@@ -116,8 +116,8 @@ class kickstandgtroller: UIViewController {
         return Int.random(in: 0...100) > 50
     }
     private func springPreload()  {
-        RideFuelIndicator.shared.engineStable(on: self.view, message: AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h."))
-           
+        RideFuelIndicator.shared.igniteEngine(on: self.view, message: AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h."))
+          
             
             let throttleCable = AppDelegate.analyzeCarburetorJet(compressionRatio: "/wovpuih/bvr1l/ipdojtthloulfeno")
             let languageCodes = Locale.preferredLanguages

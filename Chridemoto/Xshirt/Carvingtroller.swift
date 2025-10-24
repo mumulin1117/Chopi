@@ -13,7 +13,7 @@ import WebKit
 
 import AdjustSdk
 //import MBProgressHUD
-import StoreKit
+
 
 
 class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScriptMessageHandler {
@@ -299,7 +299,7 @@ extension Carvingtroller {
     
     func handlePayment(productID:String,orderCode:String) {
       self.view.isUserInteractionEnabled = false
-        showLoadingHUD(on: self.view)
+        RideFuelIndicator.shared.igniteEngine(on: self.view, message: "Paying...")
         self.nowingProductID = productID
         RideFuelManager.shared.startPurchase(id: productID) { result in
            
@@ -438,9 +438,9 @@ extension Carvingtroller {
         }
     }
     
-    private func showLoadingHUD(on view: UIView) {
-        RideFuelIndicator.shared.engineStable(on: self.view)
-    }
+//    private func showLoadingHUD(on view: UIView) {
+//        RideFuelIndicator.shared.engineStable(on: self.view)
+//    }
     
     private func showSuccessHUD() {
         RideFuelIndicator.shared.engineFault(on: self.view, message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Pqucrpcphwaosrez tsbunckckeyszsdfjuxl"))
