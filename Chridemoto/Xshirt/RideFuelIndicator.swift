@@ -39,6 +39,7 @@ final class RideFuelIndicator {
         label.textColor = .white
         label.font = UIFont(name: "HelveticaNeue-Medium", size: 15)
         label.text = message
+        label.numberOfLines = 0
         dash.addSubview(label)
         
         background.addSubview(dash)
@@ -65,12 +66,14 @@ final class RideFuelIndicator {
         iconLabel.textAlignment = .center
         iconLabel.font = UIFont.systemFont(ofSize: 35)
         iconLabel.text = icon
+        iconLabel.numberOfLines = 0
         dash.addSubview(iconLabel)
         
         let msgLabel = UILabel(frame: CGRect(x: 8, y: 70, width: dash.bounds.width - 16, height: 30))
         msgLabel.textAlignment = .center
         msgLabel.textColor = tone
         msgLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        msgLabel.numberOfLines = 0
         msgLabel.text = message
         dash.addSubview(msgLabel)
         

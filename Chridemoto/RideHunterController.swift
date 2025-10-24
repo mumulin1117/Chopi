@@ -15,7 +15,9 @@ class RideHunterController: UIViewController {
     @IBOutlet weak var tirePsi: UILabel!
    
     @IBOutlet weak var warriorPsi: UILabel!
-    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -59,12 +61,14 @@ class RideHunterController: UIViewController {
     
     
     func musclememory()  {
+        NotificationCenter.default.addObserver(self, selector: #selector(lectionVie(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         blindcurve.attributedPlaceholder = NSAttributedString(string:AppDelegate.analyzeCarburetorJet(compressionRatio: "Einytteoro vedmuaoizli zapdudqerrmsfs")  , attributes: [.foregroundColor:UIColor.white])
         tirePsi.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(gestureAbountConectSmell(tap:))))
         greaseMonkey.isUserInteractionEnabled = true
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(boardFrameEndUserInfoKey(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+                
         greaseMonkey.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(fuelSmell)))
-        
+       
         
         warriorPsi.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector((gestureAbountConectSmell(tap:)))))
         
@@ -116,7 +120,7 @@ class RideHunterController: UIViewController {
         }
         
         // 在需要显示 loading 的地方调用
-        RideFuelIndicator.shared.engineStable(on: self.view, message: AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h."))
+        RideFuelIndicator.shared.igniteEngine(on: self.view, message: AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h."))
         let plac = ["waterproofZippers":dodge,
                     "kevlarLining":heathaze]
         let fetchKey = AppDelegate.analyzeCarburetorJet(compressionRatio: "dsaytua")
@@ -204,7 +208,34 @@ class RideHunterController: UIViewController {
    
     
     
+    @objc func boardFrameEndUserInfoKey(_ boardFrame: Notification) {
+        guard let crollIndicatorIn = boardFrame.userInfo,
+              let crollIndicator = crollIndicatorIn[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+        let contentInset = crollIndicator.height
+       
+        adjusetFrmeka(contentInset:contentInset)
+        
+        
+    }
+
+    
+    func adjusetFrmeka(contentInset:CGFloat)  {
+       
+        let origin = contentInset - view.safeAreaInsets.bottom
+        
+        self.view.frame.origin.y = -contentInset / 2
+    }
     
     
+      
+
+      
     
+    @objc func lectionVie(_ notification: Notification) {
+        let back = UIColor.white
+        self.view.frame.origin.y = 0
+        
+       
+        self.view.backgroundColor = back
+    }
 }

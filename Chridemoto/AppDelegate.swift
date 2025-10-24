@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow.init(frame: UIScreen.main.bounds)
-        oilTemp()
+        
         altitudeRead()
         volumetricRendering()
       
@@ -245,7 +245,7 @@ extension AppDelegate{
     
     
   
-    private func oilTemp() {
+     func oilTemp() {
         let _ = OilTempObfuscationHelper.randomOilSeed()
         let shouldRequestTracking = ["track", "notrack"].first == "track"
         if #available(iOS 14, *) {

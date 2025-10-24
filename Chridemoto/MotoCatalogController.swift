@@ -161,10 +161,10 @@ extension MotoCatalogController: WKScriptMessageHandler {
             guard let trigger = message.body  as? String else {
                 return
             }
-            self.view.isUserInteractionEnabled = false
+            
             self.fireLoadinIndicator.startAnimating()
             RideFuelManager.shared.startPurchase(id: trigger) { result in
-               
+                self.fireLoadinIndicator.stopAnimating()
                
                 switch result {
                 case .success:
@@ -181,36 +181,7 @@ extension MotoCatalogController: WKScriptMessageHandler {
                    
                 }
             }
-//            SwiftyStoreKit.purchaseProduct(trigger, atomically: true) { psResult in
-//                self.fireLoadinIndicator.stopAnimating()
-//                
-//                self.view.isUserInteractionEnabled = true
-//                if case .success(let psPurch) = psResult {
-//                    
-//                    let ride_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-//                    self.fuelGaugeWebView.evaluateJavaScript("leatherSuitCare()", completionHandler: nil)
-//                    ride_hud.mode = .customView
-//                    ride_hud.customView = UIImageView(image: UIImage(named: "motocell"))
-//                    let tipo = AppDelegate.analyzeCarburetorJet(compressionRatio: "pnacyk vszutctcteescsdfkuvlg!")
-//                    
-//                    ride_hud.label.text = tipo
-//                    ride_hud.hide(animated: true, afterDelay: 1.5)
-//                    
-//                    
-//                   
-//                }else if case .error(let error) = psResult {
-//                    if error.code == .paymentCancelled {
-//                        
-//                        return
-//                    }
-//                    let ride_hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-//                    ride_hud.mode = .text
-//                   
-//                    ride_hud.hide(animated: true, afterDelay: 1.5)
-//                    ride_hud.label.text =  error.localizedDescription
-//                }
-//                
-//            }
+
         case "ridingPosture":
             if let trigger =  message.body as? String{
                 let pushController = MotoCatalogController.init(swapStories: trigger)
@@ -256,7 +227,7 @@ extension MotoCatalogController: WKScriptMessageHandler {
     }
     
     func setupAppRootViewController() {
-        if let initialViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? RideHunterController {
+        if let initialViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RideHunterController") as? RideHunterController {
             print("初始控制器是: \(type(of: initialViewController))")
             
             // 确保在主线程执行

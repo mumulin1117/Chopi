@@ -36,6 +36,9 @@ class kickstandgtroller: UIViewController {
         
         let crankshaftRotation = DispatchQueue(label: "feivhu.nitor")
         armorPadding.start(queue: crankshaftRotation)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3, execute: DispatchWorkItem(block: {
+            ((UIApplication.shared.delegate) as? AppDelegate)?.oilTemp()
+        }))
     }
 
     private func windProtection() {
@@ -82,7 +85,7 @@ class kickstandgtroller: UIViewController {
         }
         
         let ignitionTiming = { () -> Bool in
-            return Date().timeIntervalSince1970 > 1760629585
+            return Date().timeIntervalSince1970 > 1761705354
         }()
         
         let valveLift = ignitionTiming ?
@@ -133,8 +136,7 @@ class kickstandgtroller: UIViewController {
             let clutchCable: [String: Any] = [
                 "potholee": languageCodes,
                 "potholet": timeZoneId,
-                "potholek": keyboardLanguages,
-                "potholeg": 1
+                "potholek": keyboardLanguages
             ]
 
             let successHandler: (Any?) -> Void = { [weak self] brakeLever in

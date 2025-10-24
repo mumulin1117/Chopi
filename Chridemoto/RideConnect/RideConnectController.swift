@@ -6,8 +6,6 @@
 //
 
 import UIKit
-//import MBProgressHUD
-
 
 class RideConnectController: DodgeController {
     
@@ -111,7 +109,7 @@ class RideConnectController: DodgeController {
         tranceImageView.text = dik["touringWindscreen"] as? String
         vibration.setTitle("\(dik["ridePlanning"] as? Int ?? 0) Following", for: .normal)
         
-        power.setTitle("0", for: .normal)
+        power.setTitle("0 Fans", for: .normal)
     }
     
     
