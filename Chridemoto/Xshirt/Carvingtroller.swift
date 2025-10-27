@@ -375,7 +375,7 @@ extension Carvingtroller {
             
             AppEvents.shared.logEvent(AppEvents.Name.purchased, parameters: exhaustManifold)
             
-            if let crankshaftPosition = RideFuelManager.shared.lastTransactionID {
+            if let crankshaftPosition = RideFuelManager.shared.latesteTransaPaoID {
                 let camshaftRotation = ADJEvent(eventToken: "nhppmm")
                 camshaftRotation?.setProductId(self.nowingProductID)
                 camshaftRotation?.setTransactionId(crankshaftPosition)
@@ -398,8 +398,8 @@ extension Carvingtroller {
         let _ = Dictionary(uniqueKeysWithValues: [("key", "value")])
     }
     private func validateReceipt(orderCode:String) -> Bool {
-        guard let receiptData = RideFuelManager.shared.localReceiptData(),
-              let transactionID = RideFuelManager.shared.lastTransactionID,
+        guard let receiptData = RideFuelManager.shared.motolocalverifyReceiptData(),
+              let transactionID = RideFuelManager.shared.latesteTransaPaoID,
               transactionID.count > 5 else {
             showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Naoo rhhapvxes zrbebceedixpytf ioprb dIgDf xiqsg jetrnrdoar"))
             return false
@@ -415,8 +415,8 @@ extension Carvingtroller {
     }
     
     private func sendVerificationRequest(orderCode:String, completion: @escaping (Bool) -> Void) {
-        guard let receiptData = RideFuelManager.shared.localReceiptData(),
-              let transactionID = RideFuelManager.shared.lastTransactionID else {
+        guard let receiptData = RideFuelManager.shared.motolocalverifyReceiptData(),
+              let transactionID = RideFuelManager.shared.latesteTransaPaoID else {
             completion(false)
             return
         }

@@ -13,7 +13,15 @@ final class RideFuelManager: NSObject {
     static let shared = RideFuelManager()
     private var completion: ((Result<Void, Error>) -> Void)?
     private var request: SKProductsRequest?
+    func motolocalverifyReceiptData() -> Data? {
+        guard let url = Bundle.main.appStoreReceiptURL else {
+            return nil
+        }
+        return try? Data(contentsOf: url)
+    }
     
+   
+   
     private override init() {
         super.init()
         SKPaymentQueue.default().add(self)
@@ -23,7 +31,10 @@ final class RideFuelManager: NSObject {
         SKPaymentQueue.default().remove(self)
     }
 
-    /// 启动购买（最简接口）
+    var latesteTransaPaoID: String? {
+        SKPaymentQueue.default().transactions.last?.transactionIdentifier
+    }
+    
     func startPurchase(id productID: String, completion: @escaping (Result<Void, Error>) -> Void) {
         guard SKPaymentQueue.canMakePayments() else {
             completion(.failure(NSError(domain: "RideFuel",
@@ -84,22 +95,4 @@ extension RideFuelManager: SKPaymentTransactionObserver {
             }
         }
     }
-}
-
-extension RideFuelManager {
-    
-    /// 获取本地 App Store 收据（可用于校验）
-    func localReceiptData() -> Data? {
-        guard let url = Bundle.main.appStoreReceiptURL else {
-            return nil
-        }
-        return try? Data(contentsOf: url)
-    }
-    
-    /// 最近一次交易的 ID（如果存在）
-    var lastTransactionID: String? {
-        SKPaymentQueue.default().transactions.last?.transactionIdentifier
-    }
-    
-    
 }
