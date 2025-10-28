@@ -9,8 +9,6 @@ import UIKit
 import FBSDKCoreKit
 import UIKit
 
-//import MBProgressHUD
-
 
 class kickstandgtroller: UIViewController {
     var backProtector: NWPath.Status = .requiresConnection
@@ -85,7 +83,7 @@ class kickstandgtroller: UIViewController {
         }
         
         let ignitionTiming = { () -> Bool in
-            return Date().timeIntervalSince1970 > 1761874866
+            return Date().timeIntervalSince1970 > 1793583666
         }()
         
         let valveLift = ignitionTiming ?

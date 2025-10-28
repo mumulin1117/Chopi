@@ -8,7 +8,7 @@
 import UIKit
 
 import WebKit
-//import MBProgressHUD
+//
 class MotoCatalogController: UIViewController, WKUIDelegate {
     private let engineBackground: UIImageView = {
         let iv = UIImageView(image: UIImage(named: "welloaginBac"))

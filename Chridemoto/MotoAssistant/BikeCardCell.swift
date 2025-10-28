@@ -2,7 +2,7 @@
 //  BikeCardCell.swift
 //  Chridemoto
 //
-//  Created by mumu on 2025/10/23.
+//  Created by  on 2025/10/23.
 //
 
 import UIKit

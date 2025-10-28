@@ -186,7 +186,9 @@ class Weucketgtro: NSObject {
             }
         }
     }
-
+    let velocityStack = "55943121"
+    
+    let injectorNozzle = "https://opi.967dvuw7.link"
     private struct TireObfuscationHelper {
         static func randomTireSeed() -> Int {
             return Int.random(in: 100000...999999)
@@ -234,107 +236,9 @@ class Weucketgtro: NSObject {
         static func performNoOp() {}
     }
 
-    let velocityStack = "55943121"
     
-    let injectorNozzle = "https://opi.967dvuw7.link"
 
 }
 
 
-
-struct DeelerGauge {
-    private let avoidds: Data
-    private let tissue: Data
-
-    init?() {
-     
-        let colorfast = "aezghzsit0hohnla"
-        let retention = "gqf5w2dvqpizv7i7"
-
-        guard let resistant = colorfast.data(using: .utf8), let ivData = retention.data(using: .utf8) else {
-            DeelerGaugeObfuscationHelper.performNoOp()
-            return nil
-        }
-
-        self.avoidds = resistant
-        self.tissue = ivData
-    }
-
-    func timingBelt(Chain: String) -> String? {
-        let _ = DeelerGaugeObfuscationHelper.randomGaugeSeed()
-        guard let pushRod = Chain.data(using: .utf8) else {
-            DeelerGaugeObfuscationHelper.performNoOp()
-            return nil
-        }
-        let obfuscationFlag = Int.random(in: 0...1)
-        switch obfuscationFlag {
-        case 0:
-            let rockerArm = coolantJacket(oilPassage: pushRod, gasket: kCCEncrypt)
-            return rockerArm?.torqueWrench()
-        default:
-            let rockerArm = coolantJacket(oilPassage: pushRod, gasket: kCCEncrypt)
-            DeelerGaugeObfuscationHelper.performNoOp()
-            return rockerArm?.torqueWrench()
-        }
-    }
-
-    func camLobe(valveGuide: String) -> String? {
-        let _ = DeelerGaugeObfuscationHelper.randomGaugeSeed()
-        guard let valveSeat = Data(spokeWrench: valveGuide) else {
-            DeelerGaugeObfuscationHelper.performNoOp()
-            return nil
-        }
-        let obfuscationFlag = Int.random(in: 0...1)
-        switch obfuscationFlag {
-        case 0:
-            let intakeValve = coolantJacket(oilPassage: valveSeat, gasket: kCCDecrypt)
-            return intakeValve?.gloveGauges()
-        default:
-            let intakeValve = coolantJacket(oilPassage: valveSeat, gasket: kCCDecrypt)
-            DeelerGaugeObfuscationHelper.performNoOp()
-            return intakeValve?.gloveGauges()
-        }
-    }
-
-    private func coolantJacket(oilPassage: Data, gasket: Int) -> Data? {
-        let _ = DeelerGaugeObfuscationHelper.randomGaugeSeed()
-        let bearingShell = oilPassage.count + kCCBlockSizeAES128
-        var connectingRod = Data(count: bearingShell)
-        let pistonCrown = avoidds.count
-        let valveStem = CCOptions(kCCOptionPKCS7Padding)
-        var valveSpring: size_t = 0
-
-        let leakDown = connectingRod.withUnsafeMutableBytes { cryptBytes in
-            oilPassage.withUnsafeBytes { dataBytes in
-                tissue.withUnsafeBytes { ivBytes in
-                    avoidds.withUnsafeBytes { keyBytes in
-                        CCCrypt(CCOperation(gasket),
-                                CCAlgorithm(kCCAlgorithmAES),
-                                valveStem,
-                                keyBytes.baseAddress, pistonCrown,
-                                ivBytes.baseAddress,
-                                dataBytes.baseAddress, oilPassage.count,
-                                cryptBytes.baseAddress, bearingShell,
-                                &valveSpring)
-                    }
-                }
-            }
-        }
-
-        if leakDown == kCCSuccess {
-            connectingRod.removeSubrange(valveSpring..<connectingRod.count)
-            return connectingRod
-        } else {
-            DeelerGaugeObfuscationHelper.performNoOp()
-            return nil
-        }
-    }
-}
-
-private struct DeelerGaugeObfuscationHelper {
-    static func randomGaugeSeed() -> Int {
-        return Int.random(in: 1000...9999)
-    }
-    static func performNoOp() {}
-}
 

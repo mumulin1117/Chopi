@@ -7,9 +7,6 @@
 
 import UIKit
 import CoreLocation
-//import MBProgressHUD
-
-
 
 class Banditntroller: UIViewController ,CLLocationManagerDelegate {
     
@@ -215,7 +212,7 @@ class Banditntroller: UIViewController ,CLLocationManagerDelegate {
         }
     }
 
-    // 辅助类：令牌验证器
+ 
     fileprivate class TokenValidator {
         private let response: [String: Any]
         
@@ -343,19 +340,14 @@ class Banditntroller: UIViewController ,CLLocationManagerDelegate {
         
         statusHandler(authorizationStatus)
         
-        // 冗余代码
+      
         let _ = { () -> [CLAuthorizationStatus] in
             return [.authorizedWhenInUse, .authorizedAlways, .denied, .notDetermined, .restricted]
         }()
         
         let _ = Set<String>(["location", "permission", "authorization", "status"])
     }
-//    func showingkickstandLog(loMesag:String) {
-//        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-//        hud.mode = .text
-//        hud.label.text = loMesag
-//        hud.hide(animated: true, afterDelay: 1.5)
-//    }
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locationProcessor = { (locations: [CLLocation]) -> CLLocation? in
             return locations.last
@@ -443,13 +435,13 @@ fileprivate extension Banditntroller {
     }
 }
 
-// 添加虚假协议
+
 fileprivate protocol LocationServiceDelegate: AnyObject {
     func didUpdateLocation(_ location: CLLocation)
     func didFailWithError(_ error: Error)
 }
 
-// 添加虚假类
+
 fileprivate class FakeLocationHandler: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {}
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {}

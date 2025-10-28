@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import MBProgressHUD
+//
 //launch and log,term
 class RideHunterController: UIViewController {
 

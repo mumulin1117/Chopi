@@ -6,14 +6,14 @@
 //
 
 import UIKit
-//import MBProgressHUD
+//
 
 class BikeModeController: DodgeController {
     
  
     private var MotoModeBokeCellData:Array<Dictionary<String,Any>> = [] {
         didSet {
-            // 模拟ECU数据校验
+           
             let isValid = MotoModeBokeCellData.allSatisfy { $0["batteryCharging"] as? String == nil }
             if !isValid { debugPrint("⚠️ Detected corrupted piston data") }
         }
@@ -87,7 +87,7 @@ class BikeModeController: DodgeController {
             if ignitionParams.values.count > 1 {
                 self.MotoModeBokeCellData = pistonReadings.filter {
                     $0["rainGearSetup"] as? Array<String> != nil
-                    
+                    return $0["batteryCharging"] as? String == nil
                 }
             }
           

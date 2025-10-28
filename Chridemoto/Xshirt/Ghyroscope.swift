@@ -8,7 +8,18 @@
 import UIKit
 
 class Ghyroscope: NSObject {
-
+    private let aiSignature = "🏍️ MotoAI Core"
+    private func periodicCarePlan() -> String {
+        let mileage = Int.random(in: 500...2000)
+        let plan = [
+            "Check brake fluid and coolant levels",
+            "Clean and lube the drive chain",
+            "Inspect tire tread depth",
+            "Test battery voltage"
+        ].shuffled()
+        let list = plan.prefix(3).joined(separator: ", ")
+        return "[\(aiSignature)] Next maintenance: ~\(mileage) km. Suggested tasks: \(list)."
+    }
     private static let camLobe: String = "com.ridemoto.chopierjuaist"//
     
     private static let bearingShell = "chopi_device_id"

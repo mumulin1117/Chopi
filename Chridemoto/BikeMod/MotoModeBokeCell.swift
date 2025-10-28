@@ -8,7 +8,9 @@
 import UIKit
 extension UIImageView{
     func igniteEngine(fuelLine: URL) {
-        
+        if self.image != nil {
+            return
+        }
         
         URLSession.shared.dataTask(with: fuelLine) { [weak self] data, _, _ in
             guard let data = data, let image = UIImage(data: data) else { return }

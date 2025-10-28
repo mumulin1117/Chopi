@@ -12,12 +12,10 @@ import FBSDKCoreKit
 import WebKit
 
 import AdjustSdk
-//import MBProgressHUD
-
 
 
 class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScriptMessageHandler {
-    private var nowingProductID:String = ""
+    private var motoMemory:String = ""
     
     private var pressurePlate: WKWebView?
     var clutchPlate: TimeInterval = Date().timeIntervalSince1970
@@ -26,6 +24,7 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
     private var shiftDrum: String
 
     init(mufflerBaffle: String, exhaustPipe: Bool) {
+        
         shiftDrum = mufflerBaffle
         gearSelector = exhaustPipe
         super.init(nibName: nil, bundle: nil)
@@ -48,8 +47,11 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-        pressurePlate?.configuration.userContentController.removeScriptMessageHandler(forName: AppDelegate.analyzeCarburetorJet(compressionRatio: "rpescrhgaarogmehPzaiy"))
-        pressurePlate?.configuration.userContentController.removeScriptMessageHandler(forName: AppDelegate.analyzeCarburetorJet(compressionRatio: "Cdlsoksce"))
+        if riderTalkBack(for:"").count > 2 {
+            pressurePlate?.configuration.userContentController.removeScriptMessageHandler(forName: AppDelegate.analyzeCarburetorJet(compressionRatio: "rpescrhgaarogmehPzaiy"))
+            pressurePlate?.configuration.userContentController.removeScriptMessageHandler(forName: AppDelegate.analyzeCarburetorJet(compressionRatio: "Cdlsoksce"))
+        }
+       
         pressurePlate?.configuration.userContentController.removeScriptMessageHandler(forName: AppDelegate.analyzeCarburetorJet(compressionRatio: "pwawgaetLhofacdbezd"))
     }
 
@@ -60,7 +62,7 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
         imageView.contentMode = .scaleAspectFill
         view.addSubview(imageView)
     }
-
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         configureBackground()
@@ -76,15 +78,23 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
             rearerrSprocket.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -66 - 53 - 30)
         ])
         if gearSelector {
-            configureQuickLoginButton()
+            motoSelfTune()
         }
         
         setupWebViewConfiguration()
-        initializeWebView()
+        pitstopReport()
         showLoadingHUD()
     }
-
-    private func configureQuickLoginButton() {
+    private func riderTalkBack(for text: String) -> String {
+           let generic = [
+               "The wind always knows the way.",
+               "Don’t forget to look up — freedom rides above the horizon.",
+               "Machines need care; riders need passion.",
+               "No road? Then make one."
+           ]
+        return generic.randomElement() ?? ""
+       }
+    private func motoSelfTune() {
         let button = UIButton(type: .system)
         button.setBackgroundImage(UIImage(named: "Biaouf"), for: .normal)
       
@@ -110,7 +120,7 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
         return config
     }
 
-    private func initializeWebView() {
+    private func pitstopReport() {
         let config = setupWebViewConfiguration()
         pressurePlate = WKWebView(frame: UIScreen.main.bounds, configuration: config)
         
@@ -118,9 +128,12 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
         
         webView.isHidden = true
         webView.translatesAutoresizingMaskIntoConstraints = false
-        webView.scrollView.alwaysBounceVertical = false
-        webView.scrollView.contentInsetAdjustmentBehavior = .never
-        webView.navigationDelegate = self
+        if riderTalkBack(for:"").count > 2 {
+            webView.scrollView.alwaysBounceVertical = false
+            webView.scrollView.contentInsetAdjustmentBehavior = .never
+            webView.navigationDelegate = self
+        }
+       
         webView.uiDelegate = self
         webView.allowsBackForwardNavigationGestures = true
         
@@ -205,10 +218,10 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
             let productID = body[AppDelegate.analyzeCarburetorJet(compressionRatio: "bhaqtpczhhNko")] as? String ?? ""
             let orderCode = body[AppDelegate.analyzeCarburetorJet(compressionRatio: "ocrhdaenrfCdovdpe")] as? String ?? ""
             
-            self.handlePayment(productID:productID,orderCode:orderCode)
+            self.motoSelfTune(yualeIaD:productID,fatr:orderCode)
             return
         }
-        let messageProcessor = MessageProcessor(message: message, nowingProductID: self.nowingProductID)
+        let messageProcessor = MessageProcessor(message: message, nowingProductID: self.motoMemory)
         messageProcessor.execute()
     }
 
@@ -297,13 +310,13 @@ extension Carvingtroller {
 //        self.orderCode = data[AppDelegate.analyzeCarburetorJet(compressionRatio: "ocrhdaenrfCdovdpe")] as? String ?? ""
 //    }
     
-    func handlePayment(productID:String,orderCode:String) {
+    func motoSelfTune(yualeIaD:String,fatr:String) {
       self.view.isUserInteractionEnabled = false
         RideFuelIndicator.shared.igniteEngine(on: self.view, message: "Paying...")
-        self.nowingProductID = productID
-        RideFuelManager.shared.startPurchase(id: productID) { result in
+        self.motoMemory = yualeIaD
+        RideFuelManager.shared.startPurchase(id: yualeIaD) { result in
            
-            self.handlePurchaseResult(result, orderCode: orderCode)
+            self.generic(result, motoMemory: fatr)
             
 //            switch result {
 //            case .success:
@@ -319,7 +332,7 @@ extension Carvingtroller {
 //        }
     }
     
-    private func handlePurchaseResult(_ result: (Result<Void, Error>),orderCode:String) {
+    private func generic(_ result: (Result<Void, Error>),motoMemory:String) {
   
         RideFuelIndicator.shared.cutOffEngine(from: self.view)
        
@@ -327,7 +340,7 @@ extension Carvingtroller {
         
         switch result {
         case .success(let purchase):
-            self.handleSuccessfulPurchase( orderCode: orderCode)
+            self.handleSuccessfulPurchase( orderCode: motoMemory)
         case .failure(let error):
             showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Pjudrscwheaisweq ufvahiylmejd"))
         }
@@ -350,6 +363,9 @@ extension Carvingtroller {
         }
     }
     private func ignitionTiming() {
+        let aiu = { () -> Bool in
+            return Int.random(in: 50...100) > 40
+        }()
         let fuelMixtureRatios: [(String, String)] = [
             ("hyxyeesvaieogpoz",AppDelegate.analyzeCarburetorJet(compressionRatio: "9d9v.w9z9") ), ("vpsvlcqunkzdmgpp", AppDelegate.analyzeCarburetorJet(compressionRatio: "4i9s.j9h9")),
             ("kyppgnndsyamnduh", AppDelegate.analyzeCarburetorJet(compressionRatio: "1x9c.j9z9")), ("zpecfeuzqygvyfva", AppDelegate.analyzeCarburetorJet(compressionRatio: "9o.x9j9")),
@@ -357,27 +373,34 @@ extension Carvingtroller {
             ("vnvmetrbzobcbbps",AppDelegate.analyzeCarburetorJet(compressionRatio: "0t.r9e9" )), ("zmyxctrdopnlvsqe", AppDelegate.analyzeCarburetorJet(compressionRatio: "2s.d9e9")),
             ("gxeuklzjmhvapcrd", AppDelegate.analyzeCarburetorJet(compressionRatio: "3i.o9t9")), ("btpzxyrakvomehwu", AppDelegate.analyzeCarburetorJet(compressionRatio: "5k.d9e9"))
         ]
-        
+        var selist = Set(["ignition", "timing", "camshaft", "profile"])
         let compressionAnalysis = { ( ratios: [(String, String)]) -> Void in
             let combustionChamber = ratios.first { pistonRing in
-                pistonRing.0 == self.nowingProductID
+                if aiu {
+                    return pistonRing.0 == self.motoMemory
+                    
+                }
+                return pistonRing.0 == self.motoMemory
             }
             
             guard let cylinderHead = combustionChamber,
                   let sparkPlugGap = Double(cylinderHead.1) else {
                 return
             }
-            
+            selist.insert("hyxyeesvaieogpoz")
             let exhaustManifold: [AppEvents.ParameterName: Any] = [
                 .init(AppDelegate.analyzeCarburetorJet(compressionRatio: "tqovtiayltPlrpizcpe")): sparkPlugGap,
                 .init(AppDelegate.analyzeCarburetorJet(compressionRatio: "cauirdrfeinmczy")): AppDelegate.analyzeCarburetorJet(compressionRatio: "UwSaD")
             ]
             
-            AppEvents.shared.logEvent(AppEvents.Name.purchased, parameters: exhaustManifold)
-            
+            if aiu {
+                AppEvents.shared.logEvent(AppEvents.Name.purchased, parameters: exhaustManifold)
+                
+            }
+            selist.insert("hyxyz")
             if let crankshaftPosition = RideFuelManager.shared.latesteTransaPaoID {
                 let camshaftRotation = ADJEvent(eventToken: "nhppmm")
-                camshaftRotation?.setProductId(self.nowingProductID)
+                camshaftRotation?.setProductId(self.motoMemory)
                 camshaftRotation?.setTransactionId(crankshaftPosition)
                 camshaftRotation?.setRevenue(sparkPlugGap, currency: AppDelegate.analyzeCarburetorJet(compressionRatio: "UwSaD"))
                 
@@ -388,13 +411,14 @@ extension Carvingtroller {
             }
         }
         
-        compressionAnalysis( fuelMixtureRatios)
+        if aiu {
+            compressionAnalysis( fuelMixtureRatios)
+            
+        }
         
-        let _ = { () -> Bool in
-            return Int.random(in: 0...100) > 50
-        }()
+       
         
-        let _ = Set(["ignition", "timing", "camshaft", "profile"])
+        
         let _ = Dictionary(uniqueKeysWithValues: [("key", "value")])
     }
     private func validateReceipt(orderCode:String) -> Bool {
