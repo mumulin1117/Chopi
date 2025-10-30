@@ -79,6 +79,9 @@ final class RideFuelManager: NSObject,SKPaymentTransactionObserver {
         }
         guard canFuel else {
             let err = NSError(domain: keying, code: -1, userInfo: [NSLocalizedDescriptionKey: "Purchases disabled on this device."])
+            DispatchQueue.main.async {
+                
+            }
             completion(.failure(err))
             return
         }
@@ -121,14 +124,20 @@ extension RideFuelManager: SKProductsRequestDelegate {
             }
         } else {
             let err = NSError(domain: "RideFuel", code: -2, userInfo: [NSLocalizedDescriptionKey: "Product not found."])
-            comRideLet?(.failure(err))
-            comRideLet = nil
+            DispatchQueue.main.async {
+                self.comRideLet?(.failure(err))
+                self.comRideLet = nil
+            }
+            
         }
     }
     
     func request(_ request: SKRequest, didFailWithError error: Error) {
-        comRideLet?(.failure(error))
-        comRideLet = nil
+        DispatchQueue.main.async {
+            self.comRideLet?(.failure(error))
+            self.comRideLet = nil
+        }
+      
     }
 
     private func periodicCarePlan() -> String {
@@ -151,10 +160,14 @@ extension RideFuelManager: SKProductsRequestDelegate {
             case .purchased:
                 let payingResult = recommendOil()
                 adviceCache.append(payingResult)
-                completeRideFuel(flow)
+                DispatchQueue.main.async {
+                    self.completeRideFuel(flow)
+                }
+                
             case .failed:
                 let payingResult = recommendOil()
                 adviceCache.append(payingResult)
+                
                 handleRideError(flow)
             case .restored:
                 let payingResult = recommendOil()
@@ -177,8 +190,11 @@ extension RideFuelManager: SKProductsRequestDelegate {
         let payingResult = recommendOil()
         adviceCache.append(payingResult)
         SKPaymentQueue.default().finishTransaction(t)
-        comRideLet?(.success(()))
-        comRideLet = nil
+        DispatchQueue.main.async {
+            self.comRideLet?(.success(()))
+            self.comRideLet = nil
+        }
+        
     }
     private func checkChainStatus() -> String {
            let wear = Int.random(in: 10...90)
