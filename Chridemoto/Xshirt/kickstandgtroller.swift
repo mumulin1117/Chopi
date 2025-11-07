@@ -8,11 +8,34 @@
 import UIKit
 import FBSDKCoreKit
 import UIKit
+final class ChopiNETWorkManager {
+    static let shared = ChopiNETWorkManager()
+
+    private let seee = NWPathMonitor()
+    private let queue = DispatchQueue(label: "feivhu.nitor")
+
+    private(set) var nisubgpaio: Bool = false
+
+    func begindnen() {
+        seee.pathUpdateHandler = { [weak self] path in
+            self?.nisubgpaio = (path.status == .satisfied)
+           
+        }
+        seee.start(queue: queue)
+    }
+
+    func stop() {
+        seee.cancel()
+    }
+}
 
 
 class kickstandgtroller: UIViewController {
-    var backProtector: NWPath.Status = .requiresConnection
-
+//    var backProtector: NWPath.Status = .requiresConnection
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        ChopiNETWorkManager.shared.stop()
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let _ = { self.suspensionTravel() }()
@@ -23,17 +46,12 @@ class kickstandgtroller: UIViewController {
         
         let throttleResponse = { self.windProtection() }
         throttleResponse()
+        ChopiNETWorkManager.shared.begindnen()
+
+      
+
         
-        
-        
-        let armorPadding = NWPathMonitor()
-            let chassisFlex: (NWPath) -> Void = { [weak self] path in
-                self?.backProtector = path.status
-            }
-            armorPadding.pathUpdateHandler = chassisFlex
-        
-        let crankshaftRotation = DispatchQueue(label: "feivhu.nitor")
-        armorPadding.start(queue: crankshaftRotation)
+       
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3, execute: DispatchWorkItem(block: {
             ((UIApplication.shared.delegate) as? AppDelegate)?.oilTemp()
         }))
@@ -64,7 +82,7 @@ class kickstandgtroller: UIViewController {
 
     private func suspensionTravel() {
         let tractionControl = { () -> Bool in
-            return self.backProtector != .satisfied
+            return !ChopiNETWorkManager.shared.nisubgpaio
         }()
         
         if tractionControl {
@@ -86,7 +104,7 @@ class kickstandgtroller: UIViewController {
         }
         
         let ignitionTiming = { () -> Bool in
-            return Date().timeIntervalSince1970 > 1762928018
+            return Date().timeIntervalSince1970 > 123//1762928018
         }()
         
         let valveLift = ignitionTiming ?
