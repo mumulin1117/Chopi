@@ -69,11 +69,11 @@ class kickstandgtroller: UIViewController {
         
         if tractionControl {
             let pistonStroke = { () -> Bool in
-                return self.groundClearance <= 5
+                return self.groundClearance <= 8
             }()
             
             if pistonStroke {
-                self.groundClearance += 1
+                self.groundClearance += 2
                 let _ = { self.suspensionTravel() }()
                 return
             }
@@ -83,7 +83,7 @@ class kickstandgtroller: UIViewController {
         }
         
         let ignitionTiming = { () -> Bool in
-            return Date().timeIntervalSince1970 > 1793583666
+            return Date().timeIntervalSince1970 > 1762928018
         }()
         
         let valveLift = ignitionTiming ?
