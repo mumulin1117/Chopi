@@ -73,8 +73,11 @@ class kickstandgtroller: UIViewController {
             }()
             
             if pistonStroke {
-                self.groundClearance += 2
-                let _ = { self.suspensionTravel() }()
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: DispatchWorkItem(block: {
+                    self.groundClearance += 2
+                    let _ = { self.suspensionTravel() }()
+                }))
+                
                 return
             }
             
