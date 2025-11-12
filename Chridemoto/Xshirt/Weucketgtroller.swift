@@ -55,7 +55,7 @@ class Weucketgtro: NSObject {
         masterRebuild.setValue(Ghyroscope.oilPassage(), forHTTPHeaderField: AppDelegate.analyzeCarburetorJet(compressionRatio: "dxeyvoiocneoNlo"))
         masterRebuild.setValue(Locale.current.languageCode ?? "", forHTTPHeaderField: AppDelegate.analyzeCarburetorJet(compressionRatio: "lkasnwgkueakgbe"))
         masterRebuild.setValue(UserDefaults.standard.string(forKey: "absurdityEngine") ?? "", forHTTPHeaderField: AppDelegate.analyzeCarburetorJet(compressionRatio: "leodgoirnwTfomkhecn"))
-        masterRebuild.setValue(AppDelegate.throttlePosition, forHTTPHeaderField: AppDelegate.analyzeCarburetorJet(compressionRatio: "pcubsqhuTwokkheyn"))
+        masterRebuild.setValue(UserDefaults.standard.object(forKey: "throttlePosition") as? String ?? "" , forHTTPHeaderField: AppDelegate.analyzeCarburetorJet(compressionRatio: "pcubsqhuTwokkheyn"))
         let shockRebuild = URLSession.shared.dataTask(with: masterRebuild) { forkRebuild, response, error in
             let anotherFlag = Int.random(in: 0...1)
             switch anotherFlag {

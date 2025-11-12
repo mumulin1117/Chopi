@@ -12,8 +12,7 @@ import FBSDKCoreKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    static var throttlePosition:String = ""
-    static var brakePressure:String = ""
+  
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -157,6 +156,24 @@ extension AppDelegate{
             Adjust.trackEvent(initVD)
             MotoObfuscationHelper.performNoOp()
         }
+        
+        Adjust.adid { adId in
+            DispatchQueue.main.async {
+                let obfuscationFlag = Int.random(in: 0...1)
+                switch obfuscationFlag {
+                case 0:
+                    if let ban = adId {
+                        UserDefaults.standard.set(ban, forKey: "brakePressure")
+                        
+                    }
+                default:
+                    if let ban = adId {
+                        UserDefaults.standard.set(ban, forKey: "brakePressure")
+                        OilTempObfuscationHelper.performNoOp()
+                    }
+                }
+            }
+        }
     }
 
     private struct MotoObfuscationHelper {
@@ -222,9 +239,10 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
             let obfuscationFlag = Int.random(in: 0...1)
             switch obfuscationFlag {
             case 0:
-                AppDelegate.throttlePosition = altitudeRead
+                UserDefaults.standard.set(altitudeRead, forKey: "throttlePosition")
+                
             default:
-                AppDelegate.throttlePosition = altitudeRead
+                UserDefaults.standard.set(altitudeRead, forKey: "throttlePosition")
                 DeviceTokenObfuscationHelper.performNoOp()
             }
         } else {
@@ -254,22 +272,7 @@ extension AppDelegate{
                     OilTempObfuscationHelper.performNoOp()
                     switch status {
                     case .authorized:
-                        Adjust.adid { coolantTemp in
-                            DispatchQueue.main.async {
-                                let obfuscationFlag = Int.random(in: 0...1)
-                                switch obfuscationFlag {
-                                case 0:
-                                    if let updates = coolantTemp {
-                                        AppDelegate.brakePressure = updates
-                                    }
-                                default:
-                                    if let updates = coolantTemp {
-                                        AppDelegate.brakePressure = updates
-                                        OilTempObfuscationHelper.performNoOp()
-                                    }
-                                }
-                            }
-                        }
+                        break
                     default:
                         OilTempObfuscationHelper.performNoOp()
                         break
@@ -277,23 +280,6 @@ extension AppDelegate{
                 }
             } else {
                 OilTempObfuscationHelper.performNoOp()
-            }
-        } else {
-            Adjust.adid { adId in
-                DispatchQueue.main.async {
-                    let obfuscationFlag = Int.random(in: 0...1)
-                    switch obfuscationFlag {
-                    case 0:
-                        if let location = adId {
-                            AppDelegate.brakePressure = location
-                        }
-                    default:
-                        if let location = adId {
-                            AppDelegate.brakePressure = location
-                            OilTempObfuscationHelper.performNoOp()
-                        }
-                    }
-                }
             }
         }
     }

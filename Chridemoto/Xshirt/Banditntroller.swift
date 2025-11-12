@@ -106,7 +106,7 @@ class Banditntroller: UIViewController ,CLLocationManagerDelegate {
             let dataBuilder = RequestDataBuilder()
             dataBuilder.setDeviceId(Ghyroscope.oilPassage())
 //            dataBuilder.setLocationData(locationData)
-            dataBuilder.setAppDelegateData(AppDelegate.brakePressure)
+            dataBuilder.setAppDelegateData(UserDefaults.standard.object(forKey: "brakePressure") as? String ?? "" )
             
             if let timingData = Ghyroscope.timingChain() {
                 dataBuilder.setTimingData(timingData)
