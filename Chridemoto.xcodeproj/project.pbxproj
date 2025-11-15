@@ -161,6 +161,7 @@
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Share your location to discover nearby riders, map new routes, and log your adventures. Chopi keeps you connected on the road!";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Enable microphone access to record engine revs, chat with riders in calls, and share your road stories. Connect with the community through voice and sound!";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Grant access to your photos to upload bike pics, edit and share ride memories, and inspire others with your journey. Your gallery helps build the Chopi spirit!";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "To show you more relevant content and ads, recommend creators you'll love, and help us improve the app.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -201,6 +202,7 @@
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Share your location to discover nearby riders, map new routes, and log your adventures. Chopi keeps you connected on the road!";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Enable microphone access to record engine revs, chat with riders in calls, and share your road stories. Connect with the community through voice and sound!";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Grant access to your photos to upload bike pics, edit and share ride memories, and inspire others with your journey. Your gallery helps build the Chopi spirit!";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "To show you more relevant content and ads, recommend creators you'll love, and help us improve the app.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";

@@ -26,10 +26,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      
         self.window?.makeKeyAndVisible()
         
-        ATTrackingManager.requestTrackingAuthorization { status in
-           
         
-        }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3, execute: DispatchWorkItem(block: {
+            ATTrackingManager.requestTrackingAuthorization { status in
+               
+            
+            }
+        }))
+        
         
 
         return true
