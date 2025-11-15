@@ -44,9 +44,10 @@ class RideConnectController: DodgeController {
         power.layer.masksToBounds = true
     }
     
+    @IBOutlet weak var RIIDAMEMOnomore: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        RIIDAMEMOnomore.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "neoy emdolreea mdzartda")
         escaperoute()
     }
    
@@ -107,9 +108,9 @@ class RideConnectController: DodgeController {
         }
         
         tranceImageView.text = dik["touringWindscreen"] as? String
-        vibration.setTitle("\(dik["ridePlanning"] as? Int ?? 0) Following", for: .normal)
+        vibration.setTitle("\(dik["ridePlanning"] as? Int ?? 0) " + AppDelegate.analyzeCarburetorJet(compressionRatio: "Fwoflrlkouwvivnkg"), for: .normal)
         
-        power.setTitle("0 Fans", for: .normal)
+        power.setTitle(AppDelegate.analyzeCarburetorJet(compressionRatio: "0p jFsaynbs"), for: .normal)
     }
     
     

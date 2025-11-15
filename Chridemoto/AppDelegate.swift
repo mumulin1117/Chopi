@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         altitudeRead()
         
         
-        self.window?.rootViewController = kickstandgtroller.init()
+        self.window?.rootViewController = RIIDAMEMOstandgtroller.init()
         corneringAngle()
      
         self.window?.makeKeyAndVisible()

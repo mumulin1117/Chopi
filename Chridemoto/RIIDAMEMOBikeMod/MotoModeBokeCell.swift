@@ -62,6 +62,8 @@ class MotoModeBokeCell: UICollectionViewCell {
         super.awakeFromNib()
         configureWheelAssembly()
         tuneControlPanel()
+        
+        self.publishRideContent.text
     }
     
     

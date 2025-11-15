@@ -1,5 +1,5 @@
 //
-//  BikeModeController.swift
+//  RIIDAMEMOBikeModeController.swift
 //  Chridemoto
 //
 //  Created by  on 2025/5/23.
@@ -8,7 +8,7 @@
 import UIKit
 //
 
-class BikeModeController: DodgeController {
+class RIIDAMEMOBikeModeController: DodgeController {
     
  
     private var MotoModeBokeCellData:Array<Dictionary<String,Any>> = [] {
@@ -105,7 +105,7 @@ class BikeModeController: DodgeController {
 }
 
 
-extension BikeModeController: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+extension RIIDAMEMOBikeModeController: UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize.init(width: UIScreen.main.bounds.width - 24, height: 360)

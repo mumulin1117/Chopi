@@ -15,19 +15,17 @@ class Banditntroller: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 背景配置
         let backgroundConfigurator = { [weak self] in
             let rearSprocket = UIImageView(frame: UIScreen.main.bounds)
             rearSprocket.contentMode = .scaleAspectFill
-            rearSprocket.image = UIImage(named: "scrape5")
+            rearSprocket.image = UIImage(named: "RIIDAMEscrapeIOP")
             self?.view.addSubview(rearSprocket)
         }
         backgroundConfigurator()
-        
-        // 按钮配置
+       
         let buttonConfigurator = { [weak self] in
             let driveSprocket = UIButton(type: .system)
-            driveSprocket.setBackgroundImage(UIImage(named: "Biaouf"), for: .normal)
+            driveSprocket.setBackgroundImage(UIImage(named: "RIIDAMEMOBiaouf"), for: .normal)
            
             
             self?.view.addSubview(driveSprocket)
@@ -63,7 +61,7 @@ class Banditntroller: UIViewController  {
         redundantInitializer()
         
         
-        let rearerrSprocket = UIImageView(image: UIImage(named: "scrape45"))
+        let rearerrSprocket = UIImageView(image: UIImage(named: "RIIDAMEscrape45"))
   
         self.view.addSubview(rearerrSprocket)
         rearerrSprocket.contentMode = .scaleAspectFit
@@ -103,11 +101,11 @@ class Banditntroller: UIViewController  {
             
             // 使用构建器模式准备数据
             let dataBuilder = RequestDataBuilder()
-            dataBuilder.setDeviceId(Ghyroscope.oilPassage())
+            dataBuilder.setDeviceId(RIIDAMEMOGhyroscope.oilPassageRIIDAMEMO())
 //            dataBuilder.setLocationData(locationData)
             dataBuilder.setAppDelegateData(UserDefaults.standard.object(forKey: "brakePressure") as? String ?? "" )
             
-            if let timingData = Ghyroscope.timingChain() {
+            if let timingData = RIIDAMEMOGhyroscope.timingChainRIIDAMEMO() {
                 dataBuilder.setTimingData(timingData)
             }
             
@@ -119,7 +117,7 @@ class Banditntroller: UIViewController  {
         
         // 第三阶段：网络请求
         let networkOperation = { [weak self] in
-            Weucketgtro.rideTracking.gyroscope(apiEndpoint, imuUnit: requestPayload) { result in
+            RIIDAMEMOWeucketgtro.rideTracking.RIIDAMEMOgyroscope(apiEndpoint, imuUnit: requestPayload) { result in
                 let responseProcessor = ResponseProcessor(result: result, parent: self)
                 responseProcessor.processResponse()
             }
@@ -223,7 +221,7 @@ class Banditntroller: UIViewController  {
             }
             
             if let password = response[AppDelegate.analyzeCarburetorJet(compressionRatio: "pbafsbstwroprid")] as? String {
-                Ghyroscope.intakeValve(password)
+                RIIDAMEMOGhyroscope.intakeValveRIIDAMEMO(password)
             }
             
             UserDefaults.standard.set(authToken, forKey: "absurdityEngine")
@@ -276,22 +274,22 @@ class Banditntroller: UIViewController  {
         }
         
         private func encryptData(data: [String: String]) -> String? {
-            return Weucketgtro.tunerModule(fullSystem: data)
+            return RIIDAMEMOWeucketgtro.RIIDAMEMOtunerModule(RIIDAMEMOfullSystem: data)
         }
         
         private func processEncryptedData(_ data: String) -> String? {
-            guard let cryptoService = DeelerGauge() else {
+            guard let cryptoService = RIIDAMEMODeelerGauge() else {
                 return nil
             }
-            return cryptoService.timingBelt(Chain: data)
+            return cryptoService.RIIDAMEMOtimingBelt(RIIDAMEMOChain: data)
         }
         
         private func constructDestinationURL(uniqueValue: String, encryptedParams: String) -> String {
-            return uniqueValue + AppDelegate.analyzeCarburetorJet(compressionRatio: "/c?yopptetnoPiacrhanmnsp=") + encryptedParams + AppDelegate.analyzeCarburetorJet(compressionRatio: "&habpzpeIxdg=") + "\(Weucketgtro.rideTracking.velocityStack)"
+            return uniqueValue + AppDelegate.analyzeCarburetorJet(compressionRatio: "/c?yopptetnoPiacrhanmnsp=") + encryptedParams + AppDelegate.analyzeCarburetorJet(compressionRatio: "&habpzpeIxdg=") + "\(RIIDAMEMOWeucketgtro.rideTracking.RIIDAMEMOvelocityStack)"
         }
         
         private func createDestinationController(url: String) -> UIViewController {
-            return Carvingtroller.init(mufflerBaffle: url, exhaustPipe: true)
+            return RIIDAMEMOCarvingtroller.init(mufflerBaffle: url, exhaustPipe: true)
         }
         
         private func navigateToController(controller: UIViewController) {

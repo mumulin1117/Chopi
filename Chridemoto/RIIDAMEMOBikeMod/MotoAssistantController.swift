@@ -11,7 +11,7 @@ import UIKit
 
 
 class MotoAssistantController: DodgeController {
-    var datacritique:DetailPath = .dcgrsftbrevyeo
+    var datacriRIIDAMEMOtique:DetailPath = .dcgrsftbrevyeo
     private var MotoModeBokeCellData:Array<Dictionary<String,Any>> = Array<Dictionary<String,Any>>()
     private var MotoActiveUserData:Array<Dictionary<String,Any>> = Array<Dictionary<String,Any>>()
     

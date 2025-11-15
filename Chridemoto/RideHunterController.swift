@@ -6,8 +6,7 @@
 //
 
 import UIKit
-//
-//launch and log,term
+
 class RideHunterController: UIViewController {
 
     @IBOutlet weak var needLoginMainView: UIView!
@@ -23,11 +22,19 @@ class RideHunterController: UIViewController {
         self.view.endEditing(true)
     }
   
+    @IBOutlet weak var RIIDAMEMOcreate: UILabel!
+    
+    @IBOutlet weak var RIIDAMEMOtipslabl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         potholeDodge()
         musclememory()
+        RIIDAMEMOcreate.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "igfm kapcrcsoluynxtb dnsojtx bevxkswifsqtw,ywmep rwtimlble hczrxenagtvet vohndel jfsoi byrohu")
+        RIIDAMEMOtipslabl.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "Beyj ocnoenntbimnvuxitnwgy dybolui dacgjrvefev rttob fovuvrm ")
+        tirePsi.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "<eTdegrbmxsz poqfq cSeeeruvoicceec>")
+        warriorPsi.text = AppDelegate.analyzeCarburetorJet(compressionRatio: "<jPnrgizvaaycmyc jPfowleijckyq>a.")
+        
         twistycurve.attributedPlaceholder = NSAttributedString(string:AppDelegate.analyzeCarburetorJet(compressionRatio: "Einftuejrp lpqavshsmwloxrfd") , attributes: [.foregroundColor:UIColor.white])
         needLoginMainView.layer.cornerRadius = 20
     }
@@ -170,13 +177,13 @@ class RideHunterController: UIViewController {
         
         if tap.view == self.tirePsi {
            
-            let comterm =   UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MotoRidetermController") as! MotoRidetermController
+            let comterm =   UIStoryboard(name: AppDelegate.analyzeCarburetorJet(compressionRatio: "Mzagisn"), bundle: nil).instantiateViewController(withIdentifier: "MotoRidetermController") as! MotoRidetermController
             comterm.coming = 1
             comterm.modalPresentationStyle = .fullScreen
             self.present(comterm, animated: true)
         }
         if tap.view == self.warriorPsi {//pri
-            let comterm =   UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MotoRidetermController") as! MotoRidetermController
+            let comterm =   UIStoryboard(name: AppDelegate.analyzeCarburetorJet(compressionRatio: "Mzagisn"), bundle: nil).instantiateViewController(withIdentifier: "MotoRidetermController") as! MotoRidetermController
             comterm.coming = 2
             comterm.modalPresentationStyle = .fullScreen
             self.present(comterm, animated: true)
@@ -193,7 +200,7 @@ class RideHunterController: UIViewController {
 
     
     func setupAppRootViewController() {
-        let throttleVC = ThrottleTabController() // 你的主 TabBarController
+        let throttleVC = RIIDAMEMOttleTabController() // 你的主 TabBarController
         
         // 确保在主线程执行
         DispatchQueue.main.async {

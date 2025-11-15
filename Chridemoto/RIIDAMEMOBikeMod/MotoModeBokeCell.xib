@@ -25,8 +25,8 @@
                             <constraint firstAttribute="height" constant="55" id="rbn-o0-Com"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxd-cg-DaH">
-                        <rect key="frame" x="64" y="22" width="100" height="19.333333333333329"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxd-cg-DaH">
+                        <rect key="frame" x="64" y="22" width="100" height="0.0"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="100" id="PfS-OD-WCS"/>
                         </constraints>
@@ -34,14 +34,14 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nzc-zS-1EE">
-                        <rect key="frame" x="64" y="51.333333333333336" width="34.666666666666657" height="14.333333333333336"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nzc-zS-1EE">
+                        <rect key="frame" x="64" y="32" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                         <color key="textColor" white="1" alpha="0.41438137755102039" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Y7-Qd-NMP">
-                        <rect key="frame" x="590" y="20.666666666666668" width="22" height="22.000000000000004"/>
+                        <rect key="frame" x="590" y="11" width="22" height="22"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="22" id="Df1-PX-58E"/>
                             <constraint firstAttribute="height" constant="22" id="pIi-qN-Waq"/>
@@ -50,7 +50,7 @@
                         <state key="normal" image="BikeModeRepo"/>
                     </button>
                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuQ-DQ-yl5">
-                        <rect key="frame" x="509" y="16.666666666666668" width="66" height="30.000000000000004"/>
+                        <rect key="frame" x="509" y="7" width="66" height="30"/>
                         <color key="backgroundColor" red="0.14117647058823529" green="0.22352941176470587" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="66" id="Np1-xL-er1"/>
@@ -58,10 +58,10 @@
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                        <state key="normal" title="  0" image="makeBuild"/>
+                        <state key="normal" title="  0" image="RIIDAMEMOmakeBuild"/>
                     </button>
                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5r-dc-hOf">
-                        <rect key="frame" x="428" y="16.666666666666668" width="66" height="30.000000000000004"/>
+                        <rect key="frame" x="428" y="7" width="66" height="30"/>
                         <color key="backgroundColor" red="0.14117647059999999" green="0.22352941179999999" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="76x-Ky-Gdh"/>
@@ -71,21 +71,21 @@
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" title="  0" image="prizisey"/>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyY-ta-eRQ">
-                        <rect key="frame" x="3" y="81" width="609" height="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyY-ta-eRQ">
+                        <rect key="frame" x="3" y="81" width="609" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                         <color key="textColor" white="1" alpha="0.60328975345034019" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bQf-u1-VKi">
-                        <rect key="frame" x="0.0" y="109" width="210" height="204"/>
+                        <rect key="frame" x="0.0" y="91" width="210" height="204"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="204" id="5JS-NS-lDe"/>
                             <constraint firstAttribute="width" constant="210" id="ilo-wJ-VFq"/>
                         </constraints>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a9w-c4-bXY">
-                        <rect key="frame" x="216" y="109" width="399" height="204"/>
+                        <rect key="frame" x="216" y="91" width="399" height="204"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="204" id="uOD-z4-e7F"/>
                         </constraints>
@@ -143,7 +143,7 @@
     </objects>
     <resources>
         <image name="BikeModeRepo" width="22" height="22"/>
-        <image name="makeBuild" width="22" height="22"/>
+        <image name="RIIDAMEMOmakeBuild" width="128" height="128"/>
         <image name="prizisey" width="22" height="22"/>
     </resources>
 </document>

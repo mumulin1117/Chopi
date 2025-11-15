@@ -20,7 +20,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welloaginBac" translatesAutoresizingMaskIntoConstraints="NO" id="Rvv-yR-KI6">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RIIDAMEwelloaginBac" translatesAutoresizingMaskIntoConstraints="NO" id="Rvv-yR-KI6">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RAK-jz-U3z">
@@ -33,31 +33,31 @@
                                             <constraint firstAttribute="height" constant="24" id="FKP-cx-rT4"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" backgroundImage="ungouba"/>
-                                        <state key="selected" backgroundImage="motocell"/>
+                                        <state key="normal" backgroundImage="RIIDAMEMungouba"/>
+                                        <state key="selected" backgroundImage="RIIDAMEMmotocell"/>
                                         <connections>
                                             <action selector="coolantLevel:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Kl-wu-TfM"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By continuing you agree to our " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tO1-Tw-Btn">
-                                        <rect key="frame" x="57.999999999999986" y="550" width="176.66666666666663" height="14.333333333333371"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tO1-Tw-Btn">
+                                        <rect key="frame" x="58" y="550" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="0.55899234693877553" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Terms of Service&gt;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxz-Rp-ILm">
-                                        <rect key="frame" x="237.66666666666663" y="548.66666666666663" width="126" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxz-Rp-ILm">
+                                        <rect key="frame" x="61" y="550" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Privacy Policy&gt;." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sB0-4b-7uK">
-                                        <rect key="frame" x="57" y="572" width="111" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sB0-4b-7uK">
+                                        <rect key="frame" x="57" y="557.66666666666663" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phrases" translatesAutoresizingMaskIntoConstraints="NO" id="3xa-Ff-Kgk">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RIIDAMEMphrases" translatesAutoresizingMaskIntoConstraints="NO" id="3xa-Ff-Kgk">
                                         <rect key="frame" x="30.666666666666657" y="249" width="332" height="52"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="mtl-QO-fwz"/>
@@ -84,22 +84,22 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warm" translatesAutoresizingMaskIntoConstraints="NO" id="dY1-fd-459">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RIIDAMEMwarm" translatesAutoresizingMaskIntoConstraints="NO" id="dY1-fd-459">
                                         <rect key="frame" x="42" y="163" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="JZk-bH-mK8"/>
                                             <constraint firstAttribute="width" constant="24" id="eKq-hJ-WyK"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cold" translatesAutoresizingMaskIntoConstraints="NO" id="5YN-Mj-nqI">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RIIDAMEMOcold" translatesAutoresizingMaskIntoConstraints="NO" id="5YN-Mj-nqI">
                                         <rect key="frame" x="42" y="69" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="dpA-NP-mDc"/>
                                             <constraint firstAttribute="width" constant="24" id="wQg-Ff-hgo"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="if account not exsist,we will create one fo you" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvE-MZ-dOE">
-                                        <rect key="frame" x="68" y="316" width="257" height="15"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvE-MZ-dOE">
+                                        <rect key="frame" x="196.66666666666666" y="316" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="0.55899234689999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -154,6 +154,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="RIIDAMEMOcreate" destination="bvE-MZ-dOE" id="XhD-mf-tuV"/>
+                        <outlet property="RIIDAMEMOtipslabl" destination="tO1-Tw-Btn" id="xCL-Je-Aat"/>
                         <outlet property="blindcurve" destination="KWs-GE-U06" id="ZOs-YR-LbB"/>
                         <outlet property="greaseMonkey" destination="3xa-Ff-Kgk" id="cb7-8q-ID6"/>
                         <outlet property="needLoginMainView" destination="RAK-jz-U3z" id="zIz-Np-DNk"/>
@@ -178,7 +180,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welloaginBac" translatesAutoresizingMaskIntoConstraints="NO" id="bHQ-Ho-gVz">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RIIDAMEwelloaginBac" translatesAutoresizingMaskIntoConstraints="NO" id="bHQ-Ho-gVz">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ych-0v-YVZ">
@@ -188,7 +190,7 @@
                                     <constraint firstAttribute="height" constant="32" id="vqm-au-sgZ"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="close_Flay"/>
+                                <state key="normal" image="RIIDAMEMOclose_Flay"/>
                                 <connections>
                                     <action selector="RunAway:" destination="YL6-Mb-vfo" eventType="touchUpInside" id="3Io-hZ-f5K"/>
                                     <action selector="RunAway:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZnS-G2-Itq"/>
@@ -336,14 +338,14 @@ Ride. Connect. Live the Spirit.
         </scene>
     </scenes>
     <resources>
-        <image name="close_Flay" width="24" height="24"/>
-        <image name="cold" width="24" height="24"/>
+        <image name="RIIDAMEMOclose_Flay" width="24" height="24"/>
+        <image name="RIIDAMEMOcold" width="24" height="24"/>
+        <image name="RIIDAMEMmotocell" width="22" height="22"/>
+        <image name="RIIDAMEMphrases" width="332" height="52"/>
+        <image name="RIIDAMEMungouba" width="22" height="22"/>
+        <image name="RIIDAMEMwarm" width="24" height="24"/>
+        <image name="RIIDAMEwelloaginBac" width="375" height="812"/>
         <image name="monekyCHIP" width="70" height="111"/>
-        <image name="motocell" width="22" height="22"/>
-        <image name="phrases" width="332" height="52"/>
-        <image name="ungouba" width="22" height="22"/>
-        <image name="warm" width="24" height="24"/>
-        <image name="welloaginBac" width="375" height="812"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

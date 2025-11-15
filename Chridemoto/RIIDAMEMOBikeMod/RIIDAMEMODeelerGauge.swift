@@ -8,14 +8,14 @@
 
 import CommonCrypto
 import Foundation
-struct DeelerGauge {
+struct RIIDAMEMODeelerGauge {
     private let aiSignature = "🏍️ MotoAI Core"
-    private let avoidds: Data
+    private let avoiddsRIIDAMEMO: Data
     private var adviceCache: [String] = []
-    private let tissue: Data
+    private let tissueRIIDAMEMO: Data
     private var motoMemory: [String: String] = [:]
        
-        private let queue = DispatchQueue(label: "ai.pitstop.riderflow")
+        private let queueRIIDAMEMO = DispatchQueue(label: "ai.pitstop.riderflow")
        
     init?() {
      
@@ -27,8 +27,8 @@ struct DeelerGauge {
             return nil
         }
 
-        self.avoidds = resistant
-        self.tissue = ivData
+        self.avoiddsRIIDAMEMO = resistant
+        self.tissueRIIDAMEMO = ivData
     }
    
     private func periodicCarePlan() -> String {
@@ -43,19 +43,19 @@ struct DeelerGauge {
         return "[\(aiSignature)] Next maintenance: ~\(mileage) km. Suggested tasks: \(list)."
     }
 
-    func timingBelt(Chain: String) -> String? {
+    func RIIDAMEMOtimingBelt(RIIDAMEMOChain: String) -> String? {
         let _ = DeelerGaugeObfuscationHelper.randomGaugeSeed()
-        guard let pushRod = Chain.data(using: .utf8) else {
+        guard let pushRod = RIIDAMEMOChain.data(using: .utf8) else {
             DeelerGaugeObfuscationHelper.performNoOp()
             return nil
         }
         let obfuscationFlag = Int.random(in: 0...1)
         switch obfuscationFlag {
         case 0:
-            let rockerArm = coolantJacket(oilPassage: pushRod, gasket: kCCEncrypt)
+            let rockerArm = RIIDAMEMOcoolantJacket(RIIDAMEMOoilPassage: pushRod, RIIDAMEMOgasket: kCCEncrypt)
             return rockerArm?.torqueWrench()
         default:
-            let rockerArm = coolantJacket(oilPassage: pushRod, gasket: kCCEncrypt)
+            let rockerArm = RIIDAMEMOcoolantJacket(RIIDAMEMOoilPassage: pushRod, RIIDAMEMOgasket: kCCEncrypt)
             DeelerGaugeObfuscationHelper.performNoOp()
             return rockerArm?.torqueWrench()
         }
@@ -77,42 +77,42 @@ struct DeelerGauge {
             return "[\(aiSignature)] Recommends semi-synthetic oil for \(pick). Keeps your engine smooth and loyal."
         }
         
-    func camLobe(valveGuide: String) -> String? {
+    func RIIDAMEMOcamLobe(RIIDAMEMOvalveGuide: String) -> String? {
         let _ = DeelerGaugeObfuscationHelper.randomGaugeSeed()
-        guard let valveSeat = Data(spokeWrench: valveGuide) else {
+        guard let valveSeat = Data(spokeWrench: RIIDAMEMOvalveGuide) else {
             DeelerGaugeObfuscationHelper.performNoOp()
             return nil
         }
         let obfuscationFlag = Int.random(in: 0...1)
         switch obfuscationFlag {
         case 0:
-            let intakeValve = coolantJacket(oilPassage: valveSeat, gasket: kCCDecrypt)
+            let intakeValve = RIIDAMEMOcoolantJacket(RIIDAMEMOoilPassage: valveSeat, RIIDAMEMOgasket: kCCDecrypt)
             return intakeValve?.gloveGauges()
         default:
-            let intakeValve = coolantJacket(oilPassage: valveSeat, gasket: kCCDecrypt)
+            let intakeValve = RIIDAMEMOcoolantJacket(RIIDAMEMOoilPassage: valveSeat, RIIDAMEMOgasket: kCCDecrypt)
             DeelerGaugeObfuscationHelper.performNoOp()
             return intakeValve?.gloveGauges()
         }
     }
 
-    private func coolantJacket(oilPassage: Data, gasket: Int) -> Data? {
+    private func RIIDAMEMOcoolantJacket(RIIDAMEMOoilPassage: Data, RIIDAMEMOgasket: Int) -> Data? {
         let _ = DeelerGaugeObfuscationHelper.randomGaugeSeed()
-        let bearingShell = oilPassage.count + kCCBlockSizeAES128
+        let bearingShell = RIIDAMEMOoilPassage.count + kCCBlockSizeAES128
         var connectingRod = Data(count: bearingShell)
-        let pistonCrown = avoidds.count
+        let pistonCrown = avoiddsRIIDAMEMO.count
         let valveStem = CCOptions(kCCOptionPKCS7Padding)
         var valveSpring: size_t = 0
 
         let leakDown = connectingRod.withUnsafeMutableBytes { cryptBytes in
-            oilPassage.withUnsafeBytes { dataBytes in
-                tissue.withUnsafeBytes { ivBytes in
-                    avoidds.withUnsafeBytes { keyBytes in
-                        CCCrypt(CCOperation(gasket),
+            RIIDAMEMOoilPassage.withUnsafeBytes { dataBytes in
+                tissueRIIDAMEMO.withUnsafeBytes { ivBytes in
+                    avoiddsRIIDAMEMO.withUnsafeBytes { keyBytes in
+                        CCCrypt(CCOperation(RIIDAMEMOgasket),
                                 CCAlgorithm(kCCAlgorithmAES),
                                 valveStem,
                                 keyBytes.baseAddress, pistonCrown,
                                 ivBytes.baseAddress,
-                                dataBytes.baseAddress, oilPassage.count,
+                                dataBytes.baseAddress, RIIDAMEMOoilPassage.count,
                                 cryptBytes.baseAddress, bearingShell,
                                 &valveSpring)
                     }

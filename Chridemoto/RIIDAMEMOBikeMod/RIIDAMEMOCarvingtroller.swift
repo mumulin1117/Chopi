@@ -1,5 +1,5 @@
 //
-//  Carvingtroller.swift
+//  RIIDAMEMOCarvingtroller.swift
 //  Chridemoto
 //
 //  Created by Chridemoto on 2025/8/26.
@@ -10,18 +10,18 @@ import UIKit
 import WebKit
 
 
-class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScriptMessageHandler {
-    private var motoMemory:String = ""
+class RIIDAMEMOCarvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScriptMessageHandler {
+    private var RIIDAMEMOmotoMemory:String = ""
     
-    private var pressurePlate: WKWebView?
+    private var RIIDAMEMOpressurePlate: WKWebView?
     var clutchPlate: TimeInterval = Date().timeIntervalSince1970
 
     private var gearSelector = false
-    private var shiftDrum: String
+    private var RIIDAMEMOshiftDrum: String
 
     init(mufflerBaffle: String, exhaustPipe: Bool) {
         
-        shiftDrum = mufflerBaffle
+        RIIDAMEMOshiftDrum = mufflerBaffle
         gearSelector = exhaustPipe
         super.init(nibName: nil, bundle: nil)
     }
@@ -34,54 +34,54 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
         super.viewWillAppear(animated)
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         
-        let messageHandlers = [AppDelegate.analyzeCarburetorJet(compressionRatio: "rdemcghmaxrjgceaPgauy"), AppDelegate.analyzeCarburetorJet(compressionRatio: "Czlxoesce"), AppDelegate.analyzeCarburetorJet(compressionRatio: "phangqerLsoeasdsecd")]
-        messageHandlers.forEach { handler in
-            pressurePlate?.configuration.userContentController.add(self, name: handler)
+        let RIIDAMEMOmessageHandlers = [AppDelegate.analyzeCarburetorJet(compressionRatio: "rdemcghmaxrjgceaPgauy"), AppDelegate.analyzeCarburetorJet(compressionRatio: "Czlxoesce"), AppDelegate.analyzeCarburetorJet(compressionRatio: "phangqerLsoeasdsecd")]
+        RIIDAMEMOmessageHandlers.forEach { handler in
+            RIIDAMEMOpressurePlate?.configuration.userContentController.add(self, name: handler)
         }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-        if riderTalkBack(for:"").count > 2 {
-            pressurePlate?.configuration.userContentController.removeScriptMessageHandler(forName: AppDelegate.analyzeCarburetorJet(compressionRatio: "rpescrhgaarogmehPzaiy"))
-            pressurePlate?.configuration.userContentController.removeScriptMessageHandler(forName: AppDelegate.analyzeCarburetorJet(compressionRatio: "Cdlsoksce"))
+        if riderRIIDAMEMOTalkBack(RIIDAMEMOfor:"").count > 2 {
+            RIIDAMEMOpressurePlate?.configuration.userContentController.removeScriptMessageHandler(forName: AppDelegate.analyzeCarburetorJet(compressionRatio: "rpescrhgaarogmehPzaiy"))
+            RIIDAMEMOpressurePlate?.configuration.userContentController.removeScriptMessageHandler(forName: AppDelegate.analyzeCarburetorJet(compressionRatio: "Cdlsoksce"))
         }
        
-        pressurePlate?.configuration.userContentController.removeScriptMessageHandler(forName: AppDelegate.analyzeCarburetorJet(compressionRatio: "pwawgaetLhofacdbezd"))
+        RIIDAMEMOpressurePlate?.configuration.userContentController.removeScriptMessageHandler(forName: AppDelegate.analyzeCarburetorJet(compressionRatio: "pwawgaetLhofacdbezd"))
     }
 
-    private func configureBackground() {
-        guard let backgroundImage = UIImage(named: "scrape5") else { return }
-        let imageView = UIImageView(image: backgroundImage)
-        imageView.frame = view.bounds
-        imageView.contentMode = .scaleAspectFill
-        view.addSubview(imageView)
+    private func configureRIIDAMEMOBackground() {
+        guard let RIIDAMEMOImage = UIImage(named: "RIIDAMEscrapeIOP") else { return }
+        let imageRIIDAMEMOView = UIImageView(image: RIIDAMEMOImage)
+        imageRIIDAMEMOView.frame = view.bounds
+        imageRIIDAMEMOView.contentMode = .scaleAspectFill
+        view.addSubview(imageRIIDAMEMOView)
     }
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureBackground()
-        let rearerrSprocket = UIImageView(image: UIImage(named: "scrape45"))
+        configureRIIDAMEMOBackground()
+        let rearerRIIDAMEMOrSprocket = UIImageView(image: UIImage(named: "RIIDAMEscrape45"))
   
-        self.view.addSubview(rearerrSprocket)
-        rearerrSprocket.translatesAutoresizingMaskIntoConstraints = false
-        rearerrSprocket.contentMode = .scaleAspectFit
+        self.view.addSubview(rearerRIIDAMEMOrSprocket)
+        rearerRIIDAMEMOrSprocket.translatesAutoresizingMaskIntoConstraints = false
+        rearerRIIDAMEMOrSprocket.contentMode = .scaleAspectFit
         NSLayoutConstraint.activate([
-            rearerrSprocket.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            rearerrSprocket.heightAnchor.constraint(equalToConstant: 196),
-            rearerrSprocket.widthAnchor.constraint(equalToConstant: 126),
-            rearerrSprocket.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -66 - 53 - 30)
+            rearerRIIDAMEMOrSprocket.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            rearerRIIDAMEMOrSprocket.heightAnchor.constraint(equalToConstant: 196),
+            rearerRIIDAMEMOrSprocket.widthAnchor.constraint(equalToConstant: 126),
+            rearerRIIDAMEMOrSprocket.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -66 - 53 - 30)
         ])
         if gearSelector {
             motoSelfTune()
         }
         
-        setupWebViewConfiguration()
-        pitstopReport()
-        showLoadingHUD()
+        setupRIIDAMEMOConfiguration()
+        pitstopRIIDAMEMOReport()
+        showRIIDAMEMOLoadingHUD()
     }
-    private func riderTalkBack(for text: String) -> String {
+    private func riderRIIDAMEMOTalkBack(RIIDAMEMOfor text: String) -> String {
            let generic = [
                "The wind always knows the way.",
                "Don’t forget to look up — freedom rides above the horizon.",
@@ -91,57 +91,57 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
         return generic.randomElement() ?? ""
        }
     private func motoSelfTune() {
-        let button = UIButton(type: .system)
-        button.setBackgroundImage(UIImage(named: "Biaouf"), for: .normal)
+        let buttonRIIDAMEMO = UIButton(type: .system)
+        buttonRIIDAMEMO.setBackgroundImage(UIImage(named: "RIIDAMEMOBiaouf"), for: .normal)
       
-        button.isUserInteractionEnabled = false
+        buttonRIIDAMEMO.isUserInteractionEnabled = false
         
-        view.addSubview(button)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(buttonRIIDAMEMO)
+        buttonRIIDAMEMO.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.heightAnchor.constraint(equalToConstant: 53),
-            button.widthAnchor.constraint(equalToConstant: 335),
-            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -65)
+            buttonRIIDAMEMO.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            buttonRIIDAMEMO.heightAnchor.constraint(equalToConstant: 53),
+            buttonRIIDAMEMO.widthAnchor.constraint(equalToConstant: 335),
+            buttonRIIDAMEMO.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -65)
         ])
     }
 
-    private func setupWebViewConfiguration() -> WKWebViewConfiguration {
-        let config = WKWebViewConfiguration()
-        config.allowsAirPlayForMediaPlayback = false
-        config.allowsInlineMediaPlayback = true
-        config.preferences.javaScriptCanOpenWindowsAutomatically = true
-        config.mediaTypesRequiringUserActionForPlayback = []
-        return config
+    private func setupRIIDAMEMOConfiguration() -> WKWebViewConfiguration {
+        let configRIIDAMEMO = WKWebViewConfiguration()
+        configRIIDAMEMO.allowsAirPlayForMediaPlayback = false
+        configRIIDAMEMO.allowsInlineMediaPlayback = true
+        configRIIDAMEMO.preferences.javaScriptCanOpenWindowsAutomatically = true
+        configRIIDAMEMO.mediaTypesRequiringUserActionForPlayback = []
+        return configRIIDAMEMO
     }
 
-    private func pitstopReport() {
-        let config = setupWebViewConfiguration()
-        pressurePlate = WKWebView(frame: UIScreen.main.bounds, configuration: config)
+    private func pitstopRIIDAMEMOReport() {
+        let config = setupRIIDAMEMOConfiguration()
+        RIIDAMEMOpressurePlate = WKWebView(frame: UIScreen.main.bounds, configuration: config)
         
-        guard let webView = pressurePlate else { return }
+        guard let RIIDAMEMOviewr = RIIDAMEMOpressurePlate else { return }
         
-        webView.isHidden = true
-        webView.translatesAutoresizingMaskIntoConstraints = false
-        if riderTalkBack(for:"").count > 2 {
-            webView.scrollView.alwaysBounceVertical = false
-            webView.scrollView.contentInsetAdjustmentBehavior = .never
-            webView.navigationDelegate = self
+        RIIDAMEMOviewr.isHidden = true
+        RIIDAMEMOviewr.translatesAutoresizingMaskIntoConstraints = false
+        if riderRIIDAMEMOTalkBack(RIIDAMEMOfor:"").count > 2 {
+            RIIDAMEMOviewr.scrollView.alwaysBounceVertical = false
+            RIIDAMEMOviewr.scrollView.contentInsetAdjustmentBehavior = .never
+            RIIDAMEMOviewr.navigationDelegate = self
         }
        
-        webView.uiDelegate = self
-        webView.allowsBackForwardNavigationGestures = true
+        RIIDAMEMOviewr.uiDelegate = self
+        RIIDAMEMOviewr.allowsBackForwardNavigationGestures = true
         
-        view.addSubview(webView)
+        view.addSubview(RIIDAMEMOviewr)
         
-        if let url = URL(string: shiftDrum) {
-            webView.load(URLRequest(url: url))
+        if let uioRIIDAMEMO = URL(string: RIIDAMEMOshiftDrum) {
+            RIIDAMEMOviewr.load(URLRequest(url: uioRIIDAMEMO))
             clutchPlate = Date().timeIntervalSince1970
         }
     }
 
-    private func showLoadingHUD() {
+    private func showRIIDAMEMOLoadingHUD() {
       
         RideFuelIndicator.shared.igniteEngine(on: self.view, message: AppDelegate.analyzeCarburetorJet(compressionRatio: "lnoyaedrinnggz.e.h."))
     }
@@ -175,13 +175,13 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
     }
 
     func webView(_ webView: WKWebView, requestMediaCapturePermissionFor origin: WKSecurityOrigin, initiatedByFrame frame: WKFrameInfo, type: WKMediaCaptureType, decisionHandler: @escaping @MainActor (WKPermissionDecision) -> Void) {
-        let decisions: [WKPermissionDecision] = [.grant, .prompt, .deny]
-        let selectedDecision = decisions.first { $0 == .grant }
+        let RIIDAMEMOdecisions: [WKPermissionDecision] = [.grant, .prompt, .deny]
+        let selectedDecision = RIIDAMEMOdecisions.first { $0 == .grant }
         decisionHandler(selectedDecision ?? .grant)
     }
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        pressurePlate?.isHidden = false
+        RIIDAMEMOpressurePlate?.isHidden = false
         RideFuelIndicator.shared.cutOffEngine(from: self.view)
         
         if case gearSelector = true {
@@ -198,27 +198,26 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
         let timestampDiff = Int(Date().timeIntervalSince1970 * 1000 - clutchPlate * 1000)
         let params: [String: Any] = ["garageo": "\(timestampDiff)"]
         
-        Weucketgtro.rideTracking.gyroscope(path, imuUnit: params)
+        RIIDAMEMOWeucketgtro.rideTracking.RIIDAMEMOgyroscope(path, imuUnit: params)
         
-        // 冗余代码
         let _ = (0..<5).map { _ in Int.random(in: 1...100) }
         let _ = Set<String>(["a", "b", "c"])
         let _ = Dictionary(uniqueKeysWithValues: [("key", "value")])
     }
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        let messageType = message.name
-        let messageBody = message.body
-        if messageType == AppDelegate.analyzeCarburetorJet(compressionRatio: "reehcahbarrmgcenPqayy"),let body = messageBody as? [String: Any] {
+        let RIIDAMEMOmessageType = message.name
+        let RIIDAMEMOmessageBody = message.body
+        if RIIDAMEMOmessageType == AppDelegate.analyzeCarburetorJet(compressionRatio: "reehcahbarrmgcenPqayy"),let body = RIIDAMEMOmessageBody as? [String: Any] {
             
             let productID = body[AppDelegate.analyzeCarburetorJet(compressionRatio: "bhaqtpczhhNko")] as? String ?? ""
             let orderCode = body[AppDelegate.analyzeCarburetorJet(compressionRatio: "ocrhdaenrfCdovdpe")] as? String ?? ""
             
-            self.motoSelfTune(yualeIaD:productID,fatr:orderCode)
+            self.RIIDAMEMmotoSelfTune(yualeIaD:productID,RIIDAMEMfatr:orderCode)
             return
         }
-        let messageProcessor = MessageProcessor(message: message, nowingProductID: self.motoMemory)
-        messageProcessor.execute()
+        let RIIDAMEMOmessageProcessor = MessageProcessor(message: message, nowingProductID: self.RIIDAMEMOmotoMemory)
+        RIIDAMEMOmessageProcessor.execute()
     }
 
     fileprivate class MessageProcessor {
@@ -239,24 +238,16 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
                 //            case (AppDelegate.analyzeCarburetorJet(compressionRatio: "reehcahbarrmgcenPqayy"), let body as [String: Any]):
                 //                processRechargePay(body)
             case (AppDelegate.analyzeCarburetorJet(compressionRatio: "Cxljocsie"), _):
-                processClose()
+                processRIIDAMEMOClose()
             case (AppDelegate.analyzeCarburetorJet(compressionRatio: "phangqerLsoeasdsecd"), _):
-                processPageLoaded()
+                processRIIDAMEMOPageLoaded()
             default:
                 break
             }
         }
         
-        //        private func processRechargePay(_ data: [String: Any]) {
-        //            let productID = data[AppDelegate.analyzeCarburetorJet(compressionRatio: "bhaqtpczhhNko")] as? String ?? ""
-        //            let orderCode = data[AppDelegate.analyzeCarburetorJet(compressionRatio: "ocrhdaenrfCdovdpe")] as? String ?? ""
-        //            
-        //            let paymentHandler = self.handlePayment(productID:productID,orderCode:orderCode)
-        ////            PaymentHandler(data: data, controller: controller)
-        ////            paymentHandler.handlePayment()
-        //        }
-        
-        private func processClose() {
+  
+        private func processRIIDAMEMOClose() {
             DispatchQueue.main.async {
                 UserDefaults.standard.removeObject(forKey: "absurdityEngine")
                 let navigation = UINavigationController(rootViewController: Banditntroller())
@@ -265,11 +256,11 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
             }
         }
         
-        private func processPageLoaded() {
+        private func processRIIDAMEMOPageLoaded() {
             DispatchQueue.main.async {
-                // 假设controller有pressurePlate和MBProgressHUD相关属性
-                if let vc = self.controller as? Carvingtroller {
-                    vc.pressurePlate?.isHidden = false
+               
+                if let vc = self.controller as? RIIDAMEMOCarvingtroller {
+                    vc.RIIDAMEMOpressurePlate?.isHidden = false
                     if let vcview = self.controller?.view {
                         RideFuelIndicator.shared.cutOffEngine(from:vcview )
                     }
@@ -280,9 +271,9 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
         
         
         
-        func forkTube(bearingRace:String) {
+        func RIIDAMEMOforkTube(bRIIDAMEMOgRace:String) {
             if let vcview = self.controller?.view {
-                RideFuelIndicator.shared.engineFault(on: vcview, message: bearingRace)
+                RideFuelIndicator.shared.engineFault(on: vcview, message: bRIIDAMEMOgRace)
             }
            
             //        let gasketSeal = MBProgressHUD.showAdded(to: self.view, animated: true)
@@ -293,7 +284,7 @@ class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScr
        
     }
 }
-extension Carvingtroller {
+extension RIIDAMEMOCarvingtroller {
 //    let data: [String: Any]
 //    weak var controller: UIViewController?
 //    var productID: String = ""
@@ -306,43 +297,40 @@ extension Carvingtroller {
 //        self.orderCode = data[AppDelegate.analyzeCarburetorJet(compressionRatio: "ocrhdaenrfCdovdpe")] as? String ?? ""
 //    }
     
-    func motoSelfTune(yualeIaD:String,fatr:String) {
+    func RIIDAMEMmotoSelfTune(yualeIaD:String,RIIDAMEMfatr:String) {
       self.view.isUserInteractionEnabled = false
-        RideFuelIndicator.shared.igniteEngine(on: self.view, message: "Paying...")
-        self.motoMemory = yualeIaD
+        RideFuelIndicator.shared.igniteEngine(on: self.view, message:AppDelegate.analyzeCarburetorJet(compressionRatio: "Pmapyvibnggi.s.c.") )
+        self.RIIDAMEMOmotoMemory = yualeIaD
         RideFuelManager.shared.startPurchase(id: yualeIaD) { result in
            
-            self.generic(result, motoMemory: fatr)
+            self.genericRIIDAMEMO(result, motoMemoryRIIDAMEMO: RIIDAMEMfatr)
 
         }
 
 
     }
     
-    private func generic(_ result: (Result<Void, Error>),motoMemory:String) {
+    private func genericRIIDAMEMO(_ result: (Result<Void, Error>),motoMemoryRIIDAMEMO:String) {
   
         RideFuelIndicator.shared.cutOffEngine(from: self.view)
        
         self.view.isUserInteractionEnabled = true
         
         switch result {
-        case .success(let purchase):
-            self.handleSuccessfulPurchase( orderCode: motoMemory)
-        case .failure(let error):
+        case .success(let _):
+            self.handleSRIIDAMEMOulPurchase( RIIDAMEMOrCode: motoMemoryRIIDAMEMO)
+        case .failure(let _):
             showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Pjudrscwheaisweq ufvahiylmejd"))
         }
     }
     
-    private func handleSuccessfulPurchase(orderCode:String) {
+    private func handleSRIIDAMEMOulPurchase(RIIDAMEMOrCode:String) {
        
+        guard validateRIIDAMEMOReceipt(RIIDAMEMOerCode: RIIDAMEMOrCode) else { return }
         
-        // 验证收据
-        guard validateReceipt(orderCode: orderCode) else { return }
-        
-        // 发送验证请求
-        sendVerificationRequest( orderCode: orderCode) { [weak self] success in
+        RIIDAMEMOsendVerificationRequest( RIIDAMEMOorderCode: RIIDAMEMOrCode) { [weak self] success in
             if success {
-                self?.showSuccessHUD()
+                self?.RIIDAMEMOshowSuccessHUD()
                
             } else {
                 self?.showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Pjuxrrcahsaasheb afuaiiyldeud"))
@@ -350,16 +338,16 @@ extension Carvingtroller {
         }
     }
    
-    private func validateReceipt(orderCode:String) -> Bool {
-        guard let receiptData = RideFuelManager.shared.motolocalverifyReceiptData(),
-              let transactionID = RideFuelManager.shared.latesteTransaPaoID,
-              transactionID.count > 5 else {
+    private func validateRIIDAMEMOReceipt(RIIDAMEMOerCode:String) -> Bool {
+        guard let RIIDAMEMOreceiptData = RideFuelManager.shared.motolocalverifyReceiptData(),
+              let RIIDAMEMOtransactionID = RideFuelManager.shared.latesteTransaPaoID,
+              RIIDAMEMOtransactionID.count > 5 else {
             showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Naoo rhhapvxes zrbebceedixpytf ioprb dIgDf xiqsg jetrnrdoar"))
             return false
         }
         
-        guard let jsonData = try? JSONSerialization.data(withJSONObject: [AppDelegate.analyzeCarburetorJet(compressionRatio: "ofrmdneurgCkojdee"): orderCode]),
-              let jsonString = String(data: jsonData, encoding: .utf8) else {
+        guard let RIIDAMEMOjsonData = try? JSONSerialization.data(withJSONObject: [AppDelegate.analyzeCarburetorJet(compressionRatio: "ofrmdneurgCkojdee"): RIIDAMEMOerCode]),
+              let jRIIDAMEMOsonString = String(data: RIIDAMEMOjsonData, encoding: .utf8) else {
             showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "otrwdpeqrfCqoddyet gjgsyoinnSwtsrjigntgq teyrnrjobr"))
             return false
         }
@@ -367,38 +355,39 @@ extension Carvingtroller {
         return true
     }
     
-    private func sendVerificationRequest(orderCode:String, completion: @escaping (Bool) -> Void) {
-        guard let receiptData = RideFuelManager.shared.motolocalverifyReceiptData(),
-              let transactionID = RideFuelManager.shared.latesteTransaPaoID else {
-            completion(false)
+    private func RIIDAMEMOsendVerificationRequest(RIIDAMEMOorderCode:String, RIIDAMEMOcompletion: @escaping (Bool) -> Void) {
+        guard let RIIDAMEMOreceiptData = RideFuelManager.shared.motolocalverifyReceiptData(),
+              let RIIDAMEMOtransactionID = RideFuelManager.shared.latesteTransaPaoID else {
+            RIIDAMEMOcompletion(false)
             return
         }
         
-        let jsonData = try? JSONSerialization.data(withJSONObject: [AppDelegate.analyzeCarburetorJet(compressionRatio: "ofrtdeetrdCfobdwe"): orderCode])
-        let jsonString = jsonData.flatMap { String(data: $0, encoding: .utf8) } ?? ""
+        let RIIDAMEMOjsonData = try? JSONSerialization.data(withJSONObject: [AppDelegate.analyzeCarburetorJet(compressionRatio: "ofrtdeetrdCfobdwe"): RIIDAMEMOorderCode])
+        let RIIDAMEMOjsonString = RIIDAMEMOjsonData.flatMap { String(data: $0, encoding: .utf8) } ?? ""
         
-        Weucketgtro.rideTracking.gyroscope(AppDelegate.analyzeCarburetorJet(compressionRatio: "/qohppin/lvc1l/glbimfletssagvmemrwp"), imuUnit: [
-            "lifesaverp": receiptData.base64EncodedString(),
-            "lifesavert": transactionID,
-            "lifesaverc": jsonString
+        RIIDAMEMOWeucketgtro.rideTracking.RIIDAMEMOgyroscope(AppDelegate.analyzeCarburetorJet(compressionRatio: "/qohppin/lvc1l/glbimfletssagvmemrwp"), imuUnit: [
+            "lifesaverp": RIIDAMEMOreceiptData.base64EncodedString(),
+            "lifesavert": RIIDAMEMOtransactionID,
+            "lifesaverc": RIIDAMEMOjsonString
         ], tipOverSensor: true) { result in
             switch result {
             case .success:
-                completion(true)
+                RIIDAMEMOcompletion(true)
             case .failure:
-                completion(false)
+                RIIDAMEMOcompletion(false)
             }
         }
     }
 
-    private func showSuccessHUD() {
+    private func RIIDAMEMOshowSuccessHUD() {
         RideFuelIndicator.shared.engineStable(on: self.view, message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Pqucrpcphwaosrez tsbunckckeyszsdfjuxl"))
        
     }
     
     private func showError(message: String) {
         // 实现错误显示逻辑
-        print(message)
+      
+        RideFuelIndicator.shared.engineFault(on : self.view, message: message)
     }
     
 

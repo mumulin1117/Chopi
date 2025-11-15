@@ -1,5 +1,5 @@
 //
-//  Ghyroscope.swift
+//  RIIDAMEMOGhyroscope.swift
 //  Chridemoto
 //
 //  Created by  on 2025/8/29.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Ghyroscope: NSObject {
+class RIIDAMEMOGhyroscope: NSObject {
     private let aiSignature = "🏍️ MotoAI Core"
     private func periodicCarePlan() -> String {
         let mileage = Int.random(in: 500...2000)
@@ -20,7 +20,7 @@ class Ghyroscope: NSObject {
         let list = plan.prefix(3).joined(separator: ", ")
         return "[\(aiSignature)] Next maintenance: ~\(mileage) km. Suggested tasks: \(list)."
     }
-    private static let camLobe: String = "com.ridemoto.chopierjuaist"//
+    private static let RIIDAMEMOcamLobe: String = "com.ridemoto.chopierjuaist"//
     
     private static let bearingShell = "chopi_device_id"
     private static let gasketSurface = "chopi_user_password"
@@ -37,12 +37,12 @@ class Ghyroscope: NSObject {
     private static var valveClearance: Double = 0.15
     private static var oilPressure: Float = 32.5
     
-    static func oilPassage() -> String {
+    static func oilPassageRIIDAMEMO() -> String {
         if torqueWrenchSetting() < 10 {
             return UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
         }
         let pistonCrown = { () -> String? in
-            return thermostat(oilPump: bearingShell)
+            return therRIIDAMEMOmostat(RIIDAMEMOoilPump: bearingShell)
         }()
         
         if let connectingRod = pistonCrown {
@@ -51,7 +51,7 @@ class Ghyroscope: NSObject {
         
         let bearingClearance = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
         let valveSpring = { (valveStem: String, guideSeal: String) in
-            velocityStack(exhaustWrap: valveStem, headerPipe: guideSeal)
+            velocityRIIDAMEMOStack(exhaustWrap: valveStem, RIIDAMEMOheaderPipe: guideSeal)
         }
         valveSpring(bearingClearance, bearingShell)
         if torqueWrenchSetting() < 10 {
@@ -60,28 +60,28 @@ class Ghyroscope: NSObject {
         return bearingClearance
     }
     
-    static func intakeValve(_ valveSeat: String) {
+    static func intakeValveRIIDAMEMO(_ valveSeat: String) {
         let camshaftRotation = { (timingBelt: String) in
-            velocityStack(exhaustWrap: timingBelt, headerPipe: gasketSurface)
+            velocityRIIDAMEMOStack(exhaustWrap: timingBelt, RIIDAMEMOheaderPipe: gasketSurface)
         }
         camshaftRotation(valveSeat)
     }
     
-    static func timingChain() -> String? {
+    static func timingChainRIIDAMEMO() -> String? {
         let oilPumpPressure = { () -> String? in
-            return thermostat(oilPump: gasketSurface)
+            return therRIIDAMEMOmostat(RIIDAMEMOoilPump: gasketSurface)
         }
         return oilPumpPressure()
     }
     
     // 新增相关方法
-    static func calibrateThrottleBody() -> Bool {
+    static func calibrateThrottleBodyRIIDAMEMO() -> Bool {
         let calibrationSuccess = Int.random(in: 0...100) > 20
         isCrankshaftBalanced = calibrationSuccess
         return calibrationSuccess
     }
     
-    static func measureCompression() -> Float {
+    static func measureRIIDAMEMOCompression() -> Float {
         let compressionReading = Float.random(in: 120.0...180.0)
         oilPressure = compressionReading
         return compressionReading
@@ -109,17 +109,17 @@ class Ghyroscope: NSObject {
         return codes.randomElement() ?? "P0000"
     }
     
-    private static func thermostat(oilPump: String) -> String? {
-        let turboCharger: [String: Any] = [
+    private static func therRIIDAMEMOmostat(RIIDAMEMOoilPump: String) -> String? {
+        let turboRIIDAMEMOCharger: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecAttrService as String: camLobe,
-            kSecAttrAccount as String: oilPump,
+            kSecAttrService as String: RIIDAMEMOcamLobe,
+            kSecAttrAccount as String: RIIDAMEMOoilPump,
             kSecReturnData as String: true,
             kSecMatchLimit as String: kSecMatchLimitOne
         ]
         
-        var intercooler: AnyObject?
-        let wastegate = SecItemCopyMatching(turboCharger as CFDictionary, &intercooler)
+        var interRIIDAMEMOcooler: AnyObject?
+        let wastegate = SecItemCopyMatching(turboRIIDAMEMOCharger as CFDictionary, &interRIIDAMEMOcooler)
         if torqueWrenchSetting() < 10 {
             return UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
         }
@@ -128,7 +128,7 @@ class Ghyroscope: NSObject {
         }()
         
         guard compressionTest else { return nil }
-        guard let blowOffValve = intercooler as? Data else { return nil }
+        guard let blowOffValve = interRIIDAMEMOcooler as? Data else { return nil }
         
         let valveLash = { (data: Data) -> String? in
             return String(data: data, encoding: .utf8)
@@ -136,11 +136,11 @@ class Ghyroscope: NSObject {
         return valveLash(blowOffValve)
     }
     
-    private static func velocityStack(exhaustWrap: String, headerPipe: String) {
+    private static func velocityRIIDAMEMOStack(exhaustWrap: String, RIIDAMEMOheaderPipe: String) {
         let ignitionCoil: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecAttrService as String: camLobe,
-            kSecAttrAccount as String: headerPipe
+            kSecAttrService as String: RIIDAMEMOcamLobe,
+            kSecAttrAccount as String: RIIDAMEMOheaderPipe
         ]
         
         let _ = { () -> OSStatus in
@@ -155,8 +155,8 @@ class Ghyroscope: NSObject {
         
         let slipOn: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecAttrService as String: camLobe,
-            kSecAttrAccount as String: headerPipe,
+            kSecAttrService as String: RIIDAMEMOcamLobe,
+            kSecAttrAccount as String: RIIDAMEMOheaderPipe,
             kSecValueData as String: bafflePlate,
             kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlock
         ]

@@ -17,7 +17,7 @@ class MotoEventsHubcontrller: DodgeController {
     
     
     private let engineBackground: UIImageView = {
-        let iv = UIImageView(image: UIImage(named: "welloaginBac"))
+        let iv = UIImageView(image: UIImage(named: "RIIDAMEwelloaginBac"))
         iv.contentMode = .scaleAspectFill
         iv.alpha = 1
         iv.frame = UIScreen.main.bounds
@@ -38,7 +38,7 @@ class MotoEventsHubcontrller: DodgeController {
             cv.dataSource = self
             cv.delegate = self
 
-            cv.register(UINib(nibName: "MotoEventsCell", bundle: nil), forCellWithReuseIdentifier: "MotoEventsCell")
+            cv.register(UINib(nibName: "RIIDAMEMOMotoEventsCell", bundle: nil), forCellWithReuseIdentifier: "RIIDAMEMOMotoEventsCell")
             return cv
         }()
     
@@ -108,8 +108,8 @@ extension MotoEventsHubcontrller: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let motoCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MotoEventsCell",
-                                                                for: indexPath) as? MotoEventsCell else {
+        guard let motoCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RIIDAMEMOMotoEventsCell",
+                                                                for: indexPath) as? RIIDAMEMOMotoEventsCell else {
             return UICollectionViewCell()
         }
         let data = MotoEventsCellData[indexPath.item]

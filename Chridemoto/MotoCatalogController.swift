@@ -11,7 +11,7 @@ import WebKit
 //
 class MotoCatalogController: UIViewController, WKUIDelegate {
     private let engineBackground: UIImageView = {
-        let iv = UIImageView(image: UIImage(named: "welloaginBac"))
+        let iv = UIImageView(image: UIImage(named: "RIIDAMEwelloaginBac"))
         iv.contentMode = .scaleAspectFill
         iv.alpha = 1
         return iv
@@ -46,7 +46,7 @@ class MotoCatalogController: UIViewController, WKUIDelegate {
         
         // 添加机械风格边框
         fuelGaugeWebView.layer.borderWidth = 0
-        fuelGaugeWebView.layer.borderColor = UIColor(named: "welloaginBac")?.cgColor
+        fuelGaugeWebView.layer.borderColor = UIColor(named: "RIIDAMEwelloaginBac")?.cgColor
        
         fuelGaugeWebView.layer.masksToBounds = true
         
@@ -241,7 +241,7 @@ extension MotoCatalogController: WKScriptMessageHandler {
 //                    return
 //                }
                 
-                kickstandgtroller.seatHeight?.rootViewController = initialViewController
+                RIIDAMEMOstandgtroller.RIIDAMEMOseatHeight?.rootViewController = initialViewController
 //                window.makeKeyAndVisible()
             }
         }

@@ -1,5 +1,5 @@
 //
-//  MotoEventsCell.swift
+//  RIIDAMEMOMotoEventsCell.swift
 //  Chridemoto
 //
 //  Created by  on 2025/5/26.
@@ -9,7 +9,7 @@ import UIKit
 
 
 
-class MotoEventsCell: UICollectionViewCell {
+class RIIDAMEMOMotoEventsCell: UICollectionViewCell {
     
     @IBOutlet weak var rimDentHighter: UIImageView!
     

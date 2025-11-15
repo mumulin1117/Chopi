@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BikeModeController" customModule="Chridemoto" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RIIDAMEMOBikeModeController" customModule="Chridemoto" customModuleProvider="target">
             <connections>
                 <outlet property="dreamRideView" destination="pxO-Tx-Trw" id="fI6-kt-ThK"/>
                 <outlet property="two_wheeled" destination="TOn-L1-afV" id="tqv-R3-bFW"/>
@@ -21,7 +21,7 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welloaginBac" translatesAutoresizingMaskIntoConstraints="NO" id="G9z-84-tS9">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RIIDAMEwelloaginBac" translatesAutoresizingMaskIntoConstraints="NO" id="G9z-84-tS9">
                     <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9w-9y-O1W">
@@ -52,7 +52,7 @@
                         <constraint firstAttribute="height" constant="115" id="PTS-NX-jUK"/>
                     </constraints>
                 </imageView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chopi" translatesAutoresizingMaskIntoConstraints="NO" id="hX4-fU-U0v">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RIIDAMEMOChopi" translatesAutoresizingMaskIntoConstraints="NO" id="hX4-fU-U0v">
                     <rect key="frame" x="16" y="59" width="80" height="38"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="38" id="Ygl-Pb-AMw"/>
@@ -83,10 +83,10 @@
         </view>
     </objects>
     <resources>
-        <image name="Chopi" width="75.333335876464844" height="32.333332061767578"/>
+        <image name="RIIDAMEMOChopi" width="75.333335876464844" height="32.333332061767578"/>
+        <image name="RIIDAMEwelloaginBac" width="375" height="812"/>
         <image name="motoNoti" width="36" height="37"/>
         <image name="motoTips" width="355" height="115"/>
-        <image name="welloaginBac" width="375" height="812"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

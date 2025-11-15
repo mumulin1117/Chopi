@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RideConnectController" customModule="Chridemoto" customModuleProvider="target">
             <connections>
+                <outlet property="RIIDAMEMOnomore" destination="xk9-60-2hy" id="7Zv-1s-fUa"/>
                 <outlet property="power" destination="geO-m6-YOs" id="7bR-Fg-jbL"/>
                 <outlet property="rimDent" destination="DgU-uy-GeH" id="fda-7T-dQE"/>
                 <outlet property="rimDentHighter" destination="kYh-eD-NWT" id="ZL0-cu-teO"/>
@@ -24,10 +25,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welloaginBac" translatesAutoresizingMaskIntoConstraints="NO" id="Vh7-iV-Pc1">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RIIDAMEwelloaginBac" translatesAutoresizingMaskIntoConstraints="NO" id="Vh7-iV-Pc1">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nilPictrue" translatesAutoresizingMaskIntoConstraints="NO" id="GDs-cB-OHu">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RIIDAMEnilPictrue" translatesAutoresizingMaskIntoConstraints="NO" id="GDs-cB-OHu">
                     <rect key="frame" x="137.5" y="436" width="100" height="100"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="HHI-FP-aWJ"/>
@@ -54,8 +55,8 @@
                         <constraint firstAttribute="width" constant="94" id="Vas-Dm-V5q"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J80-R1-iX9">
-                    <rect key="frame" x="119" y="146" width="51.5" height="24"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J80-R1-iX9">
+                    <rect key="frame" x="119" y="146" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -68,7 +69,7 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" title="0 Following">
+                    <state key="normal">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="0.63958864795918369" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
@@ -83,7 +84,7 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" title="0 Fans">
+                    <state key="normal">
                         <color key="titleColor" white="1" alpha="0.61766581632653061" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
@@ -108,8 +109,8 @@
                         <constraint firstAttribute="width" constant="44" id="ovt-PU-tte"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="no more data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xk9-60-2hy">
-                    <rect key="frame" x="144" y="581" width="87.5" height="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xk9-60-2hy">
+                    <rect key="frame" x="187.5" y="581" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                     <color key="textColor" white="1" alpha="0.59545068027210879" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -181,12 +182,12 @@
     </objects>
     <resources>
         <image name="PostINcenter" width="44" height="15.5"/>
+        <image name="RIIDAMEnilPictrue" width="150" height="150"/>
+        <image name="RIIDAMEwelloaginBac" width="375" height="812"/>
         <image name="RideConnect_chang" width="30" height="30"/>
         <image name="RideConnect_cover" width="375" height="215"/>
         <image name="RideConnect_set" width="26" height="26"/>
-        <image name="nilPictrue" width="150" height="150"/>
         <image name="wallentpost" width="351" height="95"/>
-        <image name="welloaginBac" width="375" height="812"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

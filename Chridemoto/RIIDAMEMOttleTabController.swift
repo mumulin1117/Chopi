@@ -1,5 +1,5 @@
 //
-//  ThrottleTabController.swift
+//  RIIDAMEMOttleTabController.swift
 //  Chridemoto
 //
 //  Created by  on 2025/5/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ThrottleTabController: UITabBarController {
+class RIIDAMEMOttleTabController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,7 +16,7 @@ class ThrottleTabController: UITabBarController {
     }
     private lazy var postMOtoDymButton: UIButton = {
         let btn = UIButton(type: .custom)
-        btn.setImage(UIImage(named: "beginBikeModepost"), for: .normal)
+        btn.setImage(UIImage(named: "RIIDAMEMObeginBikeModepost"), for: .normal)
         btn.imageView?.contentMode = .scaleAspectFit
         
         // 3D阴影效果
@@ -61,7 +61,7 @@ class ThrottleTabController: UITabBarController {
     }
 
     private func configureRoadWarriorInterface() {
-        let garageVC = BikeModeController() // Home
+        let garageVC = RIIDAMEMOBikeModeController() // Home
         let exploreVC = MotoAssistantController() // Discover
         let igniteVC = UIViewController.init()
         let reelsVC = MotoEventsHubcontrller() // Post
@@ -77,8 +77,8 @@ class ThrottleTabController: UITabBarController {
         
         garageNav.tabBarItem = UITabBarItem(
                     title: nil,
-                    image: UIImage(named: "BikeMode"),
-                    selectedImage: UIImage(named: "BikeMode_by")
+                    image: UIImage(named: "RIIDAMEMOBikeMode"),
+                    selectedImage: UIImage(named: "RIIDAMEMOBikeMode_by")
                 )
                 
         
@@ -103,7 +103,7 @@ class ThrottleTabController: UITabBarController {
         
         riderNav.tabBarItem = UITabBarItem(
             title: nil,
-            image: UIImage(named: "MotoMe"),
+            image: UIImage(named: "RIIDAMEMotoMe"),
             selectedImage: UIImage(named: "RideConnect_by")
         )
         
