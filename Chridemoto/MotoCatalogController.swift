@@ -163,7 +163,7 @@ extension MotoCatalogController: WKScriptMessageHandler {
             }
             
             self.fireLoadinIndicator.startAnimating()
-            RideFuelManager.shared.startPurchase(id: trigger) { result in
+            RIIDAMEMORideFuelManager.shared.startPurchase(id: trigger) { result in
                 self.fireLoadinIndicator.stopAnimating()
                
                 switch result {

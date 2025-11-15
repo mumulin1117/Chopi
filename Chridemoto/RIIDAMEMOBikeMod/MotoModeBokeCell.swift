@@ -130,12 +130,12 @@ class MotoModeBokeCell: UICollectionViewCell {
         
         let timeinterval = TimeInterval(integerLiteral: Int64((ride["longDistanceRide"] as? Int ?? 0)/1000))
         
-        publishTimeShow.text = self.realityPhantasmagoria(timestamp: timeinterval)
+        publishTimeShow.text = self.RIIDAMEMOrealityPhantasmagoria(RIIDAMEMOtimestamp: timeinterval)
     }
     
     
-    func realityPhantasmagoria(timestamp: TimeInterval) -> String {
-        let date = Date(timeIntervalSince1970: timestamp)
+    func RIIDAMEMOrealityPhantasmagoria(RIIDAMEMOtimestamp: TimeInterval) -> String {
+        let date = Date(timeIntervalSince1970: RIIDAMEMOtimestamp)
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd HH:mm"
         formatter.locale = Locale(identifier: "en_US_POSIX")
@@ -144,7 +144,7 @@ class MotoModeBokeCell: UICollectionViewCell {
                     .prefix(3)
                 
                 
-        return formatter.string(from: Date(timeIntervalSince1970: timestamp))
+        return formatter.string(from: Date(timeIntervalSince1970: RIIDAMEMOtimestamp))
     }
     
     private func simulatePressureTest() {

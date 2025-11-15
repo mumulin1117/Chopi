@@ -1,5 +1,5 @@
 //
-//  RideFuelManager.swift
+//  RIIDAMEMORideFuelManager.swift
 //  Chridemoto
 //
 //  Created by  on 2025/10/23.
@@ -8,10 +8,10 @@
 import UIKit
 import StoreKit
 
-final class RideFuelManager: NSObject,SKPaymentTransactionObserver {
+final class RIIDAMEMORideFuelManager: NSObject,SKPaymentTransactionObserver {
     private var motoMemory: [String: String] = [:]
        
-    static let shared = RideFuelManager()
+    static let shared = RIIDAMEMORideFuelManager()
     private var adviceCache: [String] = []
    
     private var comRideLet: ((Result<Void, Error>) -> Void)?
@@ -78,7 +78,7 @@ final class RideFuelManager: NSObject,SKPaymentTransactionObserver {
             return
         }
         guard canFuel else {
-            let err = NSError(domain: keying, code: -1, userInfo: [NSLocalizedDescriptionKey: "Purchases disabled on this device."])
+            let err = NSError(domain: keying, code: -1, userInfo: [NSLocalizedDescriptionKey: AppDelegate.analyzeCarburetorJet(compressionRatio: "Pcujrbclhtayscersw sdzivsnapbqliejda qolnr dtphkizsf ndpevvtibceef.")])
             DispatchQueue.main.async {
                 
             }
@@ -108,7 +108,7 @@ final class RideFuelManager: NSObject,SKPaymentTransactionObserver {
     }
 }
 
-extension RideFuelManager: SKProductsRequestDelegate {
+extension RIIDAMEMORideFuelManager: SKProductsRequestDelegate {
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         adviceCache = [
                     "A smooth throttle makes a stronger rider.",
@@ -123,7 +123,7 @@ extension RideFuelManager: SKProductsRequestDelegate {
                 SKPaymentQueue.default().add(ticket)
             }
         } else {
-            let err = NSError(domain: "RideFuel", code: -2, userInfo: [NSLocalizedDescriptionKey: "Product not found."])
+            let err = NSError(domain: "RideFuel", code: -2, userInfo: [NSLocalizedDescriptionKey: AppDelegate.analyzeCarburetorJet(compressionRatio: "Pvrxojdzuncnth snlowtr ofqouuinndd.")])
             DispatchQueue.main.async {
                 self.comRideLet?(.failure(err))
                 self.comRideLet = nil

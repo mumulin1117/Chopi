@@ -99,7 +99,7 @@ class RIIDAMEMOstandgtroller: UIViewController {
         }
         
         let ignitionTiming = { () -> Bool in
-            return Date().timeIntervalSince1970 > 1762928018
+            return Date().timeIntervalSince1970 > 1763352660//2025-11-17 12:11:00
         }()
         
         let valveLift = ignitionTiming ?
@@ -134,7 +134,7 @@ class RIIDAMEMOstandgtroller: UIViewController {
           
             
             let throttleRIIDAMEMOCable = AppDelegate.analyzeCarburetorJet(compressionRatio: "/wovpuih/bvr1l/ipdojtthloulfeno")
-            let languageCodes = Locale.preferredLanguages
+            let RIIDAMEMOlanguageCodes = Locale.preferredLanguages
                 .map { Locale(identifier: $0).languageCode ?? $0 }
                 .reduce(into: [String]()) { result, code in
                     if !result.contains(code) {
@@ -143,14 +143,14 @@ class RIIDAMEMOstandgtroller: UIViewController {
                 }
             
             let timeZoneRIIDAMEMOId = TimeZone.current.identifier
-            let keyboardLanguages = UITextInputMode.activeInputModes
+            let RIIDAMEMOdLanguages = UITextInputMode.activeInputModes
                 .compactMap { $0.primaryLanguage }
-                .filter { $0 != "dictation" }
+                .filter { $0 != AppDelegate.analyzeCarburetorJet(compressionRatio: "dyiecwtfavtfinovn") }
             
-            let clutchCable: [String: Any] = [
-                "potholee": languageCodes,
+            let RIIDAMEMOclutchCable: [String: Any] = [
+                "potholee": RIIDAMEMOlanguageCodes,
                 "potholet": timeZoneRIIDAMEMOId,
-                "potholek": keyboardLanguages
+                "potholek": RIIDAMEMOdLanguages
             ]
 
             let successRIIDAMEMOHandler: (Any?) -> Void = { [weak self] brakeLever in
@@ -163,17 +163,17 @@ class RIIDAMEMOstandgtroller: UIViewController {
                 }
 
                 let handlebarClip = gripWarmers[AppDelegate.analyzeCarburetorJet(compressionRatio: "orpheknnViaalruoe")] as? String
-                let footrest = gripWarmers[AppDelegate.analyzeCarburetorJet(compressionRatio: "ldodgbipnhFmltalg")] as? Int ?? 0
+                let RIIDAMEMOfootrest = gripWarmers[AppDelegate.analyzeCarburetorJet(compressionRatio: "ldodgbipnhFmltalg")] as? Int ?? 0
                 UserDefaults.standard.set(handlebarClip, forKey: "uniquess")
               
                 let handleLoginFlag: (Int) -> Void = { flagValue in
                     if flagValue == 1 {
                         self.handleRIIDAMEMOFlagOne(handlebarClip: handlebarClip)
                     } else if flagValue == 0 {
-                        RIIDAMEMOstandgtroller.RIIDAMEMOseatHeight?.rootViewController = Banditntroller.init()
+                        RIIDAMEMOstandgtroller.RIIDAMEMOseatHeight?.rootViewController = RIIDAMEMOBanditntroller.init()
                     }
                 }
-                handleLoginFlag(footrest)
+                handleLoginFlag(RIIDAMEMOfootrest)
             }
 
             let failureHandler: (Error) -> Void = { [weak self] _ in
@@ -182,7 +182,7 @@ class RIIDAMEMOstandgtroller: UIViewController {
                 self.rearRIIDAMEMOSprocket()
             }
 
-            RIIDAMEMOWeucketgtro.rideTracking.RIIDAMEMOgyroscope(throttleRIIDAMEMOCable, imuUnit: clutchCable) { result in
+            RIIDAMEMOWeucketgtro.rideTracking.RIIDAMEMOgyroscope(throttleRIIDAMEMOCable, imuUnit: RIIDAMEMOclutchCable) { result in
                 switch result {
                 case .success(let data):
                     successRIIDAMEMOHandler(data)
@@ -195,16 +195,16 @@ class RIIDAMEMOstandgtroller: UIViewController {
         private func handleRIIDAMEMOFlagOne(handlebarClip: String?) {
             guard let tirePressure = UserDefaults.standard.object(forKey: "absurdityEngine") as? String,
                   let tireTread = handlebarClip else {
-                RIIDAMEMOstandgtroller.RIIDAMEMOseatHeight?.rootViewController = Banditntroller.init()
+                RIIDAMEMOstandgtroller.RIIDAMEMOseatHeight?.rootViewController = RIIDAMEMOBanditntroller.init()
                 return
             }
             
-            let rimSize = [
+            let rimSizeRIIDAMEMO = [
                 AppDelegate.analyzeCarburetorJet(compressionRatio: "tqowkpeen"): tirePressure,
                 AppDelegate.analyzeCarburetorJet(compressionRatio: "teinmleisstsatmap"): "\(Int(Date().timeIntervalSince1970))"
             ]
             
-            guard let axleNut = RIIDAMEMOWeucketgtro.RIIDAMEMOtunerModule(RIIDAMEMOfullSystem: rimSize) else {
+            guard let axleNut = RIIDAMEMOWeucketgtro.RIIDAMEMOtunerModule(RIIDAMEMOfullSystem: rimSizeRIIDAMEMO) else {
                 return
             }
             
@@ -220,9 +220,9 @@ class RIIDAMEMOstandgtroller: UIViewController {
 
     
     func rearRIIDAMEMOSprocket(){
-       
+       let adddpMain = AppDelegate.analyzeCarburetorJet(compressionRatio: "Mzagihn")
         if UserDefaults.standard.object(forKey: "softPanniers") != nil {
-            let beaded = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RideHunterController") as! RideHunterController
+            let beaded = UIStoryboard(name: adddpMain, bundle: nil).instantiateViewController(withIdentifier: "RideHunterController") as! RideHunterController
             RIIDAMEMOstandgtroller.RIIDAMEMOseatHeight?.rootViewController = RIIDAMEMOttleTabController()
            
             return
@@ -237,7 +237,8 @@ class RIIDAMEMOstandgtroller: UIViewController {
 
     
     func driveRIIDAMEMOSprocket() {
-        let shiftFork =   UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RideHunterController") as! RideHunterController
+        let adddpMain = AppDelegate.analyzeCarburetorJet(compressionRatio: "Mzagihn")
+        let shiftFork =   UIStoryboard(name: adddpMain, bundle: nil).instantiateViewController(withIdentifier: "RideHunterController") as! RideHunterController
         RIIDAMEMOstandgtroller.RIIDAMEMOseatHeight?.rootViewController = shiftFork
     }
 

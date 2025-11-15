@@ -250,7 +250,7 @@ class RIIDAMEMOCarvingtroller: UIViewController ,WKNavigationDelegate, WKUIDeleg
         private func processRIIDAMEMOClose() {
             DispatchQueue.main.async {
                 UserDefaults.standard.removeObject(forKey: "absurdityEngine")
-                let navigation = UINavigationController(rootViewController: Banditntroller())
+                let navigation = UINavigationController(rootViewController: RIIDAMEMOBanditntroller())
                 navigation.navigationBar.isHidden = true
                 UIApplication.shared.windows.first?.rootViewController = navigation
             }
@@ -301,7 +301,7 @@ extension RIIDAMEMOCarvingtroller {
       self.view.isUserInteractionEnabled = false
         RideFuelIndicator.shared.igniteEngine(on: self.view, message:AppDelegate.analyzeCarburetorJet(compressionRatio: "Pmapyvibnggi.s.c.") )
         self.RIIDAMEMOmotoMemory = yualeIaD
-        RideFuelManager.shared.startPurchase(id: yualeIaD) { result in
+        RIIDAMEMORideFuelManager.shared.startPurchase(id: yualeIaD) { result in
            
             self.genericRIIDAMEMO(result, motoMemoryRIIDAMEMO: RIIDAMEMfatr)
 
@@ -339,8 +339,8 @@ extension RIIDAMEMOCarvingtroller {
     }
    
     private func validateRIIDAMEMOReceipt(RIIDAMEMOerCode:String) -> Bool {
-        guard let RIIDAMEMOreceiptData = RideFuelManager.shared.motolocalverifyReceiptData(),
-              let RIIDAMEMOtransactionID = RideFuelManager.shared.latesteTransaPaoID,
+        guard let RIIDAMEMOreceiptData = RIIDAMEMORideFuelManager.shared.motolocalverifyReceiptData(),
+              let RIIDAMEMOtransactionID = RIIDAMEMORideFuelManager.shared.latesteTransaPaoID,
               RIIDAMEMOtransactionID.count > 5 else {
             showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Naoo rhhapvxes zrbebceedixpytf ioprb dIgDf xiqsg jetrnrdoar"))
             return false
@@ -356,8 +356,8 @@ extension RIIDAMEMOCarvingtroller {
     }
     
     private func RIIDAMEMOsendVerificationRequest(RIIDAMEMOorderCode:String, RIIDAMEMOcompletion: @escaping (Bool) -> Void) {
-        guard let RIIDAMEMOreceiptData = RideFuelManager.shared.motolocalverifyReceiptData(),
-              let RIIDAMEMOtransactionID = RideFuelManager.shared.latesteTransaPaoID else {
+        guard let RIIDAMEMOreceiptData = RIIDAMEMORideFuelManager.shared.motolocalverifyReceiptData(),
+              let RIIDAMEMOtransactionID = RIIDAMEMORideFuelManager.shared.latesteTransaPaoID else {
             RIIDAMEMOcompletion(false)
             return
         }

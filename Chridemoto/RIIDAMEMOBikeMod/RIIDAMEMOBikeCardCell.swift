@@ -1,5 +1,5 @@
 //
-//  BikeCardCell.swift
+//  RIIDAMEMOBikeCardCell.swift
 //  Chridemoto
 //
 //  Created by  on 2025/10/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BikeCardCell: UICollectionViewCell {
+class RIIDAMEMOBikeCardCell: UICollectionViewCell {
     static let reuseIdentifier = "bikeCell"
 
     let imageView: UIImageView = {

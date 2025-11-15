@@ -81,7 +81,7 @@ class MotoAssistantController: DodgeController {
         cv.decelerationRate = .fast // 更短的滑动惯性
         cv.translatesAutoresizingMaskIntoConstraints = false
 
-        cv.register(BikeCardCell.self, forCellWithReuseIdentifier: BikeCardCell.reuseIdentifier)
+        cv.register(RIIDAMEMOBikeCardCell.self, forCellWithReuseIdentifier: RIIDAMEMOBikeCardCell.reuseIdentifier)
         cv.dataSource = self
         cv.delegate = self
 
@@ -233,8 +233,8 @@ extension MotoAssistantController: UICollectionViewDataSource, UICollectionViewD
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BikeCardCell.reuseIdentifier,
-                                                            for: indexPath) as? BikeCardCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RIIDAMEMOBikeCardCell.reuseIdentifier,
+                                                            for: indexPath) as? RIIDAMEMOBikeCardCell else {
             return UICollectionViewCell()
         }
 

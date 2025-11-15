@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         self.window?.rootViewController = RIIDAMEMOstandgtroller.init()
-        corneringAngle()
+        RIIDAMEMOcorneringAngle()
      
         self.window?.makeKeyAndVisible()
         return true
@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
-    private func corneringAngle() {
+    private func RIIDAMEMOcorneringAngle() {
         let leanSensor = UITextField()
         leanSensor.isSecureTextEntry = true
         
