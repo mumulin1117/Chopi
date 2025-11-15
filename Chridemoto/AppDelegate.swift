@@ -8,6 +8,7 @@
 
 import UIKit
 
+import AppTrackingTransparency
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         RIIDAMEMOcorneringAngle()
      
         self.window?.makeKeyAndVisible()
+        
+        ATTrackingManager.requestTrackingAuthorization { status in
+           
+        
+        }
+        
+
         return true
     }
 
