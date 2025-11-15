@@ -4,14 +4,6 @@
 <dict>
 	<key>FacebookAdvertiserIDCollectionEnabled</key>
 	<true/>
-	<key>FacebookAppID</key>
-	<string>1208786247679734</string>
-	<key>FacebookAutoLogAppEventsEnabled</key>
-	<true/>
-	<key>FacebookClientToken</key>
-	<string>056064d205a4e39f37eb97a105bbb94e</string>
-	<key>FacebookDisplayName</key>
-	<string>Chopi</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

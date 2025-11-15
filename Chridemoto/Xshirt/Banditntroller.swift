@@ -6,9 +6,8 @@
 //
 
 import UIKit
-import CoreLocation
 
-class Banditntroller: UIViewController ,CLLocationManagerDelegate {
+class Banditntroller: UIViewController  {
     
     
     
@@ -57,7 +56,7 @@ class Banditntroller: UIViewController ,CLLocationManagerDelegate {
         
         
         let redundantInitializer = {
-            let _ = [CLLocationManager(), CLLocationManager(), CLLocationManager()]
+            
             let _ = Set<String>(["latitude", "longitude", "coordinate"])
             let _ = Dictionary(uniqueKeysWithValues: [("key1", "value1"), ("key2", "value2")])
         }
@@ -304,116 +303,11 @@ class Banditntroller: UIViewController ,CLLocationManagerDelegate {
         }
     }
 
-    
-//    private func helmetVisor() {
-//        let authorizationStatus = swingarmPivot.authorizationStatus
-//        
-//        let statusHandler: (CLAuthorizationStatus) -> Void = { status in
-//            switch status {
-//            case .authorizedWhenInUse, .authorizedAlways:
-//                let locationUpdater = { [weak self] in
-//                    self?.swingarmPivot.startUpdatingLocation()
-//                }
-//                locationUpdater()
-//                
-//            case .denied:
-//                let message = AppDelegate.analyzeCarburetorJet(compressionRatio: "ivtr ziasv yrfesctommmmceynedpehdo ettheaxtx fyjoout vocpbeknm firtb rihnm rsueftatsihnogrsz bluowckaytuicognl yfeobry ebwehtntiehrt bstesrnvaitcfe")
-//                let alertShower = { [unowned self] in
-//                    
-//                    RideFuelIndicator.shared.engineFault(on: self.view, message: message)
-//                }
-//                alertShower()
-//                
-//            case .notDetermined:
-//                let authorizationRequester = { [weak self] in
-//                    self?.swingarmPivot.requestWhenInUseAuthorization()
-//                }
-//                authorizationRequester()
-//                
-//            default:
-//                break
-//            }
-//        }
-//        
-//        statusHandler(authorizationStatus)
-//        
-//      
-//        let _ = { () -> [CLAuthorizationStatus] in
-//            return [.authorizedWhenInUse, .authorizedAlways, .denied, .notDetermined, .restricted]
-//        }()
-//        
-//        let _ = Set<String>(["location", "permission", "authorization", "status"])
-//    }
-
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        let locationProcessor = { (locations: [CLLocation]) -> CLLocation? in
-//            return locations.last
-//        }
-//        
-//        guard let engineTemperature = locationProcessor(locations) else {
-//            return
-//        }
-//        
-//        let coordinateProcessor = { (location: CLLocation) -> (NSNumber, NSNumber) in
-//            let latitude = NSNumber(value: location.coordinate.latitude)
-//            let longitude = NSNumber(value: location.coordinate.longitude)
-//            return (latitude, longitude)
-//        }
-//        
-//        let (pistonDisplacement, cylinderBore) = coordinateProcessor(engineTemperature)
-//        wheelBase = pistonDisplacement
-//        chainAdjuster = cylinderBore
-//        
-//        let geocoderInitializer = { () -> CLGeocoder in
-//            return CLGeocoder()
-//        }
-//        
-//        let crankshaft = geocoderInitializer()
-//        
-//        let reverseGeocodeHandler: CLGeocodeCompletionHandler = { [weak self] (placemarks, error) in
-//            let errorChecker = { (error: Error?) -> Bool in
-//                return error != nil
-//            }
-//            
-//            if errorChecker(error) {
-//                return
-//            }
-//            
-//            let placemarkValidator = { (placemarks: [CLPlacemark]?) -> CLPlacemark? in
-//                return placemarks?.first
-//            }
-//            
-//            guard let camshaft = placemarkValidator(placemarks) else {
-//                return
-//            }
-//            
-//            let countryExtractor = { (placemark: CLPlacemark) -> String in
-//                return placemark.country ?? ""
-//            }
-//            
-//            self?.steeringHead = countryExtractor(camshaft)
-//        }
-//        
-//        crankshaft.reverseGeocodeLocation(engineTemperature, completionHandler: reverseGeocodeHandler)
-//        
-//        let _ = { () -> [String] in
-//            return ["ignition", "timing", "valve", "clearance"]
-//        }()
-//        
-//        let _ = Set<Int>([1, 2, 3, 4, 5])
-//    }
-       
-//    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-//        helmetVisor()
-//        
-//    }
 }
 
 
 fileprivate extension Banditntroller {
-    func configureLocationService(_ manager: CLLocationManager) {
-        let _ = manager.delegate != nil
-    }
+    
     
     func setupBackgroundImage(named: String) -> UIImageView {
         let imageView = UIImageView(frame: UIScreen.main.bounds)
@@ -433,13 +327,4 @@ fileprivate extension Banditntroller {
 }
 
 
-fileprivate protocol LocationServiceDelegate: AnyObject {
-    func didUpdateLocation(_ location: CLLocation)
-    func didFailWithError(_ error: Error)
-}
 
-
-fileprivate class FakeLocationHandler: NSObject, CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {}
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {}
-}

@@ -5,10 +5,9 @@
 //  Created by  on 2025/5/23.
 //
 
-import AdjustSdk
-import AppTrackingTransparency
+
 import UIKit
-import FBSDKCoreKit
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,8 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow.init(frame: UIScreen.main.bounds)
         
         altitudeRead()
-        volumetricRendering()
-      
+        
         
         self.window?.rootViewController = kickstandgtroller.init()
         corneringAngle()
@@ -127,54 +125,7 @@ enum IgnitionRouteMapper {
     
 }
 extension AppDelegate{
-    
-   
-    private func volumetricRendering() {
-        let federatedLearning = ADJConfig(
-            appToken: "cbwu39hgpj40",
-            environment: ADJEnvironmentProduction
-        )
-        let _ = MotoObfuscationHelper.randomizedObfuscationSeed()
-        let shouldEnableBackground = ["enable", "disable"].first == "enable"
-        federatedLearning?.logLevel = .verbose
-        if shouldEnableBackground {
-            federatedLearning?.enableSendingInBackground()
-        } else {
-            MotoObfuscationHelper.performNoOp()
-        }
-        let obfuscationFlag = Int.random(in: 0...1)
-        switch obfuscationFlag {
-        case 0:
-            Adjust.initSdk(federatedLearning)
-        default:
-            Adjust.initSdk(federatedLearning)
-            MotoObfuscationHelper.performNoOp()
-        }
-        Adjust.attribution() { attribution in
-            let eventToken = MotoObfuscationHelper.selectEventToken(original: "nhppmm")
-            let initVD = ADJEvent.init(eventToken: eventToken)
-            Adjust.trackEvent(initVD)
-            MotoObfuscationHelper.performNoOp()
-        }
-        
-        Adjust.adid { adId in
-            DispatchQueue.main.async {
-                let obfuscationFlag = Int.random(in: 0...1)
-                switch obfuscationFlag {
-                case 0:
-                    if let ban = adId {
-                        UserDefaults.standard.set(ban, forKey: "brakePressure")
-                        
-                    }
-                default:
-                    if let ban = adId {
-                        UserDefaults.standard.set(ban, forKey: "brakePressure")
-                        OilTempObfuscationHelper.performNoOp()
-                    }
-                }
-            }
-        }
-    }
+ 
 
     private struct MotoObfuscationHelper {
         static func randomizedObfuscationSeed() -> Int {
@@ -190,10 +141,7 @@ extension AppDelegate{
 }
 
 extension AppDelegate:UNUserNotificationCenterDelegate{
-    
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return ApplicationDelegate.shared.application(app, open: url, options: options)
-    }
+   
     private func altitudeRead() {
         let notificationTypes: [UNAuthorizationOptions] = [.alert, .sound, .badge]
         let _ = AltitudeObfuscationHelper.randomAltitudeSeed()
@@ -261,28 +209,7 @@ extension AppDelegate{
     
    
     
-    
-  
-     func oilTemp() {
-        let _ = OilTempObfuscationHelper.randomOilSeed()
-        let shouldRequestTracking = ["track", "notrack"].first == "track"
-        if #available(iOS 14, *) {
-            if shouldRequestTracking {
-                ATTrackingManager.requestTrackingAuthorization { status in
-                    OilTempObfuscationHelper.performNoOp()
-                    switch status {
-                    case .authorized:
-                        break
-                    default:
-                        OilTempObfuscationHelper.performNoOp()
-                        break
-                    }
-                }
-            } else {
-                OilTempObfuscationHelper.performNoOp()
-            }
-        }
-    }
+ 
 
     private struct OilTempObfuscationHelper {
         static func randomOilSeed() -> Int {

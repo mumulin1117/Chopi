@@ -6,8 +6,8 @@
 //
 
 import UIKit
-import FBSDKCoreKit
-import UIKit
+
+import Network
 final class ChopiNETWorkManager {
     static let shared = ChopiNETWorkManager()
 
@@ -49,12 +49,6 @@ class kickstandgtroller: UIViewController {
         ChopiNETWorkManager.shared.begindnen()
 
       
-
-        
-       
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3, execute: DispatchWorkItem(block: {
-            ((UIApplication.shared.delegate) as? AppDelegate)?.oilTemp()
-        }))
     }
 
     private func windProtection() {

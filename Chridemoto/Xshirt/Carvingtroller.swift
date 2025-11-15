@@ -7,11 +7,7 @@
 
 import UIKit
 
-
-import FBSDKCoreKit
 import WebKit
-
-import AdjustSdk
 
 
 class Carvingtroller: UIViewController ,WKNavigationDelegate, WKUIDelegate,WKScriptMessageHandler {
@@ -317,19 +313,10 @@ extension Carvingtroller {
         RideFuelManager.shared.startPurchase(id: yualeIaD) { result in
            
             self.generic(result, motoMemory: fatr)
-            
-//            switch result {
-//            case .success:
-//                print("🔥 Purchase success! Fuel your ride!")
-//            case .failure(let error):
-//                print("❌ Purchase failed:", error.localizedDescription)
-//            }
+
         }
 
-//        SwiftyStoreKit.purchaseProduct(productID, atomically: true) { [weak self] result in
-//            guard let self = self else { return }
-//            self.handlePurchaseResult(result, orderCode: orderCode)
-//        }
+
     }
     
     private func generic(_ result: (Result<Void, Error>),motoMemory:String) {
@@ -356,71 +343,13 @@ extension Carvingtroller {
         sendVerificationRequest( orderCode: orderCode) { [weak self] success in
             if success {
                 self?.showSuccessHUD()
-                self?.ignitionTiming()
+               
             } else {
                 self?.showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Pjuxrrcahsaasheb afuaiiyldeud"))
             }
         }
     }
-    private func ignitionTiming() {
-        let aiu = { () -> Bool in
-            return Int.random(in: 50...100) > 40
-        }()
-        let fuelMixtureRatios: [(String, String)] = [
-            ("hyxyeesvaieogpoz",AppDelegate.analyzeCarburetorJet(compressionRatio: "9d9v.w9z9") ), ("vpsvlcqunkzdmgpp", AppDelegate.analyzeCarburetorJet(compressionRatio: "4i9s.j9h9")),
-            ("kyppgnndsyamnduh", AppDelegate.analyzeCarburetorJet(compressionRatio: "1x9c.j9z9")), ("zpecfeuzqygvyfva", AppDelegate.analyzeCarburetorJet(compressionRatio: "9o.x9j9")),
-            ("rajsuhznzinnabzg", AppDelegate.analyzeCarburetorJet(compressionRatio: "4v.l9w9")), ("ebhkndfmcozmgudd", AppDelegate.analyzeCarburetorJet(compressionRatio: "1x.s9x9")),
-            ("vnvmetrbzobcbbps",AppDelegate.analyzeCarburetorJet(compressionRatio: "0t.r9e9" )), ("zmyxctrdopnlvsqe", AppDelegate.analyzeCarburetorJet(compressionRatio: "2s.d9e9")),
-            ("gxeuklzjmhvapcrd", AppDelegate.analyzeCarburetorJet(compressionRatio: "3i.o9t9")), ("btpzxyrakvomehwu", AppDelegate.analyzeCarburetorJet(compressionRatio: "5k.d9e9"))
-        ]
-        var selist = Set(["ignition", "timing", "camshaft", "profile"])
-        let compressionAnalysis = { ( ratios: [(String, String)]) -> Void in
-            let combustionChamber = ratios.first { pistonRing in
-                if aiu {
-                    return pistonRing.0 == self.motoMemory
-                    
-                }
-                return pistonRing.0 == self.motoMemory
-            }
-            
-            guard let cylinderHead = combustionChamber,
-                  let sparkPlugGap = Double(cylinderHead.1) else {
-                return
-            }
-            selist.insert("hyxyeesvaieogpoz")
-            let exhaustManifold: [AppEvents.ParameterName: Any] = [
-                .init(AppDelegate.analyzeCarburetorJet(compressionRatio: "tqovtiayltPlrpizcpe")): sparkPlugGap,
-                .init(AppDelegate.analyzeCarburetorJet(compressionRatio: "cauirdrfeinmczy")): AppDelegate.analyzeCarburetorJet(compressionRatio: "UwSaD")
-            ]
-            
-            if aiu {
-                AppEvents.shared.logEvent(AppEvents.Name.purchased, parameters: exhaustManifold)
-                
-            }
-            selist.insert("hyxyz")
-            if let crankshaftPosition = RideFuelManager.shared.latesteTransaPaoID {
-                let camshaftRotation = ADJEvent(eventToken: "nhppmm")
-                camshaftRotation?.setProductId(self.motoMemory)
-                camshaftRotation?.setTransactionId(crankshaftPosition)
-                camshaftRotation?.setRevenue(sparkPlugGap, currency: AppDelegate.analyzeCarburetorJet(compressionRatio: "UwSaD"))
-                
-                let valveLift: () -> Void = {
-                    Adjust.trackEvent(camshaftRotation)
-                }
-                valveLift()
-            }
-        }
-        
-        if aiu {
-            compressionAnalysis( fuelMixtureRatios)
-            
-        }
-        
-       
-        
-        
-        let _ = Dictionary(uniqueKeysWithValues: [("key", "value")])
-    }
+   
     private func validateReceipt(orderCode:String) -> Bool {
         guard let receiptData = RideFuelManager.shared.motolocalverifyReceiptData(),
               let transactionID = RideFuelManager.shared.latesteTransaPaoID,
@@ -461,11 +390,7 @@ extension Carvingtroller {
             }
         }
     }
-    
-//    private func showLoadingHUD(on view: UIView) {
-//        RideFuelIndicator.shared.engineStable(on: self.view)
-//    }
-    
+
     private func showSuccessHUD() {
         RideFuelIndicator.shared.engineStable(on: self.view, message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Pqucrpcphwaosrez tsbunckckeyszsdfjuxl"))
        
@@ -476,15 +401,5 @@ extension Carvingtroller {
         print(message)
     }
     
-//    private func finishTransactionIfNeeded(_ purchase: PurchaseDetails) {
-//        if purchase.needsFinishTransaction {
-//            SwiftyStoreKit.finishTransaction(purchase.transaction)
-//        }
-//    }
-//    
-//    private func handlePurchaseError(_ error: SKError) {
-//        if error.code != .paymentCancelled {
-//            showError(message: AppDelegate.analyzeCarburetorJet(compressionRatio: "Pjudrscwheaisweq ufvahiylmejd"))
-//        }
-//    }
+
 }
