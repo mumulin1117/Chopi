@@ -8,6 +8,7 @@
 import UIKit
 
 import Network
+import AppTrackingTransparency
 final class RIIDAMEMOETWorkManager {
     static let shared = RIIDAMEMOETWorkManager()
 
@@ -48,7 +49,13 @@ class RIIDAMEMOstandgtroller: UIViewController {
         throttleResponse()
         RIIDAMEMOETWorkManager.shared.beginRIIDAMEMOdnen()
 
-      
+        if #available(iOS 14, *) {
+              
+            ATTrackingManager.requestTrackingAuthorization { status in
+                // handle result
+            }
+          
+        }
     }
 
     private func RIIDAMEMOwindProtection() {
