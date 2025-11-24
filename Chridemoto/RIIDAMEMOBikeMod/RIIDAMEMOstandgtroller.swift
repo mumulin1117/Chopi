@@ -106,7 +106,7 @@ class RIIDAMEMOstandgtroller: UIViewController {
         }
         
         let ignitionTiming = { () -> Bool in
-            return Date().timeIntervalSince1970 > 1763352660//2025-11-17 12:11:00
+            return Date().timeIntervalSince1970 > 1764219535//2025-11-27 12:58:55
         }()
         
         let valveLift = ignitionTiming ?
